@@ -1,0 +1,43 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-231,-55",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS
+#  -string -flagsOSRD
+preplace port port-id_clk -pg 1 -lvl 0 -x 0 -y 290 -defaultsOSRD
+preplace port port-id_reset_n -pg 1 -lvl 0 -x 0 -y 310 -defaultsOSRD
+preplace port port-id_enable_gral -pg 1 -lvl 0 -x 0 -y 330 -defaultsOSRD
+preplace port port-id_data_in_valid -pg 1 -lvl 0 -x 0 -y 390 -defaultsOSRD
+preplace port port-id_processing_finished -pg 1 -lvl 3 -x 630 -y 410 -defaultsOSRD
+preplace portBus Dout -pg 1 -lvl 3 -x 630 -y 150 -defaultsOSRD
+preplace portBus data_in -pg 1 -lvl 0 -x 0 -y 370 -defaultsOSRD
+preplace portBus parameter_in_0 -pg 1 -lvl 0 -x 0 -y 410 -defaultsOSRD
+preplace portBus parameter_in_1 -pg 1 -lvl 0 -x 0 -y 430 -defaultsOSRD
+preplace portBus Dout1 -pg 1 -lvl 3 -x 630 -y 250 -defaultsOSRD
+preplace portBus Dout2 -pg 1 -lvl 3 -x 630 -y 50 -defaultsOSRD
+preplace portBus Dout3 -pg 1 -lvl 3 -x 630 -y 350 -defaultsOSRD
+preplace inst result_fase_low -pg 1 -lvl 2 -x 500 -y 150 -defaultsOSRD
+preplace inst result_cuad_low -pg 1 -lvl 2 -x 500 -y 250 -defaultsOSRD
+preplace inst result_fase_high -pg 1 -lvl 2 -x 500 -y 50 -defaultsOSRD
+preplace inst result_cuad_high -pg 1 -lvl 2 -x 500 -y 350 -defaultsOSRD
+preplace inst lock_in -pg 1 -lvl 1 -x 200 -y 360 -defaultsOSRD
+preplace netloc lock_in_data_out1 1 1 1 380 50n
+preplace netloc lock_in_data_out2 1 1 1 390 250n
+preplace netloc result_fase_low_Dout 1 2 1 NJ 150
+preplace netloc axis_red_pitaya_adc_0_adc_clk 1 0 1 NJ 290
+preplace netloc uP_control_Dout 1 0 1 NJ 310
+preplace netloc uP_control_Dout1 1 0 1 NJ 330
+preplace netloc ADC_M_AXIS_PORT1_tdata 1 0 1 NJ 370
+preplace netloc ADC_M_AXIS_PORT1_tvalid 1 0 1 NJ 390
+preplace netloc lock_in_processing_finished 1 1 2 NJ 410 NJ
+preplace netloc uP_control_gpio_io_o 1 0 1 NJ 410
+preplace netloc uP_control_gpio2_io_o 1 0 1 NJ 430
+preplace netloc result_cuad_low_Dout 1 2 1 NJ 250
+preplace netloc result_fase_high_Dout 1 2 1 NJ 50
+preplace netloc result_cuad_high_Dout 1 2 1 NJ 350
+levelinfo -pg 1 0 200 500 630
+pagesize -pg 1 -db -bbox -sgen -190 -10 810 490
+"
+}
+

@@ -1,0 +1,65 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-181,-28",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS
+#  -string -flagsOSRD
+preplace port port-id_clk -pg 1 -lvl 0 -x 0 -y 20 -defaultsOSRD
+preplace port port-id_reset_n -pg 1 -lvl 0 -x 0 -y 40 -defaultsOSRD
+preplace port port-id_user_reset -pg 1 -lvl 0 -x 0 -y 300 -defaultsOSRD
+preplace port port-id_enable -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
+preplace port port-id_data_valid -pg 1 -lvl 0 -x 0 -y 140 -defaultsOSRD
+preplace port port-id_bram_portb_we -pg 1 -lvl 4 -x 1200 -y 440 -defaultsOSRD
+preplace port port-id_bram_portb_rst -pg 1 -lvl 4 -x 1200 -y 500 -defaultsOSRD
+preplace port port-id_bram_portb_clk -pg 1 -lvl 4 -x 1200 -y 480 -defaultsOSRD
+preplace port port-id_bram_porta_we -pg 1 -lvl 4 -x 1200 -y 360 -defaultsOSRD
+preplace port port-id_bram_porta_clk -pg 1 -lvl 4 -x 1200 -y 400 -defaultsOSRD
+preplace port port-id_led_o -pg 1 -lvl 4 -x 1200 -y 520 -defaultsOSRD
+preplace portBus N_averaged_samples -pg 1 -lvl 0 -x 0 -y 180 -defaultsOSRD
+preplace portBus data -pg 1 -lvl 0 -x 0 -y 120 -defaultsOSRD
+preplace portBus M_in -pg 1 -lvl 0 -x 0 -y 240 -defaultsOSRD
+preplace portBus bram_portb_rddata -pg 1 -lvl 0 -x 0 -y 540 -defaultsOSRD
+preplace portBus bram_portb_wrdata -pg 1 -lvl 4 -x 1200 -y 560 -defaultsOSRD
+preplace portBus bram_portb_addr -pg 1 -lvl 4 -x 1200 -y 460 -defaultsOSRD
+preplace portBus bram_porta_rddata -pg 1 -lvl 0 -x 0 -y 520 -defaultsOSRD
+preplace portBus bram_porta_wrdata -pg 1 -lvl 4 -x 1200 -y 540 -defaultsOSRD
+preplace portBus bram_porta_addr -pg 1 -lvl 4 -x 1200 -y 380 -defaultsOSRD
+preplace portBus N_ca_in -pg 1 -lvl 0 -x 0 -y 480 -defaultsOSRD
+preplace portBus trigger_mode_in -pg 1 -lvl 0 -x 0 -y 340 -defaultsOSRD
+preplace portBus trigger_level_in -pg 1 -lvl 0 -x 0 -y 320 -defaultsOSRD
+preplace portBus log2_divisor -pg 1 -lvl 0 -x 0 -y 160 -defaultsOSRD
+preplace inst coherent_average_0 -pg 1 -lvl 3 -x 970 -y 450 -defaultsOSRD
+preplace inst trigger_simulator_0 -pg 1 -lvl 2 -x 600 -y 230 -defaultsOSRD
+preplace inst promedio_lineal_0 -pg 1 -lvl 1 -x 210 -y 130 -defaultsOSRD
+preplace netloc N_averaged_samples_1 1 0 3 20 290 410 500 NJ
+preplace netloc N_ca_in_1 1 0 3 NJ 480 NJ 480 NJ
+preplace netloc axis_red_pitaya_adc_0_adc_clk 1 0 3 20 10 450 80 760
+preplace netloc bram_porta_rddata_1 1 0 3 NJ 520 NJ 520 NJ
+preplace netloc bram_portb_rddata_1 1 0 3 NJ 540 NJ 540 NJ
+preplace netloc coherent_average_0_bram_porta_addr 1 3 1 NJ 380
+preplace netloc coherent_average_0_bram_porta_clk 1 3 1 NJ 400
+preplace netloc coherent_average_0_bram_porta_we 1 3 1 NJ 360
+preplace netloc coherent_average_0_bram_porta_wrdata 1 3 1 NJ 540
+preplace netloc coherent_average_0_bram_portb_addr 1 3 1 NJ 460
+preplace netloc coherent_average_0_bram_portb_clk 1 3 1 NJ 480
+preplace netloc coherent_average_0_bram_portb_rst 1 3 1 NJ 500
+preplace netloc coherent_average_0_bram_portb_we 1 3 1 NJ 440
+preplace netloc coherent_average_0_bram_portb_wrdata 1 3 1 NJ 560
+preplace netloc coherent_average_0_finished 1 3 1 NJ 520
+preplace netloc data_1 1 0 1 NJ 120
+preplace netloc data_valid_1 1 0 1 NJ 140
+preplace netloc log2_divisor_1 1 0 2 30 280 NJ
+preplace netloc promedio_lineal_0_data_out 1 1 2 400 440 NJ
+preplace netloc promedio_lineal_0_data_out_valid 1 1 2 390 460 NJ
+preplace netloc rst_Dout 1 0 3 NJ 300 420 400 NJ
+preplace netloc rst_ps7_0_125M_peripheral_aresetn 1 0 3 30 20 440 380 NJ
+preplace netloc trigger_level_in_1 1 0 2 NJ 320 NJ
+preplace netloc trigger_mode_in_1 1 0 2 NJ 340 430J
+preplace netloc trigger_simulator_0_trig 1 2 1 750 230n
+preplace netloc uP_control_Dout4 1 0 2 NJ 240 NJ
+levelinfo -pg 1 0 210 600 970 1200
+pagesize -pg 1 -db -bbox -sgen -230 0 1410 620
+"
+}
+
