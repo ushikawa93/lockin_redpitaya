@@ -83,5 +83,7 @@ multiplicador prod_cuadratura(
 
 assign data_valid_multiplicacion = data_valid_seno && data_valid_cos;
 
+
+
 endmodule
 

@@ -18,10 +18,10 @@ module multiplicador(
 );
 
 // Registro las entradas... es mas prolijo trabajar con las entradas registradas
-reg signed [31:0] data_a_reg;
+reg signed [63:0] data_a_reg;
 always @(posedge clock) data_a_reg <= (!reset_n) ? 0 : $signed(data_a);
 
-reg signed [31:0] data_b_reg;
+reg signed [63:0] data_b_reg;
 always @(posedge clock) data_b_reg <= (!reset_n) ? 0 : $signed(data_b);
 
 reg data_valid_reg;

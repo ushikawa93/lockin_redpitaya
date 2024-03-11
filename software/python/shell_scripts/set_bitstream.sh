@@ -3,7 +3,7 @@
 # Uso -> copy_bitstream {archivo.bit} {red pitaya IP}
 
 name=${1:-lockin.bit}
-ip=${2:-192.168.1.100}
+ip=${2:-169.254.172.188}
 
 
 scp $name root@$ip:/root/bitstreams 

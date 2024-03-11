@@ -32,6 +32,7 @@ module lockin_segmentado(
 // Multiplicacion por referencia
 //=======================================================
 
+
 wire [63:0] data_out_seno;			
 wire [63:0] data_out_coseno;
 wire data_valid_multiplicacion;
@@ -52,6 +53,7 @@ multiplicate_ref_2 multiplicador(
 	.data_valid_multiplicacion(data_valid_multiplicacion)
 
 );
+
 
 
 //=======================================================
@@ -112,13 +114,9 @@ filtro_ma filtro_cuadratura(
 
 );
 
-
-
-
 assign calculo_finalizado = (calculo_finalizado_fase && calculo_finalizado_cuad);
 
 always @ (posedge clock) lockin_ready <= (lockin_fase_ready && lockin_cuadratura_ready);
-
 
 
 

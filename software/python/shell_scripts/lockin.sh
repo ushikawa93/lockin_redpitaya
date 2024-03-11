@@ -9,9 +9,9 @@
 
 # Uso del programa adquisidor -> adquisidor FACTOR_SOBREMUESTREO | CICLOS_PROMEDIADOS | NOMBRE_ARCHIVO_SALIDA | MAXIMO_BUFFER  | FREC_DAC | TRIGGER_MODE | TRIGGER_LEVEL | LOG2_DIVISOR | ADC_THRESHOLD
 
-N_ma=${1:-1}
-M=${2:-32}
-ip=${3:-192.168.1.100}
+N_ma=${1:-2}
+M=${2:-64}
+ip=${3:-169.254.172.188}
 
 scp lockin.c root@$ip:/root/c_programs 
 

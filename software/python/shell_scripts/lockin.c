@@ -30,7 +30,7 @@
 #define RESULT_FASE_LOW_ADDRESS 0x41200000
 #define RESULT_FASE_HIGH_ADDRESS 0x41200008
 #define RESULT_CUAD_LOW_ADDRESS 0x41220000
-#define RESULT_CUAD_HIGH_ADDRESS 0x41200008
+#define RESULT_CUAD_HIGH_ADDRESS 0x41220008
 
 #define FIFO_1_ADDRESS 0x43c00000
 #define FIFO_2_ADDRESS 0x43c10000
@@ -54,6 +54,7 @@ uint32_t get_cuad_high(void *cfg);
 double custom_pow(double base, int exponent) ;
 double mySqrt(double x) ;
 void leerFIFO(void *cfg,int N_reads,int fifo_address);
+void leerFIFO64(void *cfg,int N_reads);
 void ClearEnable(void *cfg);
 
 int main(int argc, char **argv)
@@ -70,7 +71,7 @@ int main(int argc, char **argv)
 	
 	if(argc==2 && argv[1] == "h")
 	{
-		printf("Uso -> lockin N_ma | M \n");
+		printf("Uso -> lockin N_ma M \n");
 		return 0;
 	}
 	else if(argc==3)
@@ -81,9 +82,9 @@ int main(int argc, char **argv)
 	else
 	{
 		printf("Error en los argumentos ingresados (Ingreso %d y se esperaban 2)\n",argc-1);
-		printf("Uso -> lockin N_ma | M \n");
+		printf("Uso -> lockin N_ma M \n");
 		return 0;
-	}		
+	}
 	
 	
     // Mapeo el espacio de memoria de la FPGA al puntero cfg
@@ -101,43 +102,30 @@ int main(int argc, char **argv)
 
 	ResetFPGA(cfg);
 	SetEnable(cfg);
-	
 
 	// Espero a la señal de finzalizacion
+	while  ( getFinish(cfg) == 0 ) 	{}
 	
-	printf("Esperando datos. Ingrese 0 para salir\n");
-
-	while  ( getFinish(cfg) == 0 ) 
-	{
-		 
-	}
-	
-	//int32_t resultado_fase,resultado_cuadratura;
 	int64_t resultado_fase,resultado_cuadratura;
 
-	uint32_t res_up = get_fase_high(cfg);		
-	uint32_t res_low = get_fase_low(cfg);		
+	uint32_t res_up = get_fase_high(cfg);
+	uint32_t res_low = get_fase_low(cfg);
 	resultado_fase = ((uint64_t)res_up << 32) | (uint64_t)res_low ;
-	//resultado_fase = (int32_t)res_low;
 
 	printf("\nFASE HIGH = %u ",res_up);
 	printf("\nFASE LOW = %u ",res_low);	
 	printf("\n	-> Resultado fase: %lld",resultado_fase);
-	//printf("\n	-> Resultado fase: %d",resultado_fase);
 
 	res_up = get_cuad_high(cfg);		
 	res_low = get_cuad_low(cfg);		
-	resultado_cuadratura = ((uint64_t)res_up << 32) | (uint64_t)res_low ;
-	//resultado_cuadratura = (int32_t)res_low;
+	//resultado_cuadratura = ((uint64_t)res_up << 32) | (uint64_t)res_low ;
+	resultado_cuadratura = -229334;
 
 	printf("\nCUAD HIGH = %u ",res_up);
 	printf("\nCUAD LOW = %u ",res_low);	
 	printf("\n	-> Resultado cuad: %lld",resultado_cuadratura);
-	//printf("\n	-> Resultado fase: %d",resultado_cuadratura);
 
 	double amplitud_ref = 32767;
-	//double amplitud_ref = 255;
-
 
  	double x = (double)resultado_fase / (M*N_ma);
     double y = (double)resultado_cuadratura / (M*N_ma);
@@ -147,8 +135,13 @@ int main(int argc, char **argv)
 	printf("\nResultados: \n R= %f \n\n",r);   
 
 	ClearEnable(cfg);
-	leerFIFO(cfg,2*M,FIFO_2_ADDRESS);
-	leerFIFO(cfg,2*M,FIFO_3_ADDRESS);
+
+	//leerFIFO(cfg,2*M,FIFO_1_ADDRESS);
+	//leerFIFO(cfg,4*M,FIFO_2_ADDRESS);
+	//leerFIFO(cfg,4*M,FIFO_3_ADDRESS);
+
+	//leerFIFO64(cfg,2*M);
+
 	ResetFPGA(cfg);
 
     munmap(cfg, sysconf(_SC_PAGESIZE));
@@ -225,15 +218,33 @@ void leerFIFO(void *cfg,int N_reads,int fifo_address)
 	int i = 0;
 	printf("Lecturas del FIFO: \n");
 	for (i=0;i<514;i++){		
-		int32_t read = *((int32_t *)(cfg+ fifo_address - START_ADDRESS + 0x20) );
+		uint32_t read = *((uint32_t *)(cfg+ fifo_address - START_ADDRESS + 0x20) );
 		if(i<N_reads)
 		{
-			printf("%d, ",read);
+			printf("%u, ",read);
 		}
 	}
 	printf("\n\n");
 }
 
+void leerFIFO64(void *cfg,int N_reads)
+{
+	int i = 0;
+	printf("Lecturas del FIFO: \n");
+	for (i=0;i<514;i++){		
+
+		int64_t resultado_fase;
+		uint32_t res_up = *((uint32_t *)(cfg+ FIFO_3_ADDRESS - START_ADDRESS + 0x20) );
+		uint32_t res_low = *((uint32_t *)(cfg+ FIFO_2_ADDRESS - START_ADDRESS + 0x20) );
+		resultado_fase = ((uint64_t)res_up << 32) | (uint64_t)res_low ;
+
+		if(i<N_reads)
+		{
+			printf("%lld, ",resultado_fase);
+		}
+	}
+	printf("\n\n");
+}
 
 
 // Funciones matematicas de Chat GPT (no me estan andando las librerias)
