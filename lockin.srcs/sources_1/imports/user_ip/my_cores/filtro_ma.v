@@ -35,7 +35,7 @@ wire [31:0] N; 	assign N = frames_integracion;		// Frames de integracion // Larg
 reg [63:0] acumulador;
 
 reg [31:0] index;
-reg finish,data_out_reg;
+reg finish,data_out_valid_reg;
 
 // Registro las entradas... es mas prolijo trabajar con las entradas registradas
 reg signed [63:0] data_in_reg; 
@@ -54,7 +54,7 @@ begin
 	begin		
 		index <= 0;		
 		finish <= 0;
-		data_out_reg <= 0;
+		data_out_valid_reg <= 0;
 		acumulador <= 0;
 	end	
 	
@@ -66,18 +66,18 @@ begin
 			index <= index + 1;			
 			acumulador <= acumulador + data_in_reg;
 			finish <= (index == MxN-1)? 1 : 0;
-			data_out_reg <= 1;
+			data_out_valid_reg <= 1;
 		end
 		else if(!data_valid_reg && !finish)
 		begin
-			data_out_reg <= 0;			
+			data_out_valid_reg <= 0;			
 		end
 	end		
 	
 end
 
 // Salidas
-assign data_out_valid = data_out_reg;
+assign data_out_valid = data_out_valid_reg;
 assign data_out = acumulador;
 assign ready_to_calculate = 1;
 assign calculo_finalizado = finish;

@@ -37,13 +37,10 @@ reg[31:0] parameter_0_reg,parameter_1_reg;
 
 always @ (posedge clk)
 begin
-
-	if(!reset_n)
-	begin
-		parameter_0_reg <= parameter_in_0;
-		parameter_1_reg <= parameter_in_1;		
-	end
-
+	
+	parameter_0_reg <= parameter_in_0;
+	parameter_1_reg <= parameter_in_1;		
+	
 end
 
 //////////////////////////////////////////////////

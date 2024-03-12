@@ -10,7 +10,7 @@
 # Uso del programa adquisidor -> adquisidor FACTOR_SOBREMUESTREO | CICLOS_PROMEDIADOS | NOMBRE_ARCHIVO_SALIDA | MAXIMO_BUFFER  | FREC_DAC | TRIGGER_MODE | TRIGGER_LEVEL | LOG2_DIVISOR | ADC_THRESHOLD
 
 N_ma=${1:-2}
-M=${2:-64}
+M=${2:-32}
 ip=${3:-169.254.172.188}
 
 scp lockin.c root@$ip:/root/c_programs 
@@ -18,7 +18,7 @@ scp lockin.c root@$ip:/root/c_programs
 ssh root@$ip <<EOF
 
 	cd /root/c_programs 
-	gcc lockin.c -o lockin
+	gcc lockin.c -o lockin -lm
 	./lockin $N_ma $M
 EOF
 

@@ -39,6 +39,8 @@
 #define M_ADDRESS 0x41240000
 #define N_ADDRESS 0x41240008
 
+#define PI 3.1415
+
 
 void ResetFPGA(void *cfg);
 void SetEnable(void *cfg);
@@ -54,7 +56,7 @@ uint32_t get_cuad_high(void *cfg);
 double custom_pow(double base, int exponent) ;
 double mySqrt(double x) ;
 void leerFIFO(void *cfg,int N_reads,int fifo_address);
-void leerFIFO64(void *cfg,int N_reads);
+void leerFIFO64(void *cfg,int N_reads,int fifo_address_high,int fifo_address_low);
 void ClearEnable(void *cfg);
 
 int main(int argc, char **argv)
@@ -118,8 +120,8 @@ int main(int argc, char **argv)
 
 	res_up = get_cuad_high(cfg);		
 	res_low = get_cuad_low(cfg);		
-	//resultado_cuadratura = ((uint64_t)res_up << 32) | (uint64_t)res_low ;
-	resultado_cuadratura = -229334;
+	resultado_cuadratura = ((uint64_t)res_up << 32) | (uint64_t)res_low ;
+
 
 	printf("\nCUAD HIGH = %u ",res_up);
 	printf("\nCUAD LOW = %u ",res_low);	
@@ -130,18 +132,16 @@ int main(int argc, char **argv)
  	double x = (double)resultado_fase / (M*N_ma);
     double y = (double)resultado_cuadratura / (M*N_ma);
 
-	double r = (mySqrt(custom_pow(x, 2) + custom_pow(y, 2))) * 2 / amplitud_ref;
-	
-	printf("\nResultados: \n R= %f \n\n",r);   
+	double r = (sqrt(x*x + y*y)) * 2 / amplitud_ref;
+	double phi = atan2(y,x)*180/PI;
 
-	ClearEnable(cfg);
+	printf("\nResultados: \n R= %f \n phi= %f \n\n",r,phi);   
 
 	//leerFIFO(cfg,2*M,FIFO_1_ADDRESS);
-	//leerFIFO(cfg,4*M,FIFO_2_ADDRESS);
-	//leerFIFO(cfg,4*M,FIFO_3_ADDRESS);
+	//leerFIFO(cfg,2*M,FIFO_2_ADDRESS);
+	//leerFIFO(cfg,2*M,FIFO_3_ADDRESS);
 
-	//leerFIFO64(cfg,2*M);
-
+	ClearEnable(cfg);
 	ResetFPGA(cfg);
 
     munmap(cfg, sysconf(_SC_PAGESIZE));
@@ -213,6 +213,8 @@ uint32_t get_cuad_high(void *cfg)
 	return *((uint32_t *)(cfg+ RESULT_CUAD_HIGH_ADDRESS - START_ADDRESS) );
 }
 
+
+// Funciones para leer los FIFO.. esta los toma como FIFOS independientes
 void leerFIFO(void *cfg,int N_reads,int fifo_address)
 {
 	int i = 0;
@@ -227,15 +229,16 @@ void leerFIFO(void *cfg,int N_reads,int fifo_address)
 	printf("\n\n");
 }
 
-void leerFIFO64(void *cfg,int N_reads)
+// Funcion para leer dos FIFOS de 32 bits como si fueran un unico FIFO de 64 bits
+void leerFIFO64(void *cfg,int N_reads,int fifo_address_high,int fifo_address_low)
 {
 	int i = 0;
 	printf("Lecturas del FIFO: \n");
 	for (i=0;i<514;i++){		
 
 		int64_t resultado_fase;
-		uint32_t res_up = *((uint32_t *)(cfg+ FIFO_3_ADDRESS - START_ADDRESS + 0x20) );
-		uint32_t res_low = *((uint32_t *)(cfg+ FIFO_2_ADDRESS - START_ADDRESS + 0x20) );
+		uint32_t res_up = *((uint32_t *)(cfg+ fifo_address_high - START_ADDRESS + 0x20) );
+		uint32_t res_low = *((uint32_t *)(cfg+ fifo_address_low - START_ADDRESS + 0x20) );
 		resultado_fase = ((uint64_t)res_up << 32) | (uint64_t)res_low ;
 
 		if(i<N_reads)
@@ -247,38 +250,5 @@ void leerFIFO64(void *cfg,int N_reads)
 }
 
 
-// Funciones matematicas de Chat GPT (no me estan andando las librerias)
-double custom_pow(double base, int exponent) {
-    if (exponent == 0) {
-        return 1.0;
-    } else if (exponent > 0) {
-        double result = base;
-        for (int i = 1; i < exponent; i++) {
-            result *= base;
-        }
-        return result;
-    } else {
-        double result = 1.0 / base;
-        for (int i = 1; i < -exponent; i++) {
-            result /= base;
-        }
-        return result;
-    }
-}
-double mySqrt(double x) {
-    // Implementación muy básica
-    if (x < 0.0) {
-        fprintf(stderr, "Error: No se puede calcular la raíz cuadrada de un número negativo.\n");
-        return 0.0;  // O podrías manejar el error de alguna otra manera
-    }
-
-    // Método de Newton para la raíz cuadrada
-    double estimacion = x / 2.0;
-    for (int i = 0; i < 10; ++i) {
-        estimacion = 0.5 * (estimacion + x / estimacion);
-    }
-
-    return estimacion;
-}
 
 
