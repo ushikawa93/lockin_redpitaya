@@ -89,7 +89,7 @@ reg data_valid_reg;
 
 wire [15:0] M = ptos_x_ciclo;				// Puntos por ciclo de señal
 
-reg [15:0] interval;
+(* KEEP = "TRUE" *)reg [15:0] interval;
 			
 reg [13:0] buffer [0:2047];
 		 initial	$readmemh("x2048_14b.mem",buffer);

@@ -28,7 +28,7 @@ parameter atenuacion = 0;
 wire [31:0] M = pts_x_ciclo;				// Puntos por ciclo de señal
 
 
-reg [31:0] interval;
+(* KEEP = "TRUE" *)reg [31:0] interval;
 	always @ (posedge clock) interval = 2048/M; // Para poder cambiar el largo de la secuencia sin tener que leer otro archivo
 	
 
@@ -81,8 +81,8 @@ end
 // Salidas
 //=======================================================
 
-assign data_out_seno = ($signed(data_out_seno_reg) - ref_mean_value) >>> atenuacion;
-assign data_out_cos = ($signed(data_out_cos_reg) - ref_mean_value) >>> atenuacion;
+assign data_out_seno = (data_out_seno_reg - ref_mean_value) >>> atenuacion;
+assign data_out_cos = (data_out_cos_reg - ref_mean_value) >>> atenuacion;
 
 
 

@@ -4,18 +4,14 @@ module signal_processing_LI(
 	input reset_n,
 	input enable_gral,	
 	
-	input bypass,
-	
 	input [31:0] data_in,
 	input 		 data_in_valid,
 	
-	output [31:0] data_out1_high,
-	output [31:0] data_out1_low,
-	output        data_out1_valid,
+	output [63:0] data_out_fase,
+	output        data_out_fase_valid,
 	
-	output [31:0] data_out2_high,
-	output [31:0] data_out2_low,
-	output        data_out2_valid,
+	output [63:0] data_out_cuad,
+	output        data_out_cuad_valid,
 	
 	output ready_to_calculate,
 	output processing_finished,
@@ -104,14 +100,11 @@ lockin_segmentado lock_in(
 // ================ Salidas  ===============
 //////////////////////////////////////////////////
 
-assign data_out1_high = data_fase[63:32];
-assign data_out1_low = data_fase[31:0];
+assign data_out_fase = data_fase;
 assign data_out1_valid = data_fase_valid;
 	
-assign data_out2_high = data_cuad[63:32];
-assign data_out2_low = data_cuad[31:0];
+assign data_out_cuad = data_cuad;
 assign data_out2_valid = data_cuad_valid;
-	
 
 assign ready_to_calculate = lockin_ready;
 assign processing_finished = lockin_finalizado;

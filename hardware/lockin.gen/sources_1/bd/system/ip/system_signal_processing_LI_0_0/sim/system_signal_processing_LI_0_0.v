@@ -58,37 +58,31 @@ module system_signal_processing_LI_0_0 (
   clk,
   reset_n,
   enable_gral,
-  bypass,
   data_in,
   data_in_valid,
-  data_out1_high,
-  data_out1_low,
-  data_out1_valid,
-  data_out2_high,
-  data_out2_low,
-  data_out2_valid,
+  data_out_fase,
+  data_out_fase_valid,
+  data_out_cuad,
+  data_out_cuad_valid,
   ready_to_calculate,
   processing_finished,
   parameter_in_0,
   parameter_in_1
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 1.25e+08, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_axis_red_pitaya_adc_0_0_adc_clk, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset_n, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset_n RST" *)
 input wire reset_n;
 input wire enable_gral;
-input wire bypass;
 input wire [31 : 0] data_in;
 input wire data_in_valid;
-output wire [31 : 0] data_out1_high;
-output wire [31 : 0] data_out1_low;
-output wire data_out1_valid;
-output wire [31 : 0] data_out2_high;
-output wire [31 : 0] data_out2_low;
-output wire data_out2_valid;
+output wire [63 : 0] data_out_fase;
+output wire data_out_fase_valid;
+output wire [63 : 0] data_out_cuad;
+output wire data_out_cuad_valid;
 output wire ready_to_calculate;
 output wire processing_finished;
 input wire [31 : 0] parameter_in_0;
@@ -98,15 +92,12 @@ input wire [31 : 0] parameter_in_1;
     .clk(clk),
     .reset_n(reset_n),
     .enable_gral(enable_gral),
-    .bypass(bypass),
     .data_in(data_in),
     .data_in_valid(data_in_valid),
-    .data_out1_high(data_out1_high),
-    .data_out1_low(data_out1_low),
-    .data_out1_valid(data_out1_valid),
-    .data_out2_high(data_out2_high),
-    .data_out2_low(data_out2_low),
-    .data_out2_valid(data_out2_valid),
+    .data_out_fase(data_out_fase),
+    .data_out_fase_valid(data_out_fase_valid),
+    .data_out_cuad(data_out_cuad),
+    .data_out_cuad_valid(data_out_cuad_valid),
     .ready_to_calculate(ready_to_calculate),
     .processing_finished(processing_finished),
     .parameter_in_0(parameter_in_0),
