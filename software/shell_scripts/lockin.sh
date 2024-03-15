@@ -22,5 +22,7 @@ ssh root@$ip <<EOF
 	./lockin $N_ma $M $noise_bits $data_sel
 EOF
 
+scp root@$ip:/root/c_programs/resultados.dat ../datos_adquiridos/resultados.dat
+
 
 read -p "Presione cualquier tecla para salir..."

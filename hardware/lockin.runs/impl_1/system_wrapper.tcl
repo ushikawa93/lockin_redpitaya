@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.runs/impl_1/system_wrapper.tcl"
+  variable script "C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/impl_1/system_wrapper.tcl"
   variable category "vivado_impl"
 }
 
@@ -123,32 +123,33 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
+  set_param chipscope.maxJobs 1
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xc7z010clg400-1
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
-  set_property webtalk.parent_dir C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.cache/wt [current_project]
-  set_property parent.project_path C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.xpr [current_project]
+  set_property webtalk.parent_dir C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.cache/wt [current_project]
+  set_property parent.project_path C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.xpr [current_project]
   set_property ip_repo_paths {
-  C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.srcs/user_ip
-  C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.srcs/lu_tables
+  C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/user_ip
+  C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/lu_tables
 } [current_project]
   update_ip_catalog
-  set_property ip_output_repo C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.cache/ip [current_project]
+  set_property ip_output_repo C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES {XPM_CDC XPM_FIFO XPM_MEMORY} [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
-  add_files -quiet C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.runs/synth_1/system_wrapper.dcp
+  add_files -quiet C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/synth_1/system_wrapper.dcp
   set_msg_config -source 4 -id {BD 41-1661} -limit 0
   set_param project.isImplRun true
-  add_files C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd
+  add_files C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd
   set_param project.isImplRun false
 OPTRACE "read constraints: implementation" START { }
-  read_xdc C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.srcs/constrs_1/imports/cfg/clocks.xdc
-  read_xdc C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.srcs/constrs_1/imports/cfg/ports.xdc
+  read_xdc C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/constrs_1/imports/cfg/clocks.xdc
+  read_xdc C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/constrs_1/imports/cfg/ports.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "add files" END { }
 OPTRACE "link_design" START { }

@@ -87,9 +87,9 @@ wire signed [31:0] dato_ruidoso_atenuado_gcl;
 parameter atenuacion = 0;
 reg data_valid_reg;
 
-wire [15:0] M = ptos_x_ciclo;				// Puntos por ciclo de señal
+wire [11:0] M = ptos_x_ciclo;				// Puntos por ciclo de señal
 
-(* KEEP = "TRUE" *)reg [15:0] interval;
+(* KEEP = "TRUE" *)reg [11:0] interval;
 			
 reg [13:0] buffer [0:2047];
 		 initial	$readmemh("x2048_14b.mem",buffer);
@@ -98,7 +98,7 @@ reg [13:0] buffer [0:2047];
 reg signed [31:0] data_out_reg;	
 	assign data = data_out_reg;
 
-reg [15:0] index,index_2;
+reg [11:0] index,index_2;
 
 reg en_reg,data_valid_aux; 
 	always @ (posedge clock) 	en_reg <= enable;

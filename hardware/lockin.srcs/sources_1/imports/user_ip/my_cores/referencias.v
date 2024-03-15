@@ -25,10 +25,10 @@ module referencias(
 parameter ref_mean_value = 32767;
 parameter atenuacion = 0;
 
-wire [31:0] M = pts_x_ciclo;				// Puntos por ciclo de señal
+reg [11:0] M; always @ (posedge clock) M = pts_x_ciclo;				// Puntos por ciclo de señal
 
 
-(* KEEP = "TRUE" *)reg [31:0] interval;
+(* KEEP = "TRUE" *)reg [11:0] interval;
 	always @ (posedge clock) interval = 2048/M; // Para poder cambiar el largo de la secuencia sin tener que leer otro archivo
 	
 
@@ -40,7 +40,7 @@ wire [31:0] M = pts_x_ciclo;				// Puntos por ciclo de señal
 reg [15:0]  ref_sen   [0:2047];	initial	$readmemh("x2048_16b.mem",ref_sen);
 reg [15:0] 	ref_cos   [0:2047];	initial	$readmemh("y2048_16b.mem",ref_cos);
 
-reg [31:0] index,index_out;
+reg [11:0] index;
 
 reg signed [31:0] data_out_seno_reg;
 reg signed [31:0] data_out_cos_reg;

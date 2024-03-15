@@ -60,6 +60,7 @@ double mySqrt(double x) ;
 void leerFIFO(void *cfg,int N_reads,int fifo_address);
 void leerFIFO64(void *cfg,int N_reads,int fifo_address_high,int fifo_address_low);
 void ClearEnable(void *cfg);
+void escribirArchivo(const char* nombreArchivo, double f, double M, double N, double r, double phi);
 
 int main(int argc, char **argv)
 {
@@ -74,6 +75,7 @@ int main(int argc, char **argv)
 	uint32_t N_ma;
 	uint32_t sim_noise_bits;
 	uint32_t sel;
+	double f;
 
 	if(argc==2 && argv[1] == "h")
 	{
@@ -92,8 +94,8 @@ int main(int argc, char **argv)
 		printf("Error en los argumentos ingresados (Ingreso %d y se esperaban 2)\n",argc-1);
 		printf("Uso -> lockin N_ma M \n");
 		return 0;
-	}
-	
+	}	
+
 	
     // Mapeo el espacio de memoria de la FPGA al puntero cfg
     if((fd = open(name, O_RDWR)) < 0)
@@ -109,6 +111,8 @@ int main(int argc, char **argv)
 	SetN_ma(cfg,N_ma);
 	setNoiseBits(cfg,sim_noise_bits);
 	setDataSelection(cfg,sel);
+	f = (float)125000000/M;
+
 
 	ResetFPGA(cfg);
 	SetEnable(cfg);
@@ -145,7 +149,9 @@ int main(int argc, char **argv)
 
 	printf("\nResultados: \n R= %f \n phi= %f \n\n",r,phi);   
 
-	//leerFIFO(cfg,2*M,FIFO_1_ADDRESS);
+	escribirArchivo("resultados.dat",f,M,N_ma,r,phi);
+
+	leerFIFO(cfg,2*M,FIFO_1_ADDRESS);
 
 	ClearEnable(cfg);
 	ResetFPGA(cfg);
@@ -267,6 +273,18 @@ void leerFIFO64(void *cfg,int N_reads,int fifo_address_high,int fifo_address_low
 	printf("\n\n");
 }
 
+void escribirArchivo(const char* nombreArchivo, double f, double M, double N, double r, double phi) {
+    FILE *archivo;
+    archivo = fopen(nombreArchivo, "w");
+    if (archivo == NULL) {
+        printf("Error al abrir el archivo.");
+        return;
+    }
 
+    fprintf(archivo, "Resultados: f,M,N,r,phi\n");
+    fprintf(archivo, "%f,%f,%f,%f,%f\n", f, M, N, r, phi);
+
+    fclose(archivo);
+}
 
 

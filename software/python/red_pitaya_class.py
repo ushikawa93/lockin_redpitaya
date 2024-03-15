@@ -7,11 +7,8 @@ Python class to command the Red Pitaya
 @author: MatiOliva
 """
 
-from math import log2
-from math import ceil
 import subprocess
 import os
-import re
 
 from enum import Enum
 
@@ -81,6 +78,19 @@ class redP_handler:
     def measure_lockin(self):
         script_path = os.path.join("..\shell_scripts", ".\lockin.sh")
         command = ( f"{script_path} {self.N} {self.M} {self.noise_b} {self.data_mode} {self.ip}" )
+        print(f"Comando enviado a la FPGA: {command}")
         subprocess.run(command, shell=True,check=True)
+        return redP_handler.leerArchivoLockin("../datos_adquiridos/resultados.dat")
         
+    @staticmethod
+    def leerArchivoLockin(nombreArchivo):
+        diccionario = {}
+        with open(nombreArchivo, 'r') as archivo:
+            lineas = archivo.readlines()
+            if len(lineas) >= 2:
+                keys = lineas[0].strip().split(": ")[1].split(",")
+                values = lineas[1].strip().split(",")
+                for key, value in zip(keys, values):
+                    diccionario[key] = float(value)
+        return diccionario
 
