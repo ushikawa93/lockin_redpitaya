@@ -20,10 +20,11 @@ class redP_handler:
 
     def __init__(self, ip_):
         self.set_N(32)
-        self.set_M(32)
         self.set_data_mode(DataMode.ADC)
         self.set_IP(ip_)
-        self.set_noise_bits(0)
+        self.set_frec_ref(1000000)
+        self.set_frec_dac(1000000)
+        
 
     def set_IP(self, ip_):
         if self.is_valid_IP(ip_):
@@ -52,11 +53,12 @@ class redP_handler:
             return True
         return False
     
-    def set_M(self, M):
-        if M > 4 and M <= 2048: 
-            self.M = M
-            return True
-        return False
+    def set_frec_dac(self,frec):
+        self.frec_dac = frec
+    
+    def set_frec_ref(self,frec):
+        self.frec_ref = frec
+        
     
     def set_N(self, N):
         if N > 0 and N <= 4096: 
@@ -64,12 +66,6 @@ class redP_handler:
             return True
         return False
     
-    def set_noise_bits(self, noise_b):
-        if noise_b >= 0 and noise_b <= 32: 
-            self.noise_b = noise_b
-            return True
-        return False
-
     def set_bitstream_in_fpga(self,bitstream_name = "lockin.bit"):
         script_path = os.path.join("..\shell_scripts", ".\set_bitstream.sh")
         command = ( f"{script_path} {bitstream_name} {self.ip}" )
@@ -77,9 +73,9 @@ class redP_handler:
     
     def measure_lockin(self):
         script_path = os.path.join("..\shell_scripts", ".\lockin.sh")
-        command = ( f"{script_path} {self.N} {self.M} {self.noise_b} {self.data_mode} {self.ip}" )
+        command = ( f"{script_path} {self.N} {self.frec_dac} {self.frec_ref} {self.data_mode} {self.ip}" )
         print(f"Comando enviado a la FPGA: {command}")
-        subprocess.run(command, shell=True,check=True)
+        subprocess.run(command, shell=True)
         return redP_handler.leerArchivoLockin("../datos_adquiridos/resultados.dat")
         
     @staticmethod

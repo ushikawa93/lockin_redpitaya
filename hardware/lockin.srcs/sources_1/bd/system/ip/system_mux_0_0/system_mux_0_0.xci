@@ -38,9 +38,9 @@
     },
     "boundary": {
       "ports": {
-        "data_in_0": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
+        "data_in_0": [ { "direction": "in", "size_left": "13", "size_right": "0" } ],
         "data_in_0_valid": [ { "direction": "in" } ],
-        "data_in_1": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
+        "data_in_1": [ { "direction": "in", "size_left": "13", "size_right": "0" } ],
         "data_in_1_valid": [ { "direction": "in" } ],
         "sel": [ { "direction": "in" } ],
         "data_out": [ { "direction": "out", "size_left": "31", "size_right": "0" } ],

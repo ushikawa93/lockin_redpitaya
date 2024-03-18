@@ -58,6 +58,9 @@ module system_signal_processing_LI_0_0 (
   clk,
   reset_n,
   enable_gral,
+  referencia_externa_seno,
+  referencia_externa_cos,
+  referencia_externa_valid,
   data_in,
   data_in_valid,
   data_out_fase,
@@ -77,6 +80,9 @@ input wire clk;
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset_n RST" *)
 input wire reset_n;
 input wire enable_gral;
+input wire [13 : 0] referencia_externa_seno;
+input wire [13 : 0] referencia_externa_cos;
+input wire referencia_externa_valid;
 input wire [31 : 0] data_in;
 input wire data_in_valid;
 output wire [63 : 0] data_out_fase;
@@ -92,6 +98,9 @@ input wire [31 : 0] parameter_in_1;
     .clk(clk),
     .reset_n(reset_n),
     .enable_gral(enable_gral),
+    .referencia_externa_seno(referencia_externa_seno),
+    .referencia_externa_cos(referencia_externa_cos),
+    .referencia_externa_valid(referencia_externa_valid),
     .data_in(data_in),
     .data_in_valid(data_in_valid),
     .data_out_fase(data_out_fase),

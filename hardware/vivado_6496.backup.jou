@@ -1,0 +1,85 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Fri Mar 15 13:12:22 2024
+# Process ID: 6496
+# Current directory: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent3836 C:\Users\MatiOliva\Documents\00-lockin_redpitaya\hardware\lockin.xpr
+# Log file: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/vivado.log
+# Journal file: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware\vivado.jou
+# Running On: DESKTOP-BRUHM76, OS: Windows, CPU Frequency: 3912 MHz, CPU Physical cores: 2, Host memory: 17041 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.xpr
+update_compile_order -fileset sources_1
+update_module_reference system_mux_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+open_run impl_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 100 -input_pins -routable_nets -name timing_1
+open_bd_design {C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
+open_bd_design {C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
+update_module_reference system_signal_processing_LI_0_0
+update_module_reference system_data_source_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 100 -input_pins -routable_nets -name timing_2
+close_design
+open_run impl_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 100 -input_pins -routable_nets -name timing_1
+open_bd_design {C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
+update_module_reference system_signal_processing_LI_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 100 -input_pins -routable_nets -name timing_2
+refresh_design
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 100 -input_pins -routable_nets -name timing_1
+set_false_path -from [get_pins {system_i/lock_in/inst/lock_in/multiplicador/ref/M_reg[0]_replica_3/C}] -to [get_pins {system_i/lock_in/inst/lock_in/multiplicador/ref/interval_reg[0]/D}]
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 100 -input_pins -routable_nets -name timing_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 100 -input_pins -routable_nets -name timing_1
+open_bd_design {C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+refresh_design
+open_bd_design {C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+open_bd_design {C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
+ipx::edit_ip_in_project -upgrade true -name axis_red_pitaya_dac_v1_0_project -directory C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.tmp/axis_red_pitaya_dac_v1_0_project c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/user_ip/cores/axis_red_pitaya_dac_v1_0/component.xml
+update_compile_order -fileset sources_1
+current_project lockin
+delete_bd_objs [get_bd_nets selector_data_in_data_out]
+delete_bd_objs [get_bd_nets selector_data_in_data_out_valid]
+connect_bd_net [get_bd_pins uP/axi_str_rxd_tdata] [get_bd_pins DAC/dds_compiler_0/m_axis_data_tdata]
+connect_bd_net [get_bd_pins DAC/dds_compiler_0/m_axis_data_tvalid] [get_bd_pins uP/axi_str_rxd_tvalid]
+save_bd_design
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+current_project axis_red_pitaya_dac_v1_0_project
+close_project
+delete_bd_objs [get_bd_nets axi_str_rxd_tdata_1]
+delete_bd_objs [get_bd_nets axi_str_rxd_tvalid_1]
+save_bd_design
+connect_bd_net [get_bd_pins lock_in/data_in] [get_bd_pins selector_data_in/data_out]
+connect_bd_net [get_bd_pins lock_in/data_in_valid] [get_bd_pins selector_data_in/data_out_valid]
+save_bd_design
+copy_bd_objs /  [get_bd_cells {bits_ruido}]
+set_property name phase_inc [get_bd_cells bits_ruido1]
+set_property -dict [list \
+  CONFIG.CONST_VAL {125} \
+  CONFIG.CONST_WIDTH {31} \
+] [get_bd_cells phase_inc]
+set_property location {4 1337 480} [get_bd_cells phase_inc]
+set_property location {4 1371 364} [get_bd_cells phase_inc]
+connect_bd_net [get_bd_pins phase_inc/dout] [get_bd_pins DAC/cfg_data]
+connect_bd_net [get_bd_pins DAC/m_axis_data_tdata] [get_bd_pins uP/axi_str_rxd_tdata] -boundary_type upper
+connect_bd_net [get_bd_pins uP/axi_str_rxd_tvalid] [get_bd_pins DAC/m_axis_data_tvalid] -boundary_type upper
+save_bd_design
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1

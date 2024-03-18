@@ -13,6 +13,10 @@ module lockin_segmentado(
 	// Entrada avalon streaming
 	input data_valid,
 	input [31:0] data,	
+	
+	input [31:0] referencia_externa_sen,
+	input [31:0] referencia_externa_cos,
+	input referencia_externa_valid,
 		
 	// Salidas avalon streaming fase y cuadratura
 	output [63:0] data_out_fase,
@@ -46,7 +50,11 @@ multiplicate_ref_2 multiplicador(
 	.ptos_x_ciclo(ptos_x_ciclo),
 	
 	.data(data),
-	.data_valid(data_valid),		
+	.data_valid(data_valid),
+	
+	.referencia_externa_sen(referencia_externa_sen),
+	.referencia_externa_cos(referencia_externa_cos),
+	.referencia_externa_valid(referencia_externa_valid),		
 		
 	.data_out_seno(data_out_seno),
 	.data_out_coseno(data_out_coseno),

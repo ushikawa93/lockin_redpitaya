@@ -4,6 +4,10 @@ module signal_processing_LI(
 	input reset_n,
 	input enable_gral,	
 	
+	input [13:0] referencia_externa_seno,
+	input [13:0] referencia_externa_cos,
+	input referencia_externa_valid,
+	
 	input [31:0] data_in,
 	input 		 data_in_valid,
 	
@@ -46,10 +50,14 @@ end
 wire [31:0] M = parameter_0_reg;
 wire [31:0] N_ma = parameter_1_reg;
 
-
 ////////////////////////////////////////////////
 // ================== Lock in  ===============
 ////////////////////////////////////////////////
+
+//////// Referencia externa ///////
+wire signed [31:0] ref_sen; assign ref_sen = $signed(referencia_externa_seno);
+wire signed [31:0] ref_cos; assign ref_cos = $signed(referencia_externa_cos);
+wire ref_valid; assign ref_valid = referencia_externa_valid;
 
 //////// Entradas de LIA ///////
 wire data_in_lia_valid;
@@ -82,6 +90,10 @@ lockin_segmentado lock_in(
 	// Entrada avalon streaming
 	.data_valid(data_in_lia_valid),
 	.data(data_in_lia),	
+	
+	.referencia_externa_sen(ref_sen),
+	.referencia_externa_cos(ref_cos),
+	.referencia_externa_valid(ref_valid),
 		
 	// Salidas avalon streaming
 	.data_out_fase(data_fase),

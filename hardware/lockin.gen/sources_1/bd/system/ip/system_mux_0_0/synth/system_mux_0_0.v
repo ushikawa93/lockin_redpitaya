@@ -65,9 +65,9 @@ module system_mux_0_0 (
   data_out_valid
 );
 
-input wire [31 : 0] data_in_0;
+input wire [13 : 0] data_in_0;
 input wire data_in_0_valid;
-input wire [31 : 0] data_in_1;
+input wire [13 : 0] data_in_1;
 input wire data_in_1_valid;
 input wire sel;
 output wire [31 : 0] data_out;

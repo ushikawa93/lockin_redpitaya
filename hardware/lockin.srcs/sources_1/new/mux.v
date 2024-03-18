@@ -22,9 +22,9 @@
 
 module mux(
 
-    input [31:0] data_in_0,
+    input [13:0] data_in_0,
     input data_in_0_valid,
-    input [31:0] data_in_1,
+    input [13:0] data_in_1,
     input data_in_1_valid,
     input sel,
     
@@ -33,7 +33,7 @@ module mux(
     );
     
 
-assign data_out = (sel == 0)? data_in_0 : data_in_1;
+assign data_out = (sel == 0)? $signed(data_in_0) : $signed(data_in_1);
 assign data_out_valid = (sel == 0)? data_in_0_valid : data_in_1_valid;
 
 endmodule

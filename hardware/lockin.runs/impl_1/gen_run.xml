@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1710533147">
+<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1710786565">
   <File Type="ROUTE-PWR" Name="system_wrapper_power_routed.rpt"/>
   <File Type="PA-TCL" Name="system_wrapper.tcl"/>
   <File Type="BITSTR-MMI" Name="system_wrapper.mmi"/>
@@ -115,33 +115,6 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/imports/my_cores/GCL.v">
-      <FileInfo>
-        <Attr Name="ImportPath" Val="$PSRCDIR/user_ip/my_cores/GCL.v"/>
-        <Attr Name="ImportTime" Val="1671127486"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/imports/my_cores/LFSR.v">
-      <FileInfo>
-        <Attr Name="ImportPath" Val="$PSRCDIR/user_ip/my_cores/LFSR.v"/>
-        <Attr Name="ImportTime" Val="1698699954"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/imports/my_cores/data_source.v">
-      <FileInfo>
-        <Attr Name="ImportPath" Val="$PSRCDIR/user_ip/my_cores/data_source.v"/>
-        <Attr Name="ImportTime" Val="1697044718"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/imports/user_ip/my_cores/filtro_ma.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PSRCDIR/user_ip/my_cores/filtro_ma.v"/>
@@ -209,6 +182,36 @@
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../Led_blink_custom/tmp/Led_blink/Led_blink.gen/sources_1/bd/system/hdl/system_wrapper.v"/>
         <Attr Name="ImportTime" Val="1682371956"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/my_cores/GCL.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PSRCDIR/user_ip/my_cores/GCL.v"/>
+        <Attr Name="ImportTime" Val="1671127486"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/my_cores/LFSR.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PSRCDIR/user_ip/my_cores/LFSR.v"/>
+        <Attr Name="ImportTime" Val="1698699954"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/my_cores/data_source.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PSRCDIR/user_ip/my_cores/data_source.v"/>
+        <Attr Name="ImportTime" Val="1697044718"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>

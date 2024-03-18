@@ -39,27 +39,32 @@
 #define NOISE_BITS 0x41250000
 #define SELECT_DATA_ADDRESS 0x41250008
 
+#define PHASE_DAC_ADDRESS 0x41260000
+#define PHASE_REF_ADDRESS 0x41260008
+
 #define PI 3.1415
 
 
 void ResetFPGA(void *cfg);
-void SetEnable(void *cfg);
-void SetN_ma(void *cfg,uint32_t N_ma);
-void SetM(void *cfg, uint32_t M);
+void setEnable(void *cfg);
+void ClearEnable(void *cfg);
+
+void setN_ma(void *cfg,uint32_t N_ma);
+void setM(void *cfg, uint32_t M);
 void setNoiseBits(void *cfg,uint32_t noise_b);
 void setDataSelection(void *cfg,uint32_t sel);
-uint32_t getFinish(void *cfg);
+void set_frec_dac(void *cfg, double frec);
+void set_frec_ref(void *cfg, double frec);
 
+uint32_t getFinish(void *cfg);
 uint32_t get_fase_low(void *cfg);
 uint32_t get_fase_high(void *cfg);
 uint32_t get_cuad_low(void *cfg);
 uint32_t get_cuad_high(void *cfg);
 
-double custom_pow(double base, int exponent) ;
-double mySqrt(double x) ;
 void leerFIFO(void *cfg,int N_reads,int fifo_address);
 void leerFIFO64(void *cfg,int N_reads,int fifo_address_high,int fifo_address_low);
-void ClearEnable(void *cfg);
+
 void escribirArchivo(const char* nombreArchivo, double f, double M, double N, double r, double phi);
 
 int main(int argc, char **argv)
@@ -71,9 +76,11 @@ int main(int argc, char **argv)
 	printf("Programa de prueba para lockin en Red Pitaya \n");
 
 	// Parametros desde linea de comandos:
+	uint32_t frec_dac;
+	uint32_t frec_ref;
 	uint32_t M;
 	uint32_t N_ma;
-	uint32_t sim_noise_bits;
+	uint32_t sim_noise_bits = 0;
 	uint32_t sel;
 	double f;
 
@@ -85,8 +92,8 @@ int main(int argc, char **argv)
 	else if(argc==5)
 	{
 		N_ma = atoi(argv[1]);
-		M = atoi(argv[2]);	
-		sim_noise_bits = atoi(argv[3]);
+		frec_dac = atoi(argv[2]);	
+		frec_ref = atoi(argv[3]);
 		sel=atoi(argv[4]);
 	}		
 	else
@@ -96,6 +103,7 @@ int main(int argc, char **argv)
 		return 0;
 	}	
 
+	M = 125000000/frec_ref;
 	
     // Mapeo el espacio de memoria de la FPGA al puntero cfg
     if((fd = open(name, O_RDWR)) < 0)
@@ -107,15 +115,17 @@ int main(int argc, char **argv)
     cfg = mmap(NULL, 0x4000000, PROT_READ|PROT_WRITE, MAP_SHARED, fd, START_ADDRESS);
 	
 	// Seteo los parametros de la operacion a traves de funciones por prolijidad
-	SetM(cfg,M);
-	SetN_ma(cfg,N_ma);
+	set_frec_dac(cfg,frec_dac);
+	set_frec_ref(cfg,frec_ref);
+	setM(cfg,M);
+	setN_ma(cfg,N_ma);
 	setNoiseBits(cfg,sim_noise_bits);
 	setDataSelection(cfg,sel);
 	f = (float)125000000/M;
 
 
 	ResetFPGA(cfg);
-	SetEnable(cfg);
+	setEnable(cfg);
 
 	// Espero a la señal de finzalizacion
 	while  ( getFinish(cfg) == 0 ) 	{}
@@ -139,7 +149,7 @@ int main(int argc, char **argv)
 	printf("\nCUAD LOW = %u ",res_low);	
 	printf("\n	-> Resultado cuad: %lld",resultado_cuadratura);
 
-	double amplitud_ref = 32767;
+	double amplitud_ref = 4096;
 
  	double x = (double)resultado_fase / (M*N_ma);
     double y = (double)resultado_cuadratura / (M*N_ma);
@@ -151,7 +161,7 @@ int main(int argc, char **argv)
 
 	escribirArchivo("resultados.dat",f,M,N_ma,r,phi);
 
-	leerFIFO(cfg,2*M,FIFO_1_ADDRESS);
+	//leerFIFO(cfg,2*M,FIFO_1_ADDRESS);
 
 	ClearEnable(cfg);
 	ResetFPGA(cfg);
@@ -173,7 +183,7 @@ void ResetFPGA(void *cfg)
 	
 }
 
-void SetEnable(void *cfg)
+void setEnable(void *cfg)
 {
 	// Seteo el enable (o trigger)
 	*(uint32_t *)(cfg+ ENABLE_ADDRESS - START_ADDRESS ) = 1;		
@@ -187,18 +197,35 @@ void ClearEnable(void *cfg)
 	
 }
 
-void SetN_ma(void *cfg,uint32_t N_ma)
+void setN_ma(void *cfg,uint32_t N_ma)
 {
 	// Seteo la cantidad de muestras que quiero promediar coherentemente 
 	*(uint32_t *)(cfg+ N_ADDRESS - START_ADDRESS) = N_ma ;
 }
 
-void SetM(void *cfg, uint32_t M)
+void setM(void *cfg, uint32_t M)
 {
 	// Seteo la cantidad de muestras por ciclo de señal 
 	*(uint32_t *)(cfg+ M_ADDRESS - START_ADDRESS) = M ;
 
 }
+
+void set_frec_dac(void *cfg, double frec)
+{
+	// Seteo la cantidad de muestras por ciclo de señal
+	int32_t phase = 2.1474 * frec; 
+	*(uint32_t *)(cfg+ PHASE_DAC_ADDRESS - START_ADDRESS) = phase ;
+
+}
+
+void set_frec_ref(void *cfg, double frec)
+{
+	// Seteo la cantidad de muestras por ciclo de señal
+	int32_t phase = 2.1474 * frec; 
+	*(uint32_t *)(cfg+ PHASE_REF_ADDRESS - START_ADDRESS) = phase ;
+
+}
+
 
 void setNoiseBits(void *cfg,uint32_t noise_b)
 {

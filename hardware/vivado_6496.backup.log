@@ -1,0 +1,705 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Fri Mar 15 13:12:22 2024
+# Process ID: 6496
+# Current directory: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent3836 C:\Users\MatiOliva\Documents\00-lockin_redpitaya\hardware\lockin.xpr
+# Log file: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/vivado.log
+# Journal file: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware\vivado.jou
+# Running On: DESKTOP-BRUHM76, OS: Windows, CPU Frequency: 3912 MHz, CPU Physical cores: 2, Host memory: 17041 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.xpr
+INFO: [Project 1-313] Project file moved from 'C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware' since last save.
+Scanning sources...
+Finished scanning sources
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kc705:part0:1.6 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kc705/1.6/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.6 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.6/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.7 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.7/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu1500:part0:1.2 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu1500/1.2/board.xml as part xcku115-flvb2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vc707:part0:1.4 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vc707/1.4/board.xml as part xc7vx485tffg1761-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vc709:part0:1.8 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vc709/1.8/board.xml as part xc7vx690tffg1761-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:2.2 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/2.2/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:3.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/3.0/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:3.1 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/3.1/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190_newl:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190_newl/production/1.0/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu108:part0:1.6 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu108/1.6/board.xml as part xcvu095-ffva2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu108:part0:1.7 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu108/1.7/board.xml as part xcvu095-ffva2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu110:part0:1.4 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu110/1.4/board.xml as part xcvu190-flgc2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu118/2.0/board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.3 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu118/2.3/board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.4 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu118/2.4/board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu128:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu128/production/1.0/board.xml as part xcvu37p-fsvh2892-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu129:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu129/production/1.0/board.xml as part xcvu29p-fsga2577-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu1525:part0:1.3 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu1525/1.3/board.xml as part xcvu9p-fsgd2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/1.0/board.xml as part xcve2802-vsvh1760-2lp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vermeo_t1_mpsoc:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vermeo_t1_mpsoc/1.0/board.xml as part xczu19eg-ffvd1760-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vermeo_t1_rfsoc:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vermeo_t1_rfsoc/1.0/board.xml as part xczu21dr-ffvd1156-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158_es:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/es/1.0/board.xml as part xcvh1582-vsva3697-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:2.2 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/2.2/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:3.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/3.0/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:3.1 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/3.1/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180_newl:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180_newl/production/1.0/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/production/1.0/board.xml as part xcvp1202-vsva2785-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120_es:part0:1.2 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/es/1.2/board.xml as part xcvp1202-vsva2785-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120_es_revb:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120_revb/es/1.0/board.xml as part xcvp1202-vsva2785-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk180_es:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk180/es/1.0/board.xml as part xcvp1802-lsvc4072-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zc706:part0:1.4 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zc706/1.4/board.xml as part xc7z045ffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu102:part0:3.3 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu102/3.3/board.xml as part xczu9eg-ffvb1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu102:part0:3.4 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu102/3.4/board.xml as part xczu9eg-ffvb1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.2 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu111/1.2/board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.3 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu111/1.3/board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.4 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu111/1.4/board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu1275:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu1275/1.0/board.xml as part xczu29dr-ffvf1760-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu1285:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu1285/1.0/board.xml as part xczu39dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208/production/2.0/board.xml as part xczu48dr-fsvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216/production/2.0/board.xml as part xczu49dr-ffvf1760-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/2.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/user_ip'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/lu_tables'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.2/data/ip'.
+open_project: Time (s): cpu = 00:00:32 ; elapsed = 00:00:21 . Memory (MB): peak = 1143.102 ; gain = 398.961
+update_compile_order -fileset sources_1
+update_module_reference system_mux_0_0
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/user_ip'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/lu_tables'.
+Reading block design file <C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd>...
+Adding component instance block -- xilinx.com:ip:util_ds_buf:2.2 - util_ds_buf_1
+Adding component instance block -- xilinx.com:ip:util_ds_buf:2.2 - util_ds_buf_2
+Adding component instance block -- pavel-demin:user:axis_red_pitaya_dac:1.0 - axis_red_pitaya_dac_0
+Adding component instance block -- xilinx.com:ip:dds_compiler:6.0 - dds_compiler_0
+Adding component instance block -- xilinx.com:ip:clk_wiz:6.0 - clk_wiz_0
+Adding component instance block -- pavel-demin:user:axis_constant:1.0 - axis_constant_0
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - result_fase
+Adding component instance block -- xilinx.com:ip:xlslice:1.0 - reset_n
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - enable_and_reset
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - result_cuad
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - M_and_Nma
+Adding component instance block -- xilinx.com:ip:xlslice:1.0 - res_fase_low
+Adding component instance block -- xilinx.com:ip:xlslice:1.0 - res_fase_up
+Adding component instance block -- xilinx.com:ip:xlslice:1.0 - res_cuad_up
+Adding component instance block -- xilinx.com:ip:xlslice:1.0 - res_cuad_low
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - finished
+Adding component instance block -- xilinx.com:ip:xlslice:1.0 - enable
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - noise_bits_and_data_select
+Adding component instance block -- xilinx.com:ip:processing_system7:5.5 - processing_system7_0
+Adding component instance block -- xilinx.com:ip:proc_sys_reset:5.0 - rst_ps7_0_125M
+Adding component instance block -- xilinx.com:ip:axi_interconnect:2.1 - ps7_0_axi_periph
+Adding component instance block -- xilinx.com:ip:axi_crossbar:2.1 - xbar
+Adding component instance block -- xilinx.com:ip:axi_protocol_converter:2.1 - auto_pc
+Adding component instance block -- xilinx.com:ip:axi_fifo_mm_s:4.2 - fifo_1
+Adding component instance block -- pavel-demin:user:axis_red_pitaya_adc:1.0 - axis_red_pitaya_adc_0
+Adding component instance block -- xilinx.com:module_ref:signal_split:1.0 - signal_split_0
+Adding component instance block -- xilinx.com:module_ref:drive_gpios:1.0 - drive_gpios_0
+Adding component instance block -- xilinx.com:module_ref:drive_gpios:1.0 - drive_gpios_1
+Adding component instance block -- xilinx.com:module_ref:drive_leds:1.0 - drive_leds_0
+Adding component instance block -- xilinx.com:ip:xlconstant:1.1 - bits_ruido
+Adding component instance block -- xilinx.com:ip:xlconstant:1.1 - seleccion_ruido
+Adding component instance block -- xilinx.com:module_ref:mux:1.0 - selector_data_in
+Adding component instance block -- xilinx.com:module_ref:data_source:1.0 - data_source_0
+Adding component instance block -- xilinx.com:module_ref:signal_processing_LI:1.0 - lock_in
+Successfully read diagram <system> from block design file <C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd>
+Upgrading 'C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-3420] Updated system_mux_0_0 to use current project options
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_0> has no source
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_1> has no source
+Wrote  : <C:\Users\MatiOliva\Documents\00-lockin_redpitaya\hardware\lockin.srcs\sources_1\bd\system\system.bd> 
+Wrote  : <C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+upgrade_ip: Time (s): cpu = 00:00:15 ; elapsed = 00:00:09 . Memory (MB): peak = 1211.895 ; gain = 39.609
+update_module_reference: Time (s): cpu = 00:00:15 ; elapsed = 00:00:09 . Memory (MB): peak = 1211.895 ; gain = 39.609
+reset_run synth_1
+INFO: [Project 1-1161] Replacing file C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/utils_1/imports/synth_1/system_wrapper.dcp with file C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/synth_1/system_wrapper.dcp
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+WARNING: [BD 41-2670] Found an incomplete address path from address space '/uP/processing_system7_0/Data' to master interface '/uP/ps7_0_axi_periph/M07_AXI'. Please either complete or remove this path to resolve.
+WARNING: [BD 41-2670] Found an incomplete address path from address space '/uP/processing_system7_0/Data' to master interface '/uP/ps7_0_axi_periph/M08_AXI'. Please either complete or remove this path to resolve.
+WARNING: [BD 5-699] No address segments matched 'get_bd_addr_segs -addressables -of_objects /uP/ps7_0_axi_periph/xbar/M07_AXI'
+WARNING: [BD 5-699] No address segments matched 'get_bd_addr_segs -addressables -of_objects /uP/ps7_0_axi_periph/xbar/M08_AXI'
+WARNING: [#UNDEF] When using EMIO pins for SPI_0 tie SSIN High in the PL bitstream
+INFO: [xilinx.com:ip:clk_wiz:6.0-1] /DAC/clk_wiz_0 clk_wiz propagate
+WARNING: [BD 41-927] Following properties on pin /DAC/axis_red_pitaya_dac_0/aclk have been updated from connected ip, but BD cell '/DAC/axis_red_pitaya_dac_0' does not accept parameter changes, so they may not be synchronized with cell properties:
+	FREQ_HZ = 125000000 
+Please resolve any mismatches by directly setting properties on BD cell </DAC/axis_red_pitaya_dac_0> to completely resolve these warnings.
+WARNING: [BD 41-927] Following properties on pin /DAC/axis_red_pitaya_dac_0/ddr_clk have been updated from connected ip, but BD cell '/DAC/axis_red_pitaya_dac_0' does not accept parameter changes, so they may not be synchronized with cell properties:
+	FREQ_HZ = 250000000 
+Please resolve any mismatches by directly setting properties on BD cell </DAC/axis_red_pitaya_dac_0> to completely resolve these warnings.
+WARNING: [BD 41-927] Following properties on pin /DAC/axis_constant_0/aclk have been updated from connected ip, but BD cell '/DAC/axis_constant_0' does not accept parameter changes, so they may not be synchronized with cell properties:
+	FREQ_HZ = 125000000 
+Please resolve any mismatches by directly setting properties on BD cell </DAC/axis_constant_0> to completely resolve these warnings.
+CRITICAL WARNING: [BD 41-759] The input pins (listed below) are either not connected or do not have a source port, and they don't have a tie-off specified. These pins are tied-off to all 0's to avoid error in Implementation flow.
+Please check your design and connect them as needed: 
+/DAC/cfg_data
+/uP_control/Din
+/gpios_and_leds/drive_gpios_0/input_0
+/gpios_and_leds/drive_gpios_0/input_1
+/gpios_and_leds/drive_gpios_0/input_2
+/gpios_and_leds/drive_gpios_0/input_3
+/gpios_and_leds/drive_gpios_1/input_0
+/gpios_and_leds/drive_gpios_1/input_1
+/gpios_and_leds/drive_gpios_1/input_2
+/gpios_and_leds/drive_gpios_1/input_3
+/gpios_and_leds/drive_leds_0/signal_0
+/gpios_and_leds/drive_leds_0/signal_1
+/gpios_and_leds/drive_leds_0/signal_2
+/gpios_and_leds/drive_leds_0/signal_3
+/gpios_and_leds/drive_leds_0/signal_4
+/gpios_and_leds/drive_leds_0/signal_5
+/gpios_and_leds/drive_leds_0/signal_6
+/gpios_and_leds/drive_leds_0/signal_7
+
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_0> has no source
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_1> has no source
+Wrote  : <C:\Users\MatiOliva\Documents\00-lockin_redpitaya\hardware\lockin.srcs\sources_1\bd\system\system.bd> 
+Wrote  : <C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+WARNING: [BD 41-166] Source port for the net:level_detector_0_level_detected_0 is NULL! Connection will be grounded!
+WARNING: [BD 41-166] Source port for the net:level_detector_0_level_detected_1 is NULL! Connection will be grounded!
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/data_source_0/ptos_x_ciclo'(16) to pin '/uP_control/gpio_io_o'(32) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/data_source_0/simulation_noise'(8) to pin '/uP_control/gpio_io_o1'(32) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+Verilog Output written to : c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/synth/system.v
+WARNING: [BD 41-166] Source port for the net:level_detector_0_level_detected_0 is NULL! Connection will be grounded!
+WARNING: [BD 41-166] Source port for the net:level_detector_0_level_detected_1 is NULL! Connection will be grounded!
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/data_source_0/ptos_x_ciclo'(16) to pin '/uP_control/gpio_io_o'(32) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/data_source_0/simulation_noise'(8) to pin '/uP_control/gpio_io_o1'(32) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+Verilog Output written to : c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/sim/system.v
+Verilog Output written to : c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block selector_data_in .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block uP/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/hw_handoff/system.hwh
+Generated Hardware Definition File c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/synth/system.hwdef
+WARNING: [BD 41-2265] Clock pin for protocol instance pin S_AXIS could not be determined. Make sure that ASSOCIATED_BUSIF and ASSOCIATED_RESET properties are set or propagated on clock pins of block /ADC/signal_split_0
+[Fri Mar 15 13:16:27 2024] Launched synth_1...
+Run output will be captured here: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/synth_1/runme.log
+[Fri Mar 15 13:16:27 2024] Launched impl_1...
+Run output will be captured here: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:30 ; elapsed = 00:00:50 . Memory (MB): peak = 1726.926 ; gain = 240.473
+open_run impl_1
+INFO: [Device 21-403] Loading part xc7z010clg400-1
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.333 . Memory (MB): peak = 1774.242 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 803 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2022.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF Files: Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2454.484 ; gain = 1.691
+Restored from archive | CPU: 3.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2454.484 ; gain = 1.691
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 2454.484 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 2 instances were transformed.
+  OBUFDS => OBUFDS_DUAL_BUF (INV, OBUFDS(x2)): 2 instances
+
+open_run: Time (s): cpu = 00:00:35 ; elapsed = 00:00:25 . Memory (MB): peak = 2566.672 ; gain = 836.578
+open_report: Time (s): cpu = 00:00:14 ; elapsed = 00:00:09 . Memory (MB): peak = 2592.250 ; gain = 25.578
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 100 -input_pins -routable_nets -name timing_1
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+open_bd_design {C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
+open_bd_design {C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
+update_module_reference system_signal_processing_LI_0_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'reset_n' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'clk' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/user_ip'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/lu_tables'.
+Upgrading 'C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-3420] Updated system_signal_processing_LI_0_0 to use current project options
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_0> has no source
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_1> has no source
+Wrote  : <C:\Users\MatiOliva\Documents\00-lockin_redpitaya\hardware\lockin.srcs\sources_1\bd\system\system.bd> 
+Wrote  : <C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+update_module_reference system_data_source_0_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'reset_n' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'clock' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'clock' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/user_ip'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/lu_tables'.
+Upgrading 'C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-3420] Updated system_data_source_0_0 to use current project options
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_0> has no source
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_1> has no source
+Wrote  : <C:\Users\MatiOliva\Documents\00-lockin_redpitaya\hardware\lockin.srcs\sources_1\bd\system\system.bd> 
+Wrote  : <C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+update_module_reference: Time (s): cpu = 00:00:02 ; elapsed = 00:00:10 . Memory (MB): peak = 2978.277 ; gain = 0.414
+reset_run synth_1
+INFO: [Project 1-1161] Replacing file C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/utils_1/imports/synth_1/system_wrapper.dcp with file C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/synth_1/system_wrapper.dcp
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+WARNING: [BD 41-2670] Found an incomplete address path from address space '/uP/processing_system7_0/Data' to master interface '/uP/ps7_0_axi_periph/M07_AXI'. Please either complete or remove this path to resolve.
+WARNING: [BD 41-2670] Found an incomplete address path from address space '/uP/processing_system7_0/Data' to master interface '/uP/ps7_0_axi_periph/M08_AXI'. Please either complete or remove this path to resolve.
+WARNING: [BD 5-699] No address segments matched 'get_bd_addr_segs -addressables -of_objects /uP/ps7_0_axi_periph/xbar/M07_AXI'
+WARNING: [BD 5-699] No address segments matched 'get_bd_addr_segs -addressables -of_objects /uP/ps7_0_axi_periph/xbar/M08_AXI'
+WARNING: [#UNDEF] When using EMIO pins for SPI_0 tie SSIN High in the PL bitstream
+INFO: [xilinx.com:ip:clk_wiz:6.0-1] /DAC/clk_wiz_0 clk_wiz propagate
+WARNING: [BD 41-927] Following properties on pin /DAC/axis_red_pitaya_dac_0/aclk have been updated from connected ip, but BD cell '/DAC/axis_red_pitaya_dac_0' does not accept parameter changes, so they may not be synchronized with cell properties:
+	FREQ_HZ = 125000000 
+Please resolve any mismatches by directly setting properties on BD cell </DAC/axis_red_pitaya_dac_0> to completely resolve these warnings.
+WARNING: [BD 41-927] Following properties on pin /DAC/axis_red_pitaya_dac_0/ddr_clk have been updated from connected ip, but BD cell '/DAC/axis_red_pitaya_dac_0' does not accept parameter changes, so they may not be synchronized with cell properties:
+	FREQ_HZ = 250000000 
+Please resolve any mismatches by directly setting properties on BD cell </DAC/axis_red_pitaya_dac_0> to completely resolve these warnings.
+WARNING: [BD 41-927] Following properties on pin /DAC/axis_constant_0/aclk have been updated from connected ip, but BD cell '/DAC/axis_constant_0' does not accept parameter changes, so they may not be synchronized with cell properties:
+	FREQ_HZ = 125000000 
+Please resolve any mismatches by directly setting properties on BD cell </DAC/axis_constant_0> to completely resolve these warnings.
+CRITICAL WARNING: [BD 41-759] The input pins (listed below) are either not connected or do not have a source port, and they don't have a tie-off specified. These pins are tied-off to all 0's to avoid error in Implementation flow.
+Please check your design and connect them as needed: 
+/DAC/cfg_data
+/uP_control/Din
+/gpios_and_leds/drive_gpios_0/input_0
+/gpios_and_leds/drive_gpios_0/input_1
+/gpios_and_leds/drive_gpios_0/input_2
+/gpios_and_leds/drive_gpios_0/input_3
+/gpios_and_leds/drive_gpios_1/input_0
+/gpios_and_leds/drive_gpios_1/input_1
+/gpios_and_leds/drive_gpios_1/input_2
+/gpios_and_leds/drive_gpios_1/input_3
+/gpios_and_leds/drive_leds_0/signal_0
+/gpios_and_leds/drive_leds_0/signal_1
+/gpios_and_leds/drive_leds_0/signal_2
+/gpios_and_leds/drive_leds_0/signal_3
+/gpios_and_leds/drive_leds_0/signal_4
+/gpios_and_leds/drive_leds_0/signal_5
+/gpios_and_leds/drive_leds_0/signal_6
+/gpios_and_leds/drive_leds_0/signal_7
+
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_0> has no source
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_1> has no source
+Wrote  : <C:\Users\MatiOliva\Documents\00-lockin_redpitaya\hardware\lockin.srcs\sources_1\bd\system\system.bd> 
+WARNING: [BD 41-166] Source port for the net:level_detector_0_level_detected_0 is NULL! Connection will be grounded!
+WARNING: [BD 41-166] Source port for the net:level_detector_0_level_detected_1 is NULL! Connection will be grounded!
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/data_source_0/ptos_x_ciclo'(16) to pin '/uP_control/gpio_io_o'(32) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/data_source_0/simulation_noise'(8) to pin '/uP_control/gpio_io_o1'(32) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+Verilog Output written to : c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/synth/system.v
+WARNING: [BD 41-166] Source port for the net:level_detector_0_level_detected_0 is NULL! Connection will be grounded!
+WARNING: [BD 41-166] Source port for the net:level_detector_0_level_detected_1 is NULL! Connection will be grounded!
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/data_source_0/ptos_x_ciclo'(16) to pin '/uP_control/gpio_io_o'(32) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/data_source_0/simulation_noise'(8) to pin '/uP_control/gpio_io_o1'(32) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+Verilog Output written to : c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/sim/system.v
+Verilog Output written to : c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block data_source_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block lock_in .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block uP/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/hw_handoff/system.hwh
+Generated Hardware Definition File c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/synth/system.hwdef
+WARNING: [BD 41-2265] Clock pin for protocol instance pin S_AXIS could not be determined. Make sure that ASSOCIATED_BUSIF and ASSOCIATED_RESET properties are set or propagated on clock pins of block /ADC/signal_split_0
+[Fri Mar 15 14:33:56 2024] Launched synth_1...
+Run output will be captured here: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/synth_1/runme.log
+[Fri Mar 15 14:33:56 2024] Launched impl_1...
+Run output will be captured here: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:24 ; elapsed = 00:00:39 . Memory (MB): peak = 2978.277 ; gain = 0.000
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 100 -input_pins -routable_nets -name timing_2
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+close_design
+open_run impl_1
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.293 . Memory (MB): peak = 2984.082 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 784 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2022.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF Files: Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 2984.082 ; gain = 0.000
+Restored from archive | CPU: 1.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 2984.082 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 2984.082 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 2 instances were transformed.
+  OBUFDS => OBUFDS_DUAL_BUF (INV, OBUFDS(x2)): 2 instances
+
+open_run: Time (s): cpu = 00:00:12 ; elapsed = 00:00:08 . Memory (MB): peak = 2984.082 ; gain = 0.000
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 100 -input_pins -routable_nets -name timing_1
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+open_bd_design {C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
+update_module_reference system_signal_processing_LI_0_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'reset_n' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'clk' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/user_ip'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/lu_tables'.
+Upgrading 'C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-3420] Updated system_signal_processing_LI_0_0 to use current project options
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_0> has no source
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_1> has no source
+Wrote  : <C:\Users\MatiOliva\Documents\00-lockin_redpitaya\hardware\lockin.srcs\sources_1\bd\system\system.bd> 
+Wrote  : <C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+reset_run synth_1
+INFO: [Project 1-1161] Replacing file C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/utils_1/imports/synth_1/system_wrapper.dcp with file C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/synth_1/system_wrapper.dcp
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+WARNING: [BD 41-2670] Found an incomplete address path from address space '/uP/processing_system7_0/Data' to master interface '/uP/ps7_0_axi_periph/M07_AXI'. Please either complete or remove this path to resolve.
+WARNING: [BD 41-2670] Found an incomplete address path from address space '/uP/processing_system7_0/Data' to master interface '/uP/ps7_0_axi_periph/M08_AXI'. Please either complete or remove this path to resolve.
+WARNING: [BD 5-699] No address segments matched 'get_bd_addr_segs -addressables -of_objects /uP/ps7_0_axi_periph/xbar/M07_AXI'
+WARNING: [BD 5-699] No address segments matched 'get_bd_addr_segs -addressables -of_objects /uP/ps7_0_axi_periph/xbar/M08_AXI'
+WARNING: [#UNDEF] When using EMIO pins for SPI_0 tie SSIN High in the PL bitstream
+INFO: [xilinx.com:ip:clk_wiz:6.0-1] /DAC/clk_wiz_0 clk_wiz propagate
+WARNING: [BD 41-927] Following properties on pin /DAC/axis_red_pitaya_dac_0/aclk have been updated from connected ip, but BD cell '/DAC/axis_red_pitaya_dac_0' does not accept parameter changes, so they may not be synchronized with cell properties:
+	FREQ_HZ = 125000000 
+Please resolve any mismatches by directly setting properties on BD cell </DAC/axis_red_pitaya_dac_0> to completely resolve these warnings.
+WARNING: [BD 41-927] Following properties on pin /DAC/axis_red_pitaya_dac_0/ddr_clk have been updated from connected ip, but BD cell '/DAC/axis_red_pitaya_dac_0' does not accept parameter changes, so they may not be synchronized with cell properties:
+	FREQ_HZ = 250000000 
+Please resolve any mismatches by directly setting properties on BD cell </DAC/axis_red_pitaya_dac_0> to completely resolve these warnings.
+WARNING: [BD 41-927] Following properties on pin /DAC/axis_constant_0/aclk have been updated from connected ip, but BD cell '/DAC/axis_constant_0' does not accept parameter changes, so they may not be synchronized with cell properties:
+	FREQ_HZ = 125000000 
+Please resolve any mismatches by directly setting properties on BD cell </DAC/axis_constant_0> to completely resolve these warnings.
+CRITICAL WARNING: [BD 41-759] The input pins (listed below) are either not connected or do not have a source port, and they don't have a tie-off specified. These pins are tied-off to all 0's to avoid error in Implementation flow.
+Please check your design and connect them as needed: 
+/DAC/cfg_data
+/uP_control/Din
+/gpios_and_leds/drive_gpios_0/input_0
+/gpios_and_leds/drive_gpios_0/input_1
+/gpios_and_leds/drive_gpios_0/input_2
+/gpios_and_leds/drive_gpios_0/input_3
+/gpios_and_leds/drive_gpios_1/input_0
+/gpios_and_leds/drive_gpios_1/input_1
+/gpios_and_leds/drive_gpios_1/input_2
+/gpios_and_leds/drive_gpios_1/input_3
+/gpios_and_leds/drive_leds_0/signal_0
+/gpios_and_leds/drive_leds_0/signal_1
+/gpios_and_leds/drive_leds_0/signal_2
+/gpios_and_leds/drive_leds_0/signal_3
+/gpios_and_leds/drive_leds_0/signal_4
+/gpios_and_leds/drive_leds_0/signal_5
+/gpios_and_leds/drive_leds_0/signal_6
+/gpios_and_leds/drive_leds_0/signal_7
+
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_0> has no source
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_1> has no source
+Wrote  : <C:\Users\MatiOliva\Documents\00-lockin_redpitaya\hardware\lockin.srcs\sources_1\bd\system\system.bd> 
+WARNING: [BD 41-166] Source port for the net:level_detector_0_level_detected_0 is NULL! Connection will be grounded!
+WARNING: [BD 41-166] Source port for the net:level_detector_0_level_detected_1 is NULL! Connection will be grounded!
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/data_source_0/ptos_x_ciclo'(16) to pin '/uP_control/gpio_io_o'(32) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/data_source_0/simulation_noise'(8) to pin '/uP_control/gpio_io_o1'(32) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+Verilog Output written to : c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/synth/system.v
+WARNING: [BD 41-166] Source port for the net:level_detector_0_level_detected_0 is NULL! Connection will be grounded!
+WARNING: [BD 41-166] Source port for the net:level_detector_0_level_detected_1 is NULL! Connection will be grounded!
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/data_source_0/ptos_x_ciclo'(16) to pin '/uP_control/gpio_io_o'(32) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/data_source_0/simulation_noise'(8) to pin '/uP_control/gpio_io_o1'(32) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+Verilog Output written to : c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/sim/system.v
+Verilog Output written to : c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block lock_in .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block uP/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/hw_handoff/system.hwh
+Generated Hardware Definition File c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/synth/system.hwdef
+WARNING: [BD 41-2265] Clock pin for protocol instance pin S_AXIS could not be determined. Make sure that ASSOCIATED_BUSIF and ASSOCIATED_RESET properties are set or propagated on clock pins of block /ADC/signal_split_0
+[Fri Mar 15 15:06:09 2024] Launched synth_1...
+Run output will be captured here: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/synth_1/runme.log
+[Fri Mar 15 15:06:10 2024] Launched impl_1...
+Run output will be captured here: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:24 ; elapsed = 00:00:42 . Memory (MB): peak = 2993.262 ; gain = 0.000
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 100 -input_pins -routable_nets -name timing_2
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+refresh_design
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.360 . Memory (MB): peak = 3445.422 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 712 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2022.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF Files: Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 3445.422 ; gain = 0.000
+Restored from archive | CPU: 1.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 3445.422 ; gain = 0.000
+refresh_design: Time (s): cpu = 00:00:19 ; elapsed = 00:00:11 . Memory (MB): peak = 3445.422 ; gain = 452.160
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 100 -input_pins -routable_nets -name timing_1
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+set_false_path -from [get_pins {system_i/lock_in/inst/lock_in/multiplicador/ref/M_reg[0]_replica_3/C}] -to [get_pins {system_i/lock_in/inst/lock_in/multiplicador/ref/interval_reg[0]/D}]
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 100 -input_pins -routable_nets -name timing_1
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-2] Deriving generated clocks
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 100 -input_pins -routable_nets -name timing_1
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+open_bd_design {C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
+reset_run synth_1
+INFO: [Project 1-1161] Replacing file C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/utils_1/imports/synth_1/system_wrapper.dcp with file C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/synth_1/system_wrapper.dcp
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Fri Mar 15 15:30:35 2024] Launched synth_1...
+Run output will be captured here: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/synth_1/runme.log
+[Fri Mar 15 15:30:35 2024] Launched impl_1...
+Run output will be captured here: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/impl_1/runme.log
+refresh_design
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.289 . Memory (MB): peak = 3445.422 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 712 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2022.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF Files: Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 3445.422 ; gain = 0.000
+Restored from archive | CPU: 2.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 3445.422 ; gain = 0.000
+refresh_design: Time (s): cpu = 00:00:14 ; elapsed = 00:00:09 . Memory (MB): peak = 3445.422 ; gain = 0.000
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+open_bd_design {C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+open_bd_design {C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
+ipx::edit_ip_in_project -upgrade true -name axis_red_pitaya_dac_v1_0_project -directory C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.tmp/axis_red_pitaya_dac_v1_0_project c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/user_ip/cores/axis_red_pitaya_dac_v1_0/component.xml
+INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter.
+Current project path is 'c:/users/matioliva/documents/00-lockin_redpitaya/hardware/lockin.tmp/axis_red_pitaya_dac_v1_0_project'
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.2/data/ip'.
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kc705:part0:1.6 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kc705/1.6/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.6 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.6/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.7 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.7/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu1500:part0:1.2 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu1500/1.2/board.xml as part xcku115-flvb2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vc707:part0:1.4 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vc707/1.4/board.xml as part xc7vx485tffg1761-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vc709:part0:1.8 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vc709/1.8/board.xml as part xc7vx690tffg1761-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:2.2 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/2.2/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:3.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/3.0/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:3.1 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/3.1/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190_newl:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190_newl/production/1.0/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu108:part0:1.6 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu108/1.6/board.xml as part xcvu095-ffva2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu108:part0:1.7 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu108/1.7/board.xml as part xcvu095-ffva2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu110:part0:1.4 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu110/1.4/board.xml as part xcvu190-flgc2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu118/2.0/board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.3 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu118/2.3/board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.4 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu118/2.4/board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu128:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu128/production/1.0/board.xml as part xcvu37p-fsvh2892-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu129:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu129/production/1.0/board.xml as part xcvu29p-fsga2577-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu1525:part0:1.3 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu1525/1.3/board.xml as part xcvu9p-fsgd2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/1.0/board.xml as part xcve2802-vsvh1760-2lp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vermeo_t1_mpsoc:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vermeo_t1_mpsoc/1.0/board.xml as part xczu19eg-ffvd1760-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vermeo_t1_rfsoc:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vermeo_t1_rfsoc/1.0/board.xml as part xczu21dr-ffvd1156-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158_es:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/es/1.0/board.xml as part xcvh1582-vsva3697-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:2.2 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/2.2/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:3.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/3.0/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:3.1 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/3.1/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180_newl:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180_newl/production/1.0/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/production/1.0/board.xml as part xcvp1202-vsva2785-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120_es:part0:1.2 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/es/1.2/board.xml as part xcvp1202-vsva2785-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120_es_revb:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120_revb/es/1.0/board.xml as part xcvp1202-vsva2785-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk180_es:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk180/es/1.0/board.xml as part xcvp1802-lsvc4072-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zc706:part0:1.4 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zc706/1.4/board.xml as part xc7z045ffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu102:part0:3.3 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu102/3.3/board.xml as part xczu9eg-ffvb1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu102:part0:3.4 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu102/3.4/board.xml as part xczu9eg-ffvb1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.2 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu111/1.2/board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.3 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu111/1.3/board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.4 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu111/1.4/board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu1275:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu1275/1.0/board.xml as part xczu29dr-ffvf1760-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu1285:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu1285/1.0/board.xml as part xczu39dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208/production/2.0/board.xml as part xczu48dr-fsvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216/production/2.0/board.xml as part xczu49dr-ffvf1760-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/2.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/user_ip'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/lu_tables'.
+INFO: [IP_Flow 19-795] Syncing license key meta-data
+ipx::edit_ip_in_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:06 . Memory (MB): peak = 3445.422 ; gain = 0.000
+update_compile_order -fileset sources_1
+current_project lockin
+delete_bd_objs [get_bd_nets selector_data_in_data_out]
+delete_bd_objs [get_bd_nets selector_data_in_data_out_valid]
+connect_bd_net [get_bd_pins uP/axi_str_rxd_tdata] [get_bd_pins DAC/dds_compiler_0/m_axis_data_tdata]
+WARNING: [BD 41-1306] The connection to interface pin </DAC/dds_compiler_0/m_axis_data_tdata> is being overridden by the user with net <dds_compiler_0_m_axis_data_tdata>. This pin will not be connected as a part of interface connection <M_AXIS_DATA>.
+connect_bd_net [get_bd_pins DAC/dds_compiler_0/m_axis_data_tvalid] [get_bd_pins uP/axi_str_rxd_tvalid]
+WARNING: [BD 41-1306] The connection to interface pin </DAC/dds_compiler_0/m_axis_data_tvalid> is being overridden by the user with net <dds_compiler_0_m_axis_data_tvalid>. This pin will not be connected as a part of interface connection <M_AXIS_DATA>.
+save_bd_design
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_0> has no source
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_1> has no source
+Wrote  : <C:\Users\MatiOliva\Documents\00-lockin_redpitaya\hardware\lockin.srcs\sources_1\bd\system\system.bd> 
+Wrote  : <C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+reset_run synth_1
+INFO: [Project 1-1161] Replacing file C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/utils_1/imports/synth_1/system_wrapper.dcp with file C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/synth_1/system_wrapper.dcp
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+WARNING: [BD 41-2670] Found an incomplete address path from address space '/uP/processing_system7_0/Data' to master interface '/uP/ps7_0_axi_periph/M07_AXI'. Please either complete or remove this path to resolve.
+WARNING: [BD 41-2670] Found an incomplete address path from address space '/uP/processing_system7_0/Data' to master interface '/uP/ps7_0_axi_periph/M08_AXI'. Please either complete or remove this path to resolve.
+WARNING: [BD 5-699] No address segments matched 'get_bd_addr_segs -addressables -of_objects /uP/ps7_0_axi_periph/xbar/M07_AXI'
+WARNING: [BD 5-699] No address segments matched 'get_bd_addr_segs -addressables -of_objects /uP/ps7_0_axi_periph/xbar/M08_AXI'
+WARNING: [#UNDEF] When using EMIO pins for SPI_0 tie SSIN High in the PL bitstream
+INFO: [xilinx.com:ip:clk_wiz:6.0-1] /DAC/clk_wiz_0 clk_wiz propagate
+WARNING: [BD 41-927] Following properties on pin /DAC/axis_red_pitaya_dac_0/aclk have been updated from connected ip, but BD cell '/DAC/axis_red_pitaya_dac_0' does not accept parameter changes, so they may not be synchronized with cell properties:
+	FREQ_HZ = 125000000 
+Please resolve any mismatches by directly setting properties on BD cell </DAC/axis_red_pitaya_dac_0> to completely resolve these warnings.
+WARNING: [BD 41-927] Following properties on pin /DAC/axis_red_pitaya_dac_0/ddr_clk have been updated from connected ip, but BD cell '/DAC/axis_red_pitaya_dac_0' does not accept parameter changes, so they may not be synchronized with cell properties:
+	FREQ_HZ = 250000000 
+Please resolve any mismatches by directly setting properties on BD cell </DAC/axis_red_pitaya_dac_0> to completely resolve these warnings.
+WARNING: [BD 41-927] Following properties on pin /DAC/axis_constant_0/aclk have been updated from connected ip, but BD cell '/DAC/axis_constant_0' does not accept parameter changes, so they may not be synchronized with cell properties:
+	FREQ_HZ = 125000000 
+Please resolve any mismatches by directly setting properties on BD cell </DAC/axis_constant_0> to completely resolve these warnings.
+CRITICAL WARNING: [BD 41-759] The input pins (listed below) are either not connected or do not have a source port, and they don't have a tie-off specified. These pins are tied-off to all 0's to avoid error in Implementation flow.
+Please check your design and connect them as needed: 
+/DAC/cfg_data
+/uP_control/Din
+/gpios_and_leds/drive_gpios_0/input_0
+/gpios_and_leds/drive_gpios_0/input_1
+/gpios_and_leds/drive_gpios_0/input_2
+/gpios_and_leds/drive_gpios_0/input_3
+/gpios_and_leds/drive_gpios_1/input_0
+/gpios_and_leds/drive_gpios_1/input_1
+/gpios_and_leds/drive_gpios_1/input_2
+/gpios_and_leds/drive_gpios_1/input_3
+/gpios_and_leds/drive_leds_0/signal_0
+/gpios_and_leds/drive_leds_0/signal_1
+/gpios_and_leds/drive_leds_0/signal_2
+/gpios_and_leds/drive_leds_0/signal_3
+/gpios_and_leds/drive_leds_0/signal_4
+/gpios_and_leds/drive_leds_0/signal_5
+/gpios_and_leds/drive_leds_0/signal_6
+/gpios_and_leds/drive_leds_0/signal_7
+/lock_in/data_in
+/lock_in/data_in_valid
+
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_0> has no source
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_1> has no source
+Wrote  : <C:\Users\MatiOliva\Documents\00-lockin_redpitaya\hardware\lockin.srcs\sources_1\bd\system\system.bd> 
+Wrote  : <C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+WARNING: [BD 41-166] Source port for the net:level_detector_0_level_detected_0 is NULL! Connection will be grounded!
+WARNING: [BD 41-166] Source port for the net:level_detector_0_level_detected_1 is NULL! Connection will be grounded!
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/data_source_0/ptos_x_ciclo'(16) to pin '/uP_control/gpio_io_o'(32) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/data_source_0/simulation_noise'(8) to pin '/uP_control/gpio_io_o1'(32) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+Verilog Output written to : c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/synth/system.v
+WARNING: [BD 41-166] Source port for the net:level_detector_0_level_detected_0 is NULL! Connection will be grounded!
+WARNING: [BD 41-166] Source port for the net:level_detector_0_level_detected_1 is NULL! Connection will be grounded!
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/data_source_0/ptos_x_ciclo'(16) to pin '/uP_control/gpio_io_o'(32) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/data_source_0/simulation_noise'(8) to pin '/uP_control/gpio_io_o1'(32) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+Verilog Output written to : c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/sim/system.v
+Verilog Output written to : c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block uP/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/hw_handoff/system.hwh
+Generated Hardware Definition File c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/synth/system.hwdef
+WARNING: [BD 41-2265] Clock pin for protocol instance pin S_AXIS could not be determined. Make sure that ASSOCIATED_BUSIF and ASSOCIATED_RESET properties are set or propagated on clock pins of block /ADC/signal_split_0
+[Fri Mar 15 16:45:11 2024] Launched synth_1...
+Run output will be captured here: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/synth_1/runme.log
+[Fri Mar 15 16:45:11 2024] Launched impl_1...
+Run output will be captured here: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:27 ; elapsed = 00:00:40 . Memory (MB): peak = 3445.422 ; gain = 0.000
+current_project axis_red_pitaya_dac_v1_0_project
+close_project
+delete_bd_objs [get_bd_nets axi_str_rxd_tdata_1]
+delete_bd_objs [get_bd_nets axi_str_rxd_tvalid_1]
+save_bd_design
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_0> has no source
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_1> has no source
+Wrote  : <C:\Users\MatiOliva\Documents\00-lockin_redpitaya\hardware\lockin.srcs\sources_1\bd\system\system.bd> 
+Wrote  : <C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+connect_bd_net [get_bd_pins lock_in/data_in] [get_bd_pins selector_data_in/data_out]
+connect_bd_net [get_bd_pins lock_in/data_in_valid] [get_bd_pins selector_data_in/data_out_valid]
+save_bd_design
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_0> has no source
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_1> has no source
+Wrote  : <C:\Users\MatiOliva\Documents\00-lockin_redpitaya\hardware\lockin.srcs\sources_1\bd\system\system.bd> 
+Wrote  : <C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+copy_bd_objs /  [get_bd_cells {bits_ruido}]
+set_property name phase_inc [get_bd_cells bits_ruido1]
+set_property -dict [list \
+  CONFIG.CONST_VAL {125} \
+  CONFIG.CONST_WIDTH {31} \
+] [get_bd_cells phase_inc]
+set_property location {4 1337 480} [get_bd_cells phase_inc]
+set_property location {4 1371 364} [get_bd_cells phase_inc]
+connect_bd_net [get_bd_pins phase_inc/dout] [get_bd_pins DAC/cfg_data]
+connect_bd_net [get_bd_pins DAC/m_axis_data_tdata] [get_bd_pins uP/axi_str_rxd_tdata] -boundary_type upper
+connect_bd_net [get_bd_pins uP/axi_str_rxd_tvalid] [get_bd_pins DAC/m_axis_data_tvalid] -boundary_type upper
+save_bd_design
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_0> has no source
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_1> has no source
+Wrote  : <C:\Users\MatiOliva\Documents\00-lockin_redpitaya\hardware\lockin.srcs\sources_1\bd\system\system.bd> 
+Wrote  : <C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+reset_run synth_1
+INFO: [Project 1-1161] Replacing file C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/utils_1/imports/synth_1/system_wrapper.dcp with file C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/synth_1/system_wrapper.dcp
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+WARNING: [BD 41-2670] Found an incomplete address path from address space '/uP/processing_system7_0/Data' to master interface '/uP/ps7_0_axi_periph/M07_AXI'. Please either complete or remove this path to resolve.
+WARNING: [BD 41-2670] Found an incomplete address path from address space '/uP/processing_system7_0/Data' to master interface '/uP/ps7_0_axi_periph/M08_AXI'. Please either complete or remove this path to resolve.
+WARNING: [BD 5-699] No address segments matched 'get_bd_addr_segs -addressables -of_objects /uP/ps7_0_axi_periph/xbar/M07_AXI'
+WARNING: [BD 5-699] No address segments matched 'get_bd_addr_segs -addressables -of_objects /uP/ps7_0_axi_periph/xbar/M08_AXI'
+WARNING: [#UNDEF] When using EMIO pins for SPI_0 tie SSIN High in the PL bitstream
+INFO: [xilinx.com:ip:clk_wiz:6.0-1] /DAC/clk_wiz_0 clk_wiz propagate
+WARNING: [BD 41-927] Following properties on pin /DAC/axis_red_pitaya_dac_0/aclk have been updated from connected ip, but BD cell '/DAC/axis_red_pitaya_dac_0' does not accept parameter changes, so they may not be synchronized with cell properties:
+	FREQ_HZ = 125000000 
+Please resolve any mismatches by directly setting properties on BD cell </DAC/axis_red_pitaya_dac_0> to completely resolve these warnings.
+WARNING: [BD 41-927] Following properties on pin /DAC/axis_red_pitaya_dac_0/ddr_clk have been updated from connected ip, but BD cell '/DAC/axis_red_pitaya_dac_0' does not accept parameter changes, so they may not be synchronized with cell properties:
+	FREQ_HZ = 250000000 
+Please resolve any mismatches by directly setting properties on BD cell </DAC/axis_red_pitaya_dac_0> to completely resolve these warnings.
+WARNING: [BD 41-927] Following properties on pin /DAC/axis_constant_0/aclk have been updated from connected ip, but BD cell '/DAC/axis_constant_0' does not accept parameter changes, so they may not be synchronized with cell properties:
+	FREQ_HZ = 125000000 
+Please resolve any mismatches by directly setting properties on BD cell </DAC/axis_constant_0> to completely resolve these warnings.
+CRITICAL WARNING: [BD 41-759] The input pins (listed below) are either not connected or do not have a source port, and they don't have a tie-off specified. These pins are tied-off to all 0's to avoid error in Implementation flow.
+Please check your design and connect them as needed: 
+/uP_control/Din
+/gpios_and_leds/drive_gpios_0/input_0
+/gpios_and_leds/drive_gpios_0/input_1
+/gpios_and_leds/drive_gpios_0/input_2
+/gpios_and_leds/drive_gpios_0/input_3
+/gpios_and_leds/drive_gpios_1/input_0
+/gpios_and_leds/drive_gpios_1/input_1
+/gpios_and_leds/drive_gpios_1/input_2
+/gpios_and_leds/drive_gpios_1/input_3
+/gpios_and_leds/drive_leds_0/signal_0
+/gpios_and_leds/drive_leds_0/signal_1
+/gpios_and_leds/drive_leds_0/signal_2
+/gpios_and_leds/drive_leds_0/signal_3
+/gpios_and_leds/drive_leds_0/signal_4
+/gpios_and_leds/drive_leds_0/signal_5
+/gpios_and_leds/drive_leds_0/signal_6
+/gpios_and_leds/drive_leds_0/signal_7
+
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_0> has no source
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_1> has no source
+Wrote  : <C:\Users\MatiOliva\Documents\00-lockin_redpitaya\hardware\lockin.srcs\sources_1\bd\system\system.bd> 
+Wrote  : <C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/DAC/axis_constant_0/cfg_data'(32) to pin '/DAC/cfg_data'(31) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+WARNING: [BD 41-166] Source port for the net:level_detector_0_level_detected_0 is NULL! Connection will be grounded!
+WARNING: [BD 41-166] Source port for the net:level_detector_0_level_detected_1 is NULL! Connection will be grounded!
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/data_source_0/ptos_x_ciclo'(16) to pin '/uP_control/gpio_io_o'(32) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/data_source_0/simulation_noise'(8) to pin '/uP_control/gpio_io_o1'(32) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+Verilog Output written to : c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/synth/system.v
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/DAC/axis_constant_0/cfg_data'(32) to pin '/DAC/cfg_data'(31) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+WARNING: [BD 41-166] Source port for the net:level_detector_0_level_detected_0 is NULL! Connection will be grounded!
+WARNING: [BD 41-166] Source port for the net:level_detector_0_level_detected_1 is NULL! Connection will be grounded!
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/data_source_0/ptos_x_ciclo'(16) to pin '/uP_control/gpio_io_o'(32) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+CRITICAL WARNING: [BD 41-2383] Width mismatch when connecting input pin '/data_source_0/simulation_noise'(8) to pin '/uP_control/gpio_io_o1'(32) - Only lower order bits will be connected, and other input bits of this pin will be left unconnected.
+Verilog Output written to : c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/sim/system.v
+Verilog Output written to : c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block phase_inc .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block uP/ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/hw_handoff/system.hwh
+Generated Hardware Definition File c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/synth/system.hwdef
+WARNING: [BD 41-2265] Clock pin for protocol instance pin S_AXIS could not be determined. Make sure that ASSOCIATED_BUSIF and ASSOCIATED_RESET properties are set or propagated on clock pins of block /ADC/signal_split_0
+[Fri Mar 15 17:05:47 2024] Launched synth_1...
+Run output will be captured here: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/synth_1/runme.log
+[Fri Mar 15 17:05:47 2024] Launched impl_1...
+Run output will be captured here: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:28 ; elapsed = 00:00:49 . Memory (MB): peak = 3445.422 ; gain = 0.000
+exit
+INFO: [Common 17-206] Exiting Vivado at Fri Mar 15 17:21:25 2024...
