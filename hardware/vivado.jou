@@ -2,191 +2,100 @@
 # Vivado v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Fri Mar 15 18:14:22 2024
-# Process ID: 11540
-# Current directory: C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent4708 C:\Users\mati9\Documents\02-RedPitaya\lockin_red_pitaya\hardware\lockin.xpr
-# Log file: C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/vivado.log
-# Journal file: C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware\vivado.jou
-# Running On: DESKTOP-TN92N90, OS: Windows, CPU Frequency: 3014 MHz, CPU Physical cores: 2, Host memory: 8588 MB
+# Start of session at: Mon Mar 18 16:52:17 2024
+# Process ID: 13408
+# Current directory: C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent13236 C:\Users\mati9\OneDrive\Documentos\00-RedPitaya\lockin_redpitaya\hardware\lockin.xpr
+# Log file: C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/vivado.log
+# Journal file: C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware\vivado.jou
+# Running On: DESKTOP-4F847D8, OS: Windows, CPU Frequency: 2400 MHz, CPU Physical cores: 2, Host memory: 4204 MB
 #-----------------------------------------------------------
 start_gui
-open_project C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.xpr
-open_bd_design {C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
-update_module_reference system_mux_0_0
+open_project C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.xpr
 update_compile_order -fileset sources_1
-delete_bd_objs [get_bd_nets DAC/s_axis_tdata_1]
-delete_bd_objs [get_bd_nets DAC/s_axis_tvalid_1]
-connect_bd_net [get_bd_pins DAC/axis_red_pitaya_dac_0/s_axis_tdata] [get_bd_pins DAC/dds_compiler_0/m_axis_data_tdata]
-connect_bd_net [get_bd_pins DAC/axis_red_pitaya_dac_0/s_axis_tvalid] [get_bd_pins DAC/dds_compiler_0/m_axis_data_tvalid]
-regenerate_bd_layout
-save_bd_design
+open_bd_design {C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
+update_module_reference system_mux_0_0
+update_module_reference system_signal_processing_LI_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+update_module_reference system_signal_processing_LI_0_0
 reset_run synth_1
 launch_runs impl_1 -to_step write_bitstream -jobs 2
 wait_on_run impl_1
 open_run impl_1
-open_bd_design {C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
+open_bd_design {C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
 startgroup
 set_property -dict [list \
-  CONFIG.CONST_VAL {2097152} \
-  CONFIG.CONST_WIDTH {32} \
-] [get_bd_cells phase_inc]
+  CONFIG.Has_ACLKEN {true} \
+  CONFIG.Has_ARESETn {true} \
+] [get_bd_cells referencias/dds_compiler_0]
 endgroup
-delete_bd_objs [get_bd_nets DAC_m_axis_data_tdata]
 startgroup
-create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_0
-endgroup
-set_property CONFIG.DIN_FROM {13} [get_bd_cells xlslice_0]
-connect_bd_net [get_bd_pins uP/axi_str_rxd_tdata] [get_bd_pins xlslice_0/Dout]
-connect_bd_net [get_bd_pins xlslice_0/Din] [get_bd_pins DAC/dds_compiler_0/m_axis_data_tdata]
-delete_bd_objs [get_bd_nets uP/processing_system7_0_FCLK_CLK0]
-undo
-disconnect_bd_net /uP/processing_system7_0_FCLK_CLK0 [get_bd_pins uP/fifo_1/s_axi_aclk]
-connect_bd_net [get_bd_pins uP/fifo_1/s_axi_aclk] [get_bd_pins ADC/adc_clk]
-save_bd_design
-reset_run synth_1
-launch_runs impl_1 -to_step write_bitstream -jobs 2
-delete_bd_objs [get_bd_nets uP/s_axi_aclk_1]
-undo
-delete_bd_objs [get_bd_nets uP/s_axi_aclk_1]
-connect_bd_net [get_bd_pins uP/fifo_1/s_axi_aclk] [get_bd_pins uP/processing_system7_0/FCLK_CLK0]
-delete_bd_objs [get_bd_pins uP/s_axi_aclk]
-save_bd_design
-launch_runs impl_1 -to_step write_bitstream -jobs 2
-wait_on_run impl_1
-disconnect_bd_net /DAC/dds_compiler_0_m_axis_data_tdata [get_bd_pins DAC/axis_red_pitaya_dac_0/s_axis_tdata]
-delete_bd_objs [get_bd_nets DAC/dds_compiler_0_m_axis_data_tdata]
-startgroup
-create_bd_cell -type ip -vlnv xilinx.com:ip:dds_compiler:6.0 dds_compiler_0
-endgroup
-set_property CONFIG.Output_Width 16 [get_bd_cells /DAC/dds_compiler_0]
-delete_bd_objs [get_bd_cells dds_compiler_0]
-set_property CONFIG.Output_Width 16 [get_bd_cells /DAC/dds_compiler_0]
-connect_bd_net [get_bd_pins DAC/dds_compiler_0/m_axis_data_tdata] [get_bd_pins DAC/axis_red_pitaya_dac_0/s_axis_tdata]
-connect_bd_net [get_bd_pins DAC/m_axis_data_tdata] [get_bd_pins DAC/dds_compiler_0/m_axis_data_tdata]
-save_bd_design
-update_module_reference system_signal_processing_LI_0_0
-startgroup
-create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_1
-endgroup
-connect_bd_net [get_bd_pins lock_in/referencia_externa_cos] [get_bd_pins xlslice_0/Dout]
 set_property -dict [list \
-  CONFIG.DIN_FROM {29} \
-  CONFIG.DIN_TO {16} \
-] [get_bd_cells xlslice_1]
-connect_bd_net [get_bd_pins lock_in/referencia_externa_seno] [get_bd_pins xlslice_1/Dout]
-connect_bd_net [get_bd_pins xlslice_1/Din] [get_bd_pins DAC/m_axis_data_tdata]
-connect_bd_net [get_bd_pins lock_in/referencia_externa_valid] [get_bd_pins DAC/m_axis_data_tvalid]
-set_property name ref_cos [get_bd_cells xlslice_0]
-set_property name ref_sen [get_bd_cells xlslice_1]
-save_bd_design
-reset_run synth_1
-launch_runs impl_1 -to_step write_bitstream -jobs 2
-wait_on_run impl_1
-copy_bd_objs /  [get_bd_cells {DAC/dds_compiler_0}]
-copy_bd_objs /  [get_bd_cells {DAC/axis_constant_0}]
-set_property location {4.5 1425 1194} [get_bd_cells axis_constant_0]
-set_property location {6 1837 1212} [get_bd_cells dds_compiler_0]
-set_property location {6 1728 1197} [get_bd_cells dds_compiler_0]
-set_property location {6 2480 1219} [get_bd_cells dds_compiler_0]
-set_property location {5.5 1558 1211} [get_bd_cells axis_constant_0]
-set_property location {6 1959 1201} [get_bd_cells dds_compiler_0]
-copy_bd_objs /  [get_bd_cells {uP_control/M_and_Nma}]
-set_property name phase_phase_frec [get_bd_cells M_and_Nma]
-set_property name phaseDAC_and_phaseREF [get_bd_cells phase_phase_frec]
-move_bd_cells [get_bd_cells uP_control] [get_bd_cells phaseDAC_and_phaseREF]
-connect_bd_net [get_bd_pins uP_control/s_axi_aresetn] [get_bd_pins uP_control/phaseDAC_and_phaseREF/s_axi_aresetn]
-connect_bd_net [get_bd_pins uP_control/s_axi_aclk] [get_bd_pins uP_control/phaseDAC_and_phaseREF/s_axi_aclk]
-connect_bd_intf_net [get_bd_intf_pins uP_control/phaseDAC_and_phaseREF/S_AXI] -boundary_type upper [get_bd_intf_pins uP/ps7_0_axi_periph/M07_AXI]
-delete_bd_objs [get_bd_nets phase_inc_dout]
-delete_bd_objs [get_bd_cells phase_inc]
-set_property location {5 1519 1806} [get_bd_cells axis_constant_0]
-delete_bd_objs [get_bd_pins DAC/s_axis_tdata]
-delete_bd_objs [get_bd_pins DAC/s_axis_tvalid]
-connect_bd_net [get_bd_pins DAC/cfg_data] [get_bd_pins uP_control/phaseDAC_and_phaseREF/gpio_io_o]
-connect_bd_net [get_bd_pins uP_control/phaseDAC_and_phaseREF/gpio_io_i] [get_bd_pins uP_control/phaseDAC_and_phaseREF/gpio_io_o]
-delete_bd_objs [get_bd_nets axi_str_rxd_tvalid_1]
-delete_bd_objs [get_bd_nets DAC/dds_compiler_0_m_axis_data_tvalid]
-connect_bd_net [get_bd_pins DAC/dds_compiler_0/m_axis_data_tvalid] [get_bd_pins DAC/axis_red_pitaya_dac_0/s_axis_tvalid]
-delete_bd_objs [get_bd_nets DAC/dds_compiler_0_m_axis_data_tdata]
-connect_bd_net [get_bd_pins DAC/dds_compiler_0/m_axis_data_tdata] [get_bd_pins DAC/axis_red_pitaya_dac_0/s_axis_tdata]
-delete_bd_objs [get_bd_nets DAC_m_axis_data_tdata]
-delete_bd_objs [get_bd_pins DAC/m_axis_data_tdata]
-delete_bd_objs [get_bd_pins DAC/m_axis_data_tvalid]
-set_property location {4.5 1331 795} [get_bd_cells ref_sen]
-set_property location {3 861 1367} [get_bd_cells axis_constant_0]
-set_property location {2 593 1381} [get_bd_cells dds_compiler_0]
-set_property location {4 1146 1378} [get_bd_cells ref_sen]
-disconnect_bd_net /axi_str_rxd_tdata_1 [get_bd_pins uP/axi_str_rxd_tdata]
-set_property location {4 1100 1659} [get_bd_cells ref_cos]
-set_property location {4 1107 1505} [get_bd_cells ref_cos]
-startgroup
-set_property location {3 977 1497} [get_bd_cells ref_cos]
-set_property location {2 717 1367} [get_bd_cells axis_constant_0]
-set_property location {1 397 1487} [get_bd_cells dds_compiler_0]
-set_property location {3 977 1377} [get_bd_cells ref_sen]
+  CONFIG.Has_ACLKEN {true} \
+  CONFIG.Has_ARESETn {true} \
+] [get_bd_cells DAC/dds_compiler_0]
 endgroup
-startgroup
-set_property location {1.5 334 1498} [get_bd_cells ref_cos]
-set_property location {2 334 1498} [get_bd_cells axis_constant_0]
-set_property location {2 334 1498} [get_bd_cells ref_sen]
-set_property location {2 334 1498} [get_bd_cells dds_compiler_0]
-endgroup
+connect_bd_net [get_bd_pins DAC/dds_compiler_0/aclken] [get_bd_pins ADC/adc_csn_o]
 undo
-startgroup
-set_property location {1.5 202 1389} [get_bd_cells ref_cos]
-set_property location {2 202 1389} [get_bd_cells axis_constant_0]
-set_property location {2 202 1389} [get_bd_cells ref_sen]
-set_property location {2 202 1389} [get_bd_cells dds_compiler_0]
-endgroup
-undo
-set_property location {1.5 230 1372} [get_bd_cells dds_compiler_0]
-connect_bd_net [get_bd_pins axis_constant_0/aclk] [get_bd_pins ADC/adc_clk]
-set_property location {3 678 1498} [get_bd_cells dds_compiler_0]
-set_property location {1.5 411 1395} [get_bd_cells axis_constant_0]
-set_property location {3 757 1389} [get_bd_cells dds_compiler_0]
-connect_bd_net [get_bd_pins axis_constant_0/m_axis_tdata] [get_bd_pins dds_compiler_0/s_axis_phase_tdata]
-connect_bd_net [get_bd_pins axis_constant_0/m_axis_tvalid] [get_bd_pins dds_compiler_0/s_axis_phase_tvalid]
-connect_bd_net [get_bd_pins dds_compiler_0/aclk] [get_bd_pins ADC/adc_clk]
-connect_bd_net [get_bd_pins uP_control/phaseDAC_and_phaseREF/gpio2_io_o] [get_bd_pins uP_control/phaseDAC_and_phaseREF/gpio2_io_i]
-connect_bd_net [get_bd_pins uP_control/phaseDAC_and_phaseREF/gpio2_io_o] [get_bd_pins axis_constant_0/cfg_data]
-connect_bd_net [get_bd_pins dds_compiler_0/m_axis_data_tdata] [get_bd_pins ref_sen/Din]
-connect_bd_net [get_bd_pins ref_cos/Din] [get_bd_pins dds_compiler_0/m_axis_data_tdata]
-group_bd_cells referencias [get_bd_cells axis_constant_0] [get_bd_cells ref_sen] [get_bd_cells dds_compiler_0] [get_bd_cells ref_cos]
-set_property location {4 839 1454} [get_bd_cells referencias]
-delete_bd_objs [get_bd_nets data_source_0_data]
-delete_bd_objs [get_bd_nets data_source_0_data_valid]
-connect_bd_net [get_bd_pins referencias/dds_compiler_0/m_axis_data_tvalid] [get_bd_pins lock_in/referencia_externa_valid]
-connect_bd_net [get_bd_pins selector_data_in/data_in_0] [get_bd_pins referencias/Dout]
-connect_bd_net [get_bd_pins selector_data_in/data_in_0_valid] [get_bd_pins referencias/m_axis_data_tvalid]
-regenerate_bd_layout
-regenerate_bd_layout
-assign_bd_address -target_address_space /uP/processing_system7_0/Data [get_bd_addr_segs uP_control/phaseDAC_and_phaseREF/S_AXI/Reg] -force
-save_bd_design
-reset_run synth_1
-launch_runs impl_1 -to_step write_bitstream -jobs 2
-wait_on_run impl_1
-update_module_reference system_mux_0_0
-delete_bd_objs [get_bd_nets uP/axi_str_rxd_tdata_1]
-delete_bd_objs [get_bd_nets uP/axi_str_rxd_tvalid_1]
-connect_bd_net [get_bd_pins uP/fifo_1/axi_str_rxd_tdata] [get_bd_pins selector_data_in/data_out]
-connect_bd_net [get_bd_pins uP/fifo_1/axi_str_rxd_tvalid] [get_bd_pins uP/processing_system7_0/FCLK_CLK0]
-undo
-connect_bd_net [get_bd_pins uP/fifo_1/axi_str_rxd_tvalid] [get_bd_pins selector_data_in/data_out_valid]
-delete_bd_objs [get_bd_pins uP/axi_str_rxd_tdata]
-delete_bd_objs [get_bd_pins uP/axi_str_rxd_tvalid]
-delete_bd_objs [get_bd_nets uP_control_gpio_io_o1] [get_bd_nets seleccion_ruido_dout] [get_bd_cells data_source_0]
-delete_bd_objs [get_bd_cells seleccion_ruido]
-delete_bd_objs [get_bd_cells bits_ruido]
-regenerate_bd_layout
+connect_bd_net [get_bd_pins DAC/dds_compiler_0/aclken] [get_bd_pins uP_control/Dout1]
+connect_bd_net [get_bd_pins DAC/dds_compiler_0/aresetn] [get_bd_pins uP_control/Dout]
+connect_bd_net [get_bd_pins referencias/dds_compiler_0/aresetn] [get_bd_pins uP_control/Dout]
+connect_bd_net [get_bd_pins referencias/dds_compiler_0/aclken] [get_bd_pins uP_control/Dout1]
+close [ open C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.srcs/sources_1/new/calc_sum_limit.v w ]
+add_files C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.srcs/sources_1/new/calc_sum_limit.v
 update_compile_order -fileset sources_1
-save_bd_design
+close [ open C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.srcs/sources_1/new/mult_32bits.v w ]
+add_files C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.srcs/sources_1/new/mult_32bits.v
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.srcs/sources_1/new/calc_sum_limit.v] -no_script -reset -force -quiet
+remove_files  C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.srcs/sources_1/new/calc_sum_limit.v
+update_module_reference system_signal_processing_LI_0_0
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+update_module_reference system_signal_processing_LI_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+update_module_reference system_signal_processing_LI_0_0
+regenerate_bd_layout
+regenerate_bd_layout
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+update_module_reference system_signal_processing_LI_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+update_module_reference system_signal_processing_LI_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+update_module_reference system_signal_processing_LI_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+update_module_reference system_signal_processing_LI_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+update_module_reference system_signal_processing_LI_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+update_module_reference system_signal_processing_LI_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 100 -input_pins -routable_nets -name timing_1
+refresh_design
+open_bd_design {C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
+update_module_reference system_signal_processing_LI_0_0
 reset_run synth_1
 launch_runs impl_1 -to_step write_bitstream -jobs 2
 wait_on_run impl_1
 report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
 refresh_design
-report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 100 -input_pins -routable_nets -name timing_1
-report_timing -from [get_pins system_i/lock_in/inst/lock_in/multiplicador/prod_cuadratura/producto0__1/CLK] -to [get_pins {system_i/lock_in/inst/lock_in/multiplicador/prod_cuadratura/producto_reg[61]/D}] -delay_type min_max -max_paths 10 -sort_by group -input_pins -routable_nets -name timing_2
-report_clock_networks -name {network_1}
-report_utilization -name utilization_1

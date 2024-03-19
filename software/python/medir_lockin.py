@@ -18,21 +18,25 @@ rp = redP_handler(ip)
 # Solo la primera vez:
 #rp.set_bitstream_in_fpga("lockin_ref_dds.bit")
 
-frec_ref = 1;
-frec_dac = 1;
-rp.set_N(10)
+frec_ref = 4000000;
+rp.set_N(100)
 rp.set_data_mode(DataMode.ADC)
 rp.set_frec_ref(frec_ref)
+
+
+frec_dac = 4000000;
 rp.set_frec_dac(frec_dac)    
 data=rp.measure_lockin()
 print(data)
 
 """
+
 r = []
 
-frec_dac = range (4500,5000,10)
+frec_dac = range (4500,5500,50)
 
 for f in frec_dac:
+    
     
     rp.set_frec_dac(f)    
     data=rp.measure_lockin()

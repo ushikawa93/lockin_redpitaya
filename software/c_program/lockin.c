@@ -53,8 +53,8 @@ void setN_ma(void *cfg,uint32_t N_ma);
 void setM(void *cfg, uint32_t M);
 void setNoiseBits(void *cfg,uint32_t noise_b);
 void setDataSelection(void *cfg,uint32_t sel);
-void set_frec_dac(void *cfg, double frec);
-void set_frec_ref(void *cfg, double frec);
+double set_frec_dac(void *cfg, double frec);
+double set_frec_ref(void *cfg, double frec);
 
 uint32_t getFinish(void *cfg);
 uint32_t get_fase_low(void *cfg);
@@ -82,7 +82,7 @@ int main(int argc, char **argv)
 	uint32_t N_ma;
 	uint32_t sim_noise_bits = 0;
 	uint32_t sel;
-	double f;
+	double f_dac_real,f_ref_real;
 
 	if(argc==2 && argv[1] == "h")
 	{
@@ -115,13 +115,12 @@ int main(int argc, char **argv)
     cfg = mmap(NULL, 0x4000000, PROT_READ|PROT_WRITE, MAP_SHARED, fd, START_ADDRESS);
 	
 	// Seteo los parametros de la operacion a traves de funciones por prolijidad
-	set_frec_dac(cfg,frec_dac);
-	set_frec_ref(cfg,frec_ref);
+	f_dac_real=set_frec_dac(cfg,frec_dac);
+	f_ref_real=set_frec_ref(cfg,frec_ref);
 	setM(cfg,M);
 	setN_ma(cfg,N_ma);
 	setNoiseBits(cfg,sim_noise_bits);
 	setDataSelection(cfg,sel);
-	f = (float)125000000/M;
 
 
 	ResetFPGA(cfg);
@@ -159,7 +158,7 @@ int main(int argc, char **argv)
 
 	printf("\nResultados: \n R= %f \n phi= %f \n\n",r,phi);   
 
-	escribirArchivo("resultados.dat",f,M,N_ma,r,phi);
+	escribirArchivo("resultados.dat",f_ref_real,M,N_ma,r,phi);
 
 	//leerFIFO(cfg,2*M,FIFO_1_ADDRESS);
 
@@ -210,20 +209,21 @@ void setM(void *cfg, uint32_t M)
 
 }
 
-void set_frec_dac(void *cfg, double frec)
+double set_frec_dac(void *cfg, double frec)
 {
 	// Seteo la cantidad de muestras por ciclo de señal
 	int32_t phase = 2.1474 * frec; 
 	*(uint32_t *)(cfg+ PHASE_DAC_ADDRESS - START_ADDRESS) = phase ;
+	return (double)phase*125000000/(pow(2,28));
 
 }
 
-void set_frec_ref(void *cfg, double frec)
+double set_frec_ref(void *cfg, double frec)
 {
 	// Seteo la cantidad de muestras por ciclo de señal
 	int32_t phase = 2.1474 * frec; 
 	*(uint32_t *)(cfg+ PHASE_REF_ADDRESS - START_ADDRESS) = phase ;
-
+	return (double)phase*125000000/(pow(2,28));
 }
 
 

@@ -62,8 +62,8 @@ multiplicador prod_fase(
 	.enable(enable),
 	
 	// Entrada avalon streaming
-	.data_a(ref_seno),
-	.data_b(data),
+	.data_a(data),
+	.data_b(ref_seno),
 	.data_valid(data_valid),	
 		
 	// Salidas avalon streaming 
@@ -81,8 +81,8 @@ multiplicador prod_cuadratura(
 	.enable(enable),
 	
 	// Entrada avalon streaming
-	.data_a(ref_cos),
-	.data_b(data),
+	.data_a(data),
+	.data_b(ref_cos),
 	.data_valid(data_valid),	
 		
 	// Salidas avalon streaming 

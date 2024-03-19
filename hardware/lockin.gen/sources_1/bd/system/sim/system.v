@@ -1,8 +1,8 @@
 //Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-//Date        : Mon Mar 18 15:28:53 2024
-//Host        : DESKTOP-TN92N90 running 64-bit major release  (build 9200)
+//Date        : Tue Mar 19 00:07:32 2024
+//Host        : DESKTOP-4F847D8 running 64-bit major release  (build 9200)
 //Command     : generate_target system.bd
 //Design      : system
 //Purpose     : IP block netlist
@@ -74,6 +74,8 @@ endmodule
 
 module DAC_imp_F94JA7
    (aclk,
+    aclken,
+    aresetn,
     cfg_data,
     dac_clk_o,
     dac_dat_o,
@@ -81,6 +83,8 @@ module DAC_imp_F94JA7
     dac_sel_o,
     dac_wrt_o);
   input aclk;
+  input aclken;
+  input aresetn;
   input [31:0]cfg_data;
   output dac_clk_o;
   output [13:0]dac_dat_o;
@@ -89,6 +93,8 @@ module DAC_imp_F94JA7
   output dac_wrt_o;
 
   wire [31:0]Net1;
+  wire aclken_1;
+  wire aresetn_1;
   wire [31:0]axis_constant_0_M_AXIS_TDATA;
   wire axis_constant_0_M_AXIS_TVALID;
   wire axis_red_pitaya_adc_0_adc_clk;
@@ -103,6 +109,8 @@ module DAC_imp_F94JA7
   wire dds_compiler_0_m_axis_data_tvalid;
 
   assign Net1 = cfg_data[31:0];
+  assign aclken_1 = aclken;
+  assign aresetn_1 = aresetn;
   assign axis_red_pitaya_adc_0_adc_clk = aclk;
   assign dac_clk_o = axis_red_pitaya_dac_0_dac_clk;
   assign dac_dat_o[13:0] = axis_red_pitaya_dac_0_dac_dat;
@@ -131,6 +139,8 @@ module DAC_imp_F94JA7
         .locked(clk_wiz_0_locked));
   system_dds_compiler_0_0 dds_compiler_0
        (.aclk(axis_red_pitaya_adc_0_adc_clk),
+        .aclken(aclken_1),
+        .aresetn(aresetn_1),
         .m_axis_data_tdata(dds_compiler_0_m_axis_data_tdata),
         .m_axis_data_tvalid(dds_compiler_0_m_axis_data_tvalid),
         .s_axis_phase_tdata(axis_constant_0_M_AXIS_TDATA),
@@ -1376,15 +1386,21 @@ module referencias_imp_L9WXX7
    (Dout,
     Dout1,
     aclk,
+    aclken,
+    aresetn,
     cfg_data,
     m_axis_data_tvalid);
   output [13:0]Dout;
   output [13:0]Dout1;
   input aclk;
+  input aclken;
+  input aresetn;
   input [31:0]cfg_data;
   output m_axis_data_tvalid;
 
   wire ADC_adc_clk;
+  wire aclken_1;
+  wire aresetn_1;
   wire [13:0]axi_str_rxd_tdata_1;
   wire [31:0]axis_constant_0_m_axis_tdata;
   wire axis_constant_0_m_axis_tvalid;
@@ -1396,6 +1412,8 @@ module referencias_imp_L9WXX7
   assign ADC_adc_clk = aclk;
   assign Dout[13:0] = xlslice_1_Dout;
   assign Dout1[13:0] = axi_str_rxd_tdata_1;
+  assign aclken_1 = aclken;
+  assign aresetn_1 = aresetn;
   assign m_axis_data_tvalid = dds_compiler_0_m_axis_data_tvalid;
   assign uP_control_gpio2_io_o2 = cfg_data[31:0];
   system_axis_constant_0_1 axis_constant_0
@@ -1405,6 +1423,8 @@ module referencias_imp_L9WXX7
         .m_axis_tvalid(axis_constant_0_m_axis_tvalid));
   system_dds_compiler_0_1 dds_compiler_0
        (.aclk(ADC_adc_clk),
+        .aclken(aclken_1),
+        .aresetn(aresetn_1),
         .m_axis_data_tdata(dds_compiler_0_m_axis_data_tdata),
         .m_axis_data_tvalid(dds_compiler_0_m_axis_data_tvalid),
         .s_axis_phase_tdata(axis_constant_0_m_axis_tdata),
@@ -2012,6 +2032,8 @@ module system
         .adc_dat_b_i(adc_dat_b_i_1));
   DAC_imp_F94JA7 DAC
        (.aclk(ADC_adc_clk),
+        .aclken(uP_control_Dout1),
+        .aresetn(uP_control_Dout),
         .cfg_data(cfg_data_1),
         .dac_clk_o(axis_red_pitaya_dac_0_dac_clk),
         .dac_dat_o(axis_red_pitaya_dac_0_dac_dat),
@@ -2040,6 +2062,8 @@ module system
        (.Dout(xlslice_1_Dout),
         .Dout1(axi_str_rxd_tdata_1),
         .aclk(ADC_adc_clk),
+        .aclken(uP_control_Dout1),
+        .aresetn(uP_control_Dout),
         .cfg_data(uP_control_gpio2_io_o2),
         .m_axis_data_tvalid(referencias_m_axis_data_tvalid));
   system_mux_0_0 selector_data_in

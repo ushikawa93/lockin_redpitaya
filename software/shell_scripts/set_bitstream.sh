@@ -13,4 +13,4 @@ cp  /root/bitstreams/$name /root/bitstreams/fpga.bit
 cat /root/bitstreams/fpga.bit > /dev/xdevcfg
 EOF
 
-read -p "Presione cualquier tecla para salir..."
+#read -p "Presione cualquier tecla para salir..."

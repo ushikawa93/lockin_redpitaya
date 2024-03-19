@@ -30,6 +30,7 @@
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
 						"TDATA": { "actual": "s_axis_phase_tdata"},
 						"TVALID": { "actual": "s_axis_phase_tvalid"}
 					}
@@ -182,24 +183,24 @@
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "FCLK_CLK0"},
-						"ARADDR": { "actual": "M07_AXI_araddr"},
+						"ARADDR": { "actual": "M07_AXI_araddr[255:224]"},
 						"ARESETN": { "actual": "S00_ARESETN"},
-						"ARREADY": { "actual": "M07_AXI_arready"},
-						"ARVALID": { "actual": "M07_AXI_arvalid"},
-						"AWADDR": { "actual": "M07_AXI_awaddr"},
-						"AWREADY": { "actual": "M07_AXI_awready"},
-						"AWVALID": { "actual": "M07_AXI_awvalid"},
-						"BREADY": { "actual": "M07_AXI_bready"},
-						"BRESP": { "actual": "M07_AXI_bresp"},
-						"BVALID": { "actual": "M07_AXI_bvalid"},
-						"RDATA": { "actual": "M07_AXI_rdata"},
-						"RREADY": { "actual": "M07_AXI_rready"},
-						"RRESP": { "actual": "M07_AXI_rresp"},
-						"RVALID": { "actual": "M07_AXI_rvalid"},
-						"WDATA": { "actual": "M07_AXI_wdata"},
-						"WREADY": { "actual": "M07_AXI_wready"},
-						"WSTRB": { "actual": "M07_AXI_wstrb"},
-						"WVALID": { "actual": "M07_AXI_wvalid"}
+						"ARREADY": { "actual": "M07_AXI_arready[7:7]"},
+						"ARVALID": { "actual": "M07_AXI_arvalid[7:7]"},
+						"AWADDR": { "actual": "M07_AXI_awaddr[255:224]"},
+						"AWREADY": { "actual": "M07_AXI_awready[7:7]"},
+						"AWVALID": { "actual": "M07_AXI_awvalid[7:7]"},
+						"BREADY": { "actual": "M07_AXI_bready[7:7]"},
+						"BRESP": { "actual": "M07_AXI_bresp[15:14]"},
+						"BVALID": { "actual": "M07_AXI_bvalid[7:7]"},
+						"RDATA": { "actual": "M07_AXI_rdata[255:224]"},
+						"RREADY": { "actual": "M07_AXI_rready[7:7]"},
+						"RRESP": { "actual": "M07_AXI_rresp[15:14]"},
+						"RVALID": { "actual": "M07_AXI_rvalid[7:7]"},
+						"WDATA": { "actual": "M07_AXI_wdata[255:224]"},
+						"WREADY": { "actual": "M07_AXI_wready[7:7]"},
+						"WSTRB": { "actual": "M07_AXI_wstrb[31:28]"},
+						"WVALID": { "actual": "M07_AXI_wvalid[7:7]"}
 					}
 				},
 				"/uP/fifo_1/S_AXI": {

@@ -30,11 +30,11 @@ module filtro_ma(
 
 
 wire [31:0] M;	assign M = ptos_x_ciclo;				// Puntos por ciclo de señal
-wire [31:0] N; 	assign N = frames_integracion;		// Frames de integracion // Largo del lockin M*N	
+wire [15:0] N; 	assign N = frames_integracion;		// Frames de integracion // Largo del lockin M*N	
 
 reg [63:0] acumulador;
 
-reg [31:0] index;
+reg [47:0] index;
 reg finish,data_out_valid_reg;
 
 // Registro las entradas... es mas prolijo trabajar con las entradas registradas
@@ -43,8 +43,20 @@ reg signed [63:0] data_in_reg;
     
 reg data_valid_reg; always @ (posedge clock) data_valid_reg <= (!reset_n)? 0: data_valid;
 
-reg [31:0] MxN;
-	always @ (posedge clock) MxN <= M*N;
+wire [47:0] MxN;
+
+mult_32_bits calcular_MxN(
+
+    .clk(clock),
+    .enable(enable),
+    .reset_n(reset_n),
+    
+    .data_in_a(M),
+    .data_in_b(N),
+    
+    .data_out(MxN)
+
+);
 
 
 always @ (posedge clock or negedge reset_n)
