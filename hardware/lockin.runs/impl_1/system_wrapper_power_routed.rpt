@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date             : Tue Mar 19 00:15:32 2024
-| Host             : DESKTOP-4F847D8 running 64-bit major release  (build 9200)
+| Date             : Tue Mar 19 16:04:13 2024
+| Host             : DESKTOP-TN92N90 running 64-bit major release  (build 9200)
 | Command          : report_power -file system_wrapper_power_routed.rpt -pb system_wrapper_power_summary_routed.pb -rpx system_wrapper_power_routed.rpx
 | Design           : system_wrapper
 | Device           : xc7z010clg400-1
@@ -33,7 +33,7 @@ Table of Contents
 | Total On-Chip Power (W)  | 1.656        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.530        |
+| Dynamic (W)              | 1.531        |
 | Device Static (W)        | 0.126        |
 | Effective TJA (C/W)      | 11.5         |
 | Max Ambient (C)          | 65.9         |
@@ -53,16 +53,16 @@ Table of Contents
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
 | Clocks                  |     0.031 |        8 |       --- |             --- |
-| Slice Logic             |     0.002 |    10041 |       --- |             --- |
-|   LUT as Logic          |     0.002 |     3123 |     17600 |           17.74 |
-|   CARRY4                |    <0.001 |      147 |      4400 |            3.34 |
-|   Register              |    <0.001 |     6230 |     35200 |           17.70 |
+| Slice Logic             |     0.002 |     8932 |       --- |             --- |
+|   LUT as Logic          |     0.002 |     2973 |     17600 |           16.89 |
+|   CARRY4                |    <0.001 |      131 |      4400 |            2.98 |
+|   Register              |    <0.001 |     5300 |     35200 |           15.06 |
 |   LUT as Shift Register |    <0.001 |       48 |      6000 |            0.80 |
-|   Others                |     0.000 |      372 |       --- |             --- |
-| Signals                 |     0.004 |     7885 |       --- |             --- |
-| Block RAM               |    <0.001 |        2 |        60 |            3.33 |
+|   Others                |     0.000 |      359 |       --- |             --- |
+| Signals                 |     0.004 |     6834 |       --- |             --- |
+| Block RAM               |     0.002 |        2 |        60 |            3.33 |
 | MMCM                    |     0.107 |        1 |         2 |           50.00 |
-| DSPs                    |     0.000 |        5 |        80 |            6.25 |
+| DSPs                    |     0.000 |        3 |        80 |            3.75 |
 | I/O                     |     0.103 |       73 |       100 |           73.00 |
 | PS7                     |     1.282 |        1 |       --- |             --- |
 | Static Power            |     0.126 |          |           |                 |
@@ -157,23 +157,25 @@ Table of Contents
 +----------------------------------+-----------+
 | Name                             | Power (W) |
 +----------------------------------+-----------+
-| system_wrapper                   |     1.530 |
+| system_wrapper                   |     1.531 |
 |   system_i                       |     1.459 |
 |     DAC                          |     0.110 |
-|       axis_red_pitaya_dac_0      |     0.001 |
+|       axis_red_pitaya_dac_0      |     0.002 |
 |       clk_wiz_0                  |     0.107 |
-|     lock_in                      |     0.004 |
-|       inst                       |     0.004 |
-|     uP                           |     1.293 |
-|       fifo_1                     |     0.002 |
-|       processing_system7_0       |     1.285 |
+|       dds_compiler_0             |     0.001 |
+|     lock_in                      |     0.002 |
+|       inst                       |     0.002 |
+|     referencias                  |     0.001 |
+|     uP                           |     1.295 |
+|       fifo_1                     |     0.003 |
+|       processing_system7_0       |     1.284 |
 |       ps7_0_axi_periph           |     0.007 |
 |     uP_control                   |     0.020 |
-|       M_and_Nma                  |     0.003 |
+|       M_and_Nma                  |     0.004 |
 |       enable_and_reset           |     0.002 |
-|       finished                   |     0.002 |
+|       finished                   |     0.003 |
 |       noise_bits_and_data_select |     0.003 |
-|       phaseDAC_and_phaseREF      |     0.003 |
+|       phaseDAC_and_phaseREF      |     0.004 |
 |       result_cuad                |     0.003 |
 |       result_fase                |     0.003 |
 |     util_ds_buf_2                |     0.030 |

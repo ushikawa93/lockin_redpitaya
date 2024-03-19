@@ -2,20 +2,39 @@
 # Vivado v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Mon Mar 18 16:52:17 2024
-# Process ID: 13408
-# Current directory: C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent13236 C:\Users\mati9\OneDrive\Documentos\00-RedPitaya\lockin_redpitaya\hardware\lockin.xpr
-# Log file: C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/vivado.log
-# Journal file: C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware\vivado.jou
-# Running On: DESKTOP-4F847D8, OS: Windows, CPU Frequency: 2400 MHz, CPU Physical cores: 2, Host memory: 4204 MB
+# Start of session at: Tue Mar 19 12:48:30 2024
+# Process ID: 5444
+# Current directory: C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent11152 C:\Users\mati9\Documents\02-RedPitaya\lockin_red_pitaya\hardware\lockin.xpr
+# Log file: C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/vivado.log
+# Journal file: C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware\vivado.jou
+# Running On: DESKTOP-TN92N90, OS: Windows, CPU Frequency: 3014 MHz, CPU Physical cores: 2, Host memory: 8588 MB
 #-----------------------------------------------------------
 start_gui
-open_project C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.xpr
-update_compile_order -fileset sources_1
-open_bd_design {C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
+open_project C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.xpr
 update_module_reference system_mux_0_0
 update_module_reference system_signal_processing_LI_0_0
+update_compile_order -fileset sources_1
+delete_bd_objs [get_bd_nets uP_control/noise_bits_gpio_io_o]
+delete_bd_objs [get_bd_pins uP_control/gpio_io_o1]
+regenerate_bd_layout
+disconnect_bd_net /uP/rst_ps7_0_125M_peripheral_aresetn [get_bd_pins uP/fifo_1/s_axi_aresetn]
+connect_bd_net [get_bd_pins uP/fifo_1/s_axi_aresetn] [get_bd_pins uP_control/Dout]
+close [ open C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.srcs/sources_1/new/start_signal_generator.v w ]
+add_files C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.srcs/sources_1/new/start_signal_generator.v
+update_compile_order -fileset sources_1
+create_bd_cell -type module -reference start_signal_generator start_signal_generat_0
+move_bd_cells [get_bd_cells referencias] [get_bd_cells start_signal_generat_0]
+connect_bd_net [get_bd_pins referencias/aclk] [get_bd_pins referencias/start_signal_generat_0/clk]
+connect_bd_net [get_bd_pins referencias/aresetn] [get_bd_pins referencias/start_signal_generat_0/reset_n]
+connect_bd_net [get_bd_pins referencias/start_signal_generat_0/data] [get_bd_pins referencias/dds_compiler_0/m_axis_data_tdata]
+update_module_reference system_signal_processing_LI_0_0
+update_module_reference system_start_signal_generat_0_0
+connect_bd_net [get_bd_pins referencias/start_signal_generat_0/data_valid] [get_bd_pins referencias/dds_compiler_0/m_axis_data_tvalid]
+update_compile_order -fileset sources_1
+connect_bd_net [get_bd_pins referencias/start_signal_generat_0/start] [get_bd_pins lock_in/start_signal]
+regenerate_bd_layout
+save_bd_design
 reset_run synth_1
 launch_runs impl_1 -to_step write_bitstream -jobs 2
 wait_on_run impl_1
@@ -23,79 +42,21 @@ update_module_reference system_signal_processing_LI_0_0
 reset_run synth_1
 launch_runs impl_1 -to_step write_bitstream -jobs 2
 wait_on_run impl_1
+reset_run impl_1
+update_module_reference system_signal_processing_LI_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+regenerate_bd_layout
 open_run impl_1
-open_bd_design {C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
-startgroup
-set_property -dict [list \
-  CONFIG.Has_ACLKEN {true} \
-  CONFIG.Has_ARESETn {true} \
-] [get_bd_cells referencias/dds_compiler_0]
-endgroup
-startgroup
-set_property -dict [list \
-  CONFIG.Has_ACLKEN {true} \
-  CONFIG.Has_ARESETn {true} \
-] [get_bd_cells DAC/dds_compiler_0]
-endgroup
-connect_bd_net [get_bd_pins DAC/dds_compiler_0/aclken] [get_bd_pins ADC/adc_csn_o]
+open_bd_design {C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
+update_module_reference system_start_signal_generat_0_0
+update_module_reference system_signal_processing_LI_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+disconnect_bd_net /referencias/dds_compiler_0_m_axis_data_tdata [get_bd_pins referencias/start_signal_generat_0/data]
+connect_bd_net [get_bd_pins referencias/start_signal_generat_0/data] [get_bd_pins referencias/start_signal_generat_0/start]
 undo
-connect_bd_net [get_bd_pins DAC/dds_compiler_0/aclken] [get_bd_pins uP_control/Dout1]
-connect_bd_net [get_bd_pins DAC/dds_compiler_0/aresetn] [get_bd_pins uP_control/Dout]
-connect_bd_net [get_bd_pins referencias/dds_compiler_0/aresetn] [get_bd_pins uP_control/Dout]
-connect_bd_net [get_bd_pins referencias/dds_compiler_0/aclken] [get_bd_pins uP_control/Dout1]
-close [ open C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.srcs/sources_1/new/calc_sum_limit.v w ]
-add_files C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.srcs/sources_1/new/calc_sum_limit.v
-update_compile_order -fileset sources_1
-close [ open C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.srcs/sources_1/new/mult_32bits.v w ]
-add_files C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.srcs/sources_1/new/mult_32bits.v
-update_compile_order -fileset sources_1
-export_ip_user_files -of_objects  [get_files C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.srcs/sources_1/new/calc_sum_limit.v] -no_script -reset -force -quiet
-remove_files  C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.srcs/sources_1/new/calc_sum_limit.v
-update_module_reference system_signal_processing_LI_0_0
-update_compile_order -fileset sources_1
-reset_run synth_1
-launch_runs impl_1 -to_step write_bitstream -jobs 2
-wait_on_run impl_1
-update_module_reference system_signal_processing_LI_0_0
-reset_run synth_1
-launch_runs impl_1 -to_step write_bitstream -jobs 2
-wait_on_run impl_1
-update_module_reference system_signal_processing_LI_0_0
-regenerate_bd_layout
-regenerate_bd_layout
-reset_run synth_1
-launch_runs impl_1 -to_step write_bitstream -jobs 2
-wait_on_run impl_1
-update_module_reference system_signal_processing_LI_0_0
-reset_run synth_1
-launch_runs impl_1 -to_step write_bitstream -jobs 2
-wait_on_run impl_1
-update_module_reference system_signal_processing_LI_0_0
-reset_run synth_1
-launch_runs impl_1 -to_step write_bitstream -jobs 2
-wait_on_run impl_1
-update_module_reference system_signal_processing_LI_0_0
-reset_run synth_1
-launch_runs impl_1 -to_step write_bitstream -jobs 2
-wait_on_run impl_1
-update_module_reference system_signal_processing_LI_0_0
-reset_run synth_1
-launch_runs impl_1 -to_step write_bitstream -jobs 2
-wait_on_run impl_1
-update_module_reference system_signal_processing_LI_0_0
-reset_run synth_1
-launch_runs impl_1 -to_step write_bitstream -jobs 2
-wait_on_run impl_1
-update_module_reference system_signal_processing_LI_0_0
-reset_run synth_1
-launch_runs impl_1 -to_step write_bitstream -jobs 2
-wait_on_run impl_1
-report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 100 -input_pins -routable_nets -name timing_1
-refresh_design
-open_bd_design {C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
-update_module_reference system_signal_processing_LI_0_0
-reset_run synth_1
-launch_runs impl_1 -to_step write_bitstream -jobs 2
-wait_on_run impl_1
-report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
-refresh_design
+connect_bd_net [get_bd_pins referencias/start_signal_generat_0/data] [get_bd_pins referencias/ref_sen/Dout]
+update_module_reference system_start_signal_generat_0_0

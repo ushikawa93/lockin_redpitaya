@@ -14,6 +14,8 @@ module lockin_segmentado(
 	input data_valid,
 	input [31:0] data,	
 	
+	input start_signal,
+	
 	input [31:0] referencia_externa_sen,
 	input [31:0] referencia_externa_cos,
 	input referencia_externa_valid,
@@ -86,6 +88,8 @@ filtro_ma filtro_fase(
 	.data_valid(data_valid_multiplicacion),
 	.data(data_out_seno),	
 	
+	.start_signal(start_signal),
+	
 	// Interfaz avalon streaming de salida
 	.data_out(data_out_fase),
 	.data_out_valid(data_out_fase_valid),		
@@ -111,6 +115,8 @@ filtro_ma filtro_cuadratura(
 	// Interfaz avalon streaming de entrada
 	.data_valid(data_valid_multiplicacion),
 	.data(data_out_coseno),	
+	
+	.start_signal(start_signal),
 	
 	// Interfaz avalon streaming de salida
 	.data_out(data_out_cuad),

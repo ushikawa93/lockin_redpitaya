@@ -7,8 +7,7 @@
       "name": "system",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "None",
-      "tool_version": "2022.2",
-      "validated": "true"
+      "tool_version": "2022.2"
     },
     "design_tree": {
       "util_ds_buf_1": "",
@@ -67,7 +66,8 @@
         "axis_constant_0": "",
         "ref_sen": "",
         "dds_compiler_0": "",
-        "ref_cos": ""
+        "ref_cos": "",
+        "start_signal_generat_0": ""
       },
       "selector_data_in": "",
       "lock_in": ""
@@ -309,30 +309,10 @@
         "right": "0"
       },
       "dac_clk_o": {
-        "direction": "O",
-        "parameters": {
-          "CLK_DOMAIN": {
-            "value": "system_axis_red_pitaya_dac_0_0_dac_clk",
-            "value_src": "default_prop"
-          },
-          "FREQ_HZ": {
-            "value": "100000000",
-            "value_src": "default_prop"
-          },
-          "PHASE": {
-            "value": "0.0",
-            "value_src": "default_prop"
-          }
-        }
+        "direction": "O"
       },
       "dac_rst_o": {
-        "direction": "O",
-        "parameters": {
-          "POLARITY": {
-            "value": "ACTIVE_LOW",
-            "value_src": "default_prop"
-          }
-        }
+        "direction": "O"
       },
       "dac_sel_o": {
         "direction": "O"
@@ -358,40 +338,12 @@
       "daisy_p_o": {
         "direction": "O",
         "left": "1",
-        "right": "0",
-        "parameters": {
-          "CLK_DOMAIN": {
-            "value": "system_util_ds_buf_1_0_IBUF_OUT",
-            "value_src": "ip_prop"
-          },
-          "FREQ_HZ": {
-            "value": "100000000",
-            "value_src": "ip_prop"
-          },
-          "PHASE": {
-            "value": "0.0",
-            "value_src": "ip_prop"
-          }
-        }
+        "right": "0"
       },
       "daisy_n_o": {
         "direction": "O",
         "left": "1",
-        "right": "0",
-        "parameters": {
-          "CLK_DOMAIN": {
-            "value": "system_util_ds_buf_1_0_IBUF_OUT",
-            "value_src": "ip_prop"
-          },
-          "FREQ_HZ": {
-            "value": "100000000",
-            "value_src": "ip_prop"
-          },
-          "PHASE": {
-            "value": "0.0",
-            "value_src": "ip_prop"
-          }
-        }
+        "right": "0"
       },
       "daisy_p_i": {
         "direction": "I",
@@ -764,11 +716,6 @@
             "left": "63",
             "right": "0"
           },
-          "gpio_io_o1": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
           "gpio2_io_o1": {
             "direction": "O",
             "left": "31",
@@ -1097,13 +1044,6 @@
               "gpio2_io_o1"
             ]
           },
-          "noise_bits_gpio_io_o": {
-            "ports": [
-              "noise_bits_and_data_select/gpio_io_o",
-              "gpio_io_o1",
-              "noise_bits_and_data_select/gpio_io_i"
-            ]
-          },
           "phaseDAC_and_phaseREF_gpio2_io_o": {
             "ports": [
               "phaseDAC_and_phaseREF/gpio2_io_o",
@@ -1238,6 +1178,10 @@
             "right": "0"
           },
           "axi_str_rxd_tvalid1": {
+            "direction": "I"
+          },
+          "s_axi_aresetn": {
+            "type": "rst",
             "direction": "I"
           }
         },
@@ -4041,7 +3985,12 @@
               "ps7_0_axi_periph/M05_ARESETN",
               "ps7_0_axi_periph/M06_ARESETN",
               "ps7_0_axi_periph/M07_ARESETN",
-              "ps7_0_axi_periph/M08_ARESETN",
+              "ps7_0_axi_periph/M08_ARESETN"
+            ]
+          },
+          "s_axi_aresetn_1": {
+            "ports": [
+              "s_axi_aresetn",
               "fifo_1/s_axi_aresetn"
             ]
           }
@@ -4556,6 +4505,9 @@
           "aclken": {
             "type": "ce",
             "direction": "I"
+          },
+          "start": {
+            "direction": "O"
           }
         },
         "components": {
@@ -4651,6 +4603,38 @@
                 "value": "13"
               }
             }
+          },
+          "start_signal_generat_0": {
+            "vlnv": "xilinx.com:module_ref:start_signal_generator:1.0",
+            "xci_name": "system_start_signal_generat_0_0",
+            "xci_path": "ip\\system_start_signal_generat_0_0\\system_start_signal_generat_0_0.xci",
+            "inst_hier_path": "referencias/start_signal_generat_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "start_signal_generator",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "clk": {
+                "type": "clk",
+                "direction": "I"
+              },
+              "reset_n": {
+                "type": "rst",
+                "direction": "I"
+              },
+              "data": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "data_valid": {
+                "direction": "I"
+              },
+              "start": {
+                "direction": "O"
+              }
+            }
           }
         },
         "nets": {
@@ -4658,7 +4642,8 @@
             "ports": [
               "aclk",
               "dds_compiler_0/aclk",
-              "axis_constant_0/aclk"
+              "axis_constant_0/aclk",
+              "start_signal_generat_0/clk"
             ]
           },
           "aclken_1": {
@@ -4670,7 +4655,8 @@
           "aresetn_1": {
             "ports": [
               "aresetn",
-              "dds_compiler_0/aresetn"
+              "dds_compiler_0/aresetn",
+              "start_signal_generat_0/reset_n"
             ]
           },
           "axi_str_rxd_tdata_1": {
@@ -4701,7 +4687,14 @@
           "dds_compiler_0_m_axis_data_tvalid": {
             "ports": [
               "dds_compiler_0/m_axis_data_tvalid",
-              "m_axis_data_tvalid"
+              "m_axis_data_tvalid",
+              "start_signal_generat_0/data_valid"
+            ]
+          },
+          "start_signal_generat_0_start": {
+            "ports": [
+              "start_signal_generat_0/start",
+              "start"
             ]
           },
           "uP_control_gpio2_io_o2": {
@@ -4713,7 +4706,8 @@
           "xlslice_1_Dout": {
             "ports": [
               "ref_sen/Dout",
-              "Dout"
+              "Dout",
+              "start_signal_generat_0/data"
             ]
           }
         }
@@ -4809,6 +4803,9 @@
             "right": "0"
           },
           "data_in_valid": {
+            "direction": "I"
+          },
+          "start_signal": {
             "direction": "I"
           },
           "data_out_fase": {
@@ -5050,6 +5047,12 @@
           "lock_in/referencia_externa_valid"
         ]
       },
+      "referencias_start": {
+        "ports": [
+          "referencias/start",
+          "lock_in/start_signal"
+        ]
+      },
       "rst_ps7_0_125M_peripheral_aresetn": {
         "ports": [
           "uP/S00_ARESETN",
@@ -5081,6 +5084,7 @@
           "uP_control/Dout",
           "DAC/aresetn",
           "referencias/aresetn",
+          "uP/s_axi_aresetn",
           "lock_in/reset_n"
         ]
       },

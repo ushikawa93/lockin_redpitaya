@@ -23,6 +23,6 @@ ssh root@$ip <<EOF
 EOF
 
 scp root@$ip:/root/c_programs/resultados.dat ../datos_adquiridos/resultados.dat
+scp root@$ip:/root/c_programs/resultados_adc.dat ../datos_adquiridos/resultados_adc.dat
 
-
-#read -p "Presione cualquier tecla para salir..."
+read -p "Presione cualquier tecla para salir..."

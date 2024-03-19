@@ -12,6 +12,8 @@ module filtro_ma(
 	// Entrada avalon streaming 
 	input data_valid,
 	input [63:0] data,	
+	
+	input start_signal,
 		
 	// Salida avalon streaming
 	output [63:0] data_out,
@@ -88,9 +90,24 @@ begin
 	
 end
 
+// Este cacho de codigo cuenta cuantas señales de start llegan
+reg [31:0] start_count;
+
+always @ (posedge clock or negedge reset_n)
+begin
+
+    if(!reset_n)
+        start_count <= 0;
+    else if(enable)
+        if(start_signal && !finish)
+            start_count <= start_count + 1;
+    
+
+end
+
 // Salidas
 assign data_out_valid = data_out_valid_reg;
-assign data_out = acumulador;
+assign data_out = start_count;
 assign ready_to_calculate = 1;
 assign calculo_finalizado = finish;
 

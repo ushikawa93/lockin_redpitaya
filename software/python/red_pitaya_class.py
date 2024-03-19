@@ -76,8 +76,11 @@ class redP_handler:
         command = ( f"{script_path} {self.N} {self.frec_dac} {self.frec_ref} {self.data_mode} {self.ip}" )
         print(f"Comando enviado a la FPGA: {command}")
         subprocess.run(command, shell=True)
-        return redP_handler.leerArchivoLockin("../datos_adquiridos/resultados.dat")
-        
+        diccionario = redP_handler.leerArchivoLockin("../datos_adquiridos/resultados.dat");
+        diccionario['datos_adc']= redP_handler.leerArchivoADC("../datos_adquiridos/resultados_adc.dat");
+        return diccionario
+    
+
     @staticmethod
     def leerArchivoLockin(nombreArchivo):
         diccionario = {}
@@ -89,4 +92,17 @@ class redP_handler:
                 for key, value in zip(keys, values):
                     diccionario[key] = float(value)
         return diccionario
+
+    @staticmethod
+    def leerArchivoADC(nombre_archivo):
+        datos = []
+        lineas_leidas=0
+        with open(nombre_archivo, 'r') as archivo:
+            for linea in archivo:
+                lineas_leidas +=1
+                if(lineas_leidas > 2):
+                    valores = linea.strip().split(', ')
+                    for valor in valores:
+                        datos.append(int(valor))
+        return datos
 

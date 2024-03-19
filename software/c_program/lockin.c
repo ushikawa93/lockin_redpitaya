@@ -62,10 +62,10 @@ uint32_t get_fase_high(void *cfg);
 uint32_t get_cuad_low(void *cfg);
 uint32_t get_cuad_high(void *cfg);
 
-void leerFIFO(void *cfg,int N_reads,int fifo_address);
-void leerFIFO64(void *cfg,int N_reads,int fifo_address_high,int fifo_address_low);
+int32_t* leerFIFO(void *cfg,int fifo_address);
 
-void escribirArchivo(const char* nombreArchivo, double f, double M, double N, double r, double phi);
+void escribirArchivo_li(const char* nombreArchivo, double f, double M, double N, double r, double phi);
+void escribirArchivo_adc(const char* nombreArchivo, int32_t* valores);
 
 int main(int argc, char **argv)
 {
@@ -158,9 +158,10 @@ int main(int argc, char **argv)
 
 	printf("\nResultados: \n R= %f \n phi= %f \n\n",r,phi);   
 
-	escribirArchivo("resultados.dat",f_ref_real,M,N_ma,r,phi);
+	escribirArchivo_li("resultados.dat",f_ref_real,M,N_ma,r,phi);
 
-	//leerFIFO(cfg,2*M,FIFO_1_ADDRESS);
+	int32_t* datos =  leerFIFO(cfg,FIFO_1_ADDRESS);
+	escribirArchivo_adc("resultados_adc.dat",datos);
 
 	ClearEnable(cfg);
 	ResetFPGA(cfg);
@@ -266,41 +267,22 @@ uint32_t get_cuad_high(void *cfg)
 
 
 // Funciones para leer los FIFO.. esta los toma como FIFOS independientes
-void leerFIFO(void *cfg,int N_reads,int fifo_address)
+int32_t* leerFIFO(void *cfg,int fifo_address)
 {
 	int i = 0;
-	printf("Lecturas del FIFO: \n");
-	for (i=0;i<514;i++){		
-		uint32_t read = *((uint32_t *)(cfg+ fifo_address - START_ADDRESS + 0x20) );
-		if(i<N_reads)
-		{
-			printf("%u, ",read);
-		}
+	int32_t * data ;
+	data = (int32_t *)malloc(514 * sizeof(int32_t));
+	for (i=0;i<514;i++)
+	{	
+		int32_t read = *((int32_t *)(cfg+ fifo_address - START_ADDRESS + 0x20) );
+		*(data+i) = read;
+		
 	}
-	printf("\n\n");
+	return data;
 }
 
-// Funcion para leer dos FIFOS de 32 bits como si fueran un unico FIFO de 64 bits
-void leerFIFO64(void *cfg,int N_reads,int fifo_address_high,int fifo_address_low)
-{
-	int i = 0;
-	printf("Lecturas del FIFO: \n");
-	for (i=0;i<514;i++){		
 
-		int64_t resultado_fase;
-		uint32_t res_up = *((uint32_t *)(cfg+ fifo_address_high - START_ADDRESS + 0x20) );
-		uint32_t res_low = *((uint32_t *)(cfg+ fifo_address_low - START_ADDRESS + 0x20) );
-		resultado_fase = ((uint64_t)res_up << 32) | (uint64_t)res_low ;
-
-		if(i<N_reads)
-		{
-			printf("%lld, ",resultado_fase);
-		}
-	}
-	printf("\n\n");
-}
-
-void escribirArchivo(const char* nombreArchivo, double f, double M, double N, double r, double phi) {
+void escribirArchivo_li(const char* nombreArchivo, double f, double M, double N, double r, double phi) {
     FILE *archivo;
     archivo = fopen(nombreArchivo, "w");
     if (archivo == NULL) {
@@ -314,4 +296,26 @@ void escribirArchivo(const char* nombreArchivo, double f, double M, double N, do
     fclose(archivo);
 }
 
+void escribirArchivo_adc(const char* nombreArchivo, int32_t* valores){
+	FILE *archivo;
+    archivo = fopen(nombreArchivo, "w");
+    if (archivo == NULL) {
+        printf("Error al abrir el archivo.");
+        return;
+    }
+
+	fprintf(archivo, "Valores del ADC: \n\n");
+
+	for(int i = 0; i<512;i++)
+	{
+		if(i!=511){
+			fprintf(archivo, "%d, ", *(valores+i));
+		}else{
+			fprintf(archivo, "%d", *(valores+i));
+		}
+		
+
+	}
+
+}
 

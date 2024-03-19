@@ -63,6 +63,7 @@ module system_signal_processing_LI_0_0 (
   referencia_externa_valid,
   data_in,
   data_in_valid,
+  start_signal,
   data_out_fase,
   data_out_fase_valid,
   data_out_cuad,
@@ -85,6 +86,7 @@ input wire [13 : 0] referencia_externa_cos;
 input wire referencia_externa_valid;
 input wire [31 : 0] data_in;
 input wire data_in_valid;
+input wire start_signal;
 output wire [63 : 0] data_out_fase;
 output wire data_out_fase_valid;
 output wire [63 : 0] data_out_cuad;
@@ -103,6 +105,7 @@ input wire [31 : 0] parameter_in_1;
     .referencia_externa_valid(referencia_externa_valid),
     .data_in(data_in),
     .data_in_valid(data_in_valid),
+    .start_signal(start_signal),
     .data_out_fase(data_out_fase),
     .data_out_fase_valid(data_out_fase_valid),
     .data_out_cuad(data_out_cuad),

@@ -11,6 +11,8 @@ module signal_processing_LI(
 	input [31:0] data_in,
 	input 		 data_in_valid,
 	
+	input start_signal,
+	
 	output [63:0] data_out_fase,
 	output        data_out_fase_valid,
 	
@@ -90,6 +92,8 @@ lockin_segmentado lock_in(
 	// Entrada avalon streaming
 	.data_valid(data_in_lia_valid),
 	.data(data_in_lia),	
+	
+	.start_signal(start_signal),
 	
 	.referencia_externa_sen(ref_sen),
 	.referencia_externa_cos(ref_cos),
