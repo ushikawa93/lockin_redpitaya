@@ -61,7 +61,7 @@ class redP_handler:
         
     
     def set_N(self, N):
-        if N > 0 and N <= 4096: 
+        if N > 0: 
             self.N = N
             return True
         return False

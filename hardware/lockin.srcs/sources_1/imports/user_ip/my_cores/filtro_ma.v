@@ -32,11 +32,10 @@ module filtro_ma(
 
 
 wire [31:0] M;	assign M = ptos_x_ciclo;				// Puntos por ciclo de se√±al
-wire [15:0] N; 	assign N = frames_integracion;		// Frames de integracion // Largo del lockin M*N	
+wire [31:0] N; 	assign N = frames_integracion;		// Frames de integracion // Largo del lockin M*N	
 
 reg [63:0] acumulador;
 
-reg [47:0] index;
 reg finish,data_out_valid_reg;
 
 // Registro las entradas... es mas prolijo trabajar con las entradas registradas
@@ -45,6 +44,7 @@ reg signed [63:0] data_in_reg;
     
 reg data_valid_reg; always @ (posedge clock) data_valid_reg <= (!reset_n)? 0: data_valid;
 
+/*
 wire [47:0] MxN;
 
 mult_32_bits calcular_MxN(
@@ -59,27 +59,23 @@ mult_32_bits calcular_MxN(
     .data_out(MxN)
 
 );
-
+*/
 
 always @ (posedge clock or negedge reset_n)
 begin
 
 	if(!reset_n)
 	begin		
-		index <= 0;		
-		finish <= 0;
 		data_out_valid_reg <= 0;
 		acumulador <= 0;
-	end	
+	end
 	
 	else if (enable)
 	begin
 		
 		if(data_valid_reg && !finish)
-		begin			
-			index <= index + 1;			
+		begin
 			acumulador <= acumulador + data_in_reg;
-			finish <= (index == MxN-1)? 1 : 0;
 			data_out_valid_reg <= 1;
 		end
 		else if(!data_valid_reg && !finish)
@@ -91,23 +87,30 @@ begin
 end
 
 // Este cacho de codigo cuenta cuantas seÒales de start llegan
+// Cuando me lleguen N seÒales de start pongo en alto la seÒal de finish
+// y ahi la cosa deja de calcular...
 reg [31:0] start_count;
 
 always @ (posedge clock or negedge reset_n)
 begin
 
     if(!reset_n)
+    begin
         start_count <= 0;
+        finish <= 0;
+    end
     else if(enable)
+    begin  
+        finish <= (start_count == N+1)? 1:0;
+        
         if(start_signal && !finish)
-            start_count <= start_count + 1;
-    
-
+            start_count <= start_count + 1;            
+    end
 end
 
 // Salidas
 assign data_out_valid = data_out_valid_reg;
-assign data_out = start_count;
+assign data_out = acumulador;
 assign ready_to_calculate = 1;
 assign calculo_finalizado = finish;
 

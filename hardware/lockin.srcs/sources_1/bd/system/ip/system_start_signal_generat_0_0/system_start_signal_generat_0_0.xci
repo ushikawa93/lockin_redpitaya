@@ -48,7 +48,7 @@
       "ports": {
         "clk": [ { "direction": "in" } ],
         "reset_n": [ { "direction": "in" } ],
-        "data": [ { "direction": "in", "size_left": "15", "size_right": "0" } ],
+        "data": [ { "direction": "in", "size_left": "13", "size_right": "0" } ],
         "data_valid": [ { "direction": "in" } ],
         "approxM": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
         "start": [ { "direction": "out" } ]

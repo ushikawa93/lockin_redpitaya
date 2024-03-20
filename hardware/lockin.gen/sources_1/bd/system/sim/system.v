@@ -1,8 +1,8 @@
 //Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-//Date        : Tue Mar 19 21:45:52 2024
-//Host        : DESKTOP-4F847D8 running 64-bit major release  (build 9200)
+//Date        : Wed Mar 20 18:38:49 2024
+//Host        : DESKTOP-TN92N90 running 64-bit major release  (build 9200)
 //Command     : generate_target system.bd
 //Design      : system
 //Purpose     : IP block netlist
@@ -150,15 +150,19 @@ endmodule
 module gpios_and_leds_imp_198WUFD
    (exp_n_tri_io,
     exp_p_tri_io,
+    input_0,
     led_o);
   inout [7:0]exp_n_tri_io;
   inout [7:0]exp_p_tri_io;
+  input input_0;
   output [7:0]led_o;
 
   wire [7:0]Net;
   wire [7:0]Net2;
   wire [7:0]drive_leds_0_signal_out;
+  wire input_0_1;
 
+  assign input_0_1 = input_0;
   assign led_o[7:0] = drive_leds_0_signal_out;
   system_drive_gpios_0_0 drive_gpios_0
        (.input_0(1'b0),
@@ -167,11 +171,13 @@ module gpios_and_leds_imp_198WUFD
         .input_3(1'b0),
         .signal_export(exp_n_tri_io[7:0]));
   system_drive_gpios_0_1 drive_gpios_1
-       (.input_2(1'b0),
+       (.input_0(input_0_1),
+        .input_2(1'b0),
         .input_3(1'b0),
         .signal_export(exp_p_tri_io[7:0]));
   system_drive_leds_0_0 drive_leds_0
-       (.signal_2(1'b0),
+       (.signal_0(input_0_1),
+        .signal_2(1'b0),
         .signal_3(1'b0),
         .signal_4(1'b0),
         .signal_5(1'b0),
@@ -1392,8 +1398,8 @@ module referencias_imp_L9WXX7
     cfg_data,
     m_axis_data_tvalid,
     start);
-  output [15:0]Dout;
-  output [15:0]Dout1;
+  output [13:0]Dout;
+  output [13:0]Dout1;
   input aclk;
   input aclken;
   input [31:0]approxM;
@@ -1410,14 +1416,14 @@ module referencias_imp_L9WXX7
   wire axis_constant_0_m_axis_tvalid;
   wire [31:0]dds_compiler_0_m_axis_data_tdata;
   wire dds_compiler_0_m_axis_data_tvalid;
-  wire [15:0]ref_cos_Dout;
+  wire [13:0]ref_cos_Dout;
   wire start_signal_generat_0_start;
   wire [31:0]uP_control_gpio2_io_o2;
-  wire [15:0]xlslice_1_Dout;
+  wire [13:0]xlslice_1_Dout;
 
   assign ADC_adc_clk = aclk;
-  assign Dout[15:0] = xlslice_1_Dout;
-  assign Dout1[15:0] = ref_cos_Dout;
+  assign Dout[13:0] = ref_cos_Dout;
+  assign Dout1[13:0] = xlslice_1_Dout;
   assign aclken_1 = aclken;
   assign approxM_1 = approxM[31:0];
   assign aresetn_1 = aresetn;
@@ -1953,8 +1959,8 @@ module system
   wire [0:0]ps7_0_axi_periph_M03_AXI_WREADY;
   wire [3:0]ps7_0_axi_periph_M03_AXI_WSTRB;
   wire [0:0]ps7_0_axi_periph_M03_AXI_WVALID;
-  wire [15:0]referencias_Dout;
-  wire [15:0]referencias_Dout1;
+  wire [13:0]referencias_Dout;
+  wire [13:0]referencias_Dout1;
   wire referencias_m_axis_data_tvalid;
   wire referencias_start;
   wire [0:0]rst_ps7_0_125M_peripheral_aresetn;
@@ -2059,6 +2065,7 @@ module system
   gpios_and_leds_imp_198WUFD gpios_and_leds
        (.exp_n_tri_io(exp_n_tri_io[7:0]),
         .exp_p_tri_io(exp_p_tri_io[7:0]),
+        .input_0(referencias_start),
         .led_o(drive_leds_0_signal_out));
   system_signal_processing_LI_0_0 lock_in
        (.clk(ADC_adc_clk),
@@ -2070,8 +2077,8 @@ module system
         .parameter_in_0(uP_control_gpio_io_o),
         .parameter_in_1(uP_control_gpio2_io_o),
         .processing_finished(lock_in_processing_finished),
-        .referencia_externa_cos(referencias_Dout1),
-        .referencia_externa_seno(referencias_Dout),
+        .referencia_externa_cos(referencias_Dout),
+        .referencia_externa_seno(referencias_Dout1),
         .referencia_externa_valid(referencias_m_axis_data_tvalid),
         .reset_n(uP_control_Dout),
         .start_signal(referencias_start));
@@ -2086,7 +2093,7 @@ module system
         .m_axis_data_tvalid(referencias_m_axis_data_tvalid),
         .start(referencias_start));
   system_mux_0_0 selector_data_in
-       (.data_in_0(referencias_Dout),
+       (.data_in_0(referencias_Dout1),
         .data_in_0_valid(referencias_m_axis_data_tvalid),
         .data_in_1(ADC_M_AXIS_PORT1_tdata[13:0]),
         .data_in_1_valid(ADC_M_AXIS_PORT1_tvalid),
@@ -2236,7 +2243,7 @@ module system
         .M07_AXI_wstrb(S_AXI5_1_WSTRB),
         .M07_AXI_wvalid(S_AXI5_1_WVALID),
         .S00_ARESETN(rst_ps7_0_125M_peripheral_aresetn),
-        .axi_str_rxd_tdata1(selector_data_in_data_out),
+        .axi_str_rxd_tdata(selector_data_in_data_out),
         .axi_str_rxd_tvalid1(selector_data_in_data_out_valid),
         .s_axi_aresetn(uP_control_Dout));
   uP_control_imp_12V0CNG uP_control
@@ -4700,7 +4707,7 @@ module uP_imp_1ANG6V
     M07_AXI_wstrb,
     M07_AXI_wvalid,
     S00_ARESETN,
-    axi_str_rxd_tdata1,
+    axi_str_rxd_tdata,
     axi_str_rxd_tvalid1,
     s_axi_aresetn);
   inout [14:0]DDR_addr;
@@ -4845,7 +4852,7 @@ module uP_imp_1ANG6V
   output [3:0]M07_AXI_wstrb;
   output [0:0]M07_AXI_wvalid;
   output [0:0]S00_ARESETN;
-  input [31:0]axi_str_rxd_tdata1;
+  input [31:0]axi_str_rxd_tdata;
   input axi_str_rxd_tvalid1;
   input s_axi_aresetn;
 
@@ -4866,7 +4873,7 @@ module uP_imp_1ANG6V
   wire [0:0]Conn1_WREADY;
   wire [3:0]Conn1_WSTRB;
   wire [0:0]Conn1_WVALID;
-  wire [31:0]axi_str_rxd_tdata1_1;
+  wire [31:0]axi_str_rxd_tdata_1;
   wire axi_str_rxd_tvalid1_1;
   wire [14:0]processing_system7_0_DDR_ADDR;
   wire [2:0]processing_system7_0_DDR_BA;
@@ -5124,7 +5131,7 @@ module uP_imp_1ANG6V
   assign M07_AXI_wstrb[3:0] = ps7_0_axi_periph_M07_AXI_WSTRB;
   assign M07_AXI_wvalid[0] = ps7_0_axi_periph_M07_AXI_WVALID;
   assign S00_ARESETN[0] = rst_ps7_0_125M_peripheral_aresetn;
-  assign axi_str_rxd_tdata1_1 = axi_str_rxd_tdata1[31:0];
+  assign axi_str_rxd_tdata_1 = axi_str_rxd_tdata[31:0];
   assign axi_str_rxd_tvalid1_1 = axi_str_rxd_tvalid1;
   assign ps7_0_axi_periph_M01_AXI_ARREADY = M01_AXI_arready[0];
   assign ps7_0_axi_periph_M01_AXI_AWREADY = M01_AXI_awready[0];
@@ -5176,7 +5183,7 @@ module uP_imp_1ANG6V
   assign ps7_0_axi_periph_M07_AXI_WREADY = M07_AXI_wready[0];
   assign s_axi_aresetn_1 = s_axi_aresetn;
   system_axi_fifo_mm_s_0_0 fifo_1
-       (.axi_str_rxd_tdata(axi_str_rxd_tdata1_1),
+       (.axi_str_rxd_tdata(axi_str_rxd_tdata_1),
         .axi_str_rxd_tlast(1'b0),
         .axi_str_rxd_tvalid(axi_str_rxd_tvalid1_1),
         .s_axi_aclk(processing_system7_0_FCLK_CLK0),

@@ -12,25 +12,25 @@ import matplotlib.pyplot as plt
 plot_adc = True
 set_bitstream = True
 
-ip = "169.254.156.111"
+ip = "169.254.172.188"
 #ip = "192.168.1.104"
 
 rp = redP_handler(ip)
 
 # Solo la primera vez:
 if(set_bitstream):
-    rp.set_bitstream_in_fpga("experimental_7.bit")
+    rp.set_bitstream_in_fpga("lockin_dds_trigger.bit")
 
 
 rp.set_data_mode(DataMode.SIMULACION)
 
-frec_ref = 1000000;
+frec_ref = 100;
 rp.set_frec_ref(frec_ref)
 
-frec_dac = 1000000;
+frec_dac = 100000;
 rp.set_frec_dac(frec_dac)
 
-N = 60
+N = 1;
 rp.set_N(N)    
 data=rp.measure_lockin()
 

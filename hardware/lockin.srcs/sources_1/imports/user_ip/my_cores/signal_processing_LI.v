@@ -4,8 +4,8 @@ module signal_processing_LI(
 	input reset_n,
 	input enable_gral,	
 	
-	input [15:0] referencia_externa_seno,
-	input [15:0] referencia_externa_cos,
+	input [13:0] referencia_externa_seno,
+	input [13:0] referencia_externa_cos,
 	input referencia_externa_valid,
 	
 	input [31:0] data_in,

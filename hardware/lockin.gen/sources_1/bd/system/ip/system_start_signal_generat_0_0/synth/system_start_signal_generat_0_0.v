@@ -70,7 +70,7 @@ input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset_n, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset_n RST" *)
 input wire reset_n;
-input wire [15 : 0] data;
+input wire [13 : 0] data;
 input wire data_valid;
 input wire [31 : 0] approxM;
 output wire start;

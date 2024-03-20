@@ -22,7 +22,7 @@
 
 module mux(
 
-    input [15:0] data_in_0,
+    input [13:0] data_in_0,
     input data_in_0_valid,
     input [13:0] data_in_1,
     input data_in_1_valid,

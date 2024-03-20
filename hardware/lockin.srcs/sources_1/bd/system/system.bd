@@ -70,8 +70,8 @@
         "ref_cos": "",
         "start_signal_generat_0": ""
       },
-      "lock_in": "",
-      "selector_data_in": ""
+      "selector_data_in": "",
+      "lock_in": ""
     },
     "interface_ports": {
       "Vp_Vn": {
@@ -1221,17 +1221,17 @@
             "left": "0",
             "right": "0"
           },
-          "axi_str_rxd_tdata1": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
           "axi_str_rxd_tvalid1": {
             "direction": "I"
           },
           "s_axi_aresetn": {
             "type": "rst",
             "direction": "I"
+          },
+          "axi_str_rxd_tdata": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
           }
         },
         "components": {
@@ -3981,9 +3981,9 @@
           }
         },
         "nets": {
-          "axi_str_rxd_tdata1_1": {
+          "axi_str_rxd_tdata_1": {
             "ports": [
-              "axi_str_rxd_tdata1",
+              "axi_str_rxd_tdata",
               "fifo_1/axi_str_rxd_tdata"
             ]
           },
@@ -4360,6 +4360,9 @@
             "direction": "O",
             "left": "7",
             "right": "0"
+          },
+          "input_0": {
+            "direction": "I"
           }
         },
         "components": {
@@ -4509,8 +4512,9 @@
               "led_o"
             ]
           },
-          "level_detector_0_level_detected_0": {
+          "input_0_1": {
             "ports": [
+              "input_0",
               "drive_gpios_1/input_0",
               "drive_leds_0/signal_0"
             ]
@@ -4548,19 +4552,19 @@
           "start": {
             "direction": "O"
           },
+          "approxM": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
           "Dout": {
             "direction": "O",
-            "left": "15",
+            "left": "13",
             "right": "0"
           },
           "Dout1": {
             "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
-          "approxM": {
-            "direction": "I",
-            "left": "31",
+            "left": "13",
             "right": "0"
           }
         },
@@ -4578,7 +4582,7 @@
             "inst_hier_path": "referencias/ref_sen",
             "parameters": {
               "DIN_FROM": {
-                "value": "31"
+                "value": "29"
               },
               "DIN_TO": {
                 "value": "16"
@@ -4628,7 +4632,7 @@
                 "value": "0"
               },
               "Output_Width": {
-                "value": "16"
+                "value": "14"
               },
               "PINC1": {
                 "value": "0"
@@ -4643,7 +4647,7 @@
                 "value": "Not_Required"
               },
               "Spurious_Free_Dynamic_Range": {
-                "value": "96"
+                "value": "84"
               }
             }
           },
@@ -4654,7 +4658,7 @@
             "inst_hier_path": "referencias/ref_cos",
             "parameters": {
               "DIN_FROM": {
-                "value": "15"
+                "value": "13"
               }
             }
           },
@@ -4689,7 +4693,7 @@
               },
               "data": {
                 "direction": "I",
-                "left": "15",
+                "left": "13",
                 "right": "0"
               },
               "data_valid": {
@@ -4763,7 +4767,7 @@
           "ref_cos_Dout": {
             "ports": [
               "ref_cos/Dout",
-              "Dout1"
+              "Dout"
             ]
           },
           "start_signal_generat_0_start": {
@@ -4781,9 +4785,49 @@
           "xlslice_1_Dout": {
             "ports": [
               "ref_sen/Dout",
-              "Dout",
+              "Dout1",
               "start_signal_generat_0/data"
             ]
+          }
+        }
+      },
+      "selector_data_in": {
+        "vlnv": "xilinx.com:module_ref:mux:1.0",
+        "xci_name": "system_mux_0_0",
+        "xci_path": "ip\\system_mux_0_0\\system_mux_0_0.xci",
+        "inst_hier_path": "selector_data_in",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "mux",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "data_in_0": {
+            "direction": "I",
+            "left": "13",
+            "right": "0"
+          },
+          "data_in_0_valid": {
+            "direction": "I"
+          },
+          "data_in_1": {
+            "direction": "I",
+            "left": "13",
+            "right": "0"
+          },
+          "data_in_1_valid": {
+            "direction": "I"
+          },
+          "sel": {
+            "direction": "I"
+          },
+          "data_out": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "data_out_valid": {
+            "direction": "O"
           }
         }
       },
@@ -4821,12 +4865,12 @@
           },
           "referencia_externa_seno": {
             "direction": "I",
-            "left": "15",
+            "left": "13",
             "right": "0"
           },
           "referencia_externa_cos": {
             "direction": "I",
-            "left": "15",
+            "left": "13",
             "right": "0"
           },
           "referencia_externa_valid": {
@@ -4874,46 +4918,6 @@
             "direction": "I",
             "left": "31",
             "right": "0"
-          }
-        }
-      },
-      "selector_data_in": {
-        "vlnv": "xilinx.com:module_ref:mux:1.0",
-        "xci_name": "system_mux_0_0",
-        "xci_path": "ip\\system_mux_0_0\\system_mux_0_0.xci",
-        "inst_hier_path": "selector_data_in",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "mux",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "data_in_0": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "data_in_0_valid": {
-            "direction": "I"
-          },
-          "data_in_1": {
-            "direction": "I",
-            "left": "13",
-            "right": "0"
-          },
-          "data_in_1_valid": {
-            "direction": "I"
-          },
-          "sel": {
-            "direction": "I"
-          },
-          "data_out": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "data_out_valid": {
-            "direction": "O"
           }
         }
       }
@@ -5112,26 +5116,27 @@
       "referencias_Dout": {
         "ports": [
           "referencias/Dout",
-          "selector_data_in/data_in_0",
-          "lock_in/referencia_externa_seno"
+          "lock_in/referencia_externa_cos"
         ]
       },
       "referencias_Dout1": {
         "ports": [
           "referencias/Dout1",
-          "lock_in/referencia_externa_cos"
+          "selector_data_in/data_in_0",
+          "lock_in/referencia_externa_seno"
         ]
       },
       "referencias_m_axis_data_tvalid": {
         "ports": [
           "referencias/m_axis_data_tvalid",
-          "lock_in/referencia_externa_valid",
-          "selector_data_in/data_in_0_valid"
+          "selector_data_in/data_in_0_valid",
+          "lock_in/referencia_externa_valid"
         ]
       },
       "referencias_start": {
         "ports": [
           "referencias/start",
+          "gpios_and_leds/input_0",
           "lock_in/start_signal"
         ]
       },
@@ -5144,7 +5149,7 @@
       "selector_data_in_data_out": {
         "ports": [
           "selector_data_in/data_out",
-          "uP/axi_str_rxd_tdata1",
+          "uP/axi_str_rxd_tdata",
           "lock_in/data_in"
         ]
       },
@@ -5199,8 +5204,8 @@
       "uP_control_gpio_io_o": {
         "ports": [
           "uP_control/gpio_io_o",
-          "lock_in/parameter_in_0",
-          "referencias/approxM"
+          "referencias/approxM",
+          "lock_in/parameter_in_0"
         ]
       },
       "util_ds_buf_1_IBUF_OUT": {

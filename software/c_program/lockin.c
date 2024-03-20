@@ -148,7 +148,7 @@ int main(int argc, char **argv)
 	printf("\nCUAD LOW = %u ",res_low);	
 	printf("\n	-> Resultado cuad: %lld",resultado_cuadratura);
 
-	double amplitud_ref = 4096;
+	double amplitud_ref = 32768;
 
  	double x = (double)resultado_fase / (M*N_ma);
     double y = (double)resultado_cuadratura / (M*N_ma);
