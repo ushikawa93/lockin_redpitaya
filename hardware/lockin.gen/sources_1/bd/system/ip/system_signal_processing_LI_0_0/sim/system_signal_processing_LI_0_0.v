@@ -81,8 +81,8 @@ input wire clk;
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset_n RST" *)
 input wire reset_n;
 input wire enable_gral;
-input wire [13 : 0] referencia_externa_seno;
-input wire [13 : 0] referencia_externa_cos;
+input wire [15 : 0] referencia_externa_seno;
+input wire [15 : 0] referencia_externa_cos;
 input wire referencia_externa_valid;
 input wire [31 : 0] data_in;
 input wire data_in_valid;

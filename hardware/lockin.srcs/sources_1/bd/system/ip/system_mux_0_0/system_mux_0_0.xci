@@ -38,7 +38,7 @@
     },
     "boundary": {
       "ports": {
-        "data_in_0": [ { "direction": "in", "size_left": "13", "size_right": "0" } ],
+        "data_in_0": [ { "direction": "in", "size_left": "15", "size_right": "0" } ],
         "data_in_0_valid": [ { "direction": "in" } ],
         "data_in_1": [ { "direction": "in", "size_left": "13", "size_right": "0" } ],
         "data_in_1_valid": [ { "direction": "in" } ],

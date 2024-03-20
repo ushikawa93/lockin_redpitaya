@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.runs/synth_1'
+HD_PWD='C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

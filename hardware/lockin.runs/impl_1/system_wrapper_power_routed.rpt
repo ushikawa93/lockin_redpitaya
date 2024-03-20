@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date             : Tue Mar 19 16:04:13 2024
-| Host             : DESKTOP-TN92N90 running 64-bit major release  (build 9200)
+| Date             : Tue Mar 19 21:53:52 2024
+| Host             : DESKTOP-4F847D8 running 64-bit major release  (build 9200)
 | Command          : report_power -file system_wrapper_power_routed.rpt -pb system_wrapper_power_summary_routed.pb -rpx system_wrapper_power_routed.rpx
 | Design           : system_wrapper
 | Device           : xc7z010clg400-1
@@ -33,7 +33,7 @@ Table of Contents
 | Total On-Chip Power (W)  | 1.656        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.531        |
+| Dynamic (W)              | 1.530        |
 | Device Static (W)        | 0.126        |
 | Effective TJA (C/W)      | 11.5         |
 | Max Ambient (C)          | 65.9         |
@@ -52,15 +52,15 @@ Table of Contents
 +-------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
-| Clocks                  |     0.031 |        8 |       --- |             --- |
-| Slice Logic             |     0.002 |     8932 |       --- |             --- |
-|   LUT as Logic          |     0.002 |     2973 |     17600 |           16.89 |
-|   CARRY4                |    <0.001 |      131 |      4400 |            2.98 |
-|   Register              |    <0.001 |     5300 |     35200 |           15.06 |
+| Clocks                  |     0.030 |        8 |       --- |             --- |
+| Slice Logic             |     0.002 |     9046 |       --- |             --- |
+|   LUT as Logic          |     0.002 |     3026 |     17600 |           17.19 |
+|   CARRY4                |    <0.001 |      142 |      4400 |            3.23 |
+|   Register              |    <0.001 |     5348 |     35200 |           15.19 |
 |   LUT as Shift Register |    <0.001 |       48 |      6000 |            0.80 |
-|   Others                |     0.000 |      359 |       --- |             --- |
-| Signals                 |     0.004 |     6834 |       --- |             --- |
-| Block RAM               |     0.002 |        2 |        60 |            3.33 |
+|   Others                |     0.000 |      357 |       --- |             --- |
+| Signals                 |     0.004 |     6930 |       --- |             --- |
+| Block RAM               |     0.002 |      3.5 |        60 |            5.83 |
 | MMCM                    |     0.107 |        1 |         2 |           50.00 |
 | DSPs                    |     0.000 |        3 |        80 |            3.75 |
 | I/O                     |     0.103 |       73 |       100 |           73.00 |
@@ -157,14 +157,14 @@ Table of Contents
 +----------------------------------+-----------+
 | Name                             | Power (W) |
 +----------------------------------+-----------+
-| system_wrapper                   |     1.531 |
+| system_wrapper                   |     1.530 |
 |   system_i                       |     1.459 |
 |     DAC                          |     0.110 |
 |       axis_red_pitaya_dac_0      |     0.002 |
 |       clk_wiz_0                  |     0.107 |
 |       dds_compiler_0             |     0.001 |
-|     lock_in                      |     0.002 |
-|       inst                       |     0.002 |
+|     lock_in                      |     0.001 |
+|       inst                       |     0.001 |
 |     referencias                  |     0.001 |
 |     uP                           |     1.295 |
 |       fifo_1                     |     0.003 |

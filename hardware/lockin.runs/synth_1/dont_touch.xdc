@@ -107,101 +107,101 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_dds_
 # IP: bd/system/ip/system_xlslice_0_6/system_xlslice_0_6.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_xlslice_0_6 || ORIG_REF_NAME==system_xlslice_0_6} -quiet] -quiet
 
+# IP: bd/system/ip/system_start_signal_generat_0_0/system_start_signal_generat_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_start_signal_generat_0_0 || ORIG_REF_NAME==system_start_signal_generat_0_0} -quiet] -quiet
+
 # IP: bd/system/ip/system_mux_0_0/system_mux_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_mux_0_0 || ORIG_REF_NAME==system_mux_0_0} -quiet] -quiet
 
 # IP: bd/system/ip/system_signal_processing_LI_0_0/system_signal_processing_LI_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_signal_processing_LI_0_0 || ORIG_REF_NAME==system_signal_processing_LI_0_0} -quiet] -quiet
 
-# IP: bd/system/ip/system_start_signal_generat_0_0/system_start_signal_generat_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_start_signal_generat_0_0 || ORIG_REF_NAME==system_start_signal_generat_0_0} -quiet] -quiet
-
 # IP: bd/system/ip/system_auto_pc_0/system_auto_pc_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_auto_pc_0 || ORIG_REF_NAME==system_auto_pc_0} -quiet] -quiet
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_util_ds_buf_1_0/system_util_ds_buf_1_0_board.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_util_ds_buf_1_0/system_util_ds_buf_1_0_board.xdc
 set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_util_ds_buf_1_0 || ORIG_REF_NAME==system_util_ds_buf_1_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_util_ds_buf_1_0/system_util_ds_buf_1_0_ooc.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_util_ds_buf_1_0/system_util_ds_buf_1_0_ooc.xdc
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_util_ds_buf_2_0/system_util_ds_buf_2_0_board.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_util_ds_buf_2_0/system_util_ds_buf_2_0_board.xdc
 set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_util_ds_buf_2_0 || ORIG_REF_NAME==system_util_ds_buf_2_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_util_ds_buf_2_0/system_util_ds_buf_2_0_ooc.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_util_ds_buf_2_0/system_util_ds_buf_2_0_ooc.xdc
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0_board.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0_board.xdc
 set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_clk_wiz_0_0 || ORIG_REF_NAME==system_clk_wiz_0_0} -quiet] {/inst } ]/inst ] -quiet] -quiet
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0.xdc
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_clk_wiz_0_0 || ORIG_REF_NAME==system_clk_wiz_0_0} -quiet] {/inst } ]/inst ] -quiet] -quiet
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0_ooc.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0_ooc.xdc
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0_board.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0_board.xdc
 set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_axi_gpio_0_0 || ORIG_REF_NAME==system_axi_gpio_0_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0_ooc.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0_ooc.xdc
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_0/system_axi_gpio_0_0.xdc
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_axi_gpio_0_0 || ORIG_REF_NAME==system_axi_gpio_0_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_2/system_axi_gpio_0_2_board.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_2/system_axi_gpio_0_2_board.xdc
 set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_axi_gpio_0_2 || ORIG_REF_NAME==system_axi_gpio_0_2} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_2/system_axi_gpio_0_2_ooc.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_2/system_axi_gpio_0_2_ooc.xdc
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_2/system_axi_gpio_0_2.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_2/system_axi_gpio_0_2.xdc
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_axi_gpio_0_2 || ORIG_REF_NAME==system_axi_gpio_0_2} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_1/system_axi_gpio_0_1_board.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_1/system_axi_gpio_0_1_board.xdc
 set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_axi_gpio_0_1 || ORIG_REF_NAME==system_axi_gpio_0_1} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_1/system_axi_gpio_0_1_ooc.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_1/system_axi_gpio_0_1_ooc.xdc
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_1/system_axi_gpio_0_1.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_1/system_axi_gpio_0_1.xdc
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_axi_gpio_0_1 || ORIG_REF_NAME==system_axi_gpio_0_1} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_Control_and_Nca_0/system_Control_and_Nca_0_board.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_Control_and_Nca_0/system_Control_and_Nca_0_board.xdc
 set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_Control_and_Nca_0 || ORIG_REF_NAME==system_Control_and_Nca_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_Control_and_Nca_0/system_Control_and_Nca_0_ooc.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_Control_and_Nca_0/system_Control_and_Nca_0_ooc.xdc
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_Control_and_Nca_0/system_Control_and_Nca_0.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_Control_and_Nca_0/system_Control_and_Nca_0.xdc
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_Control_and_Nca_0 || ORIG_REF_NAME==system_Control_and_Nca_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_result_cuad_0/system_result_cuad_0_board.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_result_cuad_0/system_result_cuad_0_board.xdc
 set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_result_cuad_0 || ORIG_REF_NAME==system_result_cuad_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_result_cuad_0/system_result_cuad_0_ooc.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_result_cuad_0/system_result_cuad_0_ooc.xdc
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_result_cuad_0/system_result_cuad_0.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_result_cuad_0/system_result_cuad_0.xdc
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_result_cuad_0 || ORIG_REF_NAME==system_result_cuad_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_3/system_axi_gpio_0_3_board.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_3/system_axi_gpio_0_3_board.xdc
 set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_axi_gpio_0_3 || ORIG_REF_NAME==system_axi_gpio_0_3} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_3/system_axi_gpio_0_3_ooc.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_3/system_axi_gpio_0_3_ooc.xdc
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_3/system_axi_gpio_0_3.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axi_gpio_0_3/system_axi_gpio_0_3.xdc
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_axi_gpio_0_3 || ORIG_REF_NAME==system_axi_gpio_0_3} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_M_and_Nma_0/system_M_and_Nma_0_board.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_M_and_Nma_0/system_M_and_Nma_0_board.xdc
 set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_M_and_Nma_0 || ORIG_REF_NAME==system_M_and_Nma_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_M_and_Nma_0/system_M_and_Nma_0_ooc.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_M_and_Nma_0/system_M_and_Nma_0_ooc.xdc
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_M_and_Nma_0/system_M_and_Nma_0.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_M_and_Nma_0/system_M_and_Nma_0.xdc
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_M_and_Nma_0 || ORIG_REF_NAME==system_M_and_Nma_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_processing_system7_0_0/system_processing_system7_0_0.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_processing_system7_0_0/system_processing_system7_0_0.xdc
 set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_processing_system7_0_0 || ORIG_REF_NAME==system_processing_system7_0_0} -quiet] {/inst } ]/inst ] -quiet] -quiet
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_rst_ps7_0_125M_0/system_rst_ps7_0_125M_0_board.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_rst_ps7_0_125M_0/system_rst_ps7_0_125M_0_board.xdc
 set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_rst_ps7_0_125M_0 || ORIG_REF_NAME==system_rst_ps7_0_125M_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_rst_ps7_0_125M_0/system_rst_ps7_0_125M_0.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_rst_ps7_0_125M_0/system_rst_ps7_0_125M_0.xdc
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_rst_ps7_0_125M_0 || ORIG_REF_NAME==system_rst_ps7_0_125M_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc
 
-# XDC: c:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.gen/sources_1/bd/system/system_ooc.xdc
+# XDC: c:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/system_ooc.xdc

@@ -2,12 +2,12 @@
 # Vivado v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Tue Mar 19 15:55:32 2024
-# Process ID: 10884
-# Current directory: C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.runs/impl_1
+# Start of session at: Tue Mar 19 21:50:16 2024
+# Process ID: 6800
+# Current directory: C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.runs/impl_1
 # Command line: vivado.exe -log system_wrapper.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source system_wrapper.tcl -notrace
-# Log file: C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.runs/impl_1/system_wrapper.vdi
-# Journal file: C:/Users/mati9/Documents/02-RedPitaya/lockin_red_pitaya/hardware/lockin.runs/impl_1\vivado.jou
-# Running On: DESKTOP-TN92N90, OS: Windows, CPU Frequency: 3014 MHz, CPU Physical cores: 2, Host memory: 8588 MB
+# Log file: C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.runs/impl_1/system_wrapper.vdi
+# Journal file: C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.runs/impl_1\vivado.jou
+# Running On: DESKTOP-4F847D8, OS: Windows, CPU Frequency: 2400 MHz, CPU Physical cores: 2, Host memory: 4204 MB
 #-----------------------------------------------------------
 source system_wrapper.tcl -notrace
