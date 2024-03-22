@@ -22,6 +22,7 @@ class redP_handler:
         self.set_N(32)
         self.set_data_mode(DataMode.ADC)
         self.set_IP(ip_)
+        self.set_decimator(1)
         self.set_frec_ref(1000000)
         self.set_frec_dac(1000000)
         
@@ -66,6 +67,14 @@ class redP_handler:
             return True
         return False
     
+    def set_decimator(self,decimator):
+        if decimator > 0:
+            self.decimator = decimator;
+            return True
+        else:
+            self.decimator = 1
+        return False
+    
     def set_bitstream_in_fpga(self,bitstream_name = "lockin.bit"):
         script_path = os.path.join("..\shell_scripts", ".\set_bitstream.sh")
         command = ( f"{script_path} {bitstream_name} {self.ip}" )
@@ -73,7 +82,7 @@ class redP_handler:
     
     def measure_lockin(self):
         script_path = os.path.join("..\shell_scripts", ".\lockin.sh")
-        command = ( f"{script_path} {self.N} {self.frec_dac} {self.frec_ref} {self.data_mode} {self.ip}" )
+        command = ( f"{script_path} {self.N} {self.frec_dac} {self.frec_ref} {self.data_mode} {self.decimator} {self.ip}" )
         print(f"Comando enviado a la FPGA: {command}")
         subprocess.run(command, shell=True)
         diccionario = redP_handler.leerArchivoLockin("../datos_adquiridos/resultados.dat");

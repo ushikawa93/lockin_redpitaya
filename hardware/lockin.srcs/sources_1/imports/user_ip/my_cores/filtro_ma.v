@@ -36,30 +36,13 @@ wire [31:0] N; 	assign N = frames_integracion;		// Frames de integracion // Larg
 
 reg [63:0] acumulador;
 
-reg finish,data_out_valid_reg;
+reg finish,data_out_valid_reg,start;
 
 // Registro las entradas... es mas prolijo trabajar con las entradas registradas
 reg signed [63:0] data_in_reg; 
     always @ (posedge clock) data_in_reg <= (!reset_n)? 0: $signed(data);
     
 reg data_valid_reg; always @ (posedge clock) data_valid_reg <= (!reset_n)? 0: data_valid;
-
-/*
-wire [47:0] MxN;
-
-mult_32_bits calcular_MxN(
-
-    .clk(clock),
-    .enable(enable),
-    .reset_n(reset_n),
-    
-    .data_in_a(M),
-    .data_in_b(N),
-    
-    .data_out(MxN)
-
-);
-*/
 
 always @ (posedge clock or negedge reset_n)
 begin
@@ -73,7 +56,7 @@ begin
 	else if (enable)
 	begin
 		
-		if(data_valid_reg && !finish)
+		if(data_valid_reg && !finish && start)
 		begin
 			acumulador <= acumulador + data_in_reg;
 			data_out_valid_reg <= 1;
@@ -90,6 +73,7 @@ end
 // Cuando me lleguen N señales de start pongo en alto la señal de finish
 // y ahi la cosa deja de calcular...
 reg [31:0] start_count;
+parameter ignore_cycles = 1;
 
 always @ (posedge clock or negedge reset_n)
 begin
@@ -98,10 +82,14 @@ begin
     begin
         start_count <= 0;
         finish <= 0;
+        start <= 0;
     end
     else if(enable)
     begin  
-        finish <= (start_count == N+1)? 1:0;
+        finish <= (start_count == N+1+ignore_cycles)? 1:0;
+        
+        if(start_count >= 1+ignore_cycles)
+            start <= 1;
         
         if(start_signal && !finish)
             start_count <= start_count + 1;            
@@ -116,7 +104,3 @@ assign calculo_finalizado = finish;
 
 
 endmodule
-
-
-
-

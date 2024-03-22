@@ -36,7 +36,7 @@
 
 #define M_ADDRESS 0x41240000
 #define N_ADDRESS 0x41240008
-#define NOISE_BITS 0x41250000
+#define DECIMATOR_ADDRESS 0x41250000
 #define SELECT_DATA_ADDRESS 0x41250008
 
 #define PHASE_DAC_ADDRESS 0x41260000
@@ -51,7 +51,7 @@ void ClearEnable(void *cfg);
 
 void setN_ma(void *cfg,uint32_t N_ma);
 void setM(void *cfg, uint32_t M);
-void setNoiseBits(void *cfg,uint32_t noise_b);
+void setDecimator(void *cfg,uint32_t dec);
 void setDataSelection(void *cfg,uint32_t sel);
 double set_frec_dac(void *cfg, double frec);
 double set_frec_ref(void *cfg, double frec);
@@ -80,7 +80,7 @@ int main(int argc, char **argv)
 	uint32_t frec_ref;
 	uint32_t M;
 	uint32_t N_ma;
-	uint32_t sim_noise_bits = 0;
+	uint32_t decimator = 10;
 	uint32_t sel;
 	double f_dac_real,f_ref_real;
 
@@ -89,12 +89,13 @@ int main(int argc, char **argv)
 		printf("Uso -> lockin N_ma M noise_bits \n");
 		return 0;
 	}
-	else if(argc==5)
+	else if(argc==6)
 	{
 		N_ma = atoi(argv[1]);
 		frec_dac = atoi(argv[2]);	
 		frec_ref = atoi(argv[3]);
 		sel=atoi(argv[4]);
+		decimator=atoi(argv[5]);
 	}		
 	else
 	{
@@ -119,7 +120,7 @@ int main(int argc, char **argv)
 	f_ref_real=set_frec_ref(cfg,frec_ref);
 	setM(cfg,M);
 	setN_ma(cfg,N_ma);
-	setNoiseBits(cfg,sim_noise_bits);
+	setDecimator(cfg,decimator);
 	setDataSelection(cfg,sel);
 
 
@@ -148,7 +149,7 @@ int main(int argc, char **argv)
 	printf("\nCUAD LOW = %u ",res_low);	
 	printf("\n	-> Resultado cuad: %lld",resultado_cuadratura);
 
-	double amplitud_ref = 32768;
+	double amplitud_ref = 4096;
 
  	double x = (double)resultado_fase / (M*N_ma);
     double y = (double)resultado_cuadratura / (M*N_ma);
@@ -158,8 +159,10 @@ int main(int argc, char **argv)
 
 	printf("\nResultados: \n R= %f \n phi= %f \n\n",r,phi);   
 
+
 	escribirArchivo_li("resultados.dat",f_ref_real,M,N_ma,r,phi);
 
+	//sleep(10);
 	int32_t* datos =  leerFIFO(cfg,FIFO_1_ADDRESS);
 	escribirArchivo_adc("resultados_adc.dat",datos);
 
@@ -228,10 +231,10 @@ double set_frec_ref(void *cfg, double frec)
 }
 
 
-void setNoiseBits(void *cfg,uint32_t noise_b)
+void setDecimator(void *cfg,uint32_t dec)
 {
 	// Seteo la cantidad de bits de ruido de la señal simulada
-	*(uint32_t *)(cfg+ NOISE_BITS - START_ADDRESS) = noise_b ;
+	*(uint32_t *)(cfg+ DECIMATOR_ADDRESS - START_ADDRESS) = dec ;
 }
 
 void setDataSelection(void *cfg,uint32_t sel)

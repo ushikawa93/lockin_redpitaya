@@ -1,8 +1,8 @@
 //Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-//Date        : Wed Mar 20 18:38:49 2024
-//Host        : DESKTOP-TN92N90 running 64-bit major release  (build 9200)
+//Date        : Fri Mar 22 18:03:06 2024
+//Host        : DESKTOP-BRUHM76 running 64-bit major release  (build 9200)
 //Command     : generate_target system.bd
 //Design      : system
 //Purpose     : IP block netlist
@@ -1389,47 +1389,66 @@ module m08_couplers_imp_EEK1XE
 endmodule
 
 module referencias_imp_L9WXX7
-   (Dout,
-    Dout1,
+   (Dout1,
     aclk,
     aclken,
     approxM,
     aresetn,
+    bypass_n,
+    c,
     cfg_data,
+    data_out,
+    data_out1,
     m_axis_data_tvalid,
     start);
-  output [13:0]Dout;
   output [13:0]Dout1;
   input aclk;
   input aclken;
   input [31:0]approxM;
   input aresetn;
+  input [31:0]bypass_n;
+  output c;
   input [31:0]cfg_data;
+  output [13:0]data_out;
+  output [13:0]data_out1;
   output m_axis_data_tvalid;
   output start;
 
   wire ADC_adc_clk;
   wire aclken_1;
+  wire and_2_1_c;
   wire [31:0]approxM_1;
   wire aresetn_1;
   wire [31:0]axis_constant_0_m_axis_tdata;
   wire axis_constant_0_m_axis_tvalid;
+  wire [31:0]bypass_n_1;
   wire [31:0]dds_compiler_0_m_axis_data_tdata;
   wire dds_compiler_0_m_axis_data_tvalid;
+  wire [13:0]delay_axi_streaming_0_data_out;
+  wire delay_axi_streaming_0_data_out_valid;
+  wire [13:0]delay_axi_streaming_1_data_out;
+  wire delay_axi_streaming_1_data_out_valid;
   wire [13:0]ref_cos_Dout;
   wire start_signal_generat_0_start;
   wire [31:0]uP_control_gpio2_io_o2;
   wire [13:0]xlslice_1_Dout;
 
   assign ADC_adc_clk = aclk;
-  assign Dout[13:0] = ref_cos_Dout;
   assign Dout1[13:0] = xlslice_1_Dout;
   assign aclken_1 = aclken;
   assign approxM_1 = approxM[31:0];
   assign aresetn_1 = aresetn;
+  assign bypass_n_1 = bypass_n[31:0];
+  assign c = and_2_1_c;
+  assign data_out[13:0] = delay_axi_streaming_1_data_out;
+  assign data_out1[13:0] = delay_axi_streaming_0_data_out;
   assign m_axis_data_tvalid = dds_compiler_0_m_axis_data_tvalid;
   assign start = start_signal_generat_0_start;
   assign uP_control_gpio2_io_o2 = cfg_data[31:0];
+  system_and_2_1_0 and_2_1
+       (.a(delay_axi_streaming_1_data_out_valid),
+        .b(delay_axi_streaming_0_data_out_valid),
+        .c(and_2_1_c));
   system_axis_constant_0_1 axis_constant_0
        (.aclk(ADC_adc_clk),
         .cfg_data(uP_control_gpio2_io_o2),
@@ -1443,6 +1462,22 @@ module referencias_imp_L9WXX7
         .m_axis_data_tvalid(dds_compiler_0_m_axis_data_tvalid),
         .s_axis_phase_tdata(axis_constant_0_m_axis_tdata),
         .s_axis_phase_tvalid(axis_constant_0_m_axis_tvalid));
+  system_delay_axi_streaming_0_0 delay_axi_streaming_0
+       (.bypass_n(bypass_n_1[0]),
+        .clk(ADC_adc_clk),
+        .data_in(ref_cos_Dout),
+        .data_in_valid(dds_compiler_0_m_axis_data_tvalid),
+        .data_out(delay_axi_streaming_0_data_out),
+        .data_out_valid(delay_axi_streaming_0_data_out_valid),
+        .reset_n(aresetn_1));
+  system_delay_axi_streaming_1_0 delay_axi_streaming_1
+       (.bypass_n(bypass_n_1[0]),
+        .clk(ADC_adc_clk),
+        .data_in(xlslice_1_Dout),
+        .data_in_valid(dds_compiler_0_m_axis_data_tvalid),
+        .data_out(delay_axi_streaming_1_data_out),
+        .data_out_valid(delay_axi_streaming_1_data_out_valid),
+        .reset_n(aresetn_1));
   system_xlslice_0_6 ref_cos
        (.Din(dds_compiler_0_m_axis_data_tdata),
         .Dout(ref_cos_Dout));
@@ -1763,7 +1798,7 @@ module s00_couplers_imp_X5C1SS
         .s_axi_wvalid(s00_couplers_to_auto_pc_WVALID));
 endmodule
 
-(* CORE_GENERATION_INFO = "system,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=system,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=53,numReposBlks=36,numNonXlnxBlks=4,numHierBlks=17,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=7,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=15,da_board_cnt=4,da_clkrst_cnt=6,da_ps7_cnt=1,synth_mode=Global}" *) (* HW_HANDOFF = "system.hwdef" *) 
+(* CORE_GENERATION_INFO = "system,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=system,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=58,numReposBlks=41,numNonXlnxBlks=4,numHierBlks=17,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=12,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=15,da_board_cnt=4,da_clkrst_cnt=6,da_ps7_cnt=1,synth_mode=Global}" *) (* HW_HANDOFF = "system.hwdef" *) 
 module system
    (DDR_addr,
     DDR_ba,
@@ -1900,7 +1935,11 @@ module system
   wire [31:0]cfg_data_1;
   wire [1:0]daisy_n_i_1;
   wire [1:0]daisy_p_i_1;
+  wire [31:0]decimator_0_data_out;
+  wire decimator_0_data_out_valid;
+  wire decimator_0_finish;
   wire [7:0]drive_leds_0_signal_out;
+  wire gpio_io_i3_1;
   wire [63:0]lock_in_data_out_cuad;
   wire [63:0]lock_in_data_out_fase;
   wire lock_in_processing_finished;
@@ -1959,8 +1998,10 @@ module system
   wire [0:0]ps7_0_axi_periph_M03_AXI_WREADY;
   wire [3:0]ps7_0_axi_periph_M03_AXI_WSTRB;
   wire [0:0]ps7_0_axi_periph_M03_AXI_WVALID;
-  wire [13:0]referencias_Dout;
   wire [13:0]referencias_Dout1;
+  wire referencias_c;
+  wire [13:0]referencias_data_out;
+  wire [13:0]referencias_data_out1;
   wire referencias_m_axis_data_tvalid;
   wire referencias_start;
   wire [0:0]rst_ps7_0_125M_peripheral_aresetn;
@@ -2024,6 +2065,7 @@ module system
   wire [31:0]uP_control_gpio2_io_o1;
   wire [31:0]uP_control_gpio2_io_o2;
   wire [31:0]uP_control_gpio_io_o;
+  wire [31:0]uP_control_gpio_io_o1;
   wire [1:0]util_ds_buf_1_IBUF_OUT;
   wire [1:0]util_ds_buf_2_OBUF_DS_N;
   wire [1:0]util_ds_buf_2_OBUF_DS_P;
@@ -2062,6 +2104,20 @@ module system
         .dac_rst_o(axis_red_pitaya_dac_0_dac_rst),
         .dac_sel_o(axis_red_pitaya_dac_0_dac_sel),
         .dac_wrt_o(axis_red_pitaya_dac_0_dac_wrt));
+  system_and_2_0_0 and_2_0
+       (.a(lock_in_processing_finished),
+        .b(decimator_0_finish),
+        .c(gpio_io_i3_1));
+  system_decimator_0_0 decimator_0
+       (.clk(uP_FCLK_CLK0),
+        .data_in(selector_data_in_data_out),
+        .data_in_valid(selector_data_in_data_out_valid),
+        .data_out(decimator_0_data_out),
+        .data_out_valid(decimator_0_data_out_valid),
+        .decimate_value(uP_control_gpio_io_o1),
+        .enable(uP_control_Dout1),
+        .finish(decimator_0_finish),
+        .reset_n(uP_control_Dout));
   gpios_and_leds_imp_198WUFD gpios_and_leds
        (.exp_n_tri_io(exp_n_tri_io[7:0]),
         .exp_p_tri_io(exp_p_tri_io[7:0]),
@@ -2077,19 +2133,22 @@ module system
         .parameter_in_0(uP_control_gpio_io_o),
         .parameter_in_1(uP_control_gpio2_io_o),
         .processing_finished(lock_in_processing_finished),
-        .referencia_externa_cos(referencias_Dout),
-        .referencia_externa_seno(referencias_Dout1),
-        .referencia_externa_valid(referencias_m_axis_data_tvalid),
+        .referencia_externa_cos(referencias_data_out1),
+        .referencia_externa_seno(referencias_data_out),
+        .referencia_externa_valid(referencias_c),
         .reset_n(uP_control_Dout),
         .start_signal(referencias_start));
   referencias_imp_L9WXX7 referencias
-       (.Dout(referencias_Dout),
-        .Dout1(referencias_Dout1),
+       (.Dout1(referencias_Dout1),
         .aclk(ADC_adc_clk),
         .aclken(uP_control_Dout1),
         .approxM(uP_control_gpio_io_o),
         .aresetn(uP_control_Dout),
+        .bypass_n(uP_control_gpio2_io_o1),
+        .c(referencias_c),
         .cfg_data(uP_control_gpio2_io_o2),
+        .data_out(referencias_data_out),
+        .data_out1(referencias_data_out1),
         .m_axis_data_tvalid(referencias_m_axis_data_tvalid),
         .start(referencias_start));
   system_mux_0_0 selector_data_in
@@ -2243,12 +2302,11 @@ module system
         .M07_AXI_wstrb(S_AXI5_1_WSTRB),
         .M07_AXI_wvalid(S_AXI5_1_WVALID),
         .S00_ARESETN(rst_ps7_0_125M_peripheral_aresetn),
-        .axi_str_rxd_tdata(selector_data_in_data_out),
-        .axi_str_rxd_tvalid1(selector_data_in_data_out_valid),
+        .axi_str_rxd_tdata(decimator_0_data_out),
+        .axi_str_rxd_tvalid1(decimator_0_data_out_valid),
         .s_axi_aresetn(uP_control_Dout));
   uP_control_imp_12V0CNG uP_control
-       (.Din({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Din1(lock_in_data_out_cuad),
+       (.Din1(lock_in_data_out_cuad),
         .Din2(lock_in_data_out_fase),
         .Dout(uP_control_Dout),
         .Dout1(uP_control_Dout1),
@@ -2374,8 +2432,9 @@ module system
         .gpio2_io_o(uP_control_gpio2_io_o),
         .gpio2_io_o1(uP_control_gpio2_io_o1),
         .gpio2_io_o2(uP_control_gpio2_io_o2),
-        .gpio_io_i3({lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished,lock_in_processing_finished}),
+        .gpio_io_i3({gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1}),
         .gpio_io_o(uP_control_gpio_io_o),
+        .gpio_io_o1(uP_control_gpio_io_o1),
         .gpio_io_o2(cfg_data_1),
         .s_axi_aclk(uP_FCLK_CLK0),
         .s_axi_aresetn(rst_ps7_0_125M_peripheral_aresetn));
@@ -3849,8 +3908,7 @@ module system_ps7_0_axi_periph_0
 endmodule
 
 module uP_control_imp_12V0CNG
-   (Din,
-    Din1,
+   (Din1,
     Din2,
     Dout,
     Dout1,
@@ -3978,10 +4036,10 @@ module uP_control_imp_12V0CNG
     gpio2_io_o2,
     gpio_io_i3,
     gpio_io_o,
+    gpio_io_o1,
     gpio_io_o2,
     s_axi_aclk,
     s_axi_aresetn);
-  input [63:0]Din;
   input [63:0]Din1;
   input [63:0]Din2;
   output [0:0]Dout;
@@ -4110,6 +4168,7 @@ module uP_control_imp_12V0CNG
   output [31:0]gpio2_io_o2;
   input [31:0]gpio_io_i3;
   output [31:0]gpio_io_o;
+  output [31:0]gpio_io_o1;
   output [31:0]gpio_io_o2;
   input s_axi_aclk;
   input s_axi_aresetn;
@@ -4203,6 +4262,7 @@ module uP_control_imp_12V0CNG
   wire [3:0]S_AXI5_1_WSTRB;
   wire [0:0]S_AXI5_1_WVALID;
   wire [31:0]Trigger_gpio_io_o;
+  wire [31:0]adc_decimator_and_data_select_gpio_io_o;
   wire [0:0]enable_Dout;
   wire [31:0]enable_and_reset_gpio2_io_o;
   wire [31:0]enable_and_reset_gpio_io_o;
@@ -4362,6 +4422,7 @@ module uP_control_imp_12V0CNG
   assign gpio2_io_o2[31:0] = phaseDAC_and_phaseREF_gpio2_io_o;
   assign gpio_io_i3_1 = gpio_io_i3[31:0];
   assign gpio_io_o[31:0] = Trigger_gpio_io_o;
+  assign gpio_io_o1[31:0] = adc_decimator_and_data_select_gpio_io_o;
   assign gpio_io_o2[31:0] = phaseDAC_and_phaseREF_gpio_io_o;
   assign processing_system7_0_FCLK_CLK0 = s_axi_aclk;
   assign ps7_0_axi_periph_M01_AXI_ARADDR = S_AXI_araddr[31:0];
@@ -4407,6 +4468,30 @@ module uP_control_imp_12V0CNG
         .s_axi_wready(S_AXI4_1_WREADY),
         .s_axi_wstrb(S_AXI4_1_WSTRB),
         .s_axi_wvalid(S_AXI4_1_WVALID));
+  system_axi_gpio_0_3 adc_decimator_and_data_select
+       (.gpio2_io_i(noise_bits_and_data_select_gpio2_io_o),
+        .gpio2_io_o(noise_bits_and_data_select_gpio2_io_o),
+        .gpio_io_i(adc_decimator_and_data_select_gpio_io_o),
+        .gpio_io_o(adc_decimator_and_data_select_gpio_io_o),
+        .s_axi_aclk(processing_system7_0_FCLK_CLK0),
+        .s_axi_araddr(S_AXI2_1_ARADDR[8:0]),
+        .s_axi_aresetn(rst_ps7_0_125M_peripheral_aresetn),
+        .s_axi_arready(S_AXI2_1_ARREADY),
+        .s_axi_arvalid(S_AXI2_1_ARVALID),
+        .s_axi_awaddr(S_AXI2_1_AWADDR[8:0]),
+        .s_axi_awready(S_AXI2_1_AWREADY),
+        .s_axi_awvalid(S_AXI2_1_AWVALID),
+        .s_axi_bready(S_AXI2_1_BREADY),
+        .s_axi_bresp(S_AXI2_1_BRESP),
+        .s_axi_bvalid(S_AXI2_1_BVALID),
+        .s_axi_rdata(S_AXI2_1_RDATA),
+        .s_axi_rready(S_AXI2_1_RREADY),
+        .s_axi_rresp(S_AXI2_1_RRESP),
+        .s_axi_rvalid(S_AXI2_1_RVALID),
+        .s_axi_wdata(S_AXI2_1_WDATA),
+        .s_axi_wready(S_AXI2_1_WREADY),
+        .s_axi_wstrb(S_AXI2_1_WSTRB),
+        .s_axi_wvalid(S_AXI2_1_WVALID));
   system_xlslice_0_3 enable
        (.Din(enable_and_reset_gpio2_io_o),
         .Dout(enable_Dout));
@@ -4456,29 +4541,6 @@ module uP_control_imp_12V0CNG
         .s_axi_wready(Conn1_WREADY),
         .s_axi_wstrb(Conn1_WSTRB),
         .s_axi_wvalid(Conn1_WVALID));
-  system_axi_gpio_0_3 noise_bits_and_data_select
-       (.gpio2_io_i(noise_bits_and_data_select_gpio2_io_o),
-        .gpio2_io_o(noise_bits_and_data_select_gpio2_io_o),
-        .gpio_io_i({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .s_axi_aclk(processing_system7_0_FCLK_CLK0),
-        .s_axi_araddr(S_AXI2_1_ARADDR[8:0]),
-        .s_axi_aresetn(rst_ps7_0_125M_peripheral_aresetn),
-        .s_axi_arready(S_AXI2_1_ARREADY),
-        .s_axi_arvalid(S_AXI2_1_ARVALID),
-        .s_axi_awaddr(S_AXI2_1_AWADDR[8:0]),
-        .s_axi_awready(S_AXI2_1_AWREADY),
-        .s_axi_awvalid(S_AXI2_1_AWVALID),
-        .s_axi_bready(S_AXI2_1_BREADY),
-        .s_axi_bresp(S_AXI2_1_BRESP),
-        .s_axi_bvalid(S_AXI2_1_BVALID),
-        .s_axi_rdata(S_AXI2_1_RDATA),
-        .s_axi_rready(S_AXI2_1_RREADY),
-        .s_axi_rresp(S_AXI2_1_RRESP),
-        .s_axi_rvalid(S_AXI2_1_RVALID),
-        .s_axi_wdata(S_AXI2_1_WDATA),
-        .s_axi_wready(S_AXI2_1_WREADY),
-        .s_axi_wstrb(S_AXI2_1_WSTRB),
-        .s_axi_wvalid(S_AXI2_1_WVALID));
   system_M_and_Nma_0 phaseDAC_and_phaseREF
        (.gpio2_io_i(phaseDAC_and_phaseREF_gpio2_io_o),
         .gpio2_io_o(phaseDAC_and_phaseREF_gpio2_io_o),

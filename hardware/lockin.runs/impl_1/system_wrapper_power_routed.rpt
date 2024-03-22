@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date             : Wed Mar 20 18:50:42 2024
-| Host             : DESKTOP-TN92N90 running 64-bit major release  (build 9200)
+| Date             : Fri Mar 22 18:08:50 2024
+| Host             : DESKTOP-BRUHM76 running 64-bit major release  (build 9200)
 | Command          : report_power -file system_wrapper_power_routed.rpt -pb system_wrapper_power_summary_routed.pb -rpx system_wrapper_power_routed.rpx
 | Design           : system_wrapper
 | Device           : xc7z010clg400-1
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 1.661        |
+| Total On-Chip Power (W)  | 1.663        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.536        |
+| Dynamic (W)              | 1.538        |
 | Device Static (W)        | 0.126        |
 | Effective TJA (C/W)      | 11.5         |
 | Max Ambient (C)          | 65.8         |
@@ -52,21 +52,21 @@ Table of Contents
 +-------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
-| Clocks                  |     0.033 |        8 |       --- |             --- |
-| Slice Logic             |     0.002 |     9788 |       --- |             --- |
-|   LUT as Logic          |     0.002 |     3098 |     17600 |           17.60 |
-|   CARRY4                |    <0.001 |      140 |      4400 |            3.18 |
-|   Register              |    <0.001 |     6012 |     35200 |           17.08 |
-|   LUT as Shift Register |    <0.001 |       48 |      6000 |            0.80 |
-|   Others                |     0.000 |      367 |       --- |             --- |
-| Signals                 |     0.004 |     7535 |       --- |             --- |
+| Clocks                  |     0.035 |        8 |       --- |             --- |
+| Slice Logic             |     0.002 |    10283 |       --- |             --- |
+|   LUT as Logic          |     0.002 |     3236 |     17600 |           18.39 |
+|   CARRY4                |    <0.001 |      167 |      4400 |            3.80 |
+|   Register              |    <0.001 |     6299 |     35200 |           17.89 |
+|   LUT as Shift Register |    <0.001 |       64 |      6000 |            1.07 |
+|   Others                |     0.000 |      375 |       --- |             --- |
+| Signals                 |     0.004 |     7950 |       --- |             --- |
 | Block RAM               |     0.002 |        2 |        60 |            3.33 |
 | MMCM                    |     0.107 |        1 |         2 |           50.00 |
 | DSPs                    |     0.000 |        2 |        80 |            2.50 |
 | I/O                     |     0.106 |       73 |       100 |           73.00 |
 | PS7                     |     1.282 |        1 |       --- |             --- |
 | Static Power            |     0.126 |          |           |                 |
-| Total                   |     1.661 |          |           |                 |
+| Total                   |     1.663 |          |           |                 |
 +-------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -76,7 +76,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.051 |       0.044 |      0.007 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.053 |       0.046 |      0.007 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.073 |       0.065 |      0.008 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.023 |       0.022 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -154,31 +154,31 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+----------------------------------+-----------+
-| Name                             | Power (W) |
-+----------------------------------+-----------+
-| system_wrapper                   |     1.535 |
-|   system_i                       |     1.461 |
-|     DAC                          |     0.110 |
-|       axis_red_pitaya_dac_0      |     0.001 |
-|       clk_wiz_0                  |     0.107 |
-|     lock_in                      |     0.003 |
-|       inst                       |     0.003 |
-|     referencias                  |     0.001 |
-|     uP                           |     1.294 |
-|       fifo_1                     |     0.003 |
-|       processing_system7_0       |     1.285 |
-|       ps7_0_axi_periph           |     0.007 |
-|     uP_control                   |     0.021 |
-|       M_and_Nma                  |     0.004 |
-|       enable_and_reset           |     0.002 |
-|       finished                   |     0.003 |
-|       noise_bits_and_data_select |     0.003 |
-|       phaseDAC_and_phaseREF      |     0.004 |
-|       result_cuad                |     0.004 |
-|       result_fase                |     0.004 |
-|     util_ds_buf_2                |     0.030 |
-|       U0                         |     0.030 |
-+----------------------------------+-----------+
++-------------------------------------+-----------+
+| Name                                | Power (W) |
++-------------------------------------+-----------+
+| system_wrapper                      |     1.537 |
+|   system_i                          |     1.463 |
+|     DAC                             |     0.110 |
+|       axis_red_pitaya_dac_0         |     0.002 |
+|       clk_wiz_0                     |     0.107 |
+|     lock_in                         |     0.003 |
+|       inst                          |     0.003 |
+|     referencias                     |     0.001 |
+|     uP                              |     1.294 |
+|       fifo_1                        |     0.003 |
+|       processing_system7_0          |     1.285 |
+|       ps7_0_axi_periph              |     0.007 |
+|     uP_control                      |     0.022 |
+|       M_and_Nma                     |     0.004 |
+|       adc_decimator_and_data_select |     0.004 |
+|       enable_and_reset              |     0.002 |
+|       finished                      |     0.003 |
+|       phaseDAC_and_phaseREF         |     0.004 |
+|       result_cuad                   |     0.004 |
+|       result_fase                   |     0.004 |
+|     util_ds_buf_2                   |     0.030 |
+|       U0                            |     0.030 |
++-------------------------------------+-----------+
 
 

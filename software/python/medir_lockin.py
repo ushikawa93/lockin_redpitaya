@@ -9,34 +9,45 @@ from red_pitaya_class import redP_handler
 from red_pitaya_class import DataMode
 import matplotlib.pyplot as plt
 
-plot_adc = True
-set_bitstream = True
 
-ip = "169.254.172.188"
-#ip = "192.168.1.104"
+set_bitstream = False
+plot_adc = False
+
+#ip = "169.254.172.188"
+ip = "192.168.1.101"
 
 rp = redP_handler(ip)
 
 # Solo la primera vez:
 if(set_bitstream):
-    rp.set_bitstream_in_fpga("lockin_dds_trigger.bit")
+    rp.set_bitstream_in_fpga("lockin_dds_trigger_mas_mas_delay.bit")
 
+r_new_3=[]
 
-rp.set_data_mode(DataMode.SIMULACION)
+for i in range(1,2):
 
-frec_ref = 100;
-rp.set_frec_ref(frec_ref)
-
-frec_dac = 100000;
-rp.set_frec_dac(frec_dac)
-
-N = 1;
-rp.set_N(N)    
-data=rp.measure_lockin()
-
-print(f"Frec: {data['f']}")
-print(f"R: {data['r']}")
-print(f"phi: {data['phi']}")
+    rp.set_data_mode(DataMode.ADC)
+    
+    frec_ref = 10;
+    rp.set_frec_ref(frec_ref)
+    
+    frec_dac = 10;
+    rp.set_frec_dac(frec_dac)
+    
+    N = 1
+    rp.set_N(N)
+    
+    decimator = 1
+    rp.set_decimator(decimator)    
+    
+    data=rp.measure_lockin()
+    print(f"Frec: {data['f']}")
+    print(f"R: {data['r']}")
+    print(f"phi: {data['phi']}")
+    
+    r_new_3.append(data['r'])
+    
+    
 
 if(plot_adc):
     plt.plot(data['datos_adc'],marker='x');
