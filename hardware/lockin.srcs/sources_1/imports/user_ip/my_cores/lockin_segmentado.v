@@ -29,7 +29,8 @@ module lockin_segmentado(
 	
 	// Salidas auxiliares
 	output reg lockin_ready,	
-	output calculo_finalizado
+	output calculo_finalizado,
+	output [31:0] datos_promediados
 	
 );
 
@@ -124,7 +125,8 @@ filtro_ma filtro_cuadratura(
 	
 	// Salidas auxiliares
 	.ready_to_calculate(lockin_cuadratura_ready),
-	.calculo_finalizado(calculo_finalizado_cuad)
+	.calculo_finalizado(calculo_finalizado_cuad),
+	.datos_promediados(datos_promediados)
 
 );
 

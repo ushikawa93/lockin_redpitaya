@@ -71,7 +71,6 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 1
-set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {HDL-1065} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z010clg400-1
@@ -105,8 +104,8 @@ read_verilog -library xil_defaultlib {
   C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/imports/my_cores/drive_gpios.v
   C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/imports/my_cores/drive_leds.v
   C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/new/start_signal_generator.v
-  C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/new/mux.v
   C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/new/and_2.v
+  C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/new/delay_axi_streaming.v
   C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/imports/user_ip/my_cores/filtro_ma.v
   C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/imports/user_ip/my_cores/lockin_segmentado.v
   C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/imports/user_ip/my_cores/multiplicador.v
@@ -114,7 +113,8 @@ read_verilog -library xil_defaultlib {
   C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/imports/user_ip/my_cores/referencias.v
   C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/imports/user_ip/my_cores/signal_processing_LI.v
   C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/new/decimator.v
-  C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/new/delay_axi_streaming.v
+  C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/new/mux.v
+  C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/new/linear_mean.v
   C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/imports/system_wrapper.v
 }
 add_files C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd
@@ -149,6 +149,10 @@ set_property used_in_implementation false [get_files -all c:/Users/MatiOliva/Doc
 set_property used_in_implementation false [get_files -all c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_processing_system7_0_0/system_processing_system7_0_0.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_rst_ps7_0_125M_0/system_rst_ps7_0_125M_0_board.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_rst_ps7_0_125M_0/system_rst_ps7_0_125M_0.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axis_clock_converter_0_1/system_axis_clock_converter_0_1_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_finished_and_decimator_method_0/system_finished_and_decimator_method_0_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_finished_and_decimator_method_0/system_finished_and_decimator_method_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_finished_and_decimator_method_0/system_finished_and_decimator_method_0.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/system_ooc.xdc]
 

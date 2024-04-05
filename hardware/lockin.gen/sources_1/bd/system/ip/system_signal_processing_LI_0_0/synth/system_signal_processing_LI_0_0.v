@@ -71,6 +71,7 @@ module system_signal_processing_LI_0_0 (
   data_out_cuad_valid,
   ready_to_calculate,
   processing_finished,
+  datos_promediados,
   parameter_in_0,
   parameter_in_1
 );
@@ -94,6 +95,7 @@ output wire [63 : 0] data_out_cuad;
 output wire data_out_cuad_valid;
 output wire ready_to_calculate;
 output wire processing_finished;
+output wire [31 : 0] datos_promediados;
 input wire [31 : 0] parameter_in_0;
 input wire [31 : 0] parameter_in_1;
 
@@ -113,6 +115,7 @@ input wire [31 : 0] parameter_in_1;
     .data_out_cuad_valid(data_out_cuad_valid),
     .ready_to_calculate(ready_to_calculate),
     .processing_finished(processing_finished),
+    .datos_promediados(datos_promediados),
     .parameter_in_0(parameter_in_0),
     .parameter_in_1(parameter_in_1)
   );

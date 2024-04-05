@@ -80,6 +80,9 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_ps7_
 # IP: bd/system/ip/system_axi_fifo_mm_s_0_0/system_axi_fifo_mm_s_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_axi_fifo_mm_s_0_0 || ORIG_REF_NAME==system_axi_fifo_mm_s_0_0} -quiet] -quiet
 
+# IP: bd/system/ip/system_axis_clock_converter_0_1/system_axis_clock_converter_0_1.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_axis_clock_converter_0_1 || ORIG_REF_NAME==system_axis_clock_converter_0_1} -quiet] -quiet
+
 # IP: bd/system/ip/system_axis_red_pitaya_adc_0_0/system_axis_red_pitaya_adc_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_axis_red_pitaya_adc_0_0 || ORIG_REF_NAME==system_axis_red_pitaya_adc_0_0} -quiet] -quiet
 
@@ -110,8 +113,14 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_xlsl
 # IP: bd/system/ip/system_start_signal_generat_0_0/system_start_signal_generat_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_start_signal_generat_0_0 || ORIG_REF_NAME==system_start_signal_generat_0_0} -quiet] -quiet
 
-# IP: bd/system/ip/system_mux_0_0/system_mux_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_mux_0_0 || ORIG_REF_NAME==system_mux_0_0} -quiet] -quiet
+# IP: bd/system/ip/system_and_2_1_0/system_and_2_1_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_and_2_1_0 || ORIG_REF_NAME==system_and_2_1_0} -quiet] -quiet
+
+# IP: bd/system/ip/system_delay_axi_streaming_0_0/system_delay_axi_streaming_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_delay_axi_streaming_0_0 || ORIG_REF_NAME==system_delay_axi_streaming_0_0} -quiet] -quiet
+
+# IP: bd/system/ip/system_delay_axi_streaming_1_0/system_delay_axi_streaming_1_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_delay_axi_streaming_1_0 || ORIG_REF_NAME==system_delay_axi_streaming_1_0} -quiet] -quiet
 
 # IP: bd/system/ip/system_and_2_0_0/system_and_2_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_and_2_0_0 || ORIG_REF_NAME==system_and_2_0_0} -quiet] -quiet
@@ -122,14 +131,17 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_sign
 # IP: bd/system/ip/system_decimator_0_0/system_decimator_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_decimator_0_0 || ORIG_REF_NAME==system_decimator_0_0} -quiet] -quiet
 
-# IP: bd/system/ip/system_delay_axi_streaming_0_0/system_delay_axi_streaming_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_delay_axi_streaming_0_0 || ORIG_REF_NAME==system_delay_axi_streaming_0_0} -quiet] -quiet
+# IP: bd/system/ip/system_selector_data_in_0/system_selector_data_in_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_selector_data_in_0 || ORIG_REF_NAME==system_selector_data_in_0} -quiet] -quiet
 
-# IP: bd/system/ip/system_delay_axi_streaming_1_0/system_delay_axi_streaming_1_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_delay_axi_streaming_1_0 || ORIG_REF_NAME==system_delay_axi_streaming_1_0} -quiet] -quiet
+# IP: bd/system/ip/system_linear_mean_0_0/system_linear_mean_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_linear_mean_0_0 || ORIG_REF_NAME==system_linear_mean_0_0} -quiet] -quiet
 
-# IP: bd/system/ip/system_and_2_1_0/system_and_2_1_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_and_2_1_0 || ORIG_REF_NAME==system_and_2_1_0} -quiet] -quiet
+# IP: bd/system/ip/system_mux_0_0/system_mux_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_mux_0_0 || ORIG_REF_NAME==system_mux_0_0} -quiet] -quiet
+
+# IP: bd/system/ip/system_finished_and_decimator_method_0/system_finished_and_decimator_method_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_finished_and_decimator_method_0 || ORIG_REF_NAME==system_finished_and_decimator_method_0} -quiet] -quiet
 
 # IP: bd/system/ip/system_auto_pc_0/system_auto_pc_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_auto_pc_0 || ORIG_REF_NAME==system_auto_pc_0} -quiet] -quiet
@@ -216,6 +228,16 @@ set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filte
 
 # XDC: c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_rst_ps7_0_125M_0/system_rst_ps7_0_125M_0.xdc
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_rst_ps7_0_125M_0 || ORIG_REF_NAME==system_rst_ps7_0_125M_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_axis_clock_converter_0_1/system_axis_clock_converter_0_1_ooc.xdc
+
+# XDC: c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_finished_and_decimator_method_0/system_finished_and_decimator_method_0_board.xdc
+set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_finished_and_decimator_method_0 || ORIG_REF_NAME==system_finished_and_decimator_method_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_finished_and_decimator_method_0/system_finished_and_decimator_method_0_ooc.xdc
+
+# XDC: c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_finished_and_decimator_method_0/system_finished_and_decimator_method_0.xdc
+#dup# set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_finished_and_decimator_method_0 || ORIG_REF_NAME==system_finished_and_decimator_method_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
 # XDC: c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.gen/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc
 

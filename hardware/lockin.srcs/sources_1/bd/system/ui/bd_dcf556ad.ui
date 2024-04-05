@@ -1,0 +1,43 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"3.53553",
+   "Default View_TopLeft":"281,239",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS
+#  -string -flagsOSRD
+preplace port port-id_clk_in -pg 1 -lvl 0 -x -10 -y 50 -defaultsOSRD
+preplace port port-id_reset_n -pg 1 -lvl 0 -x -10 -y 70 -defaultsOSRD
+preplace port port-id_enable -pg 1 -lvl 0 -x -10 -y 90 -defaultsOSRD
+preplace port port-id_data_in_valid -pg 1 -lvl 0 -x -10 -y 250 -defaultsOSRD
+preplace port port-id_finish -pg 1 -lvl 4 -x 1110 -y 370 -defaultsOSRD
+preplace port port-id_clk_out -pg 1 -lvl 0 -x -10 -y 230 -defaultsOSRD
+preplace port port-id_data_out_valid -pg 1 -lvl 4 -x 1110 -y 250 -defaultsOSRD
+preplace portBus decimate_value -pg 1 -lvl 0 -x -10 -y 150 -defaultsOSRD
+preplace portBus data_out -pg 1 -lvl 4 -x 1110 -y 230 -defaultsOSRD
+preplace portBus sel -pg 1 -lvl 0 -x -10 -y 460 -defaultsOSRD
+preplace portBus data_in -pg 1 -lvl 0 -x -10 -y 110 -defaultsOSRD
+preplace inst decimator_0 -pg 1 -lvl 1 -x 250 -y 100 -defaultsOSRD
+preplace inst clk_adapter_0 -pg 1 -lvl 3 -x 940 -y 60 -defaultsOSRD
+preplace inst selector_data_in1 -pg 1 -lvl 2 -x 640 -y 350 -defaultsOSRD
+preplace inst promedio_lineal_1 -pg 1 -lvl 1 -x 250 -y 350 -defaultsOSRD
+preplace netloc promedio_lineal_1_finish 1 1 1 430 370n
+preplace netloc decimator_0_data_out 1 1 1 460 80n
+preplace netloc decimator_0_data_out_valid 1 1 1 450 100n
+preplace netloc decimator_0_finish 1 1 1 440 120n
+preplace netloc uP_control_Dout 1 0 1 50 70n
+preplace netloc uP_control_Dout1 1 0 1 30 90n
+preplace netloc selector_data_in_data_out 1 0 1 20 110n
+preplace netloc selector_data_in_data_out_valid 1 0 1 40 130n
+preplace netloc uP_control_gpio_io_o1 1 0 1 10 150n
+preplace netloc selector_data_in1_finish 1 2 2 NJ 370 NJ
+preplace netloc sel_1 1 0 2 NJ 460 460J
+preplace netloc selector_data_in1_data_out 1 2 2 790 230 NJ
+preplace netloc selector_data_in1_data_out_valid 1 2 2 800 250 NJ
+preplace netloc clk_out_1 1 0 1 60 50n
+preplace netloc promedio_lineal_1_data_out 1 1 1 N 330
+preplace netloc promedio_lineal_1_data_out_valid 1 1 1 N 350
+levelinfo -pg 1 -10 250 640 940 1110
+pagesize -pg 1 -db -bbox -sgen -200 -30 1260 480
+"
+}
+

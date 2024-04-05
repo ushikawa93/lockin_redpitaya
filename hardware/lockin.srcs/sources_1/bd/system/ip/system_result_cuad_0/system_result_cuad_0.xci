@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "system_result_cuad_0",
-    "cell_name": "uP_control/finished",
+    "cell_name": "uP_control/finished_and_decimator_method",
     "component_reference": "xilinx.com:ip:axi_gpio:2.0",
     "ip_revision": "29",
     "gen_directory": "../../../../../../lockin.gen/sources_1/bd/system/ip/system_result_cuad_0",

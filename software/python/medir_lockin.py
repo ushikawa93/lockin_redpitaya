@@ -7,37 +7,39 @@ Created on Thu Nov 23 12:47:18 2023
 
 from red_pitaya_class import redP_handler
 from red_pitaya_class import DataMode
+from red_pitaya_class import DecimatorMethod
 import matplotlib.pyplot as plt
 
 
-set_bitstream = False
-plot_adc = False
+set_bitstream = True
+plot_adc = True
 
 #ip = "169.254.172.188"
-ip = "192.168.1.101"
+ip = "192.168.1.102"
 
 rp = redP_handler(ip)
 
 # Solo la primera vez:
 if(set_bitstream):
-    rp.set_bitstream_in_fpga("lockin_dds_trigger_mas_mas_delay.bit")
+    rp.set_bitstream_in_fpga("lockin_estable.bit")
 
 r_new_3=[]
 
 for i in range(1,2):
 
     rp.set_data_mode(DataMode.ADC)
+    rp.set_decimator_method(DecimatorMethod.DISCARD)
     
-    frec_ref = 10;
+    frec_ref = 1;
     rp.set_frec_ref(frec_ref)
     
-    frec_dac = 10;
+    frec_dac = 1;
     rp.set_frec_dac(frec_dac)
     
     N = 1
     rp.set_N(N)
     
-    decimator = 1
+    decimator = 1e6
     rp.set_decimator(decimator)    
     
     data=rp.measure_lockin()
@@ -51,3 +53,4 @@ for i in range(1,2):
 
 if(plot_adc):
     plt.plot(data['datos_adc'],marker='x');
+    plt.grid()

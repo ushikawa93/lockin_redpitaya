@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1711141415">
+<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1711474989">
   <File Type="ROUTE-PWR" Name="system_wrapper_power_routed.rpt"/>
   <File Type="PA-TCL" Name="system_wrapper.tcl"/>
   <File Type="BITSTR-MMI" Name="system_wrapper.mmi"/>
@@ -115,17 +115,17 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/mux.v">
+    <File Path="$PSRCDIR/sources_1/new/and_2.v">
       <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../adquisidor/adquisidor_red_pitaya/adquisidor.srcs/sources_1/new/and_2.v"/>
+        <Attr Name="ImportTime" Val="1691684503"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/and_2.v">
+    <File Path="$PSRCDIR/sources_1/new/delay_axi_streaming.v">
       <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../adquisidor/adquisidor_red_pitaya/adquisidor.srcs/sources_1/new/and_2.v"/>
-        <Attr Name="ImportTime" Val="1691684503"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -192,7 +192,14 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/delay_axi_streaming.v">
+    <File Path="$PSRCDIR/sources_1/new/mux.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/linear_mean.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -212,6 +219,22 @@
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../Led_blink_custom/tmp/Led_blink/Led_blink.gen/sources_1/bd/system/hdl/system_wrapper.v"/>
         <Attr Name="ImportTime" Val="1682371956"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/clk_adapter.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/promedio_lineal.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -278,16 +301,6 @@
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="ImportPath" Val="$PPRDIR/../adquisidor/adquisidor_red_pitaya/adquisidor.srcs/sources_1/imports/my_cores/level_detector.v"/>
         <Attr Name="ImportTime" Val="1692036252"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/imports/my_cores/promedio_lineal.v">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="ImportPath" Val="$PPRDIR/../utils/user_ip/my_cores/promedio_lineal.v"/>
-        <Attr Name="ImportTime" Val="1684424189"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -448,16 +461,6 @@
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="ImportPath" Val="$PSRCDIR/user_ip/cores/axis_constant_v1_0/src/axis_constant.v"/>
         <Attr Name="ImportTime" Val="1682619470"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/imports/user_ip/my_cores/promedio_lineal.v">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="ImportPath" Val="$PSRCDIR/user_ip/my_cores/promedio_lineal.v"/>
-        <Attr Name="ImportTime" Val="1684426932"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>

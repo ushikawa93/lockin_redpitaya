@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "system_delay_axi_streaming_1_0",
-    "cell_name": "delay_axi_streaming_1",
+    "cell_name": "referencias/delay_axi_streaming_1",
     "component_reference": "xilinx.com:module_ref:delay_axi_streaming:1.0",
     "ip_revision": "1",
     "gen_directory": "../../../../../../lockin.gen/sources_1/bd/system/ip/system_delay_axi_streaming_1_0",

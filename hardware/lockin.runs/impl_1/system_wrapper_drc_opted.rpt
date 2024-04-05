@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date         : Fri Mar 22 18:07:34 2024
+| Date         : Tue Mar 26 14:47:29 2024
 | Host         : DESKTOP-BRUHM76 running 64-bit major release  (build 9200)
 | Command      : report_drc -file system_wrapper_drc_opted.rpt -pb system_wrapper_drc_opted.pb -rpx system_wrapper_drc_opted.rpx
 | Design       : system_wrapper
@@ -24,20 +24,19 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 39
-+-----------+----------+-------------------------------------------------------------------+------------+
-| Rule      | Severity | Description                                                       | Violations |
-+-----------+----------+-------------------------------------------------------------------+------------+
-| DPIP-1    | Warning  | Input pipelining                                                  | 4          |
-| DPOP-1    | Warning  | PREG Output pipelining                                            | 2          |
-| DPOP-2    | Warning  | MREG Output pipelining                                            | 2          |
-| REQP-1839 | Warning  | RAMB36 async control check                                        | 8          |
-| RPBF-3    | Warning  | IO port buffering is incomplete                                   | 16         |
-| AVAL-4    | Advisory | enum_USE_DPORT_FALSE_enum_DREG_ADREG_0_connects_CED_CEAD_RSTD_GND | 2          |
-| REQP-30   | Advisory | enum_MREG_0_connects_CEM_GND                                      | 2          |
-| REQP-31   | Advisory | enum_PREG_0_connects_CEP_GND                                      | 2          |
-| REQP-181  | Advisory | writefirst                                                        | 1          |
-+-----------+----------+-------------------------------------------------------------------+------------+
+             Violations found: 31
++----------+----------+-------------------------------------------------------------------+------------+
+| Rule     | Severity | Description                                                       | Violations |
++----------+----------+-------------------------------------------------------------------+------------+
+| DPIP-1   | Warning  | Input pipelining                                                  | 4          |
+| DPOP-1   | Warning  | PREG Output pipelining                                            | 2          |
+| DPOP-2   | Warning  | MREG Output pipelining                                            | 2          |
+| RPBF-3   | Warning  | IO port buffering is incomplete                                   | 16         |
+| AVAL-4   | Advisory | enum_USE_DPORT_FALSE_enum_DREG_ADREG_0_connects_CED_CEAD_RSTD_GND | 2          |
+| REQP-30  | Advisory | enum_MREG_0_connects_CEM_GND                                      | 2          |
+| REQP-31  | Advisory | enum_PREG_0_connects_CEP_GND                                      | 2          |
+| REQP-181 | Advisory | writefirst                                                        | 1          |
++----------+----------+-------------------------------------------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
@@ -79,46 +78,6 @@ Related violations: <none>
 DPOP-2#2 Warning
 MREG Output pipelining  
 DSP system_i/lock_in/inst/lock_in/multiplicador/prod_fase/MULT_MACRO_inst/dsp_bl.DSP48_BL multiplier stage system_i/lock_in/inst/lock_in/multiplicador/prod_fase/MULT_MACRO_inst/dsp_bl.DSP48_BL/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
-REQP-1839#1 Warning
-RAMB36 async control check  
-The RAMB36E1 system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg has an input control pin system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg/ENBWREN (net: system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/wea[0]) which is driven by a register (system_i/decimator_0/inst/data_out_valid_reg_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-Related violations: <none>
-
-REQP-1839#2 Warning
-RAMB36 async control check  
-The RAMB36E1 system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg has an input control pin system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg/WEBWE[0] (net: system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/wea[0]) which is driven by a register (system_i/decimator_0/inst/data_out_valid_reg_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-Related violations: <none>
-
-REQP-1839#3 Warning
-RAMB36 async control check  
-The RAMB36E1 system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg has an input control pin system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg/WEBWE[1] (net: system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/wea[0]) which is driven by a register (system_i/decimator_0/inst/data_out_valid_reg_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-Related violations: <none>
-
-REQP-1839#4 Warning
-RAMB36 async control check  
-The RAMB36E1 system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg has an input control pin system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg/WEBWE[2] (net: system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/wea[0]) which is driven by a register (system_i/decimator_0/inst/data_out_valid_reg_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-Related violations: <none>
-
-REQP-1839#5 Warning
-RAMB36 async control check  
-The RAMB36E1 system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg has an input control pin system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg/WEBWE[3] (net: system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/wea[0]) which is driven by a register (system_i/decimator_0/inst/data_out_valid_reg_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-Related violations: <none>
-
-REQP-1839#6 Warning
-RAMB36 async control check  
-The RAMB36E1 system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg has an input control pin system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg/WEBWE[4] (net: system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/wea[0]) which is driven by a register (system_i/decimator_0/inst/data_out_valid_reg_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-Related violations: <none>
-
-REQP-1839#7 Warning
-RAMB36 async control check  
-The RAMB36E1 system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg has an input control pin system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg/WEBWE[5] (net: system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/wea[0]) which is driven by a register (system_i/decimator_0/inst/data_out_valid_reg_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
-Related violations: <none>
-
-REQP-1839#8 Warning
-RAMB36 async control check  
-The RAMB36E1 system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg has an input control pin system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg/WEBWE[6] (net: system_i/uP/fifo_1/U0/COMP_IPIC2AXI_S/grxd.COMP_RX_FIFO/gfifo_gen.COMP_AXIS_FG_FIFO/COMP_FIFO/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/wea[0]) which is driven by a register (system_i/decimator_0/inst/data_out_valid_reg_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
 Related violations: <none>
 
 RPBF-3#1 Warning

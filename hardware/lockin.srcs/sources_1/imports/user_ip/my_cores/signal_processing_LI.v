@@ -21,6 +21,7 @@ module signal_processing_LI(
 	
 	output ready_to_calculate,
 	output processing_finished,
+	output [31:0] datos_promediados,
 	
 	input [31:0] parameter_in_0,
 	input [31:0] parameter_in_1
@@ -108,7 +109,8 @@ lockin_segmentado lock_in(
 	
 	// Salidas auxiliares
 	.lockin_ready(lockin_ready),
-	.calculo_finalizado(lockin_finalizado)
+	.calculo_finalizado(lockin_finalizado),
+	.datos_promediados(datos_promediados)
 	
 );
 

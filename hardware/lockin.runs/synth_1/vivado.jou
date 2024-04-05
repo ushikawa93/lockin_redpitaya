@@ -2,8 +2,8 @@
 # Vivado v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Fri Mar 22 18:03:38 2024
-# Process ID: 13524
+# Start of session at: Tue Mar 26 14:43:12 2024
+# Process ID: 13352
 # Current directory: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/synth_1
 # Command line: vivado.exe -log system_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source system_wrapper.tcl
 # Log file: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/synth_1/system_wrapper.vds

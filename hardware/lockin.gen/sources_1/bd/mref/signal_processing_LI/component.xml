@@ -49,7 +49,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>217748f7</spirit:value>
+            <spirit:value>2cbe5e67</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -62,7 +62,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>217748f7</spirit:value>
+            <spirit:value>2cbe5e67</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -292,6 +292,23 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
+        <spirit:name>datos_promediados</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">31</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
         <spirit:name>parameter_in_0</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
@@ -360,7 +377,7 @@
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2024-03-22T19:02:02Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2024-03-26T17:41:50Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2022.2</xilinx:xilinxVersion>

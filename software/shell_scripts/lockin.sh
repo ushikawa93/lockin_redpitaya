@@ -5,14 +5,15 @@
 #///// ========================================================================= /////
 #
 # Script para calcular lockin en la FPGA y mostrar resultados
-# Uso -> lockin N_ma frec_dac frec_ref data_sel decimator IP 
+# Uso -> lockin N_ma frec_dac frec_ref data_sel decimator decimator_method IP 
 
 N_ma=${1:-2}
 frec_dac=${2:-1000000}
 frec_ref=${3:-1000000}
 data_sel=${4,-0}
 decimator=${5,-1}
-ip=${6:-169.254.172.188}
+decimator_method=${6,-0}
+ip=${7:-169.254.172.188}
 
 scp ../c_program/lockin.c root@$ip:/root/c_programs 
 
@@ -20,7 +21,7 @@ ssh root@$ip <<EOF
 
 	cd /root/c_programs 
 	gcc lockin.c -o lockin -lm
-	./lockin $N_ma $frec_dac $frec_ref $data_sel $decimator
+	./lockin $N_ma $frec_dac $frec_ref $data_sel $decimator $decimator_method
 EOF
 
 scp root@$ip:/root/c_programs/resultados.dat ../datos_adquiridos/resultados.dat

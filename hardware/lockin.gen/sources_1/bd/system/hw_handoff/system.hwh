@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Mar 22 18:03:07 2024" VIVADOVERSION="2022.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Mar 26 14:42:36 2024" VIVADOVERSION="2022.2">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z010" NAME="system" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -288,6 +288,9 @@
             <CONNECTION INSTANCE="referencias_start_signal_generat_0" PORT="clk"/>
             <CONNECTION INSTANCE="referencias_delay_axi_streaming_0" PORT="clk"/>
             <CONNECTION INSTANCE="referencias_delay_axi_streaming_1" PORT="clk"/>
+            <CONNECTION INSTANCE="decimator_decimator_0" PORT="clk"/>
+            <CONNECTION INSTANCE="decimator_linear_mean_0" PORT="clk"/>
+            <CONNECTION INSTANCE="uP_axis_clock_converter_0" PORT="s_axis_aclk"/>
             <CONNECTION INSTANCE="lock_in" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
@@ -1421,20 +1424,20 @@
             <CONNECTION INSTANCE="lock_in" PORT="processing_finished"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="b" SIGIS="undef" SIGNAME="decimator_0_finish">
+        <PORT DIR="I" NAME="b" SIGIS="undef" SIGNAME="decimator_selector_data_in1_finish">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decimator_0" PORT="finish"/>
+            <CONNECTION INSTANCE="decimator_selector_data_in1" PORT="finish"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="c" SIGIS="undef" SIGNAME="and_2_0_c">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uP_control_finished" PORT="gpio_io_i"/>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="gpio_io_i"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/decimator_0" HWVERSION="1.0" INSTANCE="decimator_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="decimator" VLNV="xilinx.com:module_ref:decimator:1.0">
+    <MODULE COREREVISION="1" FULLNAME="/decimator/decimator_0" HWVERSION="1.0" INSTANCE="decimator_decimator_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="decimator" VLNV="xilinx.com:module_ref:decimator:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="FIFO_DEPTH" VALUE="1024"/>
@@ -1442,9 +1445,9 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="1.25e+08" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="uP_processing_system7_0_FCLK_CLK0">
+        <PORT CLKFREQUENCY="125000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="ADC_axis_red_pitaya_adc_0_adc_clk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uP_processing_system7_0" PORT="FCLK_CLK0"/>
+            <CONNECTION INSTANCE="ADC_axis_red_pitaya_adc_0" PORT="adc_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="reset_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="uP_control_reset_n_Dout">
@@ -1472,17 +1475,135 @@
             <CONNECTION INSTANCE="uP_control_adc_decimator_and_data_select" PORT="gpio_io_o"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="decimator_0_data_out">
+        <PORT DIR="O" LEFT="31" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="decimator_decimator_0_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uP_fifo_1" PORT="axi_str_rxd_tdata"/>
+            <CONNECTION INSTANCE="decimator_selector_data_in1" PORT="data_in_0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="data_out_valid" SIGIS="undef" SIGNAME="decimator_0_data_out_valid">
+        <PORT DIR="O" NAME="data_out_valid" SIGIS="undef" SIGNAME="decimator_decimator_0_data_out_valid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uP_fifo_1" PORT="axi_str_rxd_tvalid"/>
+            <CONNECTION INSTANCE="decimator_selector_data_in1" PORT="data_in_0_valid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="finish" SIGIS="undef" SIGNAME="decimator_0_finish">
+        <PORT DIR="O" NAME="finish" SIGIS="undef" SIGNAME="decimator_decimator_0_finish">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decimator_selector_data_in1" PORT="finish_0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/decimator/linear_mean_0" HWVERSION="1.0" INSTANCE="decimator_linear_mean_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="linear_mean" VLNV="xilinx.com:module_ref:linear_mean:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="FIFO_DEPTH" VALUE="1024"/>
+        <PARAMETER NAME="Component_Name" VALUE="system_linear_mean_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="125000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="ADC_axis_red_pitaya_adc_0_adc_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ADC_axis_red_pitaya_adc_0" PORT="adc_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="uP_control_reset_n_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_reset_n" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="enable" SIGIS="undef" SIGNAME="uP_control_enable_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_enable" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="data_in" RIGHT="0" SIGIS="undef" SIGNAME="selector_data_in_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="selector_data_in" PORT="data_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="data_in_valid" SIGIS="undef" SIGNAME="selector_data_in_data_out_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="selector_data_in" PORT="data_out_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="decimate_value" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_adc_decimator_and_data_select_gpio_io_o">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_adc_decimator_and_data_select" PORT="gpio_io_o"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="decimator_linear_mean_0_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decimator_selector_data_in1" PORT="data_in_1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="data_out_valid" SIGIS="undef" SIGNAME="decimator_linear_mean_0_data_out_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decimator_selector_data_in1" PORT="data_in_1_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="finish" SIGIS="undef" SIGNAME="decimator_linear_mean_0_finish">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decimator_selector_data_in1" PORT="finish_1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/decimator/selector_data_in1" HWVERSION="1.0" INSTANCE="decimator_selector_data_in1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="mux" VLNV="xilinx.com:module_ref:mux:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DATA_IN_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="DATA_OUT_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="Component_Name" VALUE="system_selector_data_in_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="31" NAME="data_in_0" RIGHT="0" SIGIS="undef" SIGNAME="decimator_decimator_0_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decimator_decimator_0" PORT="data_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="data_in_0_valid" SIGIS="undef" SIGNAME="decimator_decimator_0_data_out_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decimator_decimator_0" PORT="data_out_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="data_in_1" RIGHT="0" SIGIS="undef" SIGNAME="decimator_linear_mean_0_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decimator_linear_mean_0" PORT="data_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="data_in_1_valid" SIGIS="undef" SIGNAME="decimator_linear_mean_0_data_out_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decimator_linear_mean_0" PORT="data_out_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="sel" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_gpio2_io_o">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="gpio2_io_o"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="finish_0" SIGIS="undef" SIGNAME="decimator_decimator_0_finish">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decimator_decimator_0" PORT="finish"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="finish_1" SIGIS="undef" SIGNAME="decimator_linear_mean_0_finish">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decimator_linear_mean_0" PORT="finish"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="decimator_selector_data_in1_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_axis_clock_converter_0" PORT="s_axis_tdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="data_out_valid" SIGIS="undef" SIGNAME="decimator_selector_data_in1_data_out_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_axis_clock_converter_0" PORT="s_axis_tvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="finish" SIGIS="undef" SIGNAME="decimator_selector_data_in1_finish">
           <CONNECTIONS>
             <CONNECTION INSTANCE="and_2_0" PORT="b"/>
           </CONNECTIONS>
@@ -1637,6 +1758,11 @@
         <PORT DIR="O" NAME="processing_finished" SIGIS="undef" SIGNAME="lock_in_processing_finished">
           <CONNECTIONS>
             <CONNECTION INSTANCE="and_2_0" PORT="a"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="datos_promediados" RIGHT="0" SIGIS="undef" SIGNAME="lock_in_datos_promediados">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_datos_promediados" PORT="gpio_io_i"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="parameter_in_0" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_M_and_Nma_gpio_io_o">
@@ -2157,6 +2283,8 @@
     <MODULE COREREVISION="1" FULLNAME="/selector_data_in" HWVERSION="1.0" INSTANCE="selector_data_in" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="mux" VLNV="xilinx.com:module_ref:mux:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
+        <PARAMETER NAME="DATA_IN_WIDTH" VALUE="14"/>
+        <PARAMETER NAME="DATA_OUT_WIDTH" VALUE="32"/>
         <PARAMETER NAME="Component_Name" VALUE="system_mux_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -2186,20 +2314,146 @@
             <CONNECTION INSTANCE="uP_control_adc_decimator_and_data_select" PORT="gpio2_io_o"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="finish_0" SIGIS="undef"/>
+        <PORT DIR="I" NAME="finish_1" SIGIS="undef"/>
         <PORT DIR="O" LEFT="31" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="selector_data_in_data_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decimator_0" PORT="data_in"/>
+            <CONNECTION INSTANCE="decimator_decimator_0" PORT="data_in"/>
+            <CONNECTION INSTANCE="decimator_linear_mean_0" PORT="data_in"/>
             <CONNECTION INSTANCE="lock_in" PORT="data_in"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="data_out_valid" SIGIS="undef" SIGNAME="selector_data_in_data_out_valid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decimator_0" PORT="data_in_valid"/>
+            <CONNECTION INSTANCE="decimator_decimator_0" PORT="data_in_valid"/>
+            <CONNECTION INSTANCE="decimator_linear_mean_0" PORT="data_in_valid"/>
             <CONNECTION INSTANCE="lock_in" PORT="data_in_valid"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="O" NAME="finish" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="28" FULLNAME="/uP/axis_clock_converter_0" HWVERSION="1.1" INSTANCE="uP_axis_clock_converter_0" IPTYPE="BUS" IS_ENABLE="1" MODCLASS="BUS" MODTYPE="axis_clock_converter" VLNV="xilinx.com:ip:axis_clock_converter:1.1">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="https://www.xilinx.com/cgi-bin/docs/ipdoc?c=axis_clock_converter;v=v1_1;d=pg085-axi4stream-infrastructure.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_FAMILY" VALUE="zynq"/>
+        <PARAMETER NAME="C_AXIS_TDATA_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="C_AXIS_TID_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_AXIS_TDEST_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_AXIS_TUSER_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_AXIS_SIGNAL_SET" VALUE="0b00000000000000000000000000000011"/>
+        <PARAMETER NAME="C_IS_ACLK_ASYNC" VALUE="1"/>
+        <PARAMETER NAME="C_SYNCHRONIZER_STAGE" VALUE="2"/>
+        <PARAMETER NAME="C_S_AXIS_ACLK_RATIO" VALUE="1"/>
+        <PARAMETER NAME="C_M_AXIS_ACLK_RATIO" VALUE="2"/>
+        <PARAMETER NAME="C_ACLKEN_CONV_MODE" VALUE="0"/>
+        <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="4"/>
+        <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+        <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+        <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+        <PARAMETER NAME="IS_ACLK_ASYNC" VALUE="1"/>
+        <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+        <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+        <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+        <PARAMETER NAME="SYNCHRONIZATION_STAGES" VALUE="2"/>
+        <PARAMETER NAME="ACLK_RATIO" VALUE="1:2"/>
+        <PARAMETER NAME="ACLKEN_CONV_MODE" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="system_axis_clock_converter_0_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="BUS"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="s_axis_aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="uP_control_reset_n_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_reset_n" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="m_axis_aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="uP_control_reset_n_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_reset_n" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="125000000" DIR="I" NAME="s_axis_aclk" SIGIS="clk" SIGNAME="ADC_axis_red_pitaya_adc_0_adc_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ADC_axis_red_pitaya_adc_0" PORT="adc_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axis_tvalid" SIGIS="undef" SIGNAME="decimator_selector_data_in1_data_out_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decimator_selector_data_in1" PORT="data_out_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axis_tready" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="31" NAME="s_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="decimator_selector_data_in1_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decimator_selector_data_in1" PORT="data_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="1.25e+08" DIR="I" NAME="m_axis_aclk" SIGIS="clk" SIGNAME="uP_processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="m_axis_tvalid" SIGIS="undef" SIGNAME="uP_axis_clock_converter_0_m_axis_tvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_fifo_1" PORT="axi_str_rxd_tvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="m_axis_tready" SIGIS="undef" SIGNAME="uP_axis_clock_converter_0_m_axis_tready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_fifo_1" PORT="axi_str_rxd_tready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="m_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="uP_axis_clock_converter_0_m_axis_tdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_fifo_1" PORT="axi_str_rxd_tdata"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="S_AXIS" TYPE="SLAVE" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="4"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="125000000"/>
+          <PARAMETER NAME="PHASE" VALUE="0.0"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="system_axis_red_pitaya_adc_0_0_adc_clk"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
+          <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="s_axis_tvalid"/>
+            <PORTMAP LOGICAL="TREADY" PHYSICAL="s_axis_tready"/>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="s_axis_tdata"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="uP_axis_clock_converter_0_M_AXIS" NAME="M_AXIS" TYPE="MASTER" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="4"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="1.25e+08"/>
+          <PARAMETER NAME="PHASE" VALUE="0.0"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="system_processing_system7_0_0_FCLK_CLK0"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
+          <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="m_axis_tvalid"/>
+            <PORTMAP LOGICAL="TREADY" PHYSICAL="m_axis_tready"/>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="m_axis_tdata"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+      </BUSINTERFACES>
     </MODULE>
     <MODULE COREREVISION="29" FULLNAME="/uP_control/M_and_Nma" HWVERSION="2.0" INSTANCE="uP_control_M_and_Nma" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_gpio" VLNV="xilinx.com:ip:axi_gpio:2.0">
       <DOCUMENTS>
@@ -2884,7 +3138,8 @@
         <PORT DIR="O" LEFT="31" NAME="gpio_io_o" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_adc_decimator_and_data_select_gpio_io_o">
           <CONNECTIONS>
             <CONNECTION INSTANCE="uP_control_adc_decimator_and_data_select" PORT="gpio_io_i"/>
-            <CONNECTION INSTANCE="decimator_0" PORT="decimate_value"/>
+            <CONNECTION INSTANCE="decimator_decimator_0" PORT="decimate_value"/>
+            <CONNECTION INSTANCE="decimator_linear_mean_0" PORT="decimate_value"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="gpio_io_t" RIGHT="0" SIGIS="undef"/>
@@ -2896,9 +3151,9 @@
         <PORT DIR="O" LEFT="31" NAME="gpio2_io_o" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_adc_decimator_and_data_select_gpio2_io_o">
           <CONNECTIONS>
             <CONNECTION INSTANCE="uP_control_adc_decimator_and_data_select" PORT="gpio2_io_i"/>
-            <CONNECTION INSTANCE="selector_data_in" PORT="sel"/>
             <CONNECTION INSTANCE="referencias_delay_axi_streaming_0" PORT="bypass_n"/>
             <CONNECTION INSTANCE="referencias_delay_axi_streaming_1" PORT="bypass_n"/>
+            <CONNECTION INSTANCE="selector_data_in" PORT="sel"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="gpio2_io_t" RIGHT="0" SIGIS="undef"/>
@@ -2972,6 +3227,376 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
+    <MODULE COREREVISION="29" FULLNAME="/uP_control/datos_promediados" HWVERSION="2.0" INSTANCE="uP_control_datos_promediados" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_gpio" VLNV="xilinx.com:ip:axi_gpio:2.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=axi_gpio;v=v2_0;d=pg144-axi-gpio.pdf"/>
+      </DOCUMENTS>
+      <ADDRESSBLOCKS>
+        <ADDRESSBLOCK ACCESS="read-write" INTERFACE="S_AXI" NAME="Reg" RANGE="4096" USAGE="register">
+          <REGISTERS>
+            <REGISTER NAME="GPIO_DATA">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Channel-1 AXI GPIO Data register"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x0"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
+              <FIELDS>
+                <FIELD NAME="Channel_1_GPIO_DATA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="AXI GPIO Data Register.&#xA;For each I/O bit programmed as input&#xA;  R - Reads value on the input pin.&#xA;  W - No effect.&#xA;For each I/O bit programmed as output&#xA;  R - Reads value on GPIO_O pins&#xA;  W - Writes value to the corresponding AXI GPIO &#xA;      data register bit and output pin&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="GPIO_TRI">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Channel-1 AXI GPIO 3-State Control register"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x4"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
+              <FIELDS>
+                <FIELD NAME="Channel_1_GPIO_TRI">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="AXI GPIO 3-State Control Register&#xA;Each I/O pin of the AXI GPIO is individually programmable as an input or output   For each of the bits     0 - I/O pin configured as output     1 - I/O pin configured as input&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="GPIO2_DATA">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Channel-2 AXI GPIO Data register"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x8"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
+              <FIELDS>
+                <FIELD NAME="Channel_2_GPIO_DATA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="AXI GPIO Data Register.&#xA;For each I/O bit programmed as input&#xA;  R - Reads value on the input pin.&#xA;  W - No effect.&#xA;For each I/O bit programmed as output&#xA;  R - Reads value on GPIO_O pins&#xA;  W - Writes value to the corresponding AXI GPIO &#xA;      data register bit and output pin&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="GPIO2_TRI">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Channel-2 AXI GPIO 3-State Control register"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xC"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
+              <FIELDS>
+                <FIELD NAME="Channel_2_GPIO_TRI">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="AXI GPIO 3-State Control Register&#xA;Each I/O pin of the AXI GPIO is individually programmable as an input or output   For each of the bits     0 - I/O pin configured as output     1 - I/O pin configured as input&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="GIER">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Global_Interrupt_Enable register"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x11C"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
+              <FIELDS>
+                <FIELD NAME="Global_Interrupt_Enable">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Master enable for the device interrupt output&#xA;  0 - Disabled&#xA;  1 - Enabled&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="31"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="31"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="1"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IP_IER">
+              <PROPERTY NAME="DESCRIPTION" VALUE="IP Interrupt Enable register"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x128"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
+              <FIELDS>
+                <FIELD NAME="Channel_1_Interrupt_Enable">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Enable Channel 1 Interrupt&#xA;  0 - Disabled (masked)&#xA;  1 - Enabled&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="1"/>
+                </FIELD>
+                <FIELD NAME="Channel_2_Interrupt_Enable">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Enable Channel 2 Interrupt&#xA;  0 - Disabled (masked)&#xA;  1 - Enabled&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="1"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="1"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="1"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IP_ISR">
+              <PROPERTY NAME="DESCRIPTION" VALUE="IP Interrupt Status register"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x120"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
+              <FIELDS>
+                <FIELD NAME="Channel_1_Interrupt_Status">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Channel 1 Interrupt Status&#xA;  0 - No Channel 1 input interrupt&#xA;  1 - Channel 1 input interrupt&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE="oneToToggle"/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="1"/>
+                </FIELD>
+                <FIELD NAME="Channel_2_Interrupt_Status">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Channel 2 Interrupt Status&#xA;  0 - No Channel 2 input interrupt&#xA;  1 - Channel 2 input interrupt&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="1"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE="oneToToggle"/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="1"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="1"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+          </REGISTERS>
+        </ADDRESSBLOCK>
+      </ADDRESSBLOCKS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_FAMILY" VALUE="zynq"/>
+        <PARAMETER NAME="C_S_AXI_ADDR_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="C_S_AXI_DATA_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="C_GPIO_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="C_GPIO2_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="C_ALL_INPUTS" VALUE="0"/>
+        <PARAMETER NAME="C_ALL_INPUTS_2" VALUE="0"/>
+        <PARAMETER NAME="C_ALL_OUTPUTS" VALUE="0"/>
+        <PARAMETER NAME="C_ALL_OUTPUTS_2" VALUE="0"/>
+        <PARAMETER NAME="C_INTERRUPT_PRESENT" VALUE="0"/>
+        <PARAMETER NAME="C_DOUT_DEFAULT" VALUE="0x00000000"/>
+        <PARAMETER NAME="C_TRI_DEFAULT" VALUE="0xFFFFFFFF"/>
+        <PARAMETER NAME="C_IS_DUAL" VALUE="1"/>
+        <PARAMETER NAME="C_DOUT_DEFAULT_2" VALUE="0x00000000"/>
+        <PARAMETER NAME="C_TRI_DEFAULT_2" VALUE="0xFFFFFFFF"/>
+        <PARAMETER NAME="Component_Name" VALUE="system_finished_and_decimator_method_0"/>
+        <PARAMETER NAME="USE_BOARD_FLOW" VALUE="false"/>
+        <PARAMETER NAME="GPIO_BOARD_INTERFACE" VALUE="Custom"/>
+        <PARAMETER NAME="GPIO2_BOARD_INTERFACE" VALUE="Custom"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+        <PARAMETER NAME="C_BASEADDR" VALUE="0x41270000"/>
+        <PARAMETER NAME="C_HIGHADDR" VALUE="0x4127FFFF"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="1.25e+08" DIR="I" NAME="s_axi_aclk" SIGIS="clk" SIGNAME="uP_processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="uP_rst_ps7_0_125M_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_rst_ps7_0_125M" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="8" NAME="s_axi_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_awaddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M08_AXI_awaddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_awvalid" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M08_AXI_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_awready" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M08_AXI_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="s_axi_wdata" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M08_AXI_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="s_axi_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M08_AXI_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_wvalid" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M08_AXI_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_wready" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M08_AXI_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="s_axi_bresp" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M08_AXI_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_bvalid" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M08_AXI_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_bready" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M08_AXI_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="8" NAME="s_axi_araddr" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M08_AXI_araddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_arvalid" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M08_AXI_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_arready" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M08_AXI_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="s_axi_rdata" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M08_AXI_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="s_axi_rresp" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M08_AXI_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_rvalid" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M08_AXI_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_rready" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M08_AXI_rready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="gpio_io_i" RIGHT="0" SIGIS="undef" SIGNAME="lock_in_datos_promediados">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="lock_in" PORT="datos_promediados"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="gpio_io_o" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="31" NAME="gpio_io_t" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="31" NAME="gpio2_io_i" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="31" NAME="gpio2_io_o" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="31" NAME="gpio2_io_t" RIGHT="0" SIGIS="undef"/>
+      </PORTS>
+      <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="uP_ps7_0_axi_periph_M08_AXI" DATAWIDTH="32" NAME="S_AXI" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
+          <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="PROTOCOL" VALUE="AXI4LITE"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="1.25e+08"/>
+          <PARAMETER NAME="ID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="ADDR_WIDTH" VALUE="9"/>
+          <PARAMETER NAME="AWUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="ARUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="WUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="RUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="READ_WRITE_MODE" VALUE="READ_WRITE"/>
+          <PARAMETER NAME="HAS_BURST" VALUE="0"/>
+          <PARAMETER NAME="HAS_LOCK" VALUE="0"/>
+          <PARAMETER NAME="HAS_PROT" VALUE="0"/>
+          <PARAMETER NAME="HAS_CACHE" VALUE="0"/>
+          <PARAMETER NAME="HAS_QOS" VALUE="0"/>
+          <PARAMETER NAME="HAS_REGION" VALUE="0"/>
+          <PARAMETER NAME="HAS_WSTRB" VALUE="1"/>
+          <PARAMETER NAME="HAS_BRESP" VALUE="1"/>
+          <PARAMETER NAME="HAS_RRESP" VALUE="1"/>
+          <PARAMETER NAME="SUPPORTS_NARROW_BURST" VALUE="0"/>
+          <PARAMETER NAME="NUM_READ_OUTSTANDING" VALUE="2"/>
+          <PARAMETER NAME="NUM_WRITE_OUTSTANDING" VALUE="2"/>
+          <PARAMETER NAME="MAX_BURST_LENGTH" VALUE="1"/>
+          <PARAMETER NAME="PHASE" VALUE="0.0"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="system_processing_system7_0_0_FCLK_CLK0"/>
+          <PARAMETER NAME="NUM_READ_THREADS" VALUE="1"/>
+          <PARAMETER NAME="NUM_WRITE_THREADS" VALUE="1"/>
+          <PARAMETER NAME="RUSER_BITS_PER_BYTE" VALUE="0"/>
+          <PARAMETER NAME="WUSER_BITS_PER_BYTE" VALUE="0"/>
+          <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="ARADDR" PHYSICAL="s_axi_araddr"/>
+            <PORTMAP LOGICAL="ARREADY" PHYSICAL="s_axi_arready"/>
+            <PORTMAP LOGICAL="ARVALID" PHYSICAL="s_axi_arvalid"/>
+            <PORTMAP LOGICAL="AWADDR" PHYSICAL="s_axi_awaddr"/>
+            <PORTMAP LOGICAL="AWREADY" PHYSICAL="s_axi_awready"/>
+            <PORTMAP LOGICAL="AWVALID" PHYSICAL="s_axi_awvalid"/>
+            <PORTMAP LOGICAL="BREADY" PHYSICAL="s_axi_bready"/>
+            <PORTMAP LOGICAL="BRESP" PHYSICAL="s_axi_bresp"/>
+            <PORTMAP LOGICAL="BVALID" PHYSICAL="s_axi_bvalid"/>
+            <PORTMAP LOGICAL="RDATA" PHYSICAL="s_axi_rdata"/>
+            <PORTMAP LOGICAL="RREADY" PHYSICAL="s_axi_rready"/>
+            <PORTMAP LOGICAL="RRESP" PHYSICAL="s_axi_rresp"/>
+            <PORTMAP LOGICAL="RVALID" PHYSICAL="s_axi_rvalid"/>
+            <PORTMAP LOGICAL="WDATA" PHYSICAL="s_axi_wdata"/>
+            <PORTMAP LOGICAL="WREADY" PHYSICAL="s_axi_wready"/>
+            <PORTMAP LOGICAL="WSTRB" PHYSICAL="s_axi_wstrb"/>
+            <PORTMAP LOGICAL="WVALID" PHYSICAL="s_axi_wvalid"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="GPIO" TYPE="INITIATOR" VLNV="xilinx.com:interface:gpio:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TRI_I" PHYSICAL="gpio_io_i"/>
+            <PORTMAP LOGICAL="TRI_O" PHYSICAL="gpio_io_o"/>
+            <PORTMAP LOGICAL="TRI_T" PHYSICAL="gpio_io_t"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="GPIO2" TYPE="INITIATOR" VLNV="xilinx.com:interface:gpio:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TRI_I" PHYSICAL="gpio2_io_i"/>
+            <PORTMAP LOGICAL="TRI_O" PHYSICAL="gpio2_io_o"/>
+            <PORTMAP LOGICAL="TRI_T" PHYSICAL="gpio2_io_t"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+      </BUSINTERFACES>
+    </MODULE>
     <MODULE COREREVISION="2" FULLNAME="/uP_control/enable" HWVERSION="1.0" INSTANCE="uP_control_enable" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -2992,7 +3617,8 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="DAC_dds_compiler_0" PORT="aclken"/>
             <CONNECTION INSTANCE="referencias_dds_compiler_0" PORT="aclken"/>
-            <CONNECTION INSTANCE="decimator_0" PORT="enable"/>
+            <CONNECTION INSTANCE="decimator_decimator_0" PORT="enable"/>
+            <CONNECTION INSTANCE="decimator_linear_mean_0" PORT="enable"/>
             <CONNECTION INSTANCE="lock_in" PORT="enable_gral"/>
           </CONNECTIONS>
         </PORT>
@@ -3373,7 +3999,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="29" FULLNAME="/uP_control/finished" HWVERSION="2.0" INSTANCE="uP_control_finished" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_gpio" VLNV="xilinx.com:ip:axi_gpio:2.0">
+    <MODULE COREREVISION="29" FULLNAME="/uP_control/finished_and_decimator_method" HWVERSION="2.0" INSTANCE="uP_control_finished_and_decimator_method" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_gpio" VLNV="xilinx.com:ip:axi_gpio:2.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=axi_gpio;v=v2_0;d=pg144-axi-gpio.pdf"/>
       </DOCUMENTS>
@@ -3573,88 +4199,92 @@
             <CONNECTION INSTANCE="uP_processing_system7_0" PORT="FCLK_CLK0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s_axi_aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst"/>
-        <PORT DIR="I" LEFT="8" NAME="s_axi_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_awaddr">
+        <PORT DIR="I" NAME="s_axi_aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="uP_rst_ps7_0_125M_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_rst_ps7_0_125M" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="8" NAME="s_axi_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_awaddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M06_AXI_awaddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s_axi_awvalid" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_awvalid">
+        <PORT DIR="I" NAME="s_axi_awvalid" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_awvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M06_AXI_awvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="s_axi_awready" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_awready">
+        <PORT DIR="O" NAME="s_axi_awready" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_awready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M06_AXI_awready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="s_axi_wdata" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_wdata">
+        <PORT DIR="I" LEFT="31" NAME="s_axi_wdata" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_wdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M06_AXI_wdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="s_axi_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_wstrb">
+        <PORT DIR="I" LEFT="3" NAME="s_axi_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_wstrb">
           <CONNECTIONS>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M06_AXI_wstrb"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s_axi_wvalid" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_wvalid">
+        <PORT DIR="I" NAME="s_axi_wvalid" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_wvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M06_AXI_wvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="s_axi_wready" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_wready">
+        <PORT DIR="O" NAME="s_axi_wready" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_wready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M06_AXI_wready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="s_axi_bresp" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_bresp">
+        <PORT DIR="O" LEFT="1" NAME="s_axi_bresp" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_bresp">
           <CONNECTIONS>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M06_AXI_bresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="s_axi_bvalid" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_bvalid">
+        <PORT DIR="O" NAME="s_axi_bvalid" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_bvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M06_AXI_bvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s_axi_bready" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_bready">
+        <PORT DIR="I" NAME="s_axi_bready" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_bready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M06_AXI_bready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="8" NAME="s_axi_araddr" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_araddr">
+        <PORT DIR="I" LEFT="8" NAME="s_axi_araddr" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_araddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M06_AXI_araddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s_axi_arvalid" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_arvalid">
+        <PORT DIR="I" NAME="s_axi_arvalid" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_arvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M06_AXI_arvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="s_axi_arready" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_arready">
+        <PORT DIR="O" NAME="s_axi_arready" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_arready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M06_AXI_arready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="s_axi_rdata" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_rdata">
+        <PORT DIR="O" LEFT="31" NAME="s_axi_rdata" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_rdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M06_AXI_rdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="s_axi_rresp" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_rresp">
+        <PORT DIR="O" LEFT="1" NAME="s_axi_rresp" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_rresp">
           <CONNECTIONS>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M06_AXI_rresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="s_axi_rvalid" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_rvalid">
+        <PORT DIR="O" NAME="s_axi_rvalid" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_rvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M06_AXI_rvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s_axi_rready" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_rready">
+        <PORT DIR="I" NAME="s_axi_rready" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_rready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M06_AXI_rready"/>
           </CONNECTIONS>
@@ -3666,8 +4296,17 @@
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="gpio_io_o" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" LEFT="31" NAME="gpio_io_t" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="31" NAME="gpio2_io_i" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="31" NAME="gpio2_io_o" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="31" NAME="gpio2_io_i" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_gpio2_io_o">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="gpio2_io_o"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="gpio2_io_o" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_gpio2_io_o">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="gpio2_io_i"/>
+            <CONNECTION INSTANCE="decimator_selector_data_in1" PORT="sel"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" LEFT="31" NAME="gpio2_io_t" RIGHT="0" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES>
@@ -4243,7 +4882,10 @@
             <CONNECTION INSTANCE="referencias_delay_axi_streaming_0" PORT="reset_n"/>
             <CONNECTION INSTANCE="referencias_delay_axi_streaming_1" PORT="reset_n"/>
             <CONNECTION INSTANCE="uP_fifo_1" PORT="s_axi_aresetn"/>
-            <CONNECTION INSTANCE="decimator_0" PORT="reset_n"/>
+            <CONNECTION INSTANCE="uP_axis_clock_converter_0" PORT="s_axis_aresetn"/>
+            <CONNECTION INSTANCE="uP_axis_clock_converter_0" PORT="m_axis_aresetn"/>
+            <CONNECTION INSTANCE="decimator_decimator_0" PORT="reset_n"/>
+            <CONNECTION INSTANCE="decimator_linear_mean_0" PORT="reset_n"/>
             <CONNECTION INSTANCE="lock_in" PORT="reset_n"/>
           </CONNECTIONS>
         </PORT>
@@ -5681,16 +6323,20 @@
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="s2mm_prmry_reset_out_n" POLARITY="ACTIVE_LOW" SIGIS="rst"/>
-        <PORT DIR="I" NAME="axi_str_rxd_tvalid" SIGIS="undef" SIGNAME="decimator_0_data_out_valid">
+        <PORT DIR="I" NAME="axi_str_rxd_tvalid" SIGIS="undef" SIGNAME="uP_axis_clock_converter_0_m_axis_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decimator_0" PORT="data_out_valid"/>
+            <CONNECTION INSTANCE="uP_axis_clock_converter_0" PORT="m_axis_tvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="axi_str_rxd_tready" SIGIS="undef"/>
-        <PORT DIR="I" NAME="axi_str_rxd_tlast" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="31" NAME="axi_str_rxd_tdata" RIGHT="0" SIGIS="undef" SIGNAME="decimator_0_data_out">
+        <PORT DIR="O" NAME="axi_str_rxd_tready" SIGIS="undef" SIGNAME="uP_axis_clock_converter_0_m_axis_tready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decimator_0" PORT="data_out"/>
+            <CONNECTION INSTANCE="uP_axis_clock_converter_0" PORT="m_axis_tready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="axi_str_rxd_tlast" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="31" NAME="axi_str_rxd_tdata" RIGHT="0" SIGIS="undef" SIGNAME="uP_axis_clock_converter_0_m_axis_tdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_axis_clock_converter_0" PORT="m_axis_tdata"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -5747,7 +6393,7 @@
             <PORTMAP LOGICAL="WVALID" PHYSICAL="s_axi_wvalid"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="__NOC__" NAME="AXI_STR_RXD" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
+        <BUSINTERFACE BUSNAME="uP_axis_clock_converter_0_M_AXIS" NAME="AXI_STR_RXD" TYPE="SLAVE" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="4"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
@@ -6986,10 +7632,10 @@
             <CONNECTION INSTANCE="uP_control_enable_and_reset" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="uP_control_result_cuad" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="uP_control_M_and_Nma" PORT="s_axi_aclk"/>
-            <CONNECTION INSTANCE="uP_control_finished" PORT="s_axi_aclk"/>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="uP_control_adc_decimator_and_data_select" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="uP_control_phaseDAC_and_phaseREF" PORT="s_axi_aclk"/>
-            <CONNECTION INSTANCE="decimator_0" PORT="clk"/>
+            <CONNECTION INSTANCE="uP_control_datos_promediados" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M01_ACLK"/>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="ACLK"/>
@@ -7005,6 +7651,7 @@
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M07_ACLK"/>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M08_ACLK"/>
             <CONNECTION INSTANCE="uP_fifo_1" PORT="s_axi_aclk"/>
+            <CONNECTION INSTANCE="uP_axis_clock_converter_0" PORT="m_axis_aclk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FCLK_RESET0_N" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="uP_processing_system7_0_FCLK_RESET0_N">
@@ -7356,22 +8003,24 @@
       </BUSINTERFACES>
       <MEMORYMAP>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x41200000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x4120FFFF" INSTANCE="uP_control_result_fase" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI"/>
-        <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x41210000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x4121FFFF" INSTANCE="uP_control_finished" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI"/>
+        <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x41210000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x4121FFFF" INSTANCE="uP_control_finished_and_decimator_method" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI"/>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x41220000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x4122FFFF" INSTANCE="uP_control_result_cuad" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI"/>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x41230000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x4123FFFF" INSTANCE="uP_control_enable_and_reset" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI"/>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x41240000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x4124FFFF" INSTANCE="uP_control_M_and_Nma" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI"/>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x41250000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x4125FFFF" INSTANCE="uP_control_adc_decimator_and_data_select" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI"/>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x41260000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x4126FFFF" INSTANCE="uP_control_phaseDAC_and_phaseREF" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI"/>
+        <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x41270000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x4127FFFF" INSTANCE="uP_control_datos_promediados" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI"/>
         <MEMRANGE ADDRESSBLOCK="Mem0" BASENAME="C_BASEADDR" BASEVALUE="0x43C00000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x43C0FFFF" INSTANCE="uP_fifo_1" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI"/>
       </MEMORYMAP>
       <PERIPHERALS>
         <PERIPHERAL INSTANCE="uP_control_result_fase"/>
-        <PERIPHERAL INSTANCE="uP_control_finished"/>
+        <PERIPHERAL INSTANCE="uP_control_finished_and_decimator_method"/>
         <PERIPHERAL INSTANCE="uP_control_result_cuad"/>
         <PERIPHERAL INSTANCE="uP_control_enable_and_reset"/>
         <PERIPHERAL INSTANCE="uP_control_M_and_Nma"/>
         <PERIPHERAL INSTANCE="uP_control_adc_decimator_and_data_select"/>
         <PERIPHERAL INSTANCE="uP_control_phaseDAC_and_phaseREF"/>
+        <PERIPHERAL INSTANCE="uP_control_datos_promediados"/>
         <PERIPHERAL INSTANCE="uP_fifo_1"/>
       </PERIPHERALS>
     </MODULE>
@@ -8520,91 +9169,91 @@
             <CONNECTION INSTANCE="uP_control_M_and_Nma" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M06_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_awaddr">
+        <PORT DIR="O" LEFT="31" NAME="M06_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_awaddr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uP_control_finished" PORT="s_axi_awaddr"/>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="s_axi_awaddr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="M06_AXI_awprot" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="0" NAME="M06_AXI_awvalid" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_awvalid">
+        <PORT DIR="O" LEFT="0" NAME="M06_AXI_awvalid" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_awvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uP_control_finished" PORT="s_axi_awvalid"/>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="s_axi_awvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="M06_AXI_awready" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_awready">
+        <PORT DIR="I" LEFT="0" NAME="M06_AXI_awready" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_awready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uP_control_finished" PORT="s_axi_awready"/>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="s_axi_awready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M06_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_wdata">
+        <PORT DIR="O" LEFT="31" NAME="M06_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_wdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uP_control_finished" PORT="s_axi_wdata"/>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="s_axi_wdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="3" NAME="M06_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_wstrb">
+        <PORT DIR="O" LEFT="3" NAME="M06_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_wstrb">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uP_control_finished" PORT="s_axi_wstrb"/>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="s_axi_wstrb"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="M06_AXI_wvalid" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_wvalid">
+        <PORT DIR="O" LEFT="0" NAME="M06_AXI_wvalid" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_wvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uP_control_finished" PORT="s_axi_wvalid"/>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="s_axi_wvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="M06_AXI_wready" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_wready">
+        <PORT DIR="I" LEFT="0" NAME="M06_AXI_wready" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_wready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uP_control_finished" PORT="s_axi_wready"/>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="s_axi_wready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M06_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_bresp">
+        <PORT DIR="I" LEFT="1" NAME="M06_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_bresp">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uP_control_finished" PORT="s_axi_bresp"/>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="s_axi_bresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="M06_AXI_bvalid" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_bvalid">
+        <PORT DIR="I" LEFT="0" NAME="M06_AXI_bvalid" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_bvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uP_control_finished" PORT="s_axi_bvalid"/>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="s_axi_bvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="M06_AXI_bready" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_bready">
+        <PORT DIR="O" LEFT="0" NAME="M06_AXI_bready" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_bready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uP_control_finished" PORT="s_axi_bready"/>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="s_axi_bready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M06_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_araddr">
+        <PORT DIR="O" LEFT="31" NAME="M06_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_araddr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uP_control_finished" PORT="s_axi_araddr"/>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="s_axi_araddr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="M06_AXI_arprot" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="0" NAME="M06_AXI_arvalid" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_arvalid">
+        <PORT DIR="O" LEFT="0" NAME="M06_AXI_arvalid" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_arvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uP_control_finished" PORT="s_axi_arvalid"/>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="s_axi_arvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="M06_AXI_arready" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_arready">
+        <PORT DIR="I" LEFT="0" NAME="M06_AXI_arready" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_arready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uP_control_finished" PORT="s_axi_arready"/>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="s_axi_arready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="M06_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_rdata">
+        <PORT DIR="I" LEFT="31" NAME="M06_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_rdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uP_control_finished" PORT="s_axi_rdata"/>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="s_axi_rdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M06_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_rresp">
+        <PORT DIR="I" LEFT="1" NAME="M06_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_rresp">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uP_control_finished" PORT="s_axi_rresp"/>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="s_axi_rresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="M06_AXI_rvalid" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_rvalid">
+        <PORT DIR="I" LEFT="0" NAME="M06_AXI_rvalid" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_rvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uP_control_finished" PORT="s_axi_rvalid"/>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="s_axi_rvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="M06_AXI_rready" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_s_axi_rready">
+        <PORT DIR="O" LEFT="0" NAME="M06_AXI_rready" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_finished_and_decimator_method_s_axi_rready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uP_control_finished" PORT="s_axi_rready"/>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="M07_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_phaseDAC_and_phaseREF_s_axi_awaddr">
@@ -8694,25 +9343,93 @@
             <CONNECTION INSTANCE="uP_control_phaseDAC_and_phaseREF" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M08_AXI_awaddr" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="31" NAME="M08_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_awaddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_datos_promediados" PORT="s_axi_awaddr"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" NAME="M08_AXI_awprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M08_AXI_awvalid" SIGIS="undef"/>
-        <PORT DIR="I" NAME="M08_AXI_awready" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M08_AXI_wdata" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M08_AXI_wstrb" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M08_AXI_wvalid" SIGIS="undef"/>
-        <PORT DIR="I" NAME="M08_AXI_wready" SIGIS="undef"/>
-        <PORT DIR="I" NAME="M08_AXI_bresp" SIGIS="undef"/>
-        <PORT DIR="I" NAME="M08_AXI_bvalid" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M08_AXI_bready" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M08_AXI_araddr" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="0" NAME="M08_AXI_awvalid" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_datos_promediados" PORT="s_axi_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="M08_AXI_awready" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_datos_promediados" PORT="s_axi_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M08_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_datos_promediados" PORT="s_axi_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="M08_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_datos_promediados" PORT="s_axi_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="M08_AXI_wvalid" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_datos_promediados" PORT="s_axi_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="M08_AXI_wready" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_datos_promediados" PORT="s_axi_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M08_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_datos_promediados" PORT="s_axi_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="M08_AXI_bvalid" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_datos_promediados" PORT="s_axi_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="M08_AXI_bready" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_datos_promediados" PORT="s_axi_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M08_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_datos_promediados" PORT="s_axi_araddr"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" NAME="M08_AXI_arprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M08_AXI_arvalid" SIGIS="undef"/>
-        <PORT DIR="I" NAME="M08_AXI_arready" SIGIS="undef"/>
-        <PORT DIR="I" NAME="M08_AXI_rdata" SIGIS="undef"/>
-        <PORT DIR="I" NAME="M08_AXI_rresp" SIGIS="undef"/>
-        <PORT DIR="I" NAME="M08_AXI_rvalid" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M08_AXI_rready" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="0" NAME="M08_AXI_arvalid" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_datos_promediados" PORT="s_axi_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="M08_AXI_arready" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_datos_promediados" PORT="s_axi_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="M08_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_datos_promediados" PORT="s_axi_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M08_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_datos_promediados" PORT="s_axi_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="M08_AXI_rvalid" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_datos_promediados" PORT="s_axi_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="M08_AXI_rready" RIGHT="0" SIGIS="undef" SIGNAME="uP_control_datos_promediados_s_axi_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uP_control_datos_promediados" PORT="s_axi_rready"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="uP_processing_system7_0_M_AXI_GP0" DATAWIDTH="32" NAME="S00_AXI" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
@@ -8941,7 +9658,7 @@
             <PORTMAP LOGICAL="RREADY" PHYSICAL="M07_AXI_rready"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="__NOC__" NAME="M08_AXI" TYPE="MASTER" VLNV="xilinx.com:interface:aximm:1.0">
+        <BUSINTERFACE BUSNAME="uP_ps7_0_axi_periph_M08_AXI" DATAWIDTH="32" NAME="M08_AXI" TYPE="MASTER" VLNV="xilinx.com:interface:aximm:1.0">
           <PORTMAPS>
             <PORTMAP LOGICAL="AWADDR" PHYSICAL="M08_AXI_awaddr"/>
             <PORTMAP LOGICAL="AWPROT" PHYSICAL="M08_AXI_awprot"/>
@@ -9011,6 +9728,8 @@
             <CONNECTION INSTANCE="uP_control_M_and_Nma" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="uP_control_adc_decimator_and_data_select" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="uP_control_phaseDAC_and_phaseREF" PORT="s_axi_aresetn"/>
+            <CONNECTION INSTANCE="uP_control_finished_and_decimator_method" PORT="s_axi_aresetn"/>
+            <CONNECTION INSTANCE="uP_control_datos_promediados" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="S00_ARESETN"/>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="M00_ARESETN"/>
             <CONNECTION INSTANCE="uP_ps7_0_axi_periph" PORT="ARESETN"/>

@@ -21,7 +21,8 @@ module filtro_ma(
 
 	// Salidas auxiliares
 	output ready_to_calculate,
-	output calculo_finalizado
+	output calculo_finalizado,
+	output [31:0] datos_promediados
 
 );
 
@@ -35,6 +36,8 @@ wire [31:0] M;	assign M = ptos_x_ciclo;				// Puntos por ciclo de señal
 wire [31:0] N; 	assign N = frames_integracion;		// Frames de integracion // Largo del lockin M*N	
 
 reg [63:0] acumulador;
+
+reg [31:0] datos_promediados_reg;
 
 reg finish,data_out_valid_reg,start;
 
@@ -51,6 +54,7 @@ begin
 	begin		
 		data_out_valid_reg <= 0;
 		acumulador <= 0;
+		datos_promediados_reg <= 0;
 	end
 	
 	else if (enable)
@@ -60,6 +64,7 @@ begin
 		begin
 			acumulador <= acumulador + data_in_reg;
 			data_out_valid_reg <= 1;
+			datos_promediados_reg <= datos_promediados_reg + 1;
 		end
 		else if(!data_valid_reg && !finish)
 		begin
@@ -86,13 +91,16 @@ begin
     end
     else if(enable)
     begin  
-        finish <= (start_count == N+1+ignore_cycles)? 1:0;
+        
         
         if(start_count >= 1+ignore_cycles)
             start <= 1;
         
         if(start_signal && !finish)
+        begin
             start_count <= start_count + 1;            
+            finish <= (start_count == N+1+ignore_cycles-1)? 1:0;
+        end
     end
 end
 
@@ -101,6 +109,7 @@ assign data_out_valid = data_out_valid_reg;
 assign data_out = acumulador;
 assign ready_to_calculate = 1;
 assign calculo_finalizado = finish;
+assign datos_promediados = datos_promediados_reg;
 
 
 endmodule

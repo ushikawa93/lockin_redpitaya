@@ -37,7 +37,9 @@
 #define M_ADDRESS 0x41240000
 #define N_ADDRESS 0x41240008
 #define DECIMATOR_ADDRESS 0x41250000
+#define DECIMATOR_METHOD_ADDRESS 0x41210008
 #define SELECT_DATA_ADDRESS 0x41250008
+#define N_DATOS_PROMEDIADOS_ADDRESS 0x41270000
 
 #define PHASE_DAC_ADDRESS 0x41260000
 #define PHASE_REF_ADDRESS 0x41260008
@@ -55,6 +57,8 @@ void setDecimator(void *cfg,uint32_t dec);
 void setDataSelection(void *cfg,uint32_t sel);
 double set_frec_dac(void *cfg, double frec);
 double set_frec_ref(void *cfg, double frec);
+void setDecimatorMethod(void *cfg,uint32_t dec_method);
+uint32_t get_datos_promediados(void *cfg);
 
 uint32_t getFinish(void *cfg);
 uint32_t get_fase_low(void *cfg);
@@ -80,7 +84,8 @@ int main(int argc, char **argv)
 	uint32_t frec_ref;
 	uint32_t M;
 	uint32_t N_ma;
-	uint32_t decimator = 10;
+	uint32_t decimator;
+	uint32_t decimator_method; // o para decimacion comun 1 para promediacion lineal
 	uint32_t sel;
 	double f_dac_real,f_ref_real;
 
@@ -89,13 +94,14 @@ int main(int argc, char **argv)
 		printf("Uso -> lockin N_ma M noise_bits \n");
 		return 0;
 	}
-	else if(argc==6)
+	else if(argc==7)
 	{
 		N_ma = atoi(argv[1]);
 		frec_dac = atoi(argv[2]);	
 		frec_ref = atoi(argv[3]);
 		sel=atoi(argv[4]);
 		decimator=atoi(argv[5]);
+		decimator_method=atoi(argv[6]);
 	}		
 	else
 	{
@@ -122,6 +128,7 @@ int main(int argc, char **argv)
 	setN_ma(cfg,N_ma);
 	setDecimator(cfg,decimator);
 	setDataSelection(cfg,sel);
+	setDecimatorMethod(cfg,decimator_method);
 
 
 	ResetFPGA(cfg);
@@ -149,20 +156,24 @@ int main(int argc, char **argv)
 	printf("\nCUAD LOW = %u ",res_low);	
 	printf("\n	-> Resultado cuad: %lld",resultado_cuadratura);
 
+	int MxN_real = get_datos_promediados(cfg);
+	int MxN_supuesto = M*N_ma;
+
+	printf("\nMxN real: %d \nMxN supuesto: %d",MxN_real,MxN_supuesto);
+	
 	double amplitud_ref = 4096;
 
- 	double x = (double)resultado_fase / (M*N_ma);
-    double y = (double)resultado_cuadratura / (M*N_ma);
+ 	double x = (double)resultado_fase / (MxN_real);
+    double y = (double)resultado_cuadratura / (MxN_real);
 
 	double r = (sqrt(x*x + y*y)) * 2 / amplitud_ref;
 	double phi = atan2(y,x)*180/PI;
 
-	printf("\nResultados: \n R= %f \n phi= %f \n\n",r,phi);   
+	printf("\nResultados: \n R= %f \n phi= %f \n\n",r,phi);   	
 
 
 	escribirArchivo_li("resultados.dat",f_ref_real,M,N_ma,r,phi);
 
-	//sleep(10);
 	int32_t* datos =  leerFIFO(cfg,FIFO_1_ADDRESS);
 	escribirArchivo_adc("resultados_adc.dat",datos);
 
@@ -237,6 +248,12 @@ void setDecimator(void *cfg,uint32_t dec)
 	*(uint32_t *)(cfg+ DECIMATOR_ADDRESS - START_ADDRESS) = dec ;
 }
 
+void setDecimatorMethod(void *cfg,uint32_t dec_method)
+{
+	// Seteo la cantidad de bits de ruido de la señal simulada
+	*(uint32_t *)(cfg+ DECIMATOR_METHOD_ADDRESS - START_ADDRESS) = dec_method ;
+}
+
 void setDataSelection(void *cfg,uint32_t sel)
 {
 	// Seteo la cantidad de bits de ruido de la señal simulada
@@ -266,6 +283,11 @@ uint32_t get_cuad_low(void *cfg)
 uint32_t get_cuad_high(void *cfg)
 {
 	return *((uint32_t *)(cfg+ RESULT_CUAD_HIGH_ADDRESS - START_ADDRESS) );
+}
+
+uint32_t get_datos_promediados(void *cfg)
+{
+	return *((uint32_t *)(cfg+ N_DATOS_PROMEDIADOS_ADDRESS - START_ADDRESS) );
 }
 
 

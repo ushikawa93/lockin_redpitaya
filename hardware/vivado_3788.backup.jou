@@ -1,0 +1,146 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Fri Mar 22 13:02:07 2024
+# Process ID: 3788
+# Current directory: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent8348 C:\Users\MatiOliva\Documents\00-lockin_redpitaya\hardware\lockin.xpr
+# Log file: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/vivado.log
+# Journal file: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware\vivado.jou
+# Running On: DESKTOP-BRUHM76, OS: Windows, CPU Frequency: 3912 MHz, CPU Physical cores: 2, Host memory: 17041 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.xpr
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+update_module_reference system_decimator_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+update_module_reference system_decimator_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+open_run impl_1
+open_bd_design {C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
+startgroup
+set_property CONFIG.C_DATA_INTERFACE_TYPE {1} [get_bd_cells uP/fifo_1]
+endgroup
+delete_bd_objs [get_bd_intf_nets uP/ps7_0_axi_periph_M00_AXI]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_crossbar:2.1 axi_crossbar_0
+endgroup
+move_bd_cells [get_bd_cells uP] [get_bd_cells axi_crossbar_0]
+delete_bd_objs [get_bd_cells uP/axi_crossbar_0]
+startgroup
+set_property CONFIG.C_DATA_INTERFACE_TYPE {0} [get_bd_cells uP/fifo_1]
+endgroup
+connect_bd_intf_net [get_bd_intf_pins uP/fifo_1/S_AXI] -boundary_type upper [get_bd_intf_pins uP/ps7_0_axi_periph/M00_AXI]
+disconnect_bd_net /ADC_adc_clk [get_bd_pins decimator_0/clk]
+connect_bd_net [get_bd_pins decimator_0/clk] [get_bd_pins uP/processing_system7_0/FCLK_CLK0]
+regenerate_bd_layout
+regenerate_bd_layout
+save_bd_design
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+update_module_reference system_decimator_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+update_module_reference system_signal_processing_LI_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+update_module_reference system_signal_processing_LI_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+regenerate_bd_layout
+close [ open C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/new/delay_axi_streaming.v w ]
+add_files C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/new/delay_axi_streaming.v
+update_compile_order -fileset sources_1
+create_bd_cell -type module -reference delay_axi_streaming delay_axi_streaming_0
+set_property location {3 844 256} [get_bd_cells delay_axi_streaming_0]
+connect_bd_net [get_bd_pins delay_axi_streaming_0/clk] [get_bd_pins ADC/adc_clk]
+connect_bd_net [get_bd_pins delay_axi_streaming_0/reset_n] [get_bd_pins uP_control/Dout]
+delete_bd_objs [get_bd_nets referencias_Dout]
+connect_bd_net [get_bd_pins referencias/Dout] [get_bd_pins delay_axi_streaming_0/data_in]
+delete_bd_objs [get_bd_nets referencias_m_axis_data_tvalid]
+connect_bd_net [get_bd_pins referencias/m_axis_data_tvalid] [get_bd_pins delay_axi_streaming_0/data_in_valid]
+connect_bd_net [get_bd_pins lock_in/referencia_externa_valid] [get_bd_pins delay_axi_streaming_0/data_out_valid]
+connect_bd_net [get_bd_pins lock_in/referencia_externa_cos] [get_bd_pins delay_axi_streaming_0/data_out]
+disconnect_bd_net /referencias_Dout1 [get_bd_pins lock_in/referencia_externa_seno]
+connect_bd_net [get_bd_pins lock_in/referencia_externa_seno] [get_bd_pins referencias/Dout1]
+undo
+create_bd_cell -type module -reference delay_axi_streaming delay_axi_streaming_1
+set_property location {3 891 -17} [get_bd_cells delay_axi_streaming_1]
+connect_bd_net [get_bd_pins delay_axi_streaming_1/clk] [get_bd_pins ADC/adc_clk]
+connect_bd_net [get_bd_pins delay_axi_streaming_1/reset_n] [get_bd_pins uP_control/Dout]
+connect_bd_net [get_bd_pins delay_axi_streaming_1/data_in] [get_bd_pins referencias/Dout]
+undo
+connect_bd_net [get_bd_pins delay_axi_streaming_1/bypass] [get_bd_pins referencias/Dout1]
+connect_bd_net [get_bd_pins delay_axi_streaming_1/data_out] [get_bd_pins lock_in/referencia_externa_seno]
+create_bd_cell -type module -reference and_2 and_2_1
+set_property location {4 1272 28} [get_bd_cells and_2_1]
+set_property location {4 1222 6} [get_bd_cells and_2_1]
+connect_bd_net [get_bd_pins delay_axi_streaming_1/data_out_valid] [get_bd_pins and_2_1/a]
+delete_bd_objs [get_bd_nets delay_axi_streaming_0_data_out_valid]
+connect_bd_net [get_bd_pins delay_axi_streaming_0/data_out_valid] [get_bd_pins and_2_1/b]
+connect_bd_net [get_bd_pins and_2_1/c] [get_bd_pins lock_in/referencia_externa_valid]
+connect_bd_net [get_bd_pins delay_axi_streaming_1/data_in_valid] [get_bd_pins referencias/m_axis_data_tvalid]
+disconnect_bd_net /referencias_Dout1 [get_bd_pins delay_axi_streaming_1/bypass]
+connect_bd_net [get_bd_pins selector_data_in/data_in_0_valid] [get_bd_pins referencias/m_axis_data_tvalid]
+delete_bd_objs [get_bd_nets delay_axi_streaming_1_data_out]
+delete_bd_objs [get_bd_nets delay_axi_streaming_0_data_out]
+connect_bd_net [get_bd_pins lock_in/referencia_externa_seno] [get_bd_pins delay_axi_streaming_0/data_out]
+delete_bd_objs [get_bd_nets referencias_Dout]
+connect_bd_net [get_bd_pins delay_axi_streaming_0/bypass] [get_bd_pins referencias/Dout1]
+connect_bd_net [get_bd_pins referencias/start] [get_bd_pins delay_axi_streaming_1/data_in]
+connect_bd_net [get_bd_pins delay_axi_streaming_1/data_out] [get_bd_pins lock_in/referencia_externa_cos]
+disconnect_bd_net /referencias_Dout1 [get_bd_pins delay_axi_streaming_0/bypass]
+connect_bd_net [get_bd_pins delay_axi_streaming_0/data_in] [get_bd_pins referencias/Dout1]
+disconnect_bd_net /referencias_start [get_bd_pins delay_axi_streaming_1/data_in]
+startgroup
+connect_bd_net [get_bd_pins delay_axi_streaming_1/data_in] [get_bd_pins referencias/Dout1]
+endgroup
+disconnect_bd_net /referencias_Dout1 [get_bd_pins delay_axi_streaming_0/data_in]
+connect_bd_net [get_bd_pins delay_axi_streaming_0/data_in] [get_bd_pins referencias/Dout]
+delete_bd_objs [get_bd_nets delay_axi_streaming_0_data_out]
+delete_bd_objs [get_bd_nets delay_axi_streaming_1_data_out]
+connect_bd_net [get_bd_pins lock_in/referencia_externa_cos] [get_bd_pins delay_axi_streaming_0/data_out]
+connect_bd_net [get_bd_pins lock_in/referencia_externa_seno] [get_bd_pins delay_axi_streaming_1/data_out]
+connect_bd_net [get_bd_pins delay_axi_streaming_1/bypass] [get_bd_pins delay_axi_streaming_0/bypass]
+connect_bd_net [get_bd_ports daisy_p_i] [get_bd_pins delay_axi_streaming_0/bypass]
+undo
+update_module_reference {system_delay_axi_streaming_0_0 system_delay_axi_streaming_1_0}
+update_compile_order -fileset sources_1
+connect_bd_net [get_bd_pins delay_axi_streaming_0/bypass_n] [get_bd_pins delay_axi_streaming_1/bypass_n]
+connect_bd_net [get_bd_pins delay_axi_streaming_0/bypass_n] [get_bd_pins uP_control/gpio2_io_o1]
+regenerate_bd_layout
+move_bd_cells [get_bd_cells referencias] [get_bd_cells delay_axi_streaming_0] [get_bd_cells delay_axi_streaming_1]
+regenerate_bd_layout
+move_bd_cells [get_bd_cells referencias] [get_bd_cells and_2_1]
+regenerate_bd_layout
+regenerate_bd_layout
+save_bd_design
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+update_module_reference {system_delay_axi_streaming_0_0 system_delay_axi_streaming_1_0}
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+update_module_reference {system_delay_axi_streaming_0_0 system_delay_axi_streaming_1_0}
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+reset_run impl_1 -prev_step 
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+update_module_reference {system_delay_axi_streaming_0_0 system_delay_axi_streaming_1_0}
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1

@@ -20,20 +20,30 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module mux(
+module mux
+#(
+  parameter integer DATA_IN_WIDTH = 14,
+  parameter integer DATA_OUT_WIDTH = 14
+  )
 
-    input [13:0] data_in_0,
+(
+
+    input [DATA_IN_WIDTH-1:0] data_in_0,
     input data_in_0_valid,
-    input [13:0] data_in_1,
+    input [DATA_IN_WIDTH-1:0] data_in_1,
     input data_in_1_valid,
     input sel,
+    input finish_0,
+    input finish_1,
     
-    output [31:0] data_out,
-    output data_out_valid
+    output [DATA_OUT_WIDTH-1:0] data_out,
+    output data_out_valid,
+    output finish
     );
     
 
 assign data_out = (sel == 0)? $signed(data_in_0) : $signed(data_in_1);
 assign data_out_valid = (sel == 0)? data_in_0_valid : data_in_1_valid;
+assign finish = (sel == 0)? finish_0 : finish_1;
 
 endmodule

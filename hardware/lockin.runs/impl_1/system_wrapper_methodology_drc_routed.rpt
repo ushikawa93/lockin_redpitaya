@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date         : Fri Mar 22 18:08:47 2024
+| Date         : Tue Mar 26 14:48:52 2024
 | Host         : DESKTOP-BRUHM76 running 64-bit major release  (build 9200)
 | Command      : report_methodology -file system_wrapper_methodology_drc_routed.rpt -pb system_wrapper_methodology_drc_routed.pb -rpx system_wrapper_methodology_drc_routed.rpx
 | Design       : system_wrapper
@@ -23,7 +23,7 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 68
+             Violations found: 70
 +-----------+------------------+----------------------------------------------------+------------+
 | Rule      | Severity         | Description                                        | Violations |
 +-----------+------------------+----------------------------------------------------+------------+
@@ -34,6 +34,7 @@ Table of Contents
 | TIMING-9  | Warning          | Unknown CDC Logic                                  | 1          |
 | TIMING-10 | Warning          | Missing property on synchronizer                   | 1          |
 | TIMING-18 | Warning          | Missing input or output delay                      | 46         |
+| TIMING-24 | Warning          | Overridden Max delay datapath only                 | 2          |
 +-----------+------------------+----------------------------------------------------+------------+
 
 2. REPORT DETAILS
@@ -376,6 +377,16 @@ Related violations: <none>
 TIMING-18#46 Warning
 Missing input or output delay  
 An output delay is missing on led_o[7] relative to clock(s) adc_clk
+Related violations: <none>
+
+TIMING-24#1 Warning
+Overridden Max delay datapath only  
+An asynchronous set_clock_groups or a set_false path (see constraint position 17 in the Timing Constraints window in Vivado IDE) between clocks clk_fpga_0 and adc_clk overrides a set_max_delay -datapath_only (position 19). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
+Related violations: <none>
+
+TIMING-24#2 Warning
+Overridden Max delay datapath only  
+An asynchronous set_clock_groups or a set_false path (see constraint position 18 in the Timing Constraints window in Vivado IDE) between clocks adc_clk and clk_fpga_0 overrides a set_max_delay -datapath_only (position 21). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
 Related violations: <none>
 
 

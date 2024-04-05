@@ -60,8 +60,11 @@ module system_mux_0_0 (
   data_in_1,
   data_in_1_valid,
   sel,
+  finish_0,
+  finish_1,
   data_out,
-  data_out_valid
+  data_out_valid,
+  finish
 );
 
 input wire [13 : 0] data_in_0;
@@ -69,16 +72,25 @@ input wire data_in_0_valid;
 input wire [13 : 0] data_in_1;
 input wire data_in_1_valid;
 input wire sel;
+input wire finish_0;
+input wire finish_1;
 output wire [31 : 0] data_out;
 output wire data_out_valid;
+output wire finish;
 
-  mux inst (
+  mux #(
+    .DATA_IN_WIDTH(14),
+    .DATA_OUT_WIDTH(32)
+  ) inst (
     .data_in_0(data_in_0),
     .data_in_0_valid(data_in_0_valid),
     .data_in_1(data_in_1),
     .data_in_1_valid(data_in_1_valid),
     .sel(sel),
+    .finish_0(finish_0),
+    .finish_1(finish_1),
     .data_out(data_out),
-    .data_out_valid(data_out_valid)
+    .data_out_valid(data_out_valid),
+    .finish(finish)
   );
 endmodule
