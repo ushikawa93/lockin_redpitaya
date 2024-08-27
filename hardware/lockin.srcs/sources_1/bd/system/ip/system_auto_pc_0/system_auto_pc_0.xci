@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "system_auto_pc_0",
-    "cell_name": "uP/ps7_0_axi_periph/s00_couplers/auto_pc",
+    "cell_name": "Control/uP/ps7_0_axi_periph/s00_couplers/auto_pc",
     "component_reference": "xilinx.com:ip:axi_protocol_converter:2.1",
     "ip_revision": "27",
     "gen_directory": "../../../../../../lockin.gen/sources_1/bd/system/ip/system_auto_pc_0",

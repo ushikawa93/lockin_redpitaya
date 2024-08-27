@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "system_decimator_0_0",
-    "cell_name": "decimator/decimator_0",
+    "cell_name": "decimator_0",
     "component_reference": "xilinx.com:module_ref:decimator:1.0",
     "ip_revision": "1",
     "gen_directory": "../../../../../../lockin.gen/sources_1/bd/system/ip/system_decimator_0_0",

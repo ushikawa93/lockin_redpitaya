@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "system_finished_and_decimator_method_0",
-    "cell_name": "datos_promediados",
+    "cell_name": "uP_control/datos_promediados",
     "component_reference": "xilinx.com:ip:axi_gpio:2.0",
     "ip_revision": "29",
     "gen_directory": "../../../../../../lockin.gen/sources_1/bd/system/ip/system_finished_and_decimator_method_0",

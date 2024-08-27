@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "system_mux_0_0",
-    "cell_name": "selector_data_in",
+    "cell_name": "Fuente_datos/selector_data_in",
     "component_reference": "xilinx.com:module_ref:mux:1.0",
     "ip_revision": "1",
     "gen_directory": "../../../../../../lockin.gen/sources_1/bd/system/ip/system_mux_0_0",

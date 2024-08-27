@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date             : Tue Mar 26 14:48:55 2024
-| Host             : DESKTOP-BRUHM76 running 64-bit major release  (build 9200)
+| Date             : Tue Aug 27 20:09:15 2024
+| Host             : DESKTOP-TN92N90 running 64-bit major release  (build 9200)
 | Command          : report_power -file system_wrapper_power_routed.rpt -pb system_wrapper_power_summary_routed.pb -rpx system_wrapper_power_routed.rpx
 | Design           : system_wrapper
 | Device           : xc7z010clg400-1
@@ -36,8 +36,8 @@ Table of Contents
 | Dynamic (W)              | 1.543        |
 | Device Static (W)        | 0.126        |
 | Effective TJA (C/W)      | 11.5         |
-| Max Ambient (C)          | 65.8         |
-| Junction Temperature (C) | 44.2         |
+| Max Ambient (C)          | 65.7         |
+| Junction Temperature (C) | 44.3         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -54,13 +54,13 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |     0.039 |        8 |       --- |             --- |
 | Slice Logic              |     0.003 |    11927 |       --- |             --- |
-|   LUT as Logic           |     0.002 |     3735 |     17600 |           21.22 |
+|   LUT as Logic           |     0.002 |     3733 |     17600 |           21.21 |
 |   CARRY4                 |    <0.001 |      210 |      4400 |            4.77 |
 |   Register               |    <0.001 |     7294 |     35200 |           20.72 |
 |   LUT as Distributed RAM |    <0.001 |       22 |      6000 |            0.37 |
 |   LUT as Shift Register  |    <0.001 |       64 |      6000 |            1.07 |
 |   Others                 |     0.000 |      409 |       --- |             --- |
-| Signals                  |     0.005 |     9213 |       --- |             --- |
+| Signals                  |     0.005 |     9212 |       --- |             --- |
 | Block RAM                |     0.002 |        2 |        60 |            3.33 |
 | MMCM                     |     0.107 |        1 |         2 |           50.00 |
 | DSPs                     |     0.000 |        2 |        80 |            2.50 |
@@ -137,16 +137,16 @@ Table of Contents
 2.2 Clock Constraints
 ---------------------
 
-+-----------------------------+--------------------------------------------------------------+-----------------+
-| Clock                       | Domain                                                       | Constraint (ns) |
-+-----------------------------+--------------------------------------------------------------+-----------------+
-| adc_clk                     | adc_clk_p_i                                                  |             8.0 |
-| adc_clk                     | system_i/ADC/axis_red_pitaya_adc_0/inst/adc_clk              |             8.0 |
-| clk_fpga_0                  | system_i/uP/processing_system7_0/inst/FCLK_CLK_unbuffered[0] |             8.0 |
-| clk_out1_system_clk_wiz_0_0 | system_i/DAC/clk_wiz_0/inst/clk_out1_system_clk_wiz_0_0      |             4.0 |
-| clkfbout_system_clk_wiz_0_0 | system_i/DAC/clk_wiz_0/inst/clkfbout_system_clk_wiz_0_0      |             8.0 |
-| rx_clk                      | daisy_p_i[1]                                                 |             4.0 |
-+-----------------------------+--------------------------------------------------------------+-----------------+
++-----------------------------+----------------------------------------------------------------------+-----------------+
+| Clock                       | Domain                                                               | Constraint (ns) |
++-----------------------------+----------------------------------------------------------------------+-----------------+
+| adc_clk                     | adc_clk_p_i                                                          |             8.0 |
+| adc_clk                     | system_i/Fuente_datos/ADC/axis_red_pitaya_adc_0/inst/adc_clk         |             8.0 |
+| clk_fpga_0                  | system_i/Control/uP/processing_system7_0/inst/FCLK_CLK_unbuffered[0] |             8.0 |
+| clk_out1_system_clk_wiz_0_0 | system_i/DAC/clk_wiz_0/inst/clk_out1_system_clk_wiz_0_0              |             4.0 |
+| clkfbout_system_clk_wiz_0_0 | system_i/DAC/clk_wiz_0/inst/clkfbout_system_clk_wiz_0_0              |             8.0 |
+| rx_clk                      | daisy_p_i[1]                                                         |             4.0 |
++-----------------------------+----------------------------------------------------------------------+-----------------+
 
 
 3. Detailed Reports
@@ -155,34 +155,24 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+-------------------------------------+-----------+
-| Name                                | Power (W) |
-+-------------------------------------+-----------+
-| system_wrapper                      |     1.543 |
-|   system_i                          |     1.469 |
-|     DAC                             |     0.110 |
-|       axis_red_pitaya_dac_0         |     0.001 |
-|       clk_wiz_0                     |     0.107 |
-|     decimator                       |     0.001 |
-|     lock_in                         |     0.003 |
-|       inst                          |     0.003 |
-|     referencias                     |     0.001 |
-|     uP                              |     1.297 |
-|       axis_clock_converter_0        |     0.002 |
-|       fifo_1                        |     0.003 |
-|       processing_system7_0          |     1.285 |
-|       ps7_0_axi_periph              |     0.007 |
-|     uP_control                      |     0.025 |
-|       M_and_Nma                     |     0.003 |
-|       adc_decimator_and_data_select |     0.003 |
-|       datos_promediados             |     0.003 |
-|       enable_and_reset              |     0.002 |
-|       finished_and_decimator_method |     0.003 |
-|       phaseDAC_and_phaseREF         |     0.003 |
-|       result_cuad                   |     0.003 |
-|       result_fase                   |     0.003 |
-|     util_ds_buf_2                   |     0.030 |
-|       U0                            |     0.030 |
-+-------------------------------------+-----------+
++-----------------------------+-----------+
+| Name                        | Power (W) |
++-----------------------------+-----------+
+| system_wrapper              |     1.543 |
+|   system_i                  |     1.469 |
+|     Control                 |     1.322 |
+|       uP                    |     1.297 |
+|       uP_control            |     0.025 |
+|     DAC                     |     0.110 |
+|       axis_red_pitaya_dac_0 |     0.001 |
+|       clk_wiz_0             |     0.107 |
+|     Fuente_datos            |     0.002 |
+|       referencias           |     0.001 |
+|     decimator               |     0.001 |
+|     lock_in                 |     0.003 |
+|       inst                  |     0.003 |
+|     util_ds_buf_2           |     0.030 |
+|       U0                    |     0.030 |
++-----------------------------+-----------+
 
 

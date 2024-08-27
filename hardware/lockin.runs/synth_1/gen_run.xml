@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1711474973" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/system_wrapper.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1724799144" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/system_wrapper.dcp">
   <File Type="PA-TCL" Name="system_wrapper.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="system_wrapper_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="system_wrapper_reports.tcl"/>
@@ -61,6 +61,27 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/decimator.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/mux.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/linear_mean.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/imports/user_ip/my_cores/filtro_ma.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PSRCDIR/user_ip/my_cores/filtro_ma.v"/>
@@ -110,27 +131,6 @@
       <FileInfo>
         <Attr Name="ImportPath" Val="$PSRCDIR/user_ip/my_cores/signal_processing_LI.v"/>
         <Attr Name="ImportTime" Val="1697646134"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/decimator.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/mux.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/linear_mean.v">
-      <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -518,12 +518,12 @@
   <Strategy Version="1" Minor="2">
     <StratHandle Name="Flow_PerfOptimized_high" Flow="Vivado Synthesis 2022"/>
     <Step Id="synth_design">
-      <Option Id="ShregMinSize">5</Option>
-      <Option Id="KeepEquivalentRegisters">1</Option>
-      <Option Id="ResourceSharing">2</Option>
       <Option Id="Directive">7</Option>
-      <Option Id="NoCombineLuts">1</Option>
+      <Option Id="ResourceSharing">2</Option>
+      <Option Id="ShregMinSize">5</Option>
       <Option Id="FsmExtraction">1</Option>
+      <Option Id="NoCombineLuts">1</Option>
+      <Option Id="KeepEquivalentRegisters">1</Option>
     </Step>
   </Strategy>
 </GenRun>
