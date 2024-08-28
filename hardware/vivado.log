@@ -278,3 +278,5 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 open_run: Time (s): cpu = 00:01:06 ; elapsed = 00:01:28 . Memory (MB): peak = 2510.219 ; gain = 927.996
 open_report: Time (s): cpu = 00:00:20 ; elapsed = 00:00:19 . Memory (MB): peak = 2532.141 ; gain = 16.613
 WARNING: [Timing 38-436] There are set_bus_skew constraint(s) in this design. Please run report_bus_skew to ensure that bus skew requirements are met.
+exit
+INFO: [Common 17-206] Exiting Vivado at Tue Aug 27 21:25:21 2024...

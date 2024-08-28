@@ -226,7 +226,7 @@ void setM(void *cfg, uint32_t M)
 
 double set_frec_dac(void *cfg, double frec)
 {
-	// Seteo la cantidad de muestras por ciclo de señal
+
 	int32_t phase = 2.1474 * frec; 
 	*(uint32_t *)(cfg+ PHASE_DAC_ADDRESS - START_ADDRESS) = phase ;
 	return (double)phase*125000000/(pow(2,28));
@@ -235,7 +235,7 @@ double set_frec_dac(void *cfg, double frec)
 
 double set_frec_ref(void *cfg, double frec)
 {
-	// Seteo la cantidad de muestras por ciclo de señal
+
 	int32_t phase = 2.1474 * frec; 
 	*(uint32_t *)(cfg+ PHASE_REF_ADDRESS - START_ADDRESS) = phase ;
 	return (double)phase*125000000/(pow(2,28));
@@ -244,19 +244,19 @@ double set_frec_ref(void *cfg, double frec)
 
 void setDecimator(void *cfg,uint32_t dec)
 {
-	// Seteo la cantidad de bits de ruido de la señal simulada
+
 	*(uint32_t *)(cfg+ DECIMATOR_ADDRESS - START_ADDRESS) = dec ;
 }
 
 void setDecimatorMethod(void *cfg,uint32_t dec_method)
 {
-	// Seteo la cantidad de bits de ruido de la señal simulada
+
 	*(uint32_t *)(cfg+ DECIMATOR_METHOD_ADDRESS - START_ADDRESS) = dec_method ;
 }
 
 void setDataSelection(void *cfg,uint32_t sel)
 {
-	// Seteo la cantidad de bits de ruido de la señal simulada
+
 	*(uint32_t *)(cfg+ SELECT_DATA_ADDRESS - START_ADDRESS) = sel ;
 }
 
