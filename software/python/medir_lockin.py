@@ -27,19 +27,19 @@ r_new_3=[]
 
 for i in range(1,2):
 
-    rp.set_data_mode(DataMode.ADC)
+    rp.set_data_mode(DataMode.SIMULACION)
     rp.set_decimator_method(DecimatorMethod.PROM)
     
-    frec_ref = 10000;
+    frec_ref = 1000000;
     rp.set_frec_ref(frec_ref)
     
-    frec_dac = 10000;
+    frec_dac = 1000000;
     rp.set_frec_dac(frec_dac)
     
     N = 1
     rp.set_N(N)
     
-    decimator = 100
+    decimator = 1
     rp.set_decimator(decimator)    
     
     data=rp.measure_lockin()

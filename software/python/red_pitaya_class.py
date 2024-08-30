@@ -100,6 +100,14 @@ class redP_handler:
         diccionario['datos_adc']= redP_handler.leerArchivoADC("../datos_adquiridos/resultados_adc.dat");
         return diccionario
     
+    def barrido_ctes_tiempo(self, N_inicial,N_final,iteraciones):
+        script_path = os.path.join("..", "shell_scripts", "barrido_ctes_tiempo.sh")
+        command = ( f"{script_path} {self.frec_ref} {N_inicial} {N_final} {iteraciones} {self.data_mode} barrido.dat {self.ip}" )
+        print(f"Comando enviado a la FPGA: {command}")
+        subprocess.run(command, shell=True)
+        return redP_handler.leer_archivo_barrido("../datos_adquiridos/barrido.dat")
+        
+        
 
     @staticmethod
     def leerArchivoLockin(nombreArchivo):
@@ -124,5 +132,34 @@ class redP_handler:
                     valores = linea.strip().split(', ')
                     for valor in valores:
                         datos.append(int(valor))
+        return datos
+    
+    @staticmethod
+    def leer_archivo_barrido(archivo):
+        datos = {
+            "N": [],
+            "mean_r": [],
+            "std_r": []
+        }
+    
+        with open(archivo, 'r') as file:
+            lines = file.readlines()
+    
+            # Encontrar la línea donde comienza el bloque de datos
+            start_index = None
+            for i, line in enumerate(lines):
+                if line.startswith("Formato -> N,mean_r,std_r"):
+                    start_index = i + 1
+                    break
+    
+            # Leer los datos después del encabezado
+            if start_index is not None:
+                for line in lines[start_index:]:
+                    fila = line.strip().split(',')
+                    if len(fila) == 3:
+                        datos["N"].append(float(fila[0]))
+                        datos["mean_r"].append(float(fila[1]))
+                        datos["std_r"].append(float(fila[2]))
+    
         return datos
 

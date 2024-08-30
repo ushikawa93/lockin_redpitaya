@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "system_and_2_1_0",
-    "cell_name": "referencias/and_2_1",
+    "cell_name": "Fuente_datos/referencias/and_2_1",
     "component_reference": "xilinx.com:module_ref:and_2:1.0",
     "ip_revision": "1",
     "gen_directory": "../../../../../../lockin.gen/sources_1/bd/system/ip/system_and_2_1_0",

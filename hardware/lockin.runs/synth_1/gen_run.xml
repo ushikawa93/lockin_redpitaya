@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1724799144" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/system_wrapper.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1724977734" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/system_wrapper.dcp">
   <File Type="PA-TCL" Name="system_wrapper.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="system_wrapper_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="system_wrapper_reports.tcl"/>
@@ -11,15 +11,6 @@
   <File Type="VDS-TIMING-PB" Name="system_wrapper_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PSRCDIR/sources_1/imports/user_ip/my_cores/signal_split.v">
-      <FileInfo>
-        <Attr Name="ImportPath" Val="$PSRCDIR/user_ip/my_cores/signal_split.v"/>
-        <Attr Name="ImportTime" Val="1682623500"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/imports/my_cores/drive_gpios.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../adquisidor/adquisidor_red_pitaya/adquisidor.srcs/sources_1/imports/my_cores/drive_gpios.v"/>
@@ -38,13 +29,6 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/start_signal_generator.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/new/and_2.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../adquisidor/adquisidor_red_pitaya/adquisidor.srcs/sources_1/new/and_2.v"/>
@@ -54,7 +38,7 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/delay_axi_streaming.v">
+    <File Path="$PSRCDIR/sources_1/new/mux.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -62,13 +46,6 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/decimator.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/mux.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -131,6 +108,29 @@
       <FileInfo>
         <Attr Name="ImportPath" Val="$PSRCDIR/user_ip/my_cores/signal_processing_LI.v"/>
         <Attr Name="ImportTime" Val="1697646134"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/start_signal_generator.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/delay_axi_streaming.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/user_ip/my_cores/signal_split.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PSRCDIR/user_ip/my_cores/signal_split.v"/>
+        <Attr Name="ImportTime" Val="1682623500"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -518,11 +518,11 @@
   <Strategy Version="1" Minor="2">
     <StratHandle Name="Flow_PerfOptimized_high" Flow="Vivado Synthesis 2022"/>
     <Step Id="synth_design">
-      <Option Id="Directive">7</Option>
       <Option Id="ResourceSharing">2</Option>
+      <Option Id="NoCombineLuts">1</Option>
+      <Option Id="Directive">7</Option>
       <Option Id="ShregMinSize">5</Option>
       <Option Id="FsmExtraction">1</Option>
-      <Option Id="NoCombineLuts">1</Option>
       <Option Id="KeepEquivalentRegisters">1</Option>
     </Step>
   </Strategy>

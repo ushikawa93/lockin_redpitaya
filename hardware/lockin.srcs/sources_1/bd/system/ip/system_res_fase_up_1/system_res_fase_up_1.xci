@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "system_res_fase_up_1",
-    "cell_name": "uP_control/res_cuad_up",
+    "cell_name": "Control/uP_control/res_cuad_up",
     "component_reference": "xilinx.com:ip:xlslice:1.0",
     "ip_revision": "2",
     "gen_directory": "../../../../../../lockin.gen/sources_1/bd/system/ip/system_res_fase_up_1",

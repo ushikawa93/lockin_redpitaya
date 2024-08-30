@@ -72,9 +72,9 @@ input wire clk;
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset_n RST" *)
 input wire reset_n;
 input wire bypass_n;
-input wire [13 : 0] data_in;
+input wire [15 : 0] data_in;
 input wire data_in_valid;
-output wire [13 : 0] data_out;
+output wire [15 : 0] data_out;
 output wire data_out_valid;
 
   delay_axi_streaming #(

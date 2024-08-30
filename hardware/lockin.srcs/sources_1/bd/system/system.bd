@@ -30,7 +30,6 @@
         "decimator_0": "",
         "linear_mean_0": ""
       },
-      "lock_in": "",
       "Control": {
         "uP": {
           "processing_system7_0": "",
@@ -86,7 +85,8 @@
           "axis_red_pitaya_adc_0": "",
           "signal_split_0": ""
         }
-      }
+      },
+      "lock_in": ""
     },
     "interface_ports": {
       "Vp_Vn": {
@@ -1217,101 +1217,6 @@
               "decimator_0/decimate_value",
               "linear_mean_0/decimate_value"
             ]
-          }
-        }
-      },
-      "lock_in": {
-        "vlnv": "xilinx.com:module_ref:signal_processing_LI:1.0",
-        "xci_name": "system_signal_processing_LI_0_0",
-        "xci_path": "ip\\system_signal_processing_LI_0_0\\system_signal_processing_LI_0_0.xci",
-        "inst_hier_path": "lock_in",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "signal_processing_LI",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "125000000",
-                "value_src": "const_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "system_axis_red_pitaya_adc_0_0_adc_clk",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "reset_n": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "enable_gral": {
-            "direction": "I"
-          },
-          "referencia_externa_seno": {
-            "direction": "I",
-            "left": "13",
-            "right": "0"
-          },
-          "referencia_externa_cos": {
-            "direction": "I",
-            "left": "13",
-            "right": "0"
-          },
-          "referencia_externa_valid": {
-            "direction": "I"
-          },
-          "data_in": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "data_in_valid": {
-            "direction": "I"
-          },
-          "start_signal": {
-            "direction": "I"
-          },
-          "data_out_fase": {
-            "direction": "O",
-            "left": "63",
-            "right": "0"
-          },
-          "data_out_fase_valid": {
-            "direction": "O"
-          },
-          "data_out_cuad": {
-            "direction": "O",
-            "left": "63",
-            "right": "0"
-          },
-          "data_out_cuad_valid": {
-            "direction": "O"
-          },
-          "ready_to_calculate": {
-            "direction": "O"
-          },
-          "processing_finished": {
-            "direction": "O"
-          },
-          "datos_promediados": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "parameter_in_0": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "parameter_in_1": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
           }
         }
       },
@@ -5106,12 +5011,12 @@
           },
           "ref_fase": {
             "direction": "O",
-            "left": "13",
+            "left": "15",
             "right": "0"
           },
           "ref_cuad": {
             "direction": "O",
-            "left": "13",
+            "left": "15",
             "right": "0"
           },
           "ref_valid": {
@@ -5224,7 +5129,7 @@
               },
               "Dout1": {
                 "direction": "O",
-                "left": "13",
+                "left": "15",
                 "right": "0"
               },
               "bypass_n": {
@@ -5234,12 +5139,12 @@
               },
               "data_out": {
                 "direction": "O",
-                "left": "13",
+                "left": "15",
                 "right": "0"
               },
               "data_out1": {
                 "direction": "O",
-                "left": "13",
+                "left": "15",
                 "right": "0"
               },
               "c": {
@@ -5260,7 +5165,7 @@
                 "inst_hier_path": "Fuente_datos/referencias/ref_sen",
                 "parameters": {
                   "DIN_FROM": {
-                    "value": "29"
+                    "value": "31"
                   },
                   "DIN_TO": {
                     "value": "16"
@@ -5310,7 +5215,7 @@
                     "value": "0"
                   },
                   "Output_Width": {
-                    "value": "14"
+                    "value": "16"
                   },
                   "PINC1": {
                     "value": "0"
@@ -5325,7 +5230,7 @@
                     "value": "Not_Required"
                   },
                   "Spurious_Free_Dynamic_Range": {
-                    "value": "84"
+                    "value": "96"
                   }
                 }
               },
@@ -5336,7 +5241,7 @@
                 "inst_hier_path": "Fuente_datos/referencias/ref_cos",
                 "parameters": {
                   "DIN_FROM": {
-                    "value": "13"
+                    "value": "15"
                   }
                 }
               },
@@ -5443,7 +5348,7 @@
                   },
                   "data_in": {
                     "direction": "I",
-                    "left": "13",
+                    "left": "15",
                     "right": "0"
                   },
                   "data_in_valid": {
@@ -5451,7 +5356,7 @@
                   },
                   "data_out": {
                     "direction": "O",
-                    "left": "13",
+                    "left": "15",
                     "right": "0"
                   },
                   "data_out_valid": {
@@ -5493,7 +5398,7 @@
                   },
                   "data_in": {
                     "direction": "I",
-                    "left": "13",
+                    "left": "15",
                     "right": "0"
                   },
                   "data_in_valid": {
@@ -5501,7 +5406,7 @@
                   },
                   "data_out": {
                     "direction": "O",
-                    "left": "13",
+                    "left": "15",
                     "right": "0"
                   },
                   "data_out_valid": {
@@ -6065,6 +5970,101 @@
             ]
           }
         }
+      },
+      "lock_in": {
+        "vlnv": "xilinx.com:module_ref:signal_processing_LI:1.0",
+        "xci_name": "system_signal_processing_LI_0_0",
+        "xci_path": "ip\\system_signal_processing_LI_0_0\\system_signal_processing_LI_0_0.xci",
+        "inst_hier_path": "lock_in",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "signal_processing_LI",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "125000000",
+                "value_src": "const_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "system_axis_red_pitaya_adc_0_0_adc_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "reset_n": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "enable_gral": {
+            "direction": "I"
+          },
+          "referencia_externa_seno": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "referencia_externa_cos": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "referencia_externa_valid": {
+            "direction": "I"
+          },
+          "data_in": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "data_in_valid": {
+            "direction": "I"
+          },
+          "start_signal": {
+            "direction": "I"
+          },
+          "data_out_fase": {
+            "direction": "O",
+            "left": "63",
+            "right": "0"
+          },
+          "data_out_fase_valid": {
+            "direction": "O"
+          },
+          "data_out_cuad": {
+            "direction": "O",
+            "left": "63",
+            "right": "0"
+          },
+          "data_out_cuad_valid": {
+            "direction": "O"
+          },
+          "ready_to_calculate": {
+            "direction": "O"
+          },
+          "processing_finished": {
+            "direction": "O"
+          },
+          "datos_promediados": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "parameter_in_0": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "parameter_in_1": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -6087,8 +6087,8 @@
           "Fuente_datos/adc_clk",
           "DAC/aclk",
           "decimator/clk_in",
-          "lock_in/clk",
-          "Control/adc_clk"
+          "Control/adc_clk",
+          "lock_in/clk"
         ]
       },
       "ADC_adc_csn_o": {
@@ -6279,8 +6279,8 @@
           "Control/reset_n_from_ctrl",
           "DAC/aresetn",
           "decimator/reset_n",
-          "lock_in/reset_n",
-          "Fuente_datos/aresetn"
+          "Fuente_datos/aresetn",
+          "lock_in/reset_n"
         ]
       },
       "uP_control_Dout1": {
@@ -6288,8 +6288,8 @@
           "Control/enable_from_ctrl",
           "DAC/aclken",
           "decimator/enable",
-          "lock_in/enable_gral",
-          "Fuente_datos/aclken"
+          "Fuente_datos/aclken",
+          "lock_in/enable_gral"
         ]
       },
       "uP_control_gpio2_io_o": {
@@ -6319,8 +6319,8 @@
       "uP_control_gpio_io_o": {
         "ports": [
           "Control/M",
-          "lock_in/parameter_in_0",
-          "Fuente_datos/approxM"
+          "Fuente_datos/approxM",
+          "lock_in/parameter_in_0"
         ]
       },
       "uP_control_gpio_io_o1": {

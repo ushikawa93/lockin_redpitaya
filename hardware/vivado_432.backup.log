@@ -2,22 +2,25 @@
 # Vivado v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Fri Apr 12 12:25:25 2024
-# Process ID: 6876
-# Current directory: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent3480 C:\Users\MatiOliva\Documents\00-lockin_redpitaya\hardware\lockin.xpr
-# Log file: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/vivado.log
-# Journal file: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware\vivado.jou
-# Running On: DESKTOP-BRUHM76, OS: Windows, CPU Frequency: 3912 MHz, CPU Physical cores: 2, Host memory: 17041 MB
+# Start of session at: Thu Aug 29 18:02:36 2024
+# Process ID: 432
+# Current directory: C:/Users/mati9/Documents/02-lockin_redpitaya/hardware
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent14352 C:\Users\mati9\Documents\02-lockin_redpitaya\hardware\lockin.xpr
+# Log file: C:/Users/mati9/Documents/02-lockin_redpitaya/hardware/vivado.log
+# Journal file: C:/Users/mati9/Documents/02-lockin_redpitaya/hardware\vivado.jou
+# Running On: DESKTOP-TN92N90, OS: Windows, CPU Frequency: 3014 MHz, CPU Physical cores: 2, Host memory: 8588 MB
 #-----------------------------------------------------------
 start_gui
-open_project C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.xpr
-Scanning sources...
-Finished scanning sources
+open_project C:/Users/mati9/Documents/02-lockin_redpitaya/hardware/lockin.xpr
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:ac701:part0:1.4 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/ac701/1.4/board.xml as part xc7a200tfbg676-2 specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:kc705:part0:1.6 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kc705/1.6/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.6 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.6/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.7 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.7/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu116:part0:1.4 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu116/1.4/board.xml as part xcku5p-ffvb676-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu116:part0:1.5 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu116/1.5/board.xml as part xcku5p-ffvb676-2-e specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu1500:part0:1.2 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu1500/1.2/board.xml as part xcku115-flvb2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:sp701:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/sp701/1.0/board.xml as part xc7s100fgga676-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:sp701:part0:1.1 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/sp701/1.1/board.xml as part xc7s100fgga676-2 specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:vc707:part0:1.4 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vc707/1.4/board.xml as part xc7vx485tffg1761-2 specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:vc709:part0:1.8 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vc709/1.8/board.xml as part xc7vx690tffg1761-2 specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:2.2 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/2.2/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
@@ -48,6 +51,10 @@ WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk180_es:part0:1.0 avai
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zc706:part0:1.4 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zc706/1.4/board.xml as part xc7z045ffg900-2 specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu102:part0:3.3 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu102/3.3/board.xml as part xczu9eg-ffvb1156-2-e specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu102:part0:3.4 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu102/3.4/board.xml as part xczu9eg-ffvb1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu104:part0:1.1 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu104/1.1/board.xml as part xczu7ev-ffvc1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu106:part0:2.4 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu106/2.4/board.xml as part xczu7ev-ffvc1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu106:part0:2.5 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu106/2.5/board.xml as part xczu7ev-ffvc1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu106:part0:2.6 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu106/2.6/board.xml as part xczu7ev-ffvc1156-2-e specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.2 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu111/1.2/board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.3 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu111/1.3/board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.4 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu111/1.4/board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
@@ -59,19 +66,44 @@ WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216:part0:2.0 availab
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/2.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+INFO: [Project 1-313] Project file moved from 'C:/Users/mati9/Documents/02-lockin_red_pitaya/hardware' since last save.
+Scanning sources...
+Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
-INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/user_ip'.
-INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/lu_tables'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/mati9/Documents/02-lockin_redpitaya/hardware/lockin.srcs/user_ip'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/mati9/Documents/02-lockin_redpitaya/hardware/lockin.srcs/lu_tables'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.2/data/ip'.
-open_project: Time (s): cpu = 00:00:34 ; elapsed = 00:00:23 . Memory (MB): peak = 1154.234 ; gain = 394.566
-open_bd_design {C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
-Reading block design file <C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd>...
+open_project: Time (s): cpu = 00:00:50 ; elapsed = 00:00:42 . Memory (MB): peak = 1115.469 ; gain = 369.527
+update_compile_order -fileset sources_1
+update_module_reference system_decimator_0_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'reset_n' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'clk' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/mati9/Documents/02-lockin_redpitaya/hardware/lockin.srcs/user_ip'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/mati9/Documents/02-lockin_redpitaya/hardware/lockin.srcs/lu_tables'.
+Reading block design file <C:/Users/mati9/Documents/02-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd>...
 Adding component instance block -- xilinx.com:ip:util_ds_buf:2.2 - util_ds_buf_1
 Adding component instance block -- xilinx.com:ip:util_ds_buf:2.2 - util_ds_buf_2
 Adding component instance block -- pavel-demin:user:axis_red_pitaya_dac:1.0 - axis_red_pitaya_dac_0
 Adding component instance block -- xilinx.com:ip:dds_compiler:6.0 - dds_compiler_0
 Adding component instance block -- xilinx.com:ip:clk_wiz:6.0 - clk_wiz_0
 Adding component instance block -- pavel-demin:user:axis_constant:1.0 - axis_constant_0
+Adding component instance block -- xilinx.com:module_ref:drive_gpios:1.0 - drive_gpios_0
+Adding component instance block -- xilinx.com:module_ref:drive_gpios:1.0 - drive_gpios_1
+Adding component instance block -- xilinx.com:module_ref:drive_leds:1.0 - drive_leds_0
+Adding component instance block -- xilinx.com:module_ref:and_2:1.0 - and_2_0
+Adding component instance block -- xilinx.com:module_ref:mux:1.0 - selector_data_in1
+Adding component instance block -- xilinx.com:module_ref:decimator:1.0 - decimator_0
+Adding component instance block -- xilinx.com:module_ref:linear_mean:1.0 - linear_mean_0
+Adding component instance block -- xilinx.com:module_ref:signal_processing_LI:1.0 - lock_in
+Adding component instance block -- xilinx.com:ip:processing_system7:5.5 - processing_system7_0
+Adding component instance block -- xilinx.com:ip:proc_sys_reset:5.0 - rst_ps7_0_125M
+Adding component instance block -- xilinx.com:ip:axi_interconnect:2.1 - ps7_0_axi_periph
+Adding component instance block -- xilinx.com:ip:axi_crossbar:2.1 - xbar
+Adding component instance block -- xilinx.com:ip:axi_protocol_converter:2.1 - auto_pc
+Adding component instance block -- xilinx.com:ip:axi_fifo_mm_s:4.2 - fifo_1
+Adding component instance block -- xilinx.com:ip:axis_clock_converter:1.1 - axis_clock_converter_0
 Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - result_fase
 Adding component instance block -- xilinx.com:ip:xlslice:1.0 - reset_n
 Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - enable_and_reset
@@ -86,18 +118,7 @@ Adding component instance block -- xilinx.com:ip:xlslice:1.0 - enable
 Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - adc_decimator_and_data_select
 Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - phaseDAC_and_phaseREF
 Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - datos_promediados
-Adding component instance block -- xilinx.com:ip:processing_system7:5.5 - processing_system7_0
-Adding component instance block -- xilinx.com:ip:proc_sys_reset:5.0 - rst_ps7_0_125M
-Adding component instance block -- xilinx.com:ip:axi_interconnect:2.1 - ps7_0_axi_periph
-Adding component instance block -- xilinx.com:ip:axi_crossbar:2.1 - xbar
-Adding component instance block -- xilinx.com:ip:axi_protocol_converter:2.1 - auto_pc
-Adding component instance block -- xilinx.com:ip:axi_fifo_mm_s:4.2 - fifo_1
-Adding component instance block -- xilinx.com:ip:axis_clock_converter:1.1 - axis_clock_converter_0
-Adding component instance block -- pavel-demin:user:axis_red_pitaya_adc:1.0 - axis_red_pitaya_adc_0
-Adding component instance block -- xilinx.com:module_ref:signal_split:1.0 - signal_split_0
-Adding component instance block -- xilinx.com:module_ref:drive_gpios:1.0 - drive_gpios_0
-Adding component instance block -- xilinx.com:module_ref:drive_gpios:1.0 - drive_gpios_1
-Adding component instance block -- xilinx.com:module_ref:drive_leds:1.0 - drive_leds_0
+Adding component instance block -- xilinx.com:module_ref:mux:1.0 - selector_data_in
 Adding component instance block -- pavel-demin:user:axis_constant:1.0 - axis_constant_0
 Adding component instance block -- xilinx.com:ip:xlslice:1.0 - ref_sen
 Adding component instance block -- xilinx.com:ip:dds_compiler:6.0 - dds_compiler_0
@@ -106,14 +127,38 @@ Adding component instance block -- xilinx.com:module_ref:start_signal_generator:
 Adding component instance block -- xilinx.com:module_ref:and_2:1.0 - and_2_1
 Adding component instance block -- xilinx.com:module_ref:delay_axi_streaming:1.0 - delay_axi_streaming_0
 Adding component instance block -- xilinx.com:module_ref:delay_axi_streaming:1.0 - delay_axi_streaming_1
-Adding component instance block -- xilinx.com:module_ref:and_2:1.0 - and_2_0
-Adding component instance block -- xilinx.com:module_ref:decimator:1.0 - decimator_0
-Adding component instance block -- xilinx.com:module_ref:mux:1.0 - selector_data_in1
-Adding component instance block -- xilinx.com:module_ref:linear_mean:1.0 - linear_mean_0
-Adding component instance block -- xilinx.com:module_ref:mux:1.0 - selector_data_in
-Adding component instance block -- xilinx.com:module_ref:signal_processing_LI:1.0 - lock_in
-Successfully read diagram <system> from block design file <C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd>
-open_bd_design: Time (s): cpu = 00:00:11 ; elapsed = 00:00:08 . Memory (MB): peak = 1193.500 ; gain = 24.676
-update_compile_order -fileset sources_1
-exit
-INFO: [Common 17-206] Exiting Vivado at Fri Apr 12 18:46:01 2024...
+Adding component instance block -- pavel-demin:user:axis_red_pitaya_adc:1.0 - axis_red_pitaya_adc_0
+Adding component instance block -- xilinx.com:module_ref:signal_split:1.0 - signal_split_0
+Successfully read diagram <system> from block design file <C:/Users/mati9/Documents/02-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd>
+Upgrading 'C:/Users/mati9/Documents/02-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-3420] Updated system_decimator_0_0 to use current project options
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_1> has no source
+Wrote  : <C:\Users\mati9\Documents\02-lockin_redpitaya\hardware\lockin.srcs\sources_1\bd\system\system.bd> 
+Wrote  : <C:/Users/mati9/Documents/02-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/ui/bd_c954508f.ui> 
+upgrade_ip: Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1179.812 ; gain = 61.984
+update_module_reference: Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1179.812 ; gain = 61.984
+update_module_reference system_linear_mean_0_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'reset_n' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'clk' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/mati9/Documents/02-lockin_redpitaya/hardware/lockin.srcs/user_ip'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/mati9/Documents/02-lockin_redpitaya/hardware/lockin.srcs/lu_tables'.
+Upgrading 'C:/Users/mati9/Documents/02-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-3420] Updated system_linear_mean_0_0 to use current project options
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_1> has no source
+Wrote  : <C:\Users\mati9\Documents\02-lockin_redpitaya\hardware\lockin.srcs\sources_1\bd\system\system.bd> 
+update_module_reference: Time (s): cpu = 00:00:07 ; elapsed = 00:00:47 . Memory (MB): peak = 1179.855 ; gain = 0.043
+update_module_reference {system_delay_axi_streaming_0_0 system_delay_axi_streaming_1_0}
+INFO: [IP_Flow 19-5107] Inferred bus interface 'reset_n' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+WARNING: [IP_Flow 19-5661] Bus Interface 'clk' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/mati9/Documents/02-lockin_redpitaya/hardware/lockin.srcs/user_ip'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/mati9/Documents/02-lockin_redpitaya/hardware/lockin.srcs/lu_tables'.
+Upgrading 'C:/Users/mati9/Documents/02-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd'
+INFO: [IP_Flow 19-3420] Updated system_delay_axi_streaming_0_0 to use current project options
+INFO: [IP_Flow 19-3420] Updated system_delay_axi_streaming_1_0 to use current project options
+WARNING: [BD 41-597] NET <level_detector_0_level_detected_1> has no source
+Wrote  : <C:\Users\mati9\Documents\02-lockin_redpitaya\hardware\lockin.srcs\sources_1\bd\system\system.bd> 
+update_module_reference: Time (s): cpu = 00:00:05 ; elapsed = 00:00:33 . Memory (MB): peak = 1181.223 ; gain = 1.367

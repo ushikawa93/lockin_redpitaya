@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "system_axis_constant_0_1",
-    "cell_name": "referencias/axis_constant_0",
+    "cell_name": "Fuente_datos/referencias/axis_constant_0",
     "component_reference": "pavel-demin:user:axis_constant:1.0",
     "ip_revision": "1",
     "gen_directory": "../../../../../../lockin.gen/sources_1/bd/system/ip/system_axis_constant_0_1",

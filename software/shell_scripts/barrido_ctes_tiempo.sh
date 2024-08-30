@@ -26,4 +26,4 @@ EOF
 
 scp root@$ip:/root/c_programs/$nombre_archivo_salida ../datos_adquiridos/$nombre_archivo_salida
 
-read -p "Presione cualquier tecla para salir..."
+#read -p "Presione cualquier tecla para salir..."

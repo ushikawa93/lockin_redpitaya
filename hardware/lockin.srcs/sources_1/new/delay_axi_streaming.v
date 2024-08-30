@@ -6,10 +6,10 @@ module delay_axi_streaming(
     input reset_n,
     input bypass_n,
 
-    input [13:0] data_in,
+    input [15:0] data_in,
     input data_in_valid,
     
-    output [13:0] data_out,
+    output [15:0] data_out,
     output data_out_valid
     
 );

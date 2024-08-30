@@ -3,231 +3,199 @@
 	"modules": {
 		"system": {
 			"proto_instances": {
-				"/ADC/axis_red_pitaya_adc_0/M_AXIS": {
-					"interface": "xilinx.com:interface:axis:1.0",
-					"ports": {
-						"ACLK": { "actual": "adc_clk"},
-						"TDATA": { "actual": "m_axis_tdata"},
-						"TVALID": { "actual": "m_axis_tvalid"}
-					}
-				},
-				"/ADC/signal_split_0/S_AXIS": {
-					"interface": "xilinx.com:interface:axis:1.0",
-					"ports": {
-						"TDATA": { "actual": "S_AXIS_tdata"},
-						"TVALID": { "actual": "S_AXIS_tvalid"}
-					}
-				},
-				"/DAC/axis_constant_0/M_AXIS": {
-					"interface": "xilinx.com:interface:axis:1.0",
-					"ports": {
-						"ACLK": { "actual": "aclk"},
-						"TDATA": { "actual": "m_axis_tdata"},
-						"TVALID": { "actual": "m_axis_tvalid"}
-					}
-				},
-				"/DAC/dds_compiler_0/S_AXIS_PHASE": {
-					"interface": "xilinx.com:interface:axis:1.0",
-					"ports": {
-						"ACLK": { "actual": "aclk"},
-						"ARESETN": { "actual": "aresetn"},
-						"TDATA": { "actual": "s_axis_phase_tdata"},
-						"TVALID": { "actual": "s_axis_phase_tvalid"}
-					}
-				},
-				"/uP/M01_AXI": {
+				"/Control/uP/M01_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "FCLK_CLK0"},
 						"ARADDR": { "actual": "M01_AXI_araddr[63:32]"},
 						"ARESETN": { "actual": "S00_ARESETN"},
-						"ARREADY": { "actual": "M01_AXI_arready[1:1]"},
-						"ARVALID": { "actual": "M01_AXI_arvalid[1:1]"},
+						"ARREADY": { "actual": "M01_AXI_arready"},
+						"ARVALID": { "actual": "M01_AXI_arvalid"},
 						"AWADDR": { "actual": "M01_AXI_awaddr[63:32]"},
-						"AWREADY": { "actual": "M01_AXI_awready[1:1]"},
-						"AWVALID": { "actual": "M01_AXI_awvalid[1:1]"},
-						"BREADY": { "actual": "M01_AXI_bready[1:1]"},
+						"AWREADY": { "actual": "M01_AXI_awready"},
+						"AWVALID": { "actual": "M01_AXI_awvalid"},
+						"BREADY": { "actual": "M01_AXI_bready"},
 						"BRESP": { "actual": "M01_AXI_bresp[3:2]"},
-						"BVALID": { "actual": "M01_AXI_bvalid[1:1]"},
+						"BVALID": { "actual": "M01_AXI_bvalid"},
 						"RDATA": { "actual": "M01_AXI_rdata[63:32]"},
-						"RREADY": { "actual": "M01_AXI_rready[1:1]"},
+						"RREADY": { "actual": "M01_AXI_rready"},
 						"RRESP": { "actual": "M01_AXI_rresp[3:2]"},
-						"RVALID": { "actual": "M01_AXI_rvalid[1:1]"},
+						"RVALID": { "actual": "M01_AXI_rvalid"},
 						"WDATA": { "actual": "M01_AXI_wdata[63:32]"},
-						"WREADY": { "actual": "M01_AXI_wready[1:1]"},
+						"WREADY": { "actual": "M01_AXI_wready"},
 						"WSTRB": { "actual": "M01_AXI_wstrb[7:4]"},
-						"WVALID": { "actual": "M01_AXI_wvalid[1:1]"}
+						"WVALID": { "actual": "M01_AXI_wvalid"}
 					}
 				},
-				"/uP/M02_AXI": {
+				"/Control/uP/M02_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "FCLK_CLK0"},
 						"ARADDR": { "actual": "M02_AXI_araddr[95:64]"},
 						"ARESETN": { "actual": "S00_ARESETN"},
-						"ARREADY": { "actual": "M02_AXI_arready[2:2]"},
-						"ARVALID": { "actual": "M02_AXI_arvalid[2:2]"},
+						"ARREADY": { "actual": "M02_AXI_arready"},
+						"ARVALID": { "actual": "M02_AXI_arvalid"},
 						"AWADDR": { "actual": "M02_AXI_awaddr[95:64]"},
-						"AWREADY": { "actual": "M02_AXI_awready[2:2]"},
-						"AWVALID": { "actual": "M02_AXI_awvalid[2:2]"},
-						"BREADY": { "actual": "M02_AXI_bready[2:2]"},
+						"AWREADY": { "actual": "M02_AXI_awready"},
+						"AWVALID": { "actual": "M02_AXI_awvalid"},
+						"BREADY": { "actual": "M02_AXI_bready"},
 						"BRESP": { "actual": "M02_AXI_bresp[5:4]"},
-						"BVALID": { "actual": "M02_AXI_bvalid[2:2]"},
+						"BVALID": { "actual": "M02_AXI_bvalid"},
 						"RDATA": { "actual": "M02_AXI_rdata[95:64]"},
-						"RREADY": { "actual": "M02_AXI_rready[2:2]"},
+						"RREADY": { "actual": "M02_AXI_rready"},
 						"RRESP": { "actual": "M02_AXI_rresp[5:4]"},
-						"RVALID": { "actual": "M02_AXI_rvalid[2:2]"},
+						"RVALID": { "actual": "M02_AXI_rvalid"},
 						"WDATA": { "actual": "M02_AXI_wdata[95:64]"},
-						"WREADY": { "actual": "M02_AXI_wready[2:2]"},
+						"WREADY": { "actual": "M02_AXI_wready"},
 						"WSTRB": { "actual": "M02_AXI_wstrb[11:8]"},
-						"WVALID": { "actual": "M02_AXI_wvalid[2:2]"}
+						"WVALID": { "actual": "M02_AXI_wvalid"}
 					}
 				},
-				"/uP/M03_AXI": {
+				"/Control/uP/M03_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "FCLK_CLK0"},
 						"ARADDR": { "actual": "M03_AXI_araddr[127:96]"},
 						"ARESETN": { "actual": "S00_ARESETN"},
-						"ARREADY": { "actual": "M03_AXI_arready[3:3]"},
-						"ARVALID": { "actual": "M03_AXI_arvalid[3:3]"},
+						"ARREADY": { "actual": "M03_AXI_arready"},
+						"ARVALID": { "actual": "M03_AXI_arvalid"},
 						"AWADDR": { "actual": "M03_AXI_awaddr[127:96]"},
-						"AWREADY": { "actual": "M03_AXI_awready[3:3]"},
-						"AWVALID": { "actual": "M03_AXI_awvalid[3:3]"},
-						"BREADY": { "actual": "M03_AXI_bready[3:3]"},
+						"AWREADY": { "actual": "M03_AXI_awready"},
+						"AWVALID": { "actual": "M03_AXI_awvalid"},
+						"BREADY": { "actual": "M03_AXI_bready"},
 						"BRESP": { "actual": "M03_AXI_bresp[7:6]"},
-						"BVALID": { "actual": "M03_AXI_bvalid[3:3]"},
+						"BVALID": { "actual": "M03_AXI_bvalid"},
 						"RDATA": { "actual": "M03_AXI_rdata[127:96]"},
-						"RREADY": { "actual": "M03_AXI_rready[3:3]"},
+						"RREADY": { "actual": "M03_AXI_rready"},
 						"RRESP": { "actual": "M03_AXI_rresp[7:6]"},
-						"RVALID": { "actual": "M03_AXI_rvalid[3:3]"},
+						"RVALID": { "actual": "M03_AXI_rvalid"},
 						"WDATA": { "actual": "M03_AXI_wdata[127:96]"},
-						"WREADY": { "actual": "M03_AXI_wready[3:3]"},
+						"WREADY": { "actual": "M03_AXI_wready"},
 						"WSTRB": { "actual": "M03_AXI_wstrb[15:12]"},
-						"WVALID": { "actual": "M03_AXI_wvalid[3:3]"}
+						"WVALID": { "actual": "M03_AXI_wvalid"}
 					}
 				},
-				"/uP/M04_AXI": {
+				"/Control/uP/M04_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "FCLK_CLK0"},
 						"ARADDR": { "actual": "M04_AXI_araddr[159:128]"},
 						"ARESETN": { "actual": "S00_ARESETN"},
-						"ARREADY": { "actual": "M04_AXI_arready[4:4]"},
-						"ARVALID": { "actual": "M04_AXI_arvalid[4:4]"},
+						"ARREADY": { "actual": "M04_AXI_arready"},
+						"ARVALID": { "actual": "M04_AXI_arvalid"},
 						"AWADDR": { "actual": "M04_AXI_awaddr[159:128]"},
-						"AWREADY": { "actual": "M04_AXI_awready[4:4]"},
-						"AWVALID": { "actual": "M04_AXI_awvalid[4:4]"},
-						"BREADY": { "actual": "M04_AXI_bready[4:4]"},
+						"AWREADY": { "actual": "M04_AXI_awready"},
+						"AWVALID": { "actual": "M04_AXI_awvalid"},
+						"BREADY": { "actual": "M04_AXI_bready"},
 						"BRESP": { "actual": "M04_AXI_bresp[9:8]"},
-						"BVALID": { "actual": "M04_AXI_bvalid[4:4]"},
+						"BVALID": { "actual": "M04_AXI_bvalid"},
 						"RDATA": { "actual": "M04_AXI_rdata[159:128]"},
-						"RREADY": { "actual": "M04_AXI_rready[4:4]"},
+						"RREADY": { "actual": "M04_AXI_rready"},
 						"RRESP": { "actual": "M04_AXI_rresp[9:8]"},
-						"RVALID": { "actual": "M04_AXI_rvalid[4:4]"},
+						"RVALID": { "actual": "M04_AXI_rvalid"},
 						"WDATA": { "actual": "M04_AXI_wdata[159:128]"},
-						"WREADY": { "actual": "M04_AXI_wready[4:4]"},
+						"WREADY": { "actual": "M04_AXI_wready"},
 						"WSTRB": { "actual": "M04_AXI_wstrb[19:16]"},
-						"WVALID": { "actual": "M04_AXI_wvalid[4:4]"}
+						"WVALID": { "actual": "M04_AXI_wvalid"}
 					}
 				},
-				"/uP/M05_AXI": {
+				"/Control/uP/M05_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "FCLK_CLK0"},
 						"ARADDR": { "actual": "M05_AXI_araddr[191:160]"},
 						"ARESETN": { "actual": "S00_ARESETN"},
-						"ARREADY": { "actual": "M05_AXI_arready[5:5]"},
-						"ARVALID": { "actual": "M05_AXI_arvalid[5:5]"},
+						"ARREADY": { "actual": "M05_AXI_arready"},
+						"ARVALID": { "actual": "M05_AXI_arvalid"},
 						"AWADDR": { "actual": "M05_AXI_awaddr[191:160]"},
-						"AWREADY": { "actual": "M05_AXI_awready[5:5]"},
-						"AWVALID": { "actual": "M05_AXI_awvalid[5:5]"},
-						"BREADY": { "actual": "M05_AXI_bready[5:5]"},
+						"AWREADY": { "actual": "M05_AXI_awready"},
+						"AWVALID": { "actual": "M05_AXI_awvalid"},
+						"BREADY": { "actual": "M05_AXI_bready"},
 						"BRESP": { "actual": "M05_AXI_bresp[11:10]"},
-						"BVALID": { "actual": "M05_AXI_bvalid[5:5]"},
+						"BVALID": { "actual": "M05_AXI_bvalid"},
 						"RDATA": { "actual": "M05_AXI_rdata[191:160]"},
-						"RREADY": { "actual": "M05_AXI_rready[5:5]"},
+						"RREADY": { "actual": "M05_AXI_rready"},
 						"RRESP": { "actual": "M05_AXI_rresp[11:10]"},
-						"RVALID": { "actual": "M05_AXI_rvalid[5:5]"},
+						"RVALID": { "actual": "M05_AXI_rvalid"},
 						"WDATA": { "actual": "M05_AXI_wdata[191:160]"},
-						"WREADY": { "actual": "M05_AXI_wready[5:5]"},
+						"WREADY": { "actual": "M05_AXI_wready"},
 						"WSTRB": { "actual": "M05_AXI_wstrb[23:20]"},
-						"WVALID": { "actual": "M05_AXI_wvalid[5:5]"}
+						"WVALID": { "actual": "M05_AXI_wvalid"}
 					}
 				},
-				"/uP/M06_AXI": {
+				"/Control/uP/M06_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "FCLK_CLK0"},
 						"ARADDR": { "actual": "M06_AXI_araddr[223:192]"},
 						"ARESETN": { "actual": "S00_ARESETN"},
-						"ARREADY": { "actual": "M06_AXI_arready[6:6]"},
-						"ARVALID": { "actual": "M06_AXI_arvalid[6:6]"},
+						"ARREADY": { "actual": "M06_AXI_arready"},
+						"ARVALID": { "actual": "M06_AXI_arvalid"},
 						"AWADDR": { "actual": "M06_AXI_awaddr[223:192]"},
-						"AWREADY": { "actual": "M06_AXI_awready[6:6]"},
-						"AWVALID": { "actual": "M06_AXI_awvalid[6:6]"},
-						"BREADY": { "actual": "M06_AXI_bready[6:6]"},
+						"AWREADY": { "actual": "M06_AXI_awready"},
+						"AWVALID": { "actual": "M06_AXI_awvalid"},
+						"BREADY": { "actual": "M06_AXI_bready"},
 						"BRESP": { "actual": "M06_AXI_bresp[13:12]"},
-						"BVALID": { "actual": "M06_AXI_bvalid[6:6]"},
+						"BVALID": { "actual": "M06_AXI_bvalid"},
 						"RDATA": { "actual": "M06_AXI_rdata[223:192]"},
-						"RREADY": { "actual": "M06_AXI_rready[6:6]"},
+						"RREADY": { "actual": "M06_AXI_rready"},
 						"RRESP": { "actual": "M06_AXI_rresp[13:12]"},
-						"RVALID": { "actual": "M06_AXI_rvalid[6:6]"},
+						"RVALID": { "actual": "M06_AXI_rvalid"},
 						"WDATA": { "actual": "M06_AXI_wdata[223:192]"},
-						"WREADY": { "actual": "M06_AXI_wready[6:6]"},
+						"WREADY": { "actual": "M06_AXI_wready"},
 						"WSTRB": { "actual": "M06_AXI_wstrb[27:24]"},
-						"WVALID": { "actual": "M06_AXI_wvalid[6:6]"}
+						"WVALID": { "actual": "M06_AXI_wvalid"}
 					}
 				},
-				"/uP/M07_AXI": {
+				"/Control/uP/M07_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "FCLK_CLK0"},
 						"ARADDR": { "actual": "M07_AXI_araddr[255:224]"},
 						"ARESETN": { "actual": "S00_ARESETN"},
-						"ARREADY": { "actual": "M07_AXI_arready[7:7]"},
-						"ARVALID": { "actual": "M07_AXI_arvalid[7:7]"},
+						"ARREADY": { "actual": "M07_AXI_arready"},
+						"ARVALID": { "actual": "M07_AXI_arvalid"},
 						"AWADDR": { "actual": "M07_AXI_awaddr[255:224]"},
-						"AWREADY": { "actual": "M07_AXI_awready[7:7]"},
-						"AWVALID": { "actual": "M07_AXI_awvalid[7:7]"},
-						"BREADY": { "actual": "M07_AXI_bready[7:7]"},
+						"AWREADY": { "actual": "M07_AXI_awready"},
+						"AWVALID": { "actual": "M07_AXI_awvalid"},
+						"BREADY": { "actual": "M07_AXI_bready"},
 						"BRESP": { "actual": "M07_AXI_bresp[15:14]"},
-						"BVALID": { "actual": "M07_AXI_bvalid[7:7]"},
+						"BVALID": { "actual": "M07_AXI_bvalid"},
 						"RDATA": { "actual": "M07_AXI_rdata[255:224]"},
-						"RREADY": { "actual": "M07_AXI_rready[7:7]"},
+						"RREADY": { "actual": "M07_AXI_rready"},
 						"RRESP": { "actual": "M07_AXI_rresp[15:14]"},
-						"RVALID": { "actual": "M07_AXI_rvalid[7:7]"},
+						"RVALID": { "actual": "M07_AXI_rvalid"},
 						"WDATA": { "actual": "M07_AXI_wdata[255:224]"},
-						"WREADY": { "actual": "M07_AXI_wready[7:7]"},
+						"WREADY": { "actual": "M07_AXI_wready"},
 						"WSTRB": { "actual": "M07_AXI_wstrb[31:28]"},
-						"WVALID": { "actual": "M07_AXI_wvalid[7:7]"}
+						"WVALID": { "actual": "M07_AXI_wvalid"}
 					}
 				},
-				"/uP/M08_AXI": {
+				"/Control/uP/M08_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "FCLK_CLK0"},
 						"ARADDR": { "actual": "M08_AXI_araddr[287:256]"},
 						"ARESETN": { "actual": "S00_ARESETN"},
-						"ARREADY": { "actual": "M08_AXI_arready[8:8]"},
-						"ARVALID": { "actual": "M08_AXI_arvalid[8:8]"},
+						"ARREADY": { "actual": "M08_AXI_arready"},
+						"ARVALID": { "actual": "M08_AXI_arvalid"},
 						"AWADDR": { "actual": "M08_AXI_awaddr[287:256]"},
-						"AWREADY": { "actual": "M08_AXI_awready[8:8]"},
-						"AWVALID": { "actual": "M08_AXI_awvalid[8:8]"},
-						"BREADY": { "actual": "M08_AXI_bready[8:8]"},
+						"AWREADY": { "actual": "M08_AXI_awready"},
+						"AWVALID": { "actual": "M08_AXI_awvalid"},
+						"BREADY": { "actual": "M08_AXI_bready"},
 						"BRESP": { "actual": "M08_AXI_bresp[17:16]"},
-						"BVALID": { "actual": "M08_AXI_bvalid[8:8]"},
+						"BVALID": { "actual": "M08_AXI_bvalid"},
 						"RDATA": { "actual": "M08_AXI_rdata[287:256]"},
-						"RREADY": { "actual": "M08_AXI_rready[8:8]"},
+						"RREADY": { "actual": "M08_AXI_rready"},
 						"RRESP": { "actual": "M08_AXI_rresp[17:16]"},
-						"RVALID": { "actual": "M08_AXI_rvalid[8:8]"},
+						"RVALID": { "actual": "M08_AXI_rvalid"},
 						"WDATA": { "actual": "M08_AXI_wdata[287:256]"},
-						"WREADY": { "actual": "M08_AXI_wready[8:8]"},
+						"WREADY": { "actual": "M08_AXI_wready"},
 						"WSTRB": { "actual": "M08_AXI_wstrb[35:32]"},
-						"WVALID": { "actual": "M08_AXI_wvalid[8:8]"}
+						"WVALID": { "actual": "M08_AXI_wvalid"}
 					}
 				},
-				"/uP/axis_clock_converter_0/M_AXIS": {
+				"/Control/uP/axis_clock_converter_0/M_AXIS": {
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
 						"ACLK": { "actual": "m_axis_aclk"},
@@ -237,7 +205,7 @@
 						"TVALID": { "actual": "m_axis_tvalid"}
 					}
 				},
-				"/uP/fifo_1/AXI_STR_RXD": {
+				"/Control/uP/fifo_1/AXI_STR_RXD": {
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
 						"ACLK": { "actual": "s_axi_aclk"},
@@ -248,7 +216,7 @@
 						"TVALID": { "actual": "axi_str_rxd_tvalid"}
 					}
 				},
-				"/uP/fifo_1/S_AXI": {
+				"/Control/uP/fifo_1/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "s_axi_aclk"},
@@ -272,7 +240,7 @@
 						"WVALID": { "actual": "s_axi_wvalid"}
 					}
 				},
-				"/uP/processing_system7_0/M_AXI_GP0": {
+				"/Control/uP/processing_system7_0/M_AXI_GP0": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M_AXI_GP0_ACLK"},
@@ -316,7 +284,7 @@
 						"WVALID": { "actual": "M_AXI_GP0_WVALID"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/M00_AXI": {
+				"/Control/uP/ps7_0_axi_periph/M00_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M00_ACLK"},
@@ -340,199 +308,199 @@
 						"WVALID": { "actual": "M00_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/M01_AXI": {
+				"/Control/uP/ps7_0_axi_periph/M01_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M01_ACLK"},
 						"ARADDR": { "actual": "M01_AXI_araddr[63:32]"},
 						"ARESETN": { "actual": "ARESETN"},
-						"ARREADY": { "actual": "M01_AXI_arready[1:1]"},
-						"ARVALID": { "actual": "M01_AXI_arvalid[1:1]"},
+						"ARREADY": { "actual": "M01_AXI_arready"},
+						"ARVALID": { "actual": "M01_AXI_arvalid"},
 						"AWADDR": { "actual": "M01_AXI_awaddr[63:32]"},
-						"AWREADY": { "actual": "M01_AXI_awready[1:1]"},
-						"AWVALID": { "actual": "M01_AXI_awvalid[1:1]"},
-						"BREADY": { "actual": "M01_AXI_bready[1:1]"},
+						"AWREADY": { "actual": "M01_AXI_awready"},
+						"AWVALID": { "actual": "M01_AXI_awvalid"},
+						"BREADY": { "actual": "M01_AXI_bready"},
 						"BRESP": { "actual": "M01_AXI_bresp[3:2]"},
-						"BVALID": { "actual": "M01_AXI_bvalid[1:1]"},
+						"BVALID": { "actual": "M01_AXI_bvalid"},
 						"RDATA": { "actual": "M01_AXI_rdata[63:32]"},
-						"RREADY": { "actual": "M01_AXI_rready[1:1]"},
+						"RREADY": { "actual": "M01_AXI_rready"},
 						"RRESP": { "actual": "M01_AXI_rresp[3:2]"},
-						"RVALID": { "actual": "M01_AXI_rvalid[1:1]"},
+						"RVALID": { "actual": "M01_AXI_rvalid"},
 						"WDATA": { "actual": "M01_AXI_wdata[63:32]"},
-						"WREADY": { "actual": "M01_AXI_wready[1:1]"},
+						"WREADY": { "actual": "M01_AXI_wready"},
 						"WSTRB": { "actual": "M01_AXI_wstrb[7:4]"},
-						"WVALID": { "actual": "M01_AXI_wvalid[1:1]"}
+						"WVALID": { "actual": "M01_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/M02_AXI": {
+				"/Control/uP/ps7_0_axi_periph/M02_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M02_ACLK"},
 						"ARADDR": { "actual": "M02_AXI_araddr[95:64]"},
 						"ARESETN": { "actual": "ARESETN"},
-						"ARREADY": { "actual": "M02_AXI_arready[2:2]"},
-						"ARVALID": { "actual": "M02_AXI_arvalid[2:2]"},
+						"ARREADY": { "actual": "M02_AXI_arready"},
+						"ARVALID": { "actual": "M02_AXI_arvalid"},
 						"AWADDR": { "actual": "M02_AXI_awaddr[95:64]"},
-						"AWREADY": { "actual": "M02_AXI_awready[2:2]"},
-						"AWVALID": { "actual": "M02_AXI_awvalid[2:2]"},
-						"BREADY": { "actual": "M02_AXI_bready[2:2]"},
+						"AWREADY": { "actual": "M02_AXI_awready"},
+						"AWVALID": { "actual": "M02_AXI_awvalid"},
+						"BREADY": { "actual": "M02_AXI_bready"},
 						"BRESP": { "actual": "M02_AXI_bresp[5:4]"},
-						"BVALID": { "actual": "M02_AXI_bvalid[2:2]"},
+						"BVALID": { "actual": "M02_AXI_bvalid"},
 						"RDATA": { "actual": "M02_AXI_rdata[95:64]"},
-						"RREADY": { "actual": "M02_AXI_rready[2:2]"},
+						"RREADY": { "actual": "M02_AXI_rready"},
 						"RRESP": { "actual": "M02_AXI_rresp[5:4]"},
-						"RVALID": { "actual": "M02_AXI_rvalid[2:2]"},
+						"RVALID": { "actual": "M02_AXI_rvalid"},
 						"WDATA": { "actual": "M02_AXI_wdata[95:64]"},
-						"WREADY": { "actual": "M02_AXI_wready[2:2]"},
+						"WREADY": { "actual": "M02_AXI_wready"},
 						"WSTRB": { "actual": "M02_AXI_wstrb[11:8]"},
-						"WVALID": { "actual": "M02_AXI_wvalid[2:2]"}
+						"WVALID": { "actual": "M02_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/M03_AXI": {
+				"/Control/uP/ps7_0_axi_periph/M03_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M03_ACLK"},
 						"ARADDR": { "actual": "M03_AXI_araddr[127:96]"},
 						"ARESETN": { "actual": "ARESETN"},
-						"ARREADY": { "actual": "M03_AXI_arready[3:3]"},
-						"ARVALID": { "actual": "M03_AXI_arvalid[3:3]"},
+						"ARREADY": { "actual": "M03_AXI_arready"},
+						"ARVALID": { "actual": "M03_AXI_arvalid"},
 						"AWADDR": { "actual": "M03_AXI_awaddr[127:96]"},
-						"AWREADY": { "actual": "M03_AXI_awready[3:3]"},
-						"AWVALID": { "actual": "M03_AXI_awvalid[3:3]"},
-						"BREADY": { "actual": "M03_AXI_bready[3:3]"},
+						"AWREADY": { "actual": "M03_AXI_awready"},
+						"AWVALID": { "actual": "M03_AXI_awvalid"},
+						"BREADY": { "actual": "M03_AXI_bready"},
 						"BRESP": { "actual": "M03_AXI_bresp[7:6]"},
-						"BVALID": { "actual": "M03_AXI_bvalid[3:3]"},
+						"BVALID": { "actual": "M03_AXI_bvalid"},
 						"RDATA": { "actual": "M03_AXI_rdata[127:96]"},
-						"RREADY": { "actual": "M03_AXI_rready[3:3]"},
+						"RREADY": { "actual": "M03_AXI_rready"},
 						"RRESP": { "actual": "M03_AXI_rresp[7:6]"},
-						"RVALID": { "actual": "M03_AXI_rvalid[3:3]"},
+						"RVALID": { "actual": "M03_AXI_rvalid"},
 						"WDATA": { "actual": "M03_AXI_wdata[127:96]"},
-						"WREADY": { "actual": "M03_AXI_wready[3:3]"},
+						"WREADY": { "actual": "M03_AXI_wready"},
 						"WSTRB": { "actual": "M03_AXI_wstrb[15:12]"},
-						"WVALID": { "actual": "M03_AXI_wvalid[3:3]"}
+						"WVALID": { "actual": "M03_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/M04_AXI": {
+				"/Control/uP/ps7_0_axi_periph/M04_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M04_ACLK"},
 						"ARADDR": { "actual": "M04_AXI_araddr[159:128]"},
 						"ARESETN": { "actual": "ARESETN"},
-						"ARREADY": { "actual": "M04_AXI_arready[4:4]"},
-						"ARVALID": { "actual": "M04_AXI_arvalid[4:4]"},
+						"ARREADY": { "actual": "M04_AXI_arready"},
+						"ARVALID": { "actual": "M04_AXI_arvalid"},
 						"AWADDR": { "actual": "M04_AXI_awaddr[159:128]"},
-						"AWREADY": { "actual": "M04_AXI_awready[4:4]"},
-						"AWVALID": { "actual": "M04_AXI_awvalid[4:4]"},
-						"BREADY": { "actual": "M04_AXI_bready[4:4]"},
+						"AWREADY": { "actual": "M04_AXI_awready"},
+						"AWVALID": { "actual": "M04_AXI_awvalid"},
+						"BREADY": { "actual": "M04_AXI_bready"},
 						"BRESP": { "actual": "M04_AXI_bresp[9:8]"},
-						"BVALID": { "actual": "M04_AXI_bvalid[4:4]"},
+						"BVALID": { "actual": "M04_AXI_bvalid"},
 						"RDATA": { "actual": "M04_AXI_rdata[159:128]"},
-						"RREADY": { "actual": "M04_AXI_rready[4:4]"},
+						"RREADY": { "actual": "M04_AXI_rready"},
 						"RRESP": { "actual": "M04_AXI_rresp[9:8]"},
-						"RVALID": { "actual": "M04_AXI_rvalid[4:4]"},
+						"RVALID": { "actual": "M04_AXI_rvalid"},
 						"WDATA": { "actual": "M04_AXI_wdata[159:128]"},
-						"WREADY": { "actual": "M04_AXI_wready[4:4]"},
+						"WREADY": { "actual": "M04_AXI_wready"},
 						"WSTRB": { "actual": "M04_AXI_wstrb[19:16]"},
-						"WVALID": { "actual": "M04_AXI_wvalid[4:4]"}
+						"WVALID": { "actual": "M04_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/M05_AXI": {
+				"/Control/uP/ps7_0_axi_periph/M05_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M05_ACLK"},
 						"ARADDR": { "actual": "M05_AXI_araddr[191:160]"},
 						"ARESETN": { "actual": "ARESETN"},
-						"ARREADY": { "actual": "M05_AXI_arready[5:5]"},
-						"ARVALID": { "actual": "M05_AXI_arvalid[5:5]"},
+						"ARREADY": { "actual": "M05_AXI_arready"},
+						"ARVALID": { "actual": "M05_AXI_arvalid"},
 						"AWADDR": { "actual": "M05_AXI_awaddr[191:160]"},
-						"AWREADY": { "actual": "M05_AXI_awready[5:5]"},
-						"AWVALID": { "actual": "M05_AXI_awvalid[5:5]"},
-						"BREADY": { "actual": "M05_AXI_bready[5:5]"},
+						"AWREADY": { "actual": "M05_AXI_awready"},
+						"AWVALID": { "actual": "M05_AXI_awvalid"},
+						"BREADY": { "actual": "M05_AXI_bready"},
 						"BRESP": { "actual": "M05_AXI_bresp[11:10]"},
-						"BVALID": { "actual": "M05_AXI_bvalid[5:5]"},
+						"BVALID": { "actual": "M05_AXI_bvalid"},
 						"RDATA": { "actual": "M05_AXI_rdata[191:160]"},
-						"RREADY": { "actual": "M05_AXI_rready[5:5]"},
+						"RREADY": { "actual": "M05_AXI_rready"},
 						"RRESP": { "actual": "M05_AXI_rresp[11:10]"},
-						"RVALID": { "actual": "M05_AXI_rvalid[5:5]"},
+						"RVALID": { "actual": "M05_AXI_rvalid"},
 						"WDATA": { "actual": "M05_AXI_wdata[191:160]"},
-						"WREADY": { "actual": "M05_AXI_wready[5:5]"},
+						"WREADY": { "actual": "M05_AXI_wready"},
 						"WSTRB": { "actual": "M05_AXI_wstrb[23:20]"},
-						"WVALID": { "actual": "M05_AXI_wvalid[5:5]"}
+						"WVALID": { "actual": "M05_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/M06_AXI": {
+				"/Control/uP/ps7_0_axi_periph/M06_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M06_ACLK"},
 						"ARADDR": { "actual": "M06_AXI_araddr[223:192]"},
 						"ARESETN": { "actual": "ARESETN"},
-						"ARREADY": { "actual": "M06_AXI_arready[6:6]"},
-						"ARVALID": { "actual": "M06_AXI_arvalid[6:6]"},
+						"ARREADY": { "actual": "M06_AXI_arready"},
+						"ARVALID": { "actual": "M06_AXI_arvalid"},
 						"AWADDR": { "actual": "M06_AXI_awaddr[223:192]"},
-						"AWREADY": { "actual": "M06_AXI_awready[6:6]"},
-						"AWVALID": { "actual": "M06_AXI_awvalid[6:6]"},
-						"BREADY": { "actual": "M06_AXI_bready[6:6]"},
+						"AWREADY": { "actual": "M06_AXI_awready"},
+						"AWVALID": { "actual": "M06_AXI_awvalid"},
+						"BREADY": { "actual": "M06_AXI_bready"},
 						"BRESP": { "actual": "M06_AXI_bresp[13:12]"},
-						"BVALID": { "actual": "M06_AXI_bvalid[6:6]"},
+						"BVALID": { "actual": "M06_AXI_bvalid"},
 						"RDATA": { "actual": "M06_AXI_rdata[223:192]"},
-						"RREADY": { "actual": "M06_AXI_rready[6:6]"},
+						"RREADY": { "actual": "M06_AXI_rready"},
 						"RRESP": { "actual": "M06_AXI_rresp[13:12]"},
-						"RVALID": { "actual": "M06_AXI_rvalid[6:6]"},
+						"RVALID": { "actual": "M06_AXI_rvalid"},
 						"WDATA": { "actual": "M06_AXI_wdata[223:192]"},
-						"WREADY": { "actual": "M06_AXI_wready[6:6]"},
+						"WREADY": { "actual": "M06_AXI_wready"},
 						"WSTRB": { "actual": "M06_AXI_wstrb[27:24]"},
-						"WVALID": { "actual": "M06_AXI_wvalid[6:6]"}
+						"WVALID": { "actual": "M06_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/M07_AXI": {
+				"/Control/uP/ps7_0_axi_periph/M07_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M07_ACLK"},
 						"ARADDR": { "actual": "M07_AXI_araddr[255:224]"},
 						"ARESETN": { "actual": "ARESETN"},
-						"ARREADY": { "actual": "M07_AXI_arready[7:7]"},
-						"ARVALID": { "actual": "M07_AXI_arvalid[7:7]"},
+						"ARREADY": { "actual": "M07_AXI_arready"},
+						"ARVALID": { "actual": "M07_AXI_arvalid"},
 						"AWADDR": { "actual": "M07_AXI_awaddr[255:224]"},
-						"AWREADY": { "actual": "M07_AXI_awready[7:7]"},
-						"AWVALID": { "actual": "M07_AXI_awvalid[7:7]"},
-						"BREADY": { "actual": "M07_AXI_bready[7:7]"},
+						"AWREADY": { "actual": "M07_AXI_awready"},
+						"AWVALID": { "actual": "M07_AXI_awvalid"},
+						"BREADY": { "actual": "M07_AXI_bready"},
 						"BRESP": { "actual": "M07_AXI_bresp[15:14]"},
-						"BVALID": { "actual": "M07_AXI_bvalid[7:7]"},
+						"BVALID": { "actual": "M07_AXI_bvalid"},
 						"RDATA": { "actual": "M07_AXI_rdata[255:224]"},
-						"RREADY": { "actual": "M07_AXI_rready[7:7]"},
+						"RREADY": { "actual": "M07_AXI_rready"},
 						"RRESP": { "actual": "M07_AXI_rresp[15:14]"},
-						"RVALID": { "actual": "M07_AXI_rvalid[7:7]"},
+						"RVALID": { "actual": "M07_AXI_rvalid"},
 						"WDATA": { "actual": "M07_AXI_wdata[255:224]"},
-						"WREADY": { "actual": "M07_AXI_wready[7:7]"},
+						"WREADY": { "actual": "M07_AXI_wready"},
 						"WSTRB": { "actual": "M07_AXI_wstrb[31:28]"},
-						"WVALID": { "actual": "M07_AXI_wvalid[7:7]"}
+						"WVALID": { "actual": "M07_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/M08_AXI": {
+				"/Control/uP/ps7_0_axi_periph/M08_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M08_ACLK"},
 						"ARADDR": { "actual": "M08_AXI_araddr[287:256]"},
 						"ARESETN": { "actual": "ARESETN"},
-						"ARREADY": { "actual": "M08_AXI_arready[8:8]"},
-						"ARVALID": { "actual": "M08_AXI_arvalid[8:8]"},
+						"ARREADY": { "actual": "M08_AXI_arready"},
+						"ARVALID": { "actual": "M08_AXI_arvalid"},
 						"AWADDR": { "actual": "M08_AXI_awaddr[287:256]"},
-						"AWREADY": { "actual": "M08_AXI_awready[8:8]"},
-						"AWVALID": { "actual": "M08_AXI_awvalid[8:8]"},
-						"BREADY": { "actual": "M08_AXI_bready[8:8]"},
+						"AWREADY": { "actual": "M08_AXI_awready"},
+						"AWVALID": { "actual": "M08_AXI_awvalid"},
+						"BREADY": { "actual": "M08_AXI_bready"},
 						"BRESP": { "actual": "M08_AXI_bresp[17:16]"},
-						"BVALID": { "actual": "M08_AXI_bvalid[8:8]"},
+						"BVALID": { "actual": "M08_AXI_bvalid"},
 						"RDATA": { "actual": "M08_AXI_rdata[287:256]"},
-						"RREADY": { "actual": "M08_AXI_rready[8:8]"},
+						"RREADY": { "actual": "M08_AXI_rready"},
 						"RRESP": { "actual": "M08_AXI_rresp[17:16]"},
-						"RVALID": { "actual": "M08_AXI_rvalid[8:8]"},
+						"RVALID": { "actual": "M08_AXI_rvalid"},
 						"WDATA": { "actual": "M08_AXI_wdata[287:256]"},
-						"WREADY": { "actual": "M08_AXI_wready[8:8]"},
+						"WREADY": { "actual": "M08_AXI_wready"},
 						"WSTRB": { "actual": "M08_AXI_wstrb[35:32]"},
-						"WVALID": { "actual": "M08_AXI_wvalid[8:8]"}
+						"WVALID": { "actual": "M08_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/S00_AXI": {
+				"/Control/uP/ps7_0_axi_periph/S00_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "S00_ACLK"},
@@ -577,7 +545,7 @@
 						"WVALID": { "actual": "S00_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/m00_couplers/M_AXI": {
+				"/Control/uP/ps7_0_axi_periph/m00_couplers/M_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M_ACLK"},
@@ -601,7 +569,7 @@
 						"WVALID": { "actual": "M_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/m00_couplers/S_AXI": {
+				"/Control/uP/ps7_0_axi_periph/m00_couplers/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "S_ACLK"},
@@ -625,391 +593,391 @@
 						"WVALID": { "actual": "S_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/m01_couplers/M_AXI": {
+				"/Control/uP/ps7_0_axi_periph/m01_couplers/M_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M_ACLK"},
 						"ARADDR": { "actual": "M_AXI_araddr[63:32]"},
 						"ARESETN": { "actual": "M_ARESETN"},
-						"ARREADY": { "actual": "M_AXI_arready[1:1]"},
-						"ARVALID": { "actual": "M_AXI_arvalid[1:1]"},
+						"ARREADY": { "actual": "M_AXI_arready"},
+						"ARVALID": { "actual": "M_AXI_arvalid"},
 						"AWADDR": { "actual": "M_AXI_awaddr[63:32]"},
-						"AWREADY": { "actual": "M_AXI_awready[1:1]"},
-						"AWVALID": { "actual": "M_AXI_awvalid[1:1]"},
-						"BREADY": { "actual": "M_AXI_bready[1:1]"},
+						"AWREADY": { "actual": "M_AXI_awready"},
+						"AWVALID": { "actual": "M_AXI_awvalid"},
+						"BREADY": { "actual": "M_AXI_bready"},
 						"BRESP": { "actual": "M_AXI_bresp[3:2]"},
-						"BVALID": { "actual": "M_AXI_bvalid[1:1]"},
+						"BVALID": { "actual": "M_AXI_bvalid"},
 						"RDATA": { "actual": "M_AXI_rdata[63:32]"},
-						"RREADY": { "actual": "M_AXI_rready[1:1]"},
+						"RREADY": { "actual": "M_AXI_rready"},
 						"RRESP": { "actual": "M_AXI_rresp[3:2]"},
-						"RVALID": { "actual": "M_AXI_rvalid[1:1]"},
+						"RVALID": { "actual": "M_AXI_rvalid"},
 						"WDATA": { "actual": "M_AXI_wdata[63:32]"},
-						"WREADY": { "actual": "M_AXI_wready[1:1]"},
+						"WREADY": { "actual": "M_AXI_wready"},
 						"WSTRB": { "actual": "M_AXI_wstrb[7:4]"},
-						"WVALID": { "actual": "M_AXI_wvalid[1:1]"}
+						"WVALID": { "actual": "M_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/m01_couplers/S_AXI": {
+				"/Control/uP/ps7_0_axi_periph/m01_couplers/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "S_ACLK"},
 						"ARADDR": { "actual": "S_AXI_araddr[63:32]"},
 						"ARESETN": { "actual": "S_ARESETN"},
-						"ARREADY": { "actual": "S_AXI_arready[1:1]"},
-						"ARVALID": { "actual": "S_AXI_arvalid[1:1]"},
+						"ARREADY": { "actual": "S_AXI_arready"},
+						"ARVALID": { "actual": "S_AXI_arvalid"},
 						"AWADDR": { "actual": "S_AXI_awaddr[63:32]"},
-						"AWREADY": { "actual": "S_AXI_awready[1:1]"},
-						"AWVALID": { "actual": "S_AXI_awvalid[1:1]"},
-						"BREADY": { "actual": "S_AXI_bready[1:1]"},
+						"AWREADY": { "actual": "S_AXI_awready"},
+						"AWVALID": { "actual": "S_AXI_awvalid"},
+						"BREADY": { "actual": "S_AXI_bready"},
 						"BRESP": { "actual": "S_AXI_bresp[3:2]"},
-						"BVALID": { "actual": "S_AXI_bvalid[1:1]"},
+						"BVALID": { "actual": "S_AXI_bvalid"},
 						"RDATA": { "actual": "S_AXI_rdata[63:32]"},
-						"RREADY": { "actual": "S_AXI_rready[1:1]"},
+						"RREADY": { "actual": "S_AXI_rready"},
 						"RRESP": { "actual": "S_AXI_rresp[3:2]"},
-						"RVALID": { "actual": "S_AXI_rvalid[1:1]"},
+						"RVALID": { "actual": "S_AXI_rvalid"},
 						"WDATA": { "actual": "S_AXI_wdata[63:32]"},
-						"WREADY": { "actual": "S_AXI_wready[1:1]"},
+						"WREADY": { "actual": "S_AXI_wready"},
 						"WSTRB": { "actual": "S_AXI_wstrb[7:4]"},
-						"WVALID": { "actual": "S_AXI_wvalid[1:1]"}
+						"WVALID": { "actual": "S_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/m02_couplers/M_AXI": {
+				"/Control/uP/ps7_0_axi_periph/m02_couplers/M_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M_ACLK"},
 						"ARADDR": { "actual": "M_AXI_araddr[95:64]"},
 						"ARESETN": { "actual": "M_ARESETN"},
-						"ARREADY": { "actual": "M_AXI_arready[2:2]"},
-						"ARVALID": { "actual": "M_AXI_arvalid[2:2]"},
+						"ARREADY": { "actual": "M_AXI_arready"},
+						"ARVALID": { "actual": "M_AXI_arvalid"},
 						"AWADDR": { "actual": "M_AXI_awaddr[95:64]"},
-						"AWREADY": { "actual": "M_AXI_awready[2:2]"},
-						"AWVALID": { "actual": "M_AXI_awvalid[2:2]"},
-						"BREADY": { "actual": "M_AXI_bready[2:2]"},
+						"AWREADY": { "actual": "M_AXI_awready"},
+						"AWVALID": { "actual": "M_AXI_awvalid"},
+						"BREADY": { "actual": "M_AXI_bready"},
 						"BRESP": { "actual": "M_AXI_bresp[5:4]"},
-						"BVALID": { "actual": "M_AXI_bvalid[2:2]"},
+						"BVALID": { "actual": "M_AXI_bvalid"},
 						"RDATA": { "actual": "M_AXI_rdata[95:64]"},
-						"RREADY": { "actual": "M_AXI_rready[2:2]"},
+						"RREADY": { "actual": "M_AXI_rready"},
 						"RRESP": { "actual": "M_AXI_rresp[5:4]"},
-						"RVALID": { "actual": "M_AXI_rvalid[2:2]"},
+						"RVALID": { "actual": "M_AXI_rvalid"},
 						"WDATA": { "actual": "M_AXI_wdata[95:64]"},
-						"WREADY": { "actual": "M_AXI_wready[2:2]"},
+						"WREADY": { "actual": "M_AXI_wready"},
 						"WSTRB": { "actual": "M_AXI_wstrb[11:8]"},
-						"WVALID": { "actual": "M_AXI_wvalid[2:2]"}
+						"WVALID": { "actual": "M_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/m02_couplers/S_AXI": {
+				"/Control/uP/ps7_0_axi_periph/m02_couplers/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "S_ACLK"},
 						"ARADDR": { "actual": "S_AXI_araddr[95:64]"},
 						"ARESETN": { "actual": "S_ARESETN"},
-						"ARREADY": { "actual": "S_AXI_arready[2:2]"},
-						"ARVALID": { "actual": "S_AXI_arvalid[2:2]"},
+						"ARREADY": { "actual": "S_AXI_arready"},
+						"ARVALID": { "actual": "S_AXI_arvalid"},
 						"AWADDR": { "actual": "S_AXI_awaddr[95:64]"},
-						"AWREADY": { "actual": "S_AXI_awready[2:2]"},
-						"AWVALID": { "actual": "S_AXI_awvalid[2:2]"},
-						"BREADY": { "actual": "S_AXI_bready[2:2]"},
+						"AWREADY": { "actual": "S_AXI_awready"},
+						"AWVALID": { "actual": "S_AXI_awvalid"},
+						"BREADY": { "actual": "S_AXI_bready"},
 						"BRESP": { "actual": "S_AXI_bresp[5:4]"},
-						"BVALID": { "actual": "S_AXI_bvalid[2:2]"},
+						"BVALID": { "actual": "S_AXI_bvalid"},
 						"RDATA": { "actual": "S_AXI_rdata[95:64]"},
-						"RREADY": { "actual": "S_AXI_rready[2:2]"},
+						"RREADY": { "actual": "S_AXI_rready"},
 						"RRESP": { "actual": "S_AXI_rresp[5:4]"},
-						"RVALID": { "actual": "S_AXI_rvalid[2:2]"},
+						"RVALID": { "actual": "S_AXI_rvalid"},
 						"WDATA": { "actual": "S_AXI_wdata[95:64]"},
-						"WREADY": { "actual": "S_AXI_wready[2:2]"},
+						"WREADY": { "actual": "S_AXI_wready"},
 						"WSTRB": { "actual": "S_AXI_wstrb[11:8]"},
-						"WVALID": { "actual": "S_AXI_wvalid[2:2]"}
+						"WVALID": { "actual": "S_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/m03_couplers/M_AXI": {
+				"/Control/uP/ps7_0_axi_periph/m03_couplers/M_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M_ACLK"},
 						"ARADDR": { "actual": "M_AXI_araddr[127:96]"},
 						"ARESETN": { "actual": "M_ARESETN"},
-						"ARREADY": { "actual": "M_AXI_arready[3:3]"},
-						"ARVALID": { "actual": "M_AXI_arvalid[3:3]"},
+						"ARREADY": { "actual": "M_AXI_arready"},
+						"ARVALID": { "actual": "M_AXI_arvalid"},
 						"AWADDR": { "actual": "M_AXI_awaddr[127:96]"},
-						"AWREADY": { "actual": "M_AXI_awready[3:3]"},
-						"AWVALID": { "actual": "M_AXI_awvalid[3:3]"},
-						"BREADY": { "actual": "M_AXI_bready[3:3]"},
+						"AWREADY": { "actual": "M_AXI_awready"},
+						"AWVALID": { "actual": "M_AXI_awvalid"},
+						"BREADY": { "actual": "M_AXI_bready"},
 						"BRESP": { "actual": "M_AXI_bresp[7:6]"},
-						"BVALID": { "actual": "M_AXI_bvalid[3:3]"},
+						"BVALID": { "actual": "M_AXI_bvalid"},
 						"RDATA": { "actual": "M_AXI_rdata[127:96]"},
-						"RREADY": { "actual": "M_AXI_rready[3:3]"},
+						"RREADY": { "actual": "M_AXI_rready"},
 						"RRESP": { "actual": "M_AXI_rresp[7:6]"},
-						"RVALID": { "actual": "M_AXI_rvalid[3:3]"},
+						"RVALID": { "actual": "M_AXI_rvalid"},
 						"WDATA": { "actual": "M_AXI_wdata[127:96]"},
-						"WREADY": { "actual": "M_AXI_wready[3:3]"},
+						"WREADY": { "actual": "M_AXI_wready"},
 						"WSTRB": { "actual": "M_AXI_wstrb[15:12]"},
-						"WVALID": { "actual": "M_AXI_wvalid[3:3]"}
+						"WVALID": { "actual": "M_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/m03_couplers/S_AXI": {
+				"/Control/uP/ps7_0_axi_periph/m03_couplers/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "S_ACLK"},
 						"ARADDR": { "actual": "S_AXI_araddr[127:96]"},
 						"ARESETN": { "actual": "S_ARESETN"},
-						"ARREADY": { "actual": "S_AXI_arready[3:3]"},
-						"ARVALID": { "actual": "S_AXI_arvalid[3:3]"},
+						"ARREADY": { "actual": "S_AXI_arready"},
+						"ARVALID": { "actual": "S_AXI_arvalid"},
 						"AWADDR": { "actual": "S_AXI_awaddr[127:96]"},
-						"AWREADY": { "actual": "S_AXI_awready[3:3]"},
-						"AWVALID": { "actual": "S_AXI_awvalid[3:3]"},
-						"BREADY": { "actual": "S_AXI_bready[3:3]"},
+						"AWREADY": { "actual": "S_AXI_awready"},
+						"AWVALID": { "actual": "S_AXI_awvalid"},
+						"BREADY": { "actual": "S_AXI_bready"},
 						"BRESP": { "actual": "S_AXI_bresp[7:6]"},
-						"BVALID": { "actual": "S_AXI_bvalid[3:3]"},
+						"BVALID": { "actual": "S_AXI_bvalid"},
 						"RDATA": { "actual": "S_AXI_rdata[127:96]"},
-						"RREADY": { "actual": "S_AXI_rready[3:3]"},
+						"RREADY": { "actual": "S_AXI_rready"},
 						"RRESP": { "actual": "S_AXI_rresp[7:6]"},
-						"RVALID": { "actual": "S_AXI_rvalid[3:3]"},
+						"RVALID": { "actual": "S_AXI_rvalid"},
 						"WDATA": { "actual": "S_AXI_wdata[127:96]"},
-						"WREADY": { "actual": "S_AXI_wready[3:3]"},
+						"WREADY": { "actual": "S_AXI_wready"},
 						"WSTRB": { "actual": "S_AXI_wstrb[15:12]"},
-						"WVALID": { "actual": "S_AXI_wvalid[3:3]"}
+						"WVALID": { "actual": "S_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/m04_couplers/M_AXI": {
+				"/Control/uP/ps7_0_axi_periph/m04_couplers/M_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M_ACLK"},
 						"ARADDR": { "actual": "M_AXI_araddr[159:128]"},
 						"ARESETN": { "actual": "M_ARESETN"},
-						"ARREADY": { "actual": "M_AXI_arready[4:4]"},
-						"ARVALID": { "actual": "M_AXI_arvalid[4:4]"},
+						"ARREADY": { "actual": "M_AXI_arready"},
+						"ARVALID": { "actual": "M_AXI_arvalid"},
 						"AWADDR": { "actual": "M_AXI_awaddr[159:128]"},
-						"AWREADY": { "actual": "M_AXI_awready[4:4]"},
-						"AWVALID": { "actual": "M_AXI_awvalid[4:4]"},
-						"BREADY": { "actual": "M_AXI_bready[4:4]"},
+						"AWREADY": { "actual": "M_AXI_awready"},
+						"AWVALID": { "actual": "M_AXI_awvalid"},
+						"BREADY": { "actual": "M_AXI_bready"},
 						"BRESP": { "actual": "M_AXI_bresp[9:8]"},
-						"BVALID": { "actual": "M_AXI_bvalid[4:4]"},
+						"BVALID": { "actual": "M_AXI_bvalid"},
 						"RDATA": { "actual": "M_AXI_rdata[159:128]"},
-						"RREADY": { "actual": "M_AXI_rready[4:4]"},
+						"RREADY": { "actual": "M_AXI_rready"},
 						"RRESP": { "actual": "M_AXI_rresp[9:8]"},
-						"RVALID": { "actual": "M_AXI_rvalid[4:4]"},
+						"RVALID": { "actual": "M_AXI_rvalid"},
 						"WDATA": { "actual": "M_AXI_wdata[159:128]"},
-						"WREADY": { "actual": "M_AXI_wready[4:4]"},
+						"WREADY": { "actual": "M_AXI_wready"},
 						"WSTRB": { "actual": "M_AXI_wstrb[19:16]"},
-						"WVALID": { "actual": "M_AXI_wvalid[4:4]"}
+						"WVALID": { "actual": "M_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/m04_couplers/S_AXI": {
+				"/Control/uP/ps7_0_axi_periph/m04_couplers/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "S_ACLK"},
 						"ARADDR": { "actual": "S_AXI_araddr[159:128]"},
 						"ARESETN": { "actual": "S_ARESETN"},
-						"ARREADY": { "actual": "S_AXI_arready[4:4]"},
-						"ARVALID": { "actual": "S_AXI_arvalid[4:4]"},
+						"ARREADY": { "actual": "S_AXI_arready"},
+						"ARVALID": { "actual": "S_AXI_arvalid"},
 						"AWADDR": { "actual": "S_AXI_awaddr[159:128]"},
-						"AWREADY": { "actual": "S_AXI_awready[4:4]"},
-						"AWVALID": { "actual": "S_AXI_awvalid[4:4]"},
-						"BREADY": { "actual": "S_AXI_bready[4:4]"},
+						"AWREADY": { "actual": "S_AXI_awready"},
+						"AWVALID": { "actual": "S_AXI_awvalid"},
+						"BREADY": { "actual": "S_AXI_bready"},
 						"BRESP": { "actual": "S_AXI_bresp[9:8]"},
-						"BVALID": { "actual": "S_AXI_bvalid[4:4]"},
+						"BVALID": { "actual": "S_AXI_bvalid"},
 						"RDATA": { "actual": "S_AXI_rdata[159:128]"},
-						"RREADY": { "actual": "S_AXI_rready[4:4]"},
+						"RREADY": { "actual": "S_AXI_rready"},
 						"RRESP": { "actual": "S_AXI_rresp[9:8]"},
-						"RVALID": { "actual": "S_AXI_rvalid[4:4]"},
+						"RVALID": { "actual": "S_AXI_rvalid"},
 						"WDATA": { "actual": "S_AXI_wdata[159:128]"},
-						"WREADY": { "actual": "S_AXI_wready[4:4]"},
+						"WREADY": { "actual": "S_AXI_wready"},
 						"WSTRB": { "actual": "S_AXI_wstrb[19:16]"},
-						"WVALID": { "actual": "S_AXI_wvalid[4:4]"}
+						"WVALID": { "actual": "S_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/m05_couplers/M_AXI": {
+				"/Control/uP/ps7_0_axi_periph/m05_couplers/M_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M_ACLK"},
 						"ARADDR": { "actual": "M_AXI_araddr[191:160]"},
 						"ARESETN": { "actual": "M_ARESETN"},
-						"ARREADY": { "actual": "M_AXI_arready[5:5]"},
-						"ARVALID": { "actual": "M_AXI_arvalid[5:5]"},
+						"ARREADY": { "actual": "M_AXI_arready"},
+						"ARVALID": { "actual": "M_AXI_arvalid"},
 						"AWADDR": { "actual": "M_AXI_awaddr[191:160]"},
-						"AWREADY": { "actual": "M_AXI_awready[5:5]"},
-						"AWVALID": { "actual": "M_AXI_awvalid[5:5]"},
-						"BREADY": { "actual": "M_AXI_bready[5:5]"},
+						"AWREADY": { "actual": "M_AXI_awready"},
+						"AWVALID": { "actual": "M_AXI_awvalid"},
+						"BREADY": { "actual": "M_AXI_bready"},
 						"BRESP": { "actual": "M_AXI_bresp[11:10]"},
-						"BVALID": { "actual": "M_AXI_bvalid[5:5]"},
+						"BVALID": { "actual": "M_AXI_bvalid"},
 						"RDATA": { "actual": "M_AXI_rdata[191:160]"},
-						"RREADY": { "actual": "M_AXI_rready[5:5]"},
+						"RREADY": { "actual": "M_AXI_rready"},
 						"RRESP": { "actual": "M_AXI_rresp[11:10]"},
-						"RVALID": { "actual": "M_AXI_rvalid[5:5]"},
+						"RVALID": { "actual": "M_AXI_rvalid"},
 						"WDATA": { "actual": "M_AXI_wdata[191:160]"},
-						"WREADY": { "actual": "M_AXI_wready[5:5]"},
+						"WREADY": { "actual": "M_AXI_wready"},
 						"WSTRB": { "actual": "M_AXI_wstrb[23:20]"},
-						"WVALID": { "actual": "M_AXI_wvalid[5:5]"}
+						"WVALID": { "actual": "M_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/m05_couplers/S_AXI": {
+				"/Control/uP/ps7_0_axi_periph/m05_couplers/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "S_ACLK"},
 						"ARADDR": { "actual": "S_AXI_araddr[191:160]"},
 						"ARESETN": { "actual": "S_ARESETN"},
-						"ARREADY": { "actual": "S_AXI_arready[5:5]"},
-						"ARVALID": { "actual": "S_AXI_arvalid[5:5]"},
+						"ARREADY": { "actual": "S_AXI_arready"},
+						"ARVALID": { "actual": "S_AXI_arvalid"},
 						"AWADDR": { "actual": "S_AXI_awaddr[191:160]"},
-						"AWREADY": { "actual": "S_AXI_awready[5:5]"},
-						"AWVALID": { "actual": "S_AXI_awvalid[5:5]"},
-						"BREADY": { "actual": "S_AXI_bready[5:5]"},
+						"AWREADY": { "actual": "S_AXI_awready"},
+						"AWVALID": { "actual": "S_AXI_awvalid"},
+						"BREADY": { "actual": "S_AXI_bready"},
 						"BRESP": { "actual": "S_AXI_bresp[11:10]"},
-						"BVALID": { "actual": "S_AXI_bvalid[5:5]"},
+						"BVALID": { "actual": "S_AXI_bvalid"},
 						"RDATA": { "actual": "S_AXI_rdata[191:160]"},
-						"RREADY": { "actual": "S_AXI_rready[5:5]"},
+						"RREADY": { "actual": "S_AXI_rready"},
 						"RRESP": { "actual": "S_AXI_rresp[11:10]"},
-						"RVALID": { "actual": "S_AXI_rvalid[5:5]"},
+						"RVALID": { "actual": "S_AXI_rvalid"},
 						"WDATA": { "actual": "S_AXI_wdata[191:160]"},
-						"WREADY": { "actual": "S_AXI_wready[5:5]"},
+						"WREADY": { "actual": "S_AXI_wready"},
 						"WSTRB": { "actual": "S_AXI_wstrb[23:20]"},
-						"WVALID": { "actual": "S_AXI_wvalid[5:5]"}
+						"WVALID": { "actual": "S_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/m06_couplers/M_AXI": {
+				"/Control/uP/ps7_0_axi_periph/m06_couplers/M_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M_ACLK"},
 						"ARADDR": { "actual": "M_AXI_araddr[223:192]"},
 						"ARESETN": { "actual": "M_ARESETN"},
-						"ARREADY": { "actual": "M_AXI_arready[6:6]"},
-						"ARVALID": { "actual": "M_AXI_arvalid[6:6]"},
+						"ARREADY": { "actual": "M_AXI_arready"},
+						"ARVALID": { "actual": "M_AXI_arvalid"},
 						"AWADDR": { "actual": "M_AXI_awaddr[223:192]"},
-						"AWREADY": { "actual": "M_AXI_awready[6:6]"},
-						"AWVALID": { "actual": "M_AXI_awvalid[6:6]"},
-						"BREADY": { "actual": "M_AXI_bready[6:6]"},
+						"AWREADY": { "actual": "M_AXI_awready"},
+						"AWVALID": { "actual": "M_AXI_awvalid"},
+						"BREADY": { "actual": "M_AXI_bready"},
 						"BRESP": { "actual": "M_AXI_bresp[13:12]"},
-						"BVALID": { "actual": "M_AXI_bvalid[6:6]"},
+						"BVALID": { "actual": "M_AXI_bvalid"},
 						"RDATA": { "actual": "M_AXI_rdata[223:192]"},
-						"RREADY": { "actual": "M_AXI_rready[6:6]"},
+						"RREADY": { "actual": "M_AXI_rready"},
 						"RRESP": { "actual": "M_AXI_rresp[13:12]"},
-						"RVALID": { "actual": "M_AXI_rvalid[6:6]"},
+						"RVALID": { "actual": "M_AXI_rvalid"},
 						"WDATA": { "actual": "M_AXI_wdata[223:192]"},
-						"WREADY": { "actual": "M_AXI_wready[6:6]"},
+						"WREADY": { "actual": "M_AXI_wready"},
 						"WSTRB": { "actual": "M_AXI_wstrb[27:24]"},
-						"WVALID": { "actual": "M_AXI_wvalid[6:6]"}
+						"WVALID": { "actual": "M_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/m06_couplers/S_AXI": {
+				"/Control/uP/ps7_0_axi_periph/m06_couplers/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "S_ACLK"},
 						"ARADDR": { "actual": "S_AXI_araddr[223:192]"},
 						"ARESETN": { "actual": "S_ARESETN"},
-						"ARREADY": { "actual": "S_AXI_arready[6:6]"},
-						"ARVALID": { "actual": "S_AXI_arvalid[6:6]"},
+						"ARREADY": { "actual": "S_AXI_arready"},
+						"ARVALID": { "actual": "S_AXI_arvalid"},
 						"AWADDR": { "actual": "S_AXI_awaddr[223:192]"},
-						"AWREADY": { "actual": "S_AXI_awready[6:6]"},
-						"AWVALID": { "actual": "S_AXI_awvalid[6:6]"},
-						"BREADY": { "actual": "S_AXI_bready[6:6]"},
+						"AWREADY": { "actual": "S_AXI_awready"},
+						"AWVALID": { "actual": "S_AXI_awvalid"},
+						"BREADY": { "actual": "S_AXI_bready"},
 						"BRESP": { "actual": "S_AXI_bresp[13:12]"},
-						"BVALID": { "actual": "S_AXI_bvalid[6:6]"},
+						"BVALID": { "actual": "S_AXI_bvalid"},
 						"RDATA": { "actual": "S_AXI_rdata[223:192]"},
-						"RREADY": { "actual": "S_AXI_rready[6:6]"},
+						"RREADY": { "actual": "S_AXI_rready"},
 						"RRESP": { "actual": "S_AXI_rresp[13:12]"},
-						"RVALID": { "actual": "S_AXI_rvalid[6:6]"},
+						"RVALID": { "actual": "S_AXI_rvalid"},
 						"WDATA": { "actual": "S_AXI_wdata[223:192]"},
-						"WREADY": { "actual": "S_AXI_wready[6:6]"},
+						"WREADY": { "actual": "S_AXI_wready"},
 						"WSTRB": { "actual": "S_AXI_wstrb[27:24]"},
-						"WVALID": { "actual": "S_AXI_wvalid[6:6]"}
+						"WVALID": { "actual": "S_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/m07_couplers/M_AXI": {
+				"/Control/uP/ps7_0_axi_periph/m07_couplers/M_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M_ACLK"},
 						"ARADDR": { "actual": "M_AXI_araddr[255:224]"},
 						"ARESETN": { "actual": "M_ARESETN"},
-						"ARREADY": { "actual": "M_AXI_arready[7:7]"},
-						"ARVALID": { "actual": "M_AXI_arvalid[7:7]"},
+						"ARREADY": { "actual": "M_AXI_arready"},
+						"ARVALID": { "actual": "M_AXI_arvalid"},
 						"AWADDR": { "actual": "M_AXI_awaddr[255:224]"},
-						"AWREADY": { "actual": "M_AXI_awready[7:7]"},
-						"AWVALID": { "actual": "M_AXI_awvalid[7:7]"},
-						"BREADY": { "actual": "M_AXI_bready[7:7]"},
+						"AWREADY": { "actual": "M_AXI_awready"},
+						"AWVALID": { "actual": "M_AXI_awvalid"},
+						"BREADY": { "actual": "M_AXI_bready"},
 						"BRESP": { "actual": "M_AXI_bresp[15:14]"},
-						"BVALID": { "actual": "M_AXI_bvalid[7:7]"},
+						"BVALID": { "actual": "M_AXI_bvalid"},
 						"RDATA": { "actual": "M_AXI_rdata[255:224]"},
-						"RREADY": { "actual": "M_AXI_rready[7:7]"},
+						"RREADY": { "actual": "M_AXI_rready"},
 						"RRESP": { "actual": "M_AXI_rresp[15:14]"},
-						"RVALID": { "actual": "M_AXI_rvalid[7:7]"},
+						"RVALID": { "actual": "M_AXI_rvalid"},
 						"WDATA": { "actual": "M_AXI_wdata[255:224]"},
-						"WREADY": { "actual": "M_AXI_wready[7:7]"},
+						"WREADY": { "actual": "M_AXI_wready"},
 						"WSTRB": { "actual": "M_AXI_wstrb[31:28]"},
-						"WVALID": { "actual": "M_AXI_wvalid[7:7]"}
+						"WVALID": { "actual": "M_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/m07_couplers/S_AXI": {
+				"/Control/uP/ps7_0_axi_periph/m07_couplers/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "S_ACLK"},
 						"ARADDR": { "actual": "S_AXI_araddr[255:224]"},
 						"ARESETN": { "actual": "S_ARESETN"},
-						"ARREADY": { "actual": "S_AXI_arready[7:7]"},
-						"ARVALID": { "actual": "S_AXI_arvalid[7:7]"},
+						"ARREADY": { "actual": "S_AXI_arready"},
+						"ARVALID": { "actual": "S_AXI_arvalid"},
 						"AWADDR": { "actual": "S_AXI_awaddr[255:224]"},
-						"AWREADY": { "actual": "S_AXI_awready[7:7]"},
-						"AWVALID": { "actual": "S_AXI_awvalid[7:7]"},
-						"BREADY": { "actual": "S_AXI_bready[7:7]"},
+						"AWREADY": { "actual": "S_AXI_awready"},
+						"AWVALID": { "actual": "S_AXI_awvalid"},
+						"BREADY": { "actual": "S_AXI_bready"},
 						"BRESP": { "actual": "S_AXI_bresp[15:14]"},
-						"BVALID": { "actual": "S_AXI_bvalid[7:7]"},
+						"BVALID": { "actual": "S_AXI_bvalid"},
 						"RDATA": { "actual": "S_AXI_rdata[255:224]"},
-						"RREADY": { "actual": "S_AXI_rready[7:7]"},
+						"RREADY": { "actual": "S_AXI_rready"},
 						"RRESP": { "actual": "S_AXI_rresp[15:14]"},
-						"RVALID": { "actual": "S_AXI_rvalid[7:7]"},
+						"RVALID": { "actual": "S_AXI_rvalid"},
 						"WDATA": { "actual": "S_AXI_wdata[255:224]"},
-						"WREADY": { "actual": "S_AXI_wready[7:7]"},
+						"WREADY": { "actual": "S_AXI_wready"},
 						"WSTRB": { "actual": "S_AXI_wstrb[31:28]"},
-						"WVALID": { "actual": "S_AXI_wvalid[7:7]"}
+						"WVALID": { "actual": "S_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/m08_couplers/M_AXI": {
+				"/Control/uP/ps7_0_axi_periph/m08_couplers/M_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M_ACLK"},
 						"ARADDR": { "actual": "M_AXI_araddr[287:256]"},
 						"ARESETN": { "actual": "M_ARESETN"},
-						"ARREADY": { "actual": "M_AXI_arready[8:8]"},
-						"ARVALID": { "actual": "M_AXI_arvalid[8:8]"},
+						"ARREADY": { "actual": "M_AXI_arready"},
+						"ARVALID": { "actual": "M_AXI_arvalid"},
 						"AWADDR": { "actual": "M_AXI_awaddr[287:256]"},
-						"AWREADY": { "actual": "M_AXI_awready[8:8]"},
-						"AWVALID": { "actual": "M_AXI_awvalid[8:8]"},
-						"BREADY": { "actual": "M_AXI_bready[8:8]"},
+						"AWREADY": { "actual": "M_AXI_awready"},
+						"AWVALID": { "actual": "M_AXI_awvalid"},
+						"BREADY": { "actual": "M_AXI_bready"},
 						"BRESP": { "actual": "M_AXI_bresp[17:16]"},
-						"BVALID": { "actual": "M_AXI_bvalid[8:8]"},
+						"BVALID": { "actual": "M_AXI_bvalid"},
 						"RDATA": { "actual": "M_AXI_rdata[287:256]"},
-						"RREADY": { "actual": "M_AXI_rready[8:8]"},
+						"RREADY": { "actual": "M_AXI_rready"},
 						"RRESP": { "actual": "M_AXI_rresp[17:16]"},
-						"RVALID": { "actual": "M_AXI_rvalid[8:8]"},
+						"RVALID": { "actual": "M_AXI_rvalid"},
 						"WDATA": { "actual": "M_AXI_wdata[287:256]"},
-						"WREADY": { "actual": "M_AXI_wready[8:8]"},
+						"WREADY": { "actual": "M_AXI_wready"},
 						"WSTRB": { "actual": "M_AXI_wstrb[35:32]"},
-						"WVALID": { "actual": "M_AXI_wvalid[8:8]"}
+						"WVALID": { "actual": "M_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/m08_couplers/S_AXI": {
+				"/Control/uP/ps7_0_axi_periph/m08_couplers/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "S_ACLK"},
 						"ARADDR": { "actual": "S_AXI_araddr[287:256]"},
 						"ARESETN": { "actual": "S_ARESETN"},
-						"ARREADY": { "actual": "S_AXI_arready[8:8]"},
-						"ARVALID": { "actual": "S_AXI_arvalid[8:8]"},
+						"ARREADY": { "actual": "S_AXI_arready"},
+						"ARVALID": { "actual": "S_AXI_arvalid"},
 						"AWADDR": { "actual": "S_AXI_awaddr[287:256]"},
-						"AWREADY": { "actual": "S_AXI_awready[8:8]"},
-						"AWVALID": { "actual": "S_AXI_awvalid[8:8]"},
-						"BREADY": { "actual": "S_AXI_bready[8:8]"},
+						"AWREADY": { "actual": "S_AXI_awready"},
+						"AWVALID": { "actual": "S_AXI_awvalid"},
+						"BREADY": { "actual": "S_AXI_bready"},
 						"BRESP": { "actual": "S_AXI_bresp[17:16]"},
-						"BVALID": { "actual": "S_AXI_bvalid[8:8]"},
+						"BVALID": { "actual": "S_AXI_bvalid"},
 						"RDATA": { "actual": "S_AXI_rdata[287:256]"},
-						"RREADY": { "actual": "S_AXI_rready[8:8]"},
+						"RREADY": { "actual": "S_AXI_rready"},
 						"RRESP": { "actual": "S_AXI_rresp[17:16]"},
-						"RVALID": { "actual": "S_AXI_rvalid[8:8]"},
+						"RVALID": { "actual": "S_AXI_rvalid"},
 						"WDATA": { "actual": "S_AXI_wdata[287:256]"},
-						"WREADY": { "actual": "S_AXI_wready[8:8]"},
+						"WREADY": { "actual": "S_AXI_wready"},
 						"WSTRB": { "actual": "S_AXI_wstrb[35:32]"},
-						"WVALID": { "actual": "S_AXI_wvalid[8:8]"}
+						"WVALID": { "actual": "S_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/s00_couplers/M_AXI": {
+				"/Control/uP/ps7_0_axi_periph/s00_couplers/M_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "M_ACLK"},
@@ -1035,7 +1003,7 @@
 						"WVALID": { "actual": "M_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/s00_couplers/S_AXI": {
+				"/Control/uP/ps7_0_axi_periph/s00_couplers/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "S_ACLK"},
@@ -1080,7 +1048,7 @@
 						"WVALID": { "actual": "S_AXI_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/s00_couplers/auto_pc/M_AXI": {
+				"/Control/uP/ps7_0_axi_periph/s00_couplers/auto_pc/M_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
@@ -1106,7 +1074,7 @@
 						"WVALID": { "actual": "m_axi_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/s00_couplers/auto_pc/S_AXI": {
+				"/Control/uP/ps7_0_axi_periph/s00_couplers/auto_pc/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
@@ -1151,7 +1119,7 @@
 						"WVALID": { "actual": "s_axi_wvalid"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/xbar/M00_AXI": {
+				"/Control/uP/ps7_0_axi_periph/xbar/M00_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
@@ -1177,7 +1145,7 @@
 						"WVALID": { "actual": "m_axi_wvalid[0:0]"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/xbar/M01_AXI": {
+				"/Control/uP/ps7_0_axi_periph/xbar/M01_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
@@ -1203,7 +1171,7 @@
 						"WVALID": { "actual": "m_axi_wvalid[1:1]"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/xbar/M02_AXI": {
+				"/Control/uP/ps7_0_axi_periph/xbar/M02_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
@@ -1229,7 +1197,7 @@
 						"WVALID": { "actual": "m_axi_wvalid[2:2]"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/xbar/M03_AXI": {
+				"/Control/uP/ps7_0_axi_periph/xbar/M03_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
@@ -1255,7 +1223,7 @@
 						"WVALID": { "actual": "m_axi_wvalid[3:3]"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/xbar/M04_AXI": {
+				"/Control/uP/ps7_0_axi_periph/xbar/M04_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
@@ -1281,7 +1249,7 @@
 						"WVALID": { "actual": "m_axi_wvalid[4:4]"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/xbar/M05_AXI": {
+				"/Control/uP/ps7_0_axi_periph/xbar/M05_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
@@ -1307,7 +1275,7 @@
 						"WVALID": { "actual": "m_axi_wvalid[5:5]"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/xbar/M06_AXI": {
+				"/Control/uP/ps7_0_axi_periph/xbar/M06_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
@@ -1333,7 +1301,7 @@
 						"WVALID": { "actual": "m_axi_wvalid[6:6]"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/xbar/M07_AXI": {
+				"/Control/uP/ps7_0_axi_periph/xbar/M07_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
@@ -1359,7 +1327,7 @@
 						"WVALID": { "actual": "m_axi_wvalid[7:7]"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/xbar/M08_AXI": {
+				"/Control/uP/ps7_0_axi_periph/xbar/M08_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
@@ -1385,7 +1353,7 @@
 						"WVALID": { "actual": "m_axi_wvalid[8:8]"}
 					}
 				},
-				"/uP/ps7_0_axi_periph/xbar/S00_AXI": {
+				"/Control/uP/ps7_0_axi_periph/xbar/S00_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
@@ -1411,7 +1379,7 @@
 						"WVALID": { "actual": "s_axi_wvalid[0:0]"}
 					}
 				},
-				"/uP_control/M_and_Nma/S_AXI": {
+				"/Control/uP_control/M_and_Nma/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "s_axi_aclk"},
@@ -1435,7 +1403,7 @@
 						"WVALID": { "actual": "s_axi_wvalid"}
 					}
 				},
-				"/uP_control/S_AXI": {
+				"/Control/uP_control/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "s_axi_aclk"},
@@ -1459,7 +1427,7 @@
 						"WVALID": { "actual": "S_AXI_wvalid"}
 					}
 				},
-				"/uP_control/S_AXI1": {
+				"/Control/uP_control/S_AXI1": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "s_axi_aclk"},
@@ -1483,7 +1451,7 @@
 						"WVALID": { "actual": "S_AXI1_wvalid"}
 					}
 				},
-				"/uP_control/S_AXI2": {
+				"/Control/uP_control/S_AXI2": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "s_axi_aclk"},
@@ -1507,7 +1475,7 @@
 						"WVALID": { "actual": "S_AXI2_wvalid"}
 					}
 				},
-				"/uP_control/S_AXI3": {
+				"/Control/uP_control/S_AXI3": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "s_axi_aclk"},
@@ -1531,7 +1499,7 @@
 						"WVALID": { "actual": "S_AXI3_wvalid"}
 					}
 				},
-				"/uP_control/S_AXI4": {
+				"/Control/uP_control/S_AXI4": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "s_axi_aclk"},
@@ -1555,7 +1523,7 @@
 						"WVALID": { "actual": "S_AXI4_wvalid"}
 					}
 				},
-				"/uP_control/S_AXI5": {
+				"/Control/uP_control/S_AXI5": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "s_axi_aclk"},
@@ -1579,7 +1547,7 @@
 						"WVALID": { "actual": "S_AXI5_wvalid"}
 					}
 				},
-				"/uP_control/S_AXI6": {
+				"/Control/uP_control/S_AXI6": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "s_axi_aclk"},
@@ -1603,31 +1571,31 @@
 						"WVALID": { "actual": "S_AXI6_wvalid"}
 					}
 				},
-				"/uP_control/S_AXI7": {
+				"/Control/uP_control/S_AXI7": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "s_axi_aclk"},
-						"ARADDR": { "actual": "S_AXI7_araddr[287:256]"},
+						"ARADDR": { "actual": "S_AXI7_araddr"},
 						"ARESETN": { "actual": "s_axi_aresetn"},
-						"ARREADY": { "actual": "S_AXI7_arready[8:8]"},
-						"ARVALID": { "actual": "S_AXI7_arvalid[8:8]"},
-						"AWADDR": { "actual": "S_AXI7_awaddr[287:256]"},
-						"AWREADY": { "actual": "S_AXI7_awready[8:8]"},
-						"AWVALID": { "actual": "S_AXI7_awvalid[8:8]"},
-						"BREADY": { "actual": "S_AXI7_bready[8:8]"},
-						"BRESP": { "actual": "S_AXI7_bresp[17:16]"},
-						"BVALID": { "actual": "S_AXI7_bvalid[8:8]"},
-						"RDATA": { "actual": "S_AXI7_rdata[287:256]"},
-						"RREADY": { "actual": "S_AXI7_rready[8:8]"},
-						"RRESP": { "actual": "S_AXI7_rresp[17:16]"},
-						"RVALID": { "actual": "S_AXI7_rvalid[8:8]"},
-						"WDATA": { "actual": "S_AXI7_wdata[287:256]"},
-						"WREADY": { "actual": "S_AXI7_wready[8:8]"},
-						"WSTRB": { "actual": "S_AXI7_wstrb[35:32]"},
-						"WVALID": { "actual": "S_AXI7_wvalid[8:8]"}
+						"ARREADY": { "actual": "S_AXI7_arready"},
+						"ARVALID": { "actual": "S_AXI7_arvalid"},
+						"AWADDR": { "actual": "S_AXI7_awaddr"},
+						"AWREADY": { "actual": "S_AXI7_awready"},
+						"AWVALID": { "actual": "S_AXI7_awvalid"},
+						"BREADY": { "actual": "S_AXI7_bready"},
+						"BRESP": { "actual": "S_AXI7_bresp"},
+						"BVALID": { "actual": "S_AXI7_bvalid"},
+						"RDATA": { "actual": "S_AXI7_rdata"},
+						"RREADY": { "actual": "S_AXI7_rready"},
+						"RRESP": { "actual": "S_AXI7_rresp"},
+						"RVALID": { "actual": "S_AXI7_rvalid"},
+						"WDATA": { "actual": "S_AXI7_wdata"},
+						"WREADY": { "actual": "S_AXI7_wready"},
+						"WSTRB": { "actual": "S_AXI7_wstrb"},
+						"WVALID": { "actual": "S_AXI7_wvalid"}
 					}
 				},
-				"/uP_control/adc_decimator_and_data_select/S_AXI": {
+				"/Control/uP_control/adc_decimator_and_data_select/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "s_axi_aclk"},
@@ -1651,7 +1619,7 @@
 						"WVALID": { "actual": "s_axi_wvalid"}
 					}
 				},
-				"/uP_control/datos_promediados/S_AXI": {
+				"/Control/uP_control/datos_promediados/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "s_axi_aclk"},
@@ -1675,7 +1643,7 @@
 						"WVALID": { "actual": "s_axi_wvalid"}
 					}
 				},
-				"/uP_control/enable_and_reset/S_AXI": {
+				"/Control/uP_control/enable_and_reset/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "s_axi_aclk"},
@@ -1699,7 +1667,7 @@
 						"WVALID": { "actual": "s_axi_wvalid"}
 					}
 				},
-				"/uP_control/finished_and_decimator_method/S_AXI": {
+				"/Control/uP_control/finished_and_decimator_method/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "s_axi_aclk"},
@@ -1723,7 +1691,7 @@
 						"WVALID": { "actual": "s_axi_wvalid"}
 					}
 				},
-				"/uP_control/phaseDAC_and_phaseREF/S_AXI": {
+				"/Control/uP_control/phaseDAC_and_phaseREF/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "s_axi_aclk"},
@@ -1747,7 +1715,7 @@
 						"WVALID": { "actual": "s_axi_wvalid"}
 					}
 				},
-				"/uP_control/result_cuad/S_AXI": {
+				"/Control/uP_control/result_cuad/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "s_axi_aclk"},
@@ -1771,7 +1739,7 @@
 						"WVALID": { "actual": "s_axi_wvalid"}
 					}
 				},
-				"/uP_control/result_fase/S_AXI": {
+				"/Control/uP_control/result_fase/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "s_axi_aclk"},
@@ -1793,6 +1761,38 @@
 						"WREADY": { "actual": "s_axi_wready"},
 						"WSTRB": { "actual": "s_axi_wstrb"},
 						"WVALID": { "actual": "s_axi_wvalid"}
+					}
+				},
+				"/DAC/axis_constant_0/M_AXIS": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"TDATA": { "actual": "m_axis_tdata"},
+						"TVALID": { "actual": "m_axis_tvalid"}
+					}
+				},
+				"/DAC/dds_compiler_0/S_AXIS_PHASE": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "s_axis_phase_tdata"},
+						"TVALID": { "actual": "s_axis_phase_tvalid"}
+					}
+				},
+				"/Fuente_datos/ADC/axis_red_pitaya_adc_0/M_AXIS": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "adc_clk"},
+						"TDATA": { "actual": "m_axis_tdata"},
+						"TVALID": { "actual": "m_axis_tvalid"}
+					}
+				},
+				"/Fuente_datos/ADC/signal_split_0/S_AXIS": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"TDATA": { "actual": "S_AXIS_tdata"},
+						"TVALID": { "actual": "S_AXIS_tvalid"}
 					}
 				}
 			}
