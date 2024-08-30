@@ -2,12 +2,12 @@
 # Vivado v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Thu Aug 29 21:36:01 2024
-# Process ID: 248
-# Current directory: C:/Users/mati9/Documents/02-lockin_redpitaya/hardware/lockin.runs/impl_1
+# Start of session at: Fri Aug 30 12:57:16 2024
+# Process ID: 1972
+# Current directory: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/impl_1
 # Command line: vivado.exe -log system_wrapper.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source system_wrapper.tcl -notrace
-# Log file: C:/Users/mati9/Documents/02-lockin_redpitaya/hardware/lockin.runs/impl_1/system_wrapper.vdi
-# Journal file: C:/Users/mati9/Documents/02-lockin_redpitaya/hardware/lockin.runs/impl_1\vivado.jou
-# Running On: DESKTOP-TN92N90, OS: Windows, CPU Frequency: 3014 MHz, CPU Physical cores: 2, Host memory: 8588 MB
+# Log file: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/impl_1/system_wrapper.vdi
+# Journal file: C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.runs/impl_1\vivado.jou
+# Running On: DESKTOP-BRUHM76, OS: Windows, CPU Frequency: 3912 MHz, CPU Physical cores: 2, Host memory: 17041 MB
 #-----------------------------------------------------------
 source system_wrapper.tcl -notrace

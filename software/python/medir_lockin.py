@@ -27,7 +27,7 @@ r_new_3=[]
 
 for i in range(1,2):
 
-    rp.set_data_mode(DataMode.SIMULACION)
+    rp.set_data_mode(DataMode.ADC)
     rp.set_decimator_method(DecimatorMethod.PROM)
     
     frec_ref = 1000000;

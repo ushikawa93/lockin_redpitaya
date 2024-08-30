@@ -1,8 +1,8 @@
 
-#///// ========================== LOCKIN.SH ================================== /////
-#///// ========================================================================= /////
-#///// Scipt que utiliza el programa lockin.c para calcular el lockin con la FPGA /////
-#///// ========================================================================= /////
+#///// ==================================== barrido_ctes_tiempo.sh ========================================== /////
+#///// ====================================================================================================== /////
+#///// Scipt que utiliza el programa barrido_ctes_tiempo.c para calcular el lockin con la FPGA en distintas N /////
+#///// ====================================================================================================== /////
 #
 # Script para calcular lockin en la FPGA y mostrar resultados
 # Uso -> barrido_ctes_tiempo frec N_inicial N_final iteraciones fuente nombre_archivo_salida ip

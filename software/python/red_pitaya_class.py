@@ -105,8 +105,14 @@ class redP_handler:
         command = ( f"{script_path} {self.frec_ref} {N_inicial} {N_final} {iteraciones} {self.data_mode} barrido.dat {self.ip}" )
         print(f"Comando enviado a la FPGA: {command}")
         subprocess.run(command, shell=True)
-        return redP_handler.leer_archivo_barrido("../datos_adquiridos/barrido.dat")
-        
+        return redP_handler.leer_archivo_barrido_ctes_tiempo("../datos_adquiridos/barrido.dat")
+    
+    def barrido_en_frecuencia(self, f_inicial,f_final,f_step,f_dac = 0):
+        script_path = os.path.join("..", "shell_scripts", "barrido_en_frecuencia.sh")
+        command = ( f"{script_path} {self.N} {f_inicial} {f_final} {f_step} {f_dac} {self.data_mode} barrido_en_f.dat {self.ip}" )
+        print(f"Comando enviado a la FPGA: {command}")
+        subprocess.run(command, shell=True)
+        return redP_handler.leer_archivo_barrido_en_f("../datos_adquiridos/barrido_en_f.dat")
         
 
     @staticmethod
@@ -135,7 +141,7 @@ class redP_handler:
         return datos
     
     @staticmethod
-    def leer_archivo_barrido(archivo):
+    def leer_archivo_barrido_ctes_tiempo(archivo):
         datos = {
             "N": [],
             "mean_r": [],
@@ -160,6 +166,35 @@ class redP_handler:
                         datos["N"].append(float(fila[0]))
                         datos["mean_r"].append(float(fila[1]))
                         datos["std_r"].append(float(fila[2]))
+    
+        return datos
+    
+    @staticmethod
+    def leer_archivo_barrido_en_f(archivo):
+        datos = {
+            "f": [],
+            "r": [],
+            "phi": []
+        }
+    
+        with open(archivo, 'r') as file:
+            lines = file.readlines()
+    
+            # Encontrar la línea donde comienza el bloque de datos
+            start_index = None
+            for i, line in enumerate(lines):
+                if line.startswith("Formato -> f,r,phi"):
+                    start_index = i + 1
+                    break
+    
+            # Leer los datos después del encabezado
+            if start_index is not None:
+                for line in lines[start_index:]:
+                    fila = line.strip().split(',')
+                    if len(fila) == 3:
+                        datos["f"].append(float(fila[0]))
+                        datos["r"].append(float(fila[1]))
+                        datos["phi"].append(float(fila[2]))
     
         return datos
 

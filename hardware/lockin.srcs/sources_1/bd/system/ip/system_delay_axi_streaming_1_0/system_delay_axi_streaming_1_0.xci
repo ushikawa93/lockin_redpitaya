@@ -8,11 +8,13 @@
     "gen_directory": "../../../../../../lockin.gen/sources_1/bd/system/ip/system_delay_axi_streaming_1_0",
     "parameters": {
       "component_parameters": {
-        "delay": [ { "value": "14", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "DATA_WIDTH": [ { "value": "16", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "DELAY": [ { "value": "14", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Component_Name": [ { "value": "system_delay_axi_streaming_1_0", "resolve_type": "user", "usage": "all" } ]
       },
       "model_parameters": {
-        "delay": [ { "value": "14", "resolve_type": "generated", "format": "long", "usage": "all" } ]
+        "DATA_WIDTH": [ { "value": "16", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "DELAY": [ { "value": "14", "resolve_type": "generated", "format": "long", "usage": "all" } ]
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "zynq" } ],

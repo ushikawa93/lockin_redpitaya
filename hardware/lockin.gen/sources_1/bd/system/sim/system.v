@@ -1,8 +1,8 @@
 //Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-//Date        : Thu Aug 29 21:28:19 2024
-//Host        : DESKTOP-TN92N90 running 64-bit major release  (build 9200)
+//Date        : Fri Aug 30 12:52:33 2024
+//Host        : DESKTOP-BRUHM76 running 64-bit major release  (build 9200)
 //Command     : generate_target system.bd
 //Design      : system
 //Purpose     : IP block netlist
@@ -777,6 +777,7 @@ module Fuente_datos_imp_1XV3VM
   wire adc_clk_p_i_1;
   wire [13:0]adc_dat_a_i_1;
   wire [13:0]adc_dat_b_i_1;
+  wire [13:0]data_in_sim_Dout;
   wire [15:0]referencias_Dout1;
   wire referencias_c;
   wire [15:0]referencias_data_out;
@@ -817,6 +818,9 @@ module Fuente_datos_imp_1XV3VM
         .adc_csn_o(ADC_adc_csn_o),
         .adc_dat_a_i(adc_dat_a_i_1),
         .adc_dat_b_i(adc_dat_b_i_1));
+  system_ref_sen_0 data_in_sim
+       (.Din(referencias_Dout1),
+        .Dout(data_in_sim_Dout));
   referencias_imp_QXUIR5 referencias
        (.Dout1(referencias_Dout1),
         .aclk(ADC_adc_clk),
@@ -831,7 +835,7 @@ module Fuente_datos_imp_1XV3VM
         .m_axis_data_tvalid(referencias_m_axis_data_tvalid),
         .start(referencias_start));
   system_mux_0_0 selector_data_in
-       (.data_in_0(referencias_Dout1[13:0]),
+       (.data_in_0(data_in_sim_Dout),
         .data_in_0_valid(referencias_m_axis_data_tvalid),
         .data_in_1(ADC_M_AXIS_PORT1_tdata[13:0]),
         .data_in_1_valid(ADC_M_AXIS_PORT1_tvalid),
@@ -2561,7 +2565,7 @@ module s00_couplers_imp_1K2S800
         .s_axi_wvalid(s00_couplers_to_auto_pc_WVALID));
 endmodule
 
-(* CORE_GENERATION_INFO = "system,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=system,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=65,numReposBlks=45,numNonXlnxBlks=4,numHierBlks=20,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=14,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=15,da_board_cnt=4,da_clkrst_cnt=6,da_ps7_cnt=1,synth_mode=Global}" *) (* HW_HANDOFF = "system.hwdef" *) 
+(* CORE_GENERATION_INFO = "system,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=system,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=66,numReposBlks=46,numNonXlnxBlks=4,numHierBlks=20,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=14,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=15,da_board_cnt=4,da_clkrst_cnt=6,da_ps7_cnt=1,synth_mode=Global}" *) (* HW_HANDOFF = "system.hwdef" *) 
 module system
    (DDR_addr,
     DDR_ba,

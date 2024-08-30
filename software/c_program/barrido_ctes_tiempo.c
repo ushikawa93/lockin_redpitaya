@@ -176,7 +176,7 @@ int main(int argc, char *argv[]) {
 
             int MxN_real = get_datos_promediados(cfg);
 
-            double amplitud_ref = 4096;
+            double amplitud_ref = 16384;
             double x = (double)resultado_fase / (MxN_real);
             double y = (double)resultado_cuadratura / (MxN_real);
 

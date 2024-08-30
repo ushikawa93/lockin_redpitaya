@@ -77,7 +77,8 @@ output wire [15 : 0] data_out;
 output wire data_out_valid;
 
   delay_axi_streaming #(
-    .delay(14)
+    .DATA_WIDTH(16),
+    .DELAY(14)
   ) inst (
     .clk(clk),
     .reset_n(reset_n),

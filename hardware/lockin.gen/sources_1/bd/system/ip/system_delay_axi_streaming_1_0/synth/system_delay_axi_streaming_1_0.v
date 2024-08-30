@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "delay_axi_streaming,Vivado 2022.2" *)
 (* CHECK_LICENSE_TYPE = "system_delay_axi_streaming_1_0,delay_axi_streaming,{}" *)
-(* CORE_GENERATION_INFO = "system_delay_axi_streaming_1_0,delay_axi_streaming,{x_ipProduct=Vivado 2022.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=delay_axi_streaming,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,delay=14}" *)
+(* CORE_GENERATION_INFO = "system_delay_axi_streaming_1_0,delay_axi_streaming,{x_ipProduct=Vivado 2022.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=delay_axi_streaming,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,DATA_WIDTH=16,DELAY=14}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module system_delay_axi_streaming_1_0 (
@@ -78,7 +78,8 @@ output wire [15 : 0] data_out;
 output wire data_out_valid;
 
   delay_axi_streaming #(
-    .delay(14)
+    .DATA_WIDTH(16),
+    .DELAY(14)
   ) inst (
     .clk(clk),
     .reset_n(reset_n),

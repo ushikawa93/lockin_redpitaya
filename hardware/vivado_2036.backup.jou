@@ -1,0 +1,44 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Thu Aug 29 18:17:15 2024
+# Process ID: 2036
+# Current directory: C:/Users/mati9/Documents/02-lockin_redpitaya/hardware
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent15028 C:\Users\mati9\Documents\02-lockin_redpitaya\hardware\lockin.xpr
+# Log file: C:/Users/mati9/Documents/02-lockin_redpitaya/hardware/vivado.log
+# Journal file: C:/Users/mati9/Documents/02-lockin_redpitaya/hardware\vivado.jou
+# Running On: DESKTOP-TN92N90, OS: Windows, CPU Frequency: 3014 MHz, CPU Physical cores: 2, Host memory: 8588 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/mati9/Documents/02-lockin_redpitaya/hardware/lockin.xpr
+open_bd_design {C:/Users/mati9/Documents/02-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
+update_compile_order -fileset sources_1
+startgroup
+set_property CONFIG.DIN_FROM {15} [get_bd_cells Fuente_datos/referencias/ref_cos]
+endgroup
+startgroup
+set_property CONFIG.DIN_FROM {31} [get_bd_cells Fuente_datos/referencias/ref_sen]
+endgroup
+update_module_reference {system_delay_axi_streaming_0_0 system_delay_axi_streaming_1_0}
+update_module_reference system_signal_processing_LI_0_0
+reset_property LEFT [get_bd_pins ref_fase]
+regenerate_bd_layout
+regenerate_bd_layout
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+open_run impl_1
+open_bd_design {C:/Users/mati9/Documents/02-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}
+startgroup
+set_property -dict [list \
+  CONFIG.Noise_Shaping {Auto} \
+  CONFIG.Output_Width {16} \
+  CONFIG.Phase_Width {28} \
+  CONFIG.Spurious_Free_Dynamic_Range {96} \
+] [get_bd_cells Fuente_datos/referencias/dds_compiler_0]
+endgroup
+save_bd_design
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1

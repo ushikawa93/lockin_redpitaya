@@ -161,7 +161,7 @@ int main(int argc, char **argv)
 
 	printf("\nMxN real: %d \nMxN supuesto: %d",MxN_real,MxN_supuesto);
 	
-	double amplitud_ref = 4096*4;
+	double amplitud_ref = 16384;
 
  	double x = (double)resultado_fase / (MxN_real);
     double y = (double)resultado_cuadratura / (MxN_real);
