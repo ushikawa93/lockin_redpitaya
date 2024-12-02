@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date         : Fri Aug 30 13:00:37 2024
+| Date         : Thu Sep  5 14:10:36 2024
 | Host         : DESKTOP-BRUHM76 running 64-bit major release  (build 9200)
 | Command      : report_methodology -file system_wrapper_methodology_drc_routed.rpt -pb system_wrapper_methodology_drc_routed.pb -rpx system_wrapper_methodology_drc_routed.rpx
 | Design       : system_wrapper
@@ -23,14 +23,14 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 70
+             Violations found: 72
 +-----------+------------------+----------------------------------------------------+------------+
 | Rule      | Severity         | Description                                        | Violations |
 +-----------+------------------+----------------------------------------------------+------------+
 | TIMING-4  | Critical Warning | Invalid primary clock redefinition on a clock tree | 1          |
 | TIMING-27 | Critical Warning | Invalid primary clock on hierarchical pin          | 1          |
 | HPDR-1    | Warning          | Port pin direction inconsistency                   | 16         |
-| HPDR-2    | Warning          | Port pin INOUT inconsistency                       | 2          |
+| HPDR-2    | Warning          | Port pin INOUT inconsistency                       | 4          |
 | TIMING-9  | Warning          | Unknown CDC Logic                                  | 1          |
 | TIMING-10 | Warning          | Missing property on synchronizer                   | 1          |
 | TIMING-18 | Warning          | Missing input or output delay                      | 46         |
@@ -136,7 +136,17 @@ Related violations: <none>
 
 HPDR-2#2 Warning
 Port pin INOUT inconsistency  
+Hierarchical port(pin) system_i/exp_p_tri_io[1] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (exp_p_tri_io_IBUF[1]) connected to this hierarchical pin/port, but both were not found.
+Related violations: <none>
+
+HPDR-2#3 Warning
+Port pin INOUT inconsistency  
 Hierarchical port(pin) system_i/exp_p_tri_io[4] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (exp_p_tri_io_IBUF[4]) connected to this hierarchical pin/port, but both were not found.
+Related violations: <none>
+
+HPDR-2#4 Warning
+Port pin INOUT inconsistency  
+Hierarchical port(pin) system_i/exp_p_tri_io[5] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (exp_p_tri_io_IBUF[5]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 TIMING-9#1 Warning
@@ -221,42 +231,42 @@ Related violations: <none>
 
 TIMING-18#15 Warning
 Missing input or output delay  
-An input delay is missing on exp_p_tri_io[0] relative to clock(s) adc_clk
+An input delay is missing on exp_p_tri_io[0] relative to clock(s) adc_clk, clk_fpga_0
 Related violations: <none>
 
 TIMING-18#16 Warning
 Missing input or output delay  
-An input delay is missing on exp_p_tri_io[1] relative to clock(s) adc_clk
+An input delay is missing on exp_p_tri_io[1] relative to clock(s) adc_clk, clk_fpga_0
 Related violations: <none>
 
 TIMING-18#17 Warning
 Missing input or output delay  
-An input delay is missing on exp_p_tri_io[2] relative to clock(s) adc_clk
+An input delay is missing on exp_p_tri_io[2] relative to clock(s) adc_clk, clk_fpga_0
 Related violations: <none>
 
 TIMING-18#18 Warning
 Missing input or output delay  
-An input delay is missing on exp_p_tri_io[3] relative to clock(s) adc_clk
+An input delay is missing on exp_p_tri_io[3] relative to clock(s) adc_clk, clk_fpga_0
 Related violations: <none>
 
 TIMING-18#19 Warning
 Missing input or output delay  
-An input delay is missing on exp_p_tri_io[4] relative to clock(s) adc_clk
+An input delay is missing on exp_p_tri_io[4] relative to clock(s) adc_clk, clk_fpga_0
 Related violations: <none>
 
 TIMING-18#20 Warning
 Missing input or output delay  
-An input delay is missing on exp_p_tri_io[5] relative to clock(s) adc_clk
+An input delay is missing on exp_p_tri_io[5] relative to clock(s) adc_clk, clk_fpga_0
 Related violations: <none>
 
 TIMING-18#21 Warning
 Missing input or output delay  
-An input delay is missing on exp_p_tri_io[6] relative to clock(s) adc_clk
+An input delay is missing on exp_p_tri_io[6] relative to clock(s) adc_clk, clk_fpga_0
 Related violations: <none>
 
 TIMING-18#22 Warning
 Missing input or output delay  
-An input delay is missing on exp_p_tri_io[7] relative to clock(s) adc_clk
+An input delay is missing on exp_p_tri_io[7] relative to clock(s) adc_clk, clk_fpga_0
 Related violations: <none>
 
 TIMING-18#23 Warning
@@ -341,52 +351,52 @@ Related violations: <none>
 
 TIMING-18#39 Warning
 Missing input or output delay  
-An output delay is missing on led_o[0] relative to clock(s) adc_clk
+An output delay is missing on led_o[0] relative to clock(s) adc_clk, clk_fpga_0
 Related violations: <none>
 
 TIMING-18#40 Warning
 Missing input or output delay  
-An output delay is missing on led_o[1] relative to clock(s) adc_clk
+An output delay is missing on led_o[1] relative to clock(s) adc_clk, clk_fpga_0
 Related violations: <none>
 
 TIMING-18#41 Warning
 Missing input or output delay  
-An output delay is missing on led_o[2] relative to clock(s) adc_clk
+An output delay is missing on led_o[2] relative to clock(s) adc_clk, clk_fpga_0
 Related violations: <none>
 
 TIMING-18#42 Warning
 Missing input or output delay  
-An output delay is missing on led_o[3] relative to clock(s) adc_clk
+An output delay is missing on led_o[3] relative to clock(s) adc_clk, clk_fpga_0
 Related violations: <none>
 
 TIMING-18#43 Warning
 Missing input or output delay  
-An output delay is missing on led_o[4] relative to clock(s) adc_clk
+An output delay is missing on led_o[4] relative to clock(s) adc_clk, clk_fpga_0
 Related violations: <none>
 
 TIMING-18#44 Warning
 Missing input or output delay  
-An output delay is missing on led_o[5] relative to clock(s) adc_clk
+An output delay is missing on led_o[5] relative to clock(s) adc_clk, clk_fpga_0
 Related violations: <none>
 
 TIMING-18#45 Warning
 Missing input or output delay  
-An output delay is missing on led_o[6] relative to clock(s) adc_clk
+An output delay is missing on led_o[6] relative to clock(s) adc_clk, clk_fpga_0
 Related violations: <none>
 
 TIMING-18#46 Warning
 Missing input or output delay  
-An output delay is missing on led_o[7] relative to clock(s) adc_clk
+An output delay is missing on led_o[7] relative to clock(s) adc_clk, clk_fpga_0
 Related violations: <none>
 
 TIMING-24#1 Warning
 Overridden Max delay datapath only  
-An asynchronous set_clock_groups or a set_false path (see constraint position 17 in the Timing Constraints window in Vivado IDE) between clocks clk_fpga_0 and adc_clk overrides a set_max_delay -datapath_only (position 19). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
+An asynchronous set_clock_groups or a set_false path (see constraint position 17 in the Timing Constraints window in Vivado IDE) between clocks clk_fpga_0 and adc_clk overrides a set_max_delay -datapath_only (position 20). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
 Related violations: <none>
 
 TIMING-24#2 Warning
 Overridden Max delay datapath only  
-An asynchronous set_clock_groups or a set_false path (see constraint position 18 in the Timing Constraints window in Vivado IDE) between clocks adc_clk and clk_fpga_0 overrides a set_max_delay -datapath_only (position 21). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
+An asynchronous set_clock_groups or a set_false path (see constraint position 18 in the Timing Constraints window in Vivado IDE) between clocks adc_clk and clk_fpga_0 overrides a set_max_delay -datapath_only (position 22). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
 Related violations: <none>
 
 

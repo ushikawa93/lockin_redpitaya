@@ -1,0 +1,75 @@
+
+Medidas de error -> f: 99996.104836, N: 1, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 10.000000
+Media[mV]: 127.627877 
+Desviacion estandar[mV]: 0.048651 
+
+Medidas de error -> f: 99996.104836, N: 1, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 10.000000
+Media[mV]: 127.010679 
+Desviacion estandar[mV]: 0.030964 
+
+Medidas de error -> f: 99996.104836, N: 1, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 10.000000
+Media[mV]: 0.025065 
+Desviacion estandar[mV]: 0.014402 
+
+Medidas de error -> f: 99996.104836, N: 1, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 10.000000
+Media[mV]: 0.368799 
+Desviacion estandar[mV]: 0.035214 
+
+Medidas de error -> f: 99996.104836, N: 1, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 10.000000
+Media[mV]: 127.585878 
+Desviacion estandar[mV]: 0.052900 
+
+Medidas de error -> f: 99996.104836, N: 1, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 10.000000
+Media[mV]: 127.567279 
+Desviacion estandar[mV]: 0.047627 
+
+Medidas de error -> f: 99996.104836, N: 1, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 10.000000
+Media[mV]: 127.556567 
+Desviacion estandar[mV]: 0.045242 
+
+Medidas de error -> f: 99996.104836, N: 100, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 1000.000000
+Media[mV]: 127.634683 
+Desviacion estandar[mV]: 0.003087 
+
+Medidas de error -> f: 99996.104836, N: 100, n_iteraciones: 1000, fuente: 1 
+Constante de tiempo[us]: 1000.000000
+Media[mV]: 127.628868 
+Desviacion estandar[mV]: 0.002453 
+
+Medidas de error -> f: 99996.104836, N: 1000, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 10000.000000
+Media[mV]: 127.632677 
+Desviacion estandar[mV]: 0.001441 
+
+Medidas de error -> f: 99996.104836, N: 50000, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 500000.000000
+Media[mV]: 127.617776 
+Desviacion estandar[mV]: 0.005728 
+
+Medidas de error -> f: 99996.104836, N: 50000, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 500000.000000
+Media[mV]: 27.595653 
+Desviacion estandar[mV]: 52.143058 
+
+Medidas de error -> f: 99996.104836, N: 50000, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 500000.000000
+Media[mV]: 127.586112 
+Desviacion estandar[mV]: 0.002153 
+
+Medidas de error -> f: 99996.104836, N: 50000, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 500000.000000
+Media[mV]: 510.276754 
+Desviacion estandar[mV]: 0.011855 
+
+Medidas de error -> f: 99996.104836, N: 10, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 100.000000
+Media[mV]: 45.878665 
+Desviacion estandar[mV]: 0.014069 

@@ -38,8 +38,8 @@ decimator = 1
 rp.set_decimator(decimator)    
 
 N_inicial = 1
-N_final = 2048
-iteraciones = 50;
+N_final = 4096
+iteraciones = 100;
 
 data = rp.barrido_ctes_tiempo(N_inicial, N_final, iteraciones)
 

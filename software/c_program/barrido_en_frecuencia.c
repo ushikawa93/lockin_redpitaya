@@ -18,6 +18,7 @@
 #include <math.h>
 #include <string.h>
 #include <stdint.h>
+#include <unistd.h>
 
 #define START_ADDRESS 0x40000000
 #define ENABLE_ADDRESS 0x41230000
@@ -100,6 +101,17 @@ int main(int argc, char *argv[]) {
     ///// ============================ Seteo de parámetros ================================ /////
     ///// ================================================================================= /////
 
+    /*  Cosas a setear
+        f_dac_real=set_frec_dac(cfg,frec_dac);          SI
+        f_ref_real=set_frec_ref(cfg,frec_ref);          SI
+        setM(cfg,M);                                    SI
+        setN_ma(cfg,N_ma);                              SI
+        setDecimator(cfg,decimator);
+        setDataSelection(cfg,sel);
+        setDecimatorMethod(cfg,decimator_method);
+    
+    */
+
     // Verificar que se proporcionen los argumentos necesarios
     if ((argc != 8)) {
         printf("Uso barrido_en_frecuencia N f_inicial f_final f_step f_dac fuente nombre_archivo_salida\n");
@@ -133,7 +145,9 @@ int main(int argc, char *argv[]) {
     // Fuente de los datos: --> { SIM = 0, ADC = 1 };
     setDataSelection(cfg, fuente);
 
-
+    // Ciclos de decimacion -> Es lo mismo para este script pero si no lo seteas falla!
+    setDecimator(cfg,1);
+    setDecimatorMethod(cfg,0);
 
     // Ciclos de integración    
     setN_ma(cfg, N);
@@ -154,16 +168,15 @@ int main(int argc, char *argv[]) {
     init_array(&r_values, 100);
     init_array(&phi_values, 100);
 
-    for (int f = f_inicial; f < f_final; f=f+f_step) {
+    for (int f = f_inicial; f < f_final; f=f+f_step) {        
 
         // Frecuencias de operacion (referencias dac y clock)
         double f_real_ref = set_frec_ref(cfg, f);
 
-         if(f_dac == 0)
-    {
-        f_real_dac = set_frec_dac(cfg, f_real_ref);
-    }
-        
+        if(f_dac == 0)
+        {
+            f_real_dac = set_frec_dac(cfg, f);
+        }        
 
         int M = 125000000 / f;
 
@@ -202,6 +215,7 @@ int main(int argc, char *argv[]) {
         append_array(&phi_values, phi);
 
         ResetFPGA(cfg);
+
     }
 
     ///// ================================================================================= /////

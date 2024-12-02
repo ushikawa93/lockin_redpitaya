@@ -122,9 +122,6 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_dds_
 # IP: bd/system/ip/system_xlslice_0_6/system_xlslice_0_6.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_xlslice_0_6 || ORIG_REF_NAME==system_xlslice_0_6} -quiet] -quiet
 
-# IP: bd/system/ip/system_start_signal_generat_0_0/system_start_signal_generat_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_start_signal_generat_0_0 || ORIG_REF_NAME==system_start_signal_generat_0_0} -quiet] -quiet
-
 # IP: bd/system/ip/system_and_2_1_0/system_and_2_1_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_and_2_1_0 || ORIG_REF_NAME==system_and_2_1_0} -quiet] -quiet
 
@@ -134,17 +131,23 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_dela
 # IP: bd/system/ip/system_delay_axi_streaming_1_0/system_delay_axi_streaming_1_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_delay_axi_streaming_1_0 || ORIG_REF_NAME==system_delay_axi_streaming_1_0} -quiet] -quiet
 
+# IP: bd/system/ip/system_start_signal_generat_0_0/system_start_signal_generat_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_start_signal_generat_0_0 || ORIG_REF_NAME==system_start_signal_generat_0_0} -quiet] -quiet
+
 # IP: bd/system/ip/system_axis_red_pitaya_adc_0_0/system_axis_red_pitaya_adc_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_axis_red_pitaya_adc_0_0 || ORIG_REF_NAME==system_axis_red_pitaya_adc_0_0} -quiet] -quiet
 
 # IP: bd/system/ip/system_signal_split_0_0/system_signal_split_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_signal_split_0_0 || ORIG_REF_NAME==system_signal_split_0_0} -quiet] -quiet
 
+# IP: bd/system/ip/system_ref_sen_0/system_ref_sen_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_ref_sen_0 || ORIG_REF_NAME==system_ref_sen_0} -quiet] -quiet
+
 # IP: bd/system/ip/system_signal_processing_LI_0_0/system_signal_processing_LI_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_signal_processing_LI_0_0 || ORIG_REF_NAME==system_signal_processing_LI_0_0} -quiet] -quiet
 
-# IP: bd/system/ip/system_ref_sen_0/system_ref_sen_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_ref_sen_0 || ORIG_REF_NAME==system_ref_sen_0} -quiet] -quiet
+# IP: bd/system/ip/system_register_0_0/system_register_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_register_0_0 || ORIG_REF_NAME==system_register_0_0} -quiet] -quiet
 
 # IP: bd/system/ip/system_auto_pc_0/system_auto_pc_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_auto_pc_0 || ORIG_REF_NAME==system_auto_pc_0} -quiet] -quiet

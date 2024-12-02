@@ -7,30 +7,31 @@ module lockin_segmentado(
 	input enable,
 	
 	// Parametros de configuracion
-	input [31:0] ptos_x_ciclo,
-	input [31:0] frames_integracion,
+	input [15:0] ptos_x_ciclo,
+	input [15:0] frames_integracion,
+	
+	// Referencia externa
+	input referencia_externa,
+	input sync,
+	input signed [31:0] referencia_externa_sen,
+	input signed [31:0] referencia_externa_cos,
+	input referencia_externa_valid,
 	
 	// Entrada avalon streaming
 	input data_valid,
-	input [31:0] data,	
-	
-	input start_signal,
-	
-	input [31:0] referencia_externa_sen,
-	input [31:0] referencia_externa_cos,
-	input referencia_externa_valid,
+	input signed [31:0] data,	
 		
 	// Salidas avalon streaming fase y cuadratura
-	output [63:0] data_out_fase,
+	output signed [63:0] data_out_fase,
 	output data_out_fase_valid,
 	
-	output [63:0] data_out_cuad,
+	output signed [63:0] data_out_cuad,
 	output data_out_cuad_valid,
 	
 	// Salidas auxiliares
-	output reg lockin_ready,	
-	output calculo_finalizado,
-	output [31:0] datos_promediados
+	output reg lockin_ready,
+	output [31:0] n_datos_promediados,	
+	output reg fifos_llenos
 	
 );
 
@@ -40,8 +41,8 @@ module lockin_segmentado(
 //=======================================================
 
 
-wire [63:0] data_out_seno;			
-wire [63:0] data_out_coseno;
+wire signed [63:0] data_out_seno;			
+wire signed [63:0] data_out_coseno;
 wire data_valid_multiplicacion;
 
 multiplicate_ref_2 multiplicador(
@@ -52,29 +53,31 @@ multiplicate_ref_2 multiplicador(
 	
 	.ptos_x_ciclo(ptos_x_ciclo),
 	
-	.data(data),
-	.data_valid(data_valid),
-	
+	// Referencia externa
+	.referencia_externa(referencia_externa),
+	.sync(sync),
 	.referencia_externa_sen(referencia_externa_sen),
 	.referencia_externa_cos(referencia_externa_cos),
-	.referencia_externa_valid(referencia_externa_valid),		
+	.referencia_externa_valid(referencia_externa_valid),
+	
+	
+	.data(data),
+	.data_valid(data_valid),		
 		
 	.data_out_seno(data_out_seno),
 	.data_out_coseno(data_out_coseno),
 	.data_valid_multiplicacion(data_valid_multiplicacion)
-
 );
 
+reg sync_reg;
 
+always @ (posedge clock) sync_reg <= sync;
 
 //=======================================================
 // Filtros pasabajos
 //=======================================================
 
-wire calculo_finalizado_fase,calculo_finalizado_cuad,lockin_cuadratura_ready,lockin_fase_ready;
-
-
-filtro_ma filtro_fase(
+filtro_ma_con_sync filtro_fase(
 
 	// Entradas de control
 	.clock(clock),
@@ -89,7 +92,7 @@ filtro_ma filtro_fase(
 	.data_valid(data_valid_multiplicacion),
 	.data(data_out_seno),	
 	
-	.start_signal(start_signal),
+	.start_signal(sync_reg),
 	
 	// Interfaz avalon streaming de salida
 	.data_out(data_out_fase),
@@ -97,12 +100,14 @@ filtro_ma filtro_fase(
 	
 	// Salidas auxiliares
 	.ready_to_calculate(lockin_fase_ready),
-	.calculo_finalizado(calculo_finalizado_fase)
+	.calculo_finalizado(fifo_lleno_fase),
+	
+	.datos_promediados(n_datos_promediados)
 
 );
 
 
-filtro_ma filtro_cuadratura(
+filtro_ma_con_sync filtro_cuadratura(
 
 	// Entradas de control
 	.clock(clock),
@@ -115,9 +120,9 @@ filtro_ma filtro_cuadratura(
 	
 	// Interfaz avalon streaming de entrada
 	.data_valid(data_valid_multiplicacion),
-	.data(data_out_coseno),	
+	.data(data_out_coseno),
 	
-	.start_signal(start_signal),
+	.start_signal(sync_reg),
 	
 	// Interfaz avalon streaming de salida
 	.data_out(data_out_cuad),
@@ -125,14 +130,16 @@ filtro_ma filtro_cuadratura(
 	
 	// Salidas auxiliares
 	.ready_to_calculate(lockin_cuadratura_ready),
-	.calculo_finalizado(calculo_finalizado_cuad),
-	.datos_promediados(datos_promediados)
+	.calculo_finalizado(fifo_lleno_cuad)
 
 );
 
-assign calculo_finalizado = (calculo_finalizado_fase && calculo_finalizado_cuad);
 
+wire fifo_lleno_fase,fifo_lleno_cuad,lockin_cuadratura_ready,lockin_fase_ready;
+
+always @ (posedge clock) fifos_llenos <= (fifo_lleno_fase && fifo_lleno_cuad);
 always @ (posedge clock) lockin_ready <= (lockin_fase_ready && lockin_cuadratura_ready);
+
 
 
 

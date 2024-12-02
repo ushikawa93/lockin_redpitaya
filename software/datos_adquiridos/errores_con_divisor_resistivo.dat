@@ -1,0 +1,45 @@
+
+Medidas de error -> f: 99996.104836, N: 1, n_iteraciones: 1000, fuente: 1 
+Constante de tiempo[us]: 10.000000
+Media[mV]: 45.797687 
+Desviacion estandar[mV]: 0.102284 
+
+Medidas de error -> f: 99996.104836, N: 32, n_iteraciones: 1000, fuente: 1 
+Constante de tiempo[us]: 320.000000
+Media[mV]: 45.881567 
+Desviacion estandar[mV]: 0.006626 
+
+Medidas de error -> f: 99996.104836, N: 64, n_iteraciones: 1000, fuente: 1 
+Constante de tiempo[us]: 640.000000
+Media[mV]: 45.881800 
+Desviacion estandar[mV]: 0.005227 
+
+Medidas de error -> f: 99996.104836, N: 128, n_iteraciones: 1000, fuente: 1 
+Constante de tiempo[us]: 1280.000000
+Media[mV]: 45.882552 
+Desviacion estandar[mV]: 0.003549 
+
+Medidas de error -> f: 99996.104836, N: 512, n_iteraciones: 1000, fuente: 1 
+Constante de tiempo[us]: 5120.000000
+Media[mV]: 45.881744 
+Desviacion estandar[mV]: 0.002266 
+
+Medidas de error -> f: 99996.104836, N: 1024, n_iteraciones: 1000, fuente: 1 
+Constante de tiempo[us]: 10240.000000
+Media[mV]: 45.881768 
+Desviacion estandar[mV]: 0.001398 
+
+Medidas de error -> f: 99996.104836, N: 50000, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 500000.000000
+Media[mV]: 45.876512 
+Desviacion estandar[mV]: 0.002628 
+
+Medidas de error -> f: 99996.104836, N: 50000, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 500000.000000
+Media[mV]: 45.869556 
+Desviacion estandar[mV]: 0.000949 
+
+Medidas de error -> f: 99996.104836, N: 50000, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 500000.000000
+Media[mV]: 45.866287 
+Desviacion estandar[mV]: 0.001290 

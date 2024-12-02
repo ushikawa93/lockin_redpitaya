@@ -1,0 +1,60 @@
+
+Medidas de error -> f: 99996.104836, N: 1, n_iteraciones: 1000, fuente: 1 
+Constante de tiempo[us]: 10.000000
+Media[mV]: 508.929772 
+Desviacion estandar[mV]: 0.182057 
+
+Medidas de error -> f: 99996.104836, N: 32, n_iteraciones: 1000, fuente: 1 
+Constante de tiempo[us]: 320.000000
+Media[mV]: 509.652283 
+Desviacion estandar[mV]: 0.013097 
+
+Medidas de error -> f: 99996.104836, N: 64, n_iteraciones: 1000, fuente: 1 
+Constante de tiempo[us]: 640.000000
+Media[mV]: 509.658233 
+Desviacion estandar[mV]: 0.011775 
+
+Medidas de error -> f: 99996.104836, N: 128, n_iteraciones: 1000, fuente: 1 
+Constante de tiempo[us]: 1280.000000
+Media[mV]: 509.666339 
+Desviacion estandar[mV]: 0.008178 
+
+Medidas de error -> f: 99996.104836, N: 512, n_iteraciones: 1000, fuente: 1 
+Constante de tiempo[us]: 5120.000000
+Media[mV]: 509.677056 
+Desviacion estandar[mV]: 0.007317 
+
+Medidas de error -> f: 99996.104836, N: 1024, n_iteraciones: 1000, fuente: 1 
+Constante de tiempo[us]: 10240.000000
+Media[mV]: 509.672911 
+Desviacion estandar[mV]: 0.007156 
+
+Medidas de error -> f: 99996.104836, N: 50000, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 500000.000000
+Media[mV]: 509.574595 
+Desviacion estandar[mV]: 0.015165 
+
+Medidas de error -> f: 99996.104836, N: 50000, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 500000.000000
+Media[mV]: 509.527368 
+Desviacion estandar[mV]: 0.006350 
+
+Medidas de error -> f: 99996.104836, N: 50000, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 500000.000000
+Media[mV]: 509.498933 
+Desviacion estandar[mV]: 0.010065 
+
+Medidas de error -> f: 99996.104836, N: 50000, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 500000.000000
+Media[mV]: 509.482612 
+Desviacion estandar[mV]: 0.006230 
+
+Medidas de error -> f: 99996.104836, N: 50000, n_iteraciones: 1000, fuente: 1 
+Constante de tiempo[us]: 500000.000000
+Media[mV]: 509.554610 
+Desviacion estandar[mV]: 0.064338 
+
+Medidas de error -> f: 99996.104836, N: 2, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 20.000000
+Media[mV]: 127.690194 
+Desviacion estandar[mV]: 0.026377 

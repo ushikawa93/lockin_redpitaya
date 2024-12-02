@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "start_signal_generator,Vivado 2022.2" *)
 (* CHECK_LICENSE_TYPE = "system_start_signal_generat_0_0,start_signal_generator,{}" *)
-(* CORE_GENERATION_INFO = "system_start_signal_generat_0_0,start_signal_generator,{x_ipProduct=Vivado 2022.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=start_signal_generator,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,idle=1,habilitar_salida=2,esperar=3}" *)
+(* CORE_GENERATION_INFO = "system_start_signal_generat_0_0,start_signal_generator,{x_ipProduct=Vivado 2022.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=start_signal_generator,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,DATA_WIDTH=16}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module system_start_signal_generat_0_0 (
@@ -70,15 +70,13 @@ input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset_n, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset_n RST" *)
 input wire reset_n;
-input wire [13 : 0] data;
+input wire [15 : 0] data;
 input wire data_valid;
 input wire [31 : 0] approxM;
 output wire start;
 
   start_signal_generator #(
-    .idle(1),
-    .habilitar_salida(2),
-    .esperar(3)
+    .DATA_WIDTH(16)
   ) inst (
     .clk(clk),
     .reset_n(reset_n),

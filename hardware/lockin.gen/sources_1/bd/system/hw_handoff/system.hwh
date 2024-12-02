@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Aug 30 12:53:26 2024" VIVADOVERSION="2022.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Sep  5 14:01:35 2024" VIVADOVERSION="2022.2">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z010" NAME="system" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -1549,11 +1549,7 @@
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="Control_uP_control_enable_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="DAC_dds_compiler_0" PORT="aclken"/>
-            <CONNECTION INSTANCE="decimator_decimator_0" PORT="enable"/>
-            <CONNECTION INSTANCE="decimator_linear_mean_0" PORT="enable"/>
-            <CONNECTION INSTANCE="Fuente_datos_referencias_dds_compiler_0" PORT="aclken"/>
-            <CONNECTION INSTANCE="lock_in" PORT="enable_gral"/>
+            <CONNECTION INSTANCE="enable_reg" PORT="d"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -2814,9 +2810,10 @@
             <CONNECTION INSTANCE="decimator_decimator_0" PORT="reset_n"/>
             <CONNECTION INSTANCE="decimator_linear_mean_0" PORT="reset_n"/>
             <CONNECTION INSTANCE="Fuente_datos_referencias_dds_compiler_0" PORT="aresetn"/>
-            <CONNECTION INSTANCE="Fuente_datos_referencias_start_signal_generat_0" PORT="reset_n"/>
             <CONNECTION INSTANCE="Fuente_datos_referencias_delay_axi_streaming_0" PORT="reset_n"/>
             <CONNECTION INSTANCE="Fuente_datos_referencias_delay_axi_streaming_1" PORT="reset_n"/>
+            <CONNECTION INSTANCE="Fuente_datos_referencias_start_signal_generat_0" PORT="reset_n"/>
+            <CONNECTION INSTANCE="enable_reg" PORT="reset_n"/>
             <CONNECTION INSTANCE="lock_in" PORT="reset_n"/>
             <CONNECTION INSTANCE="Control_uP_fifo_1" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="Control_uP_axis_clock_converter_0" PORT="s_axis_aresetn"/>
@@ -8576,9 +8573,9 @@
             <CONNECTION INSTANCE="Fuente_datos_ADC_axis_red_pitaya_adc_0" PORT="adc_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="aclken" POLARITY="ACTIVE_HIGH" SIGIS="ce" SIGNAME="Control_uP_control_enable_Dout">
+        <PORT DIR="I" NAME="aclken" POLARITY="ACTIVE_HIGH" SIGIS="ce" SIGNAME="enable_reg_q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Control_uP_control_enable" PORT="Dout"/>
+            <CONNECTION INSTANCE="enable_reg" PORT="q"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="Control_uP_control_reset_n_Dout">
@@ -8666,12 +8663,13 @@
             <CONNECTION INSTANCE="decimator_decimator_0" PORT="clk"/>
             <CONNECTION INSTANCE="decimator_linear_mean_0" PORT="clk"/>
             <CONNECTION INSTANCE="Control_uP_axis_clock_converter_0" PORT="s_axis_aclk"/>
+            <CONNECTION INSTANCE="enable_reg" PORT="clk"/>
             <CONNECTION INSTANCE="lock_in" PORT="clk"/>
             <CONNECTION INSTANCE="Fuente_datos_referencias_dds_compiler_0" PORT="aclk"/>
             <CONNECTION INSTANCE="Fuente_datos_referencias_axis_constant_0" PORT="aclk"/>
-            <CONNECTION INSTANCE="Fuente_datos_referencias_start_signal_generat_0" PORT="clk"/>
             <CONNECTION INSTANCE="Fuente_datos_referencias_delay_axi_streaming_0" PORT="clk"/>
             <CONNECTION INSTANCE="Fuente_datos_referencias_delay_axi_streaming_1" PORT="clk"/>
+            <CONNECTION INSTANCE="Fuente_datos_referencias_start_signal_generat_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="adc_csn" SIGIS="undef" SIGNAME="Fuente_datos_ADC_axis_red_pitaya_adc_0_adc_csn">
@@ -9087,9 +9085,9 @@
             <CONNECTION INSTANCE="Fuente_datos_ADC_axis_red_pitaya_adc_0" PORT="adc_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="aclken" POLARITY="ACTIVE_HIGH" SIGIS="ce" SIGNAME="Control_uP_control_enable_Dout">
+        <PORT DIR="I" NAME="aclken" POLARITY="ACTIVE_HIGH" SIGIS="ce" SIGNAME="enable_reg_q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Control_uP_control_enable" PORT="Dout"/>
+            <CONNECTION INSTANCE="enable_reg" PORT="q"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="Control_uP_control_reset_n_Dout">
@@ -9110,9 +9108,9 @@
         <PORT DIR="O" NAME="m_axis_data_tvalid" SIGIS="undef" SIGNAME="Fuente_datos_referencias_dds_compiler_0_m_axis_data_tvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Fuente_datos_selector_data_in" PORT="data_in_0_valid"/>
-            <CONNECTION INSTANCE="Fuente_datos_referencias_start_signal_generat_0" PORT="data_valid"/>
             <CONNECTION INSTANCE="Fuente_datos_referencias_delay_axi_streaming_0" PORT="data_in_valid"/>
             <CONNECTION INSTANCE="Fuente_datos_referencias_delay_axi_streaming_1" PORT="data_in_valid"/>
+            <CONNECTION INSTANCE="Fuente_datos_referencias_start_signal_generat_0" PORT="data_valid"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="m_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="Fuente_datos_referencias_dds_compiler_0_m_axis_data_tdata">
@@ -9300,8 +9298,8 @@
         <PORT DIR="O" LEFT="15" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="Fuente_datos_referencias_ref_sen_Dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Fuente_datos_data_in_sim" PORT="Din"/>
-            <CONNECTION INSTANCE="Fuente_datos_referencias_start_signal_generat_0" PORT="data"/>
             <CONNECTION INSTANCE="Fuente_datos_referencias_delay_axi_streaming_1" PORT="data_in"/>
+            <CONNECTION INSTANCE="Fuente_datos_referencias_start_signal_generat_0" PORT="data"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -9310,9 +9308,7 @@
     <MODULE COREREVISION="1" FULLNAME="/Fuente_datos/referencias/start_signal_generat_0" HWVERSION="1.0" INSTANCE="Fuente_datos_referencias_start_signal_generat_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="start_signal_generator" VLNV="xilinx.com:module_ref:start_signal_generator:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="idle" VALUE="1"/>
-        <PARAMETER NAME="habilitar_salida" VALUE="2"/>
-        <PARAMETER NAME="esperar" VALUE="3"/>
+        <PARAMETER NAME="DATA_WIDTH" VALUE="16"/>
         <PARAMETER NAME="Component_Name" VALUE="system_start_signal_generat_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -9327,7 +9323,7 @@
             <CONNECTION INSTANCE="Control_uP_control_reset_n" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="13" NAME="data" RIGHT="0" SIGIS="undef" SIGNAME="Fuente_datos_referencias_ref_sen_Dout">
+        <PORT DIR="I" LEFT="15" NAME="data" RIGHT="0" SIGIS="undef" SIGNAME="Fuente_datos_referencias_ref_sen_Dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Fuente_datos_referencias_ref_sen" PORT="Dout"/>
           </CONNECTIONS>
@@ -9426,6 +9422,8 @@
         <PORT DIR="O" NAME="c" SIGIS="undef" SIGNAME="and_2_0_c">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Control_uP_control_finished_and_decimator_method" PORT="gpio_io_i"/>
+            <CONNECTION INSTANCE="gpios_and_leds_drive_gpios_1" PORT="input_1"/>
+            <CONNECTION INSTANCE="gpios_and_leds_drive_leds_0" PORT="signal_1"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -9449,9 +9447,9 @@
             <CONNECTION INSTANCE="Control_uP_control_reset_n" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="enable" SIGIS="undef" SIGNAME="Control_uP_control_enable_Dout">
+        <PORT DIR="I" NAME="enable" SIGIS="undef" SIGNAME="enable_reg_q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Control_uP_control_enable" PORT="Dout"/>
+            <CONNECTION INSTANCE="enable_reg" PORT="q"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="data_in" RIGHT="0" SIGIS="undef" SIGNAME="Fuente_datos_selector_data_in_data_out">
@@ -9505,9 +9503,9 @@
             <CONNECTION INSTANCE="Control_uP_control_reset_n" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="enable" SIGIS="undef" SIGNAME="Control_uP_control_enable_Dout">
+        <PORT DIR="I" NAME="enable" SIGIS="undef" SIGNAME="enable_reg_q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Control_uP_control_enable" PORT="Dout"/>
+            <CONNECTION INSTANCE="enable_reg" PORT="q"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="data_in" RIGHT="0" SIGIS="undef" SIGNAME="Fuente_datos_selector_data_in_data_out">
@@ -9605,6 +9603,40 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/enable_reg" HWVERSION="1.0" INSTANCE="enable_reg" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="register" VLNV="xilinx.com:module_ref:register:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="system_register_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="d" SIGIS="undef" SIGNAME="Control_uP_control_enable_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Control_uP_control_enable" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="Control_uP_control_reset_n_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Control_uP_control_reset_n" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="125000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="Fuente_datos_ADC_axis_red_pitaya_adc_0_adc_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Fuente_datos_ADC_axis_red_pitaya_adc_0" PORT="adc_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="q" SIGIS="undef" SIGNAME="enable_reg_q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="DAC_dds_compiler_0" PORT="aclken"/>
+            <CONNECTION INSTANCE="decimator_decimator_0" PORT="enable"/>
+            <CONNECTION INSTANCE="decimator_linear_mean_0" PORT="enable"/>
+            <CONNECTION INSTANCE="Fuente_datos_referencias_dds_compiler_0" PORT="aclken"/>
+            <CONNECTION INSTANCE="lock_in" PORT="enable_gral"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
     <MODULE COREREVISION="1" FULLNAME="/gpios_and_leds/drive_gpios_0" HWVERSION="1.0" INSTANCE="gpios_and_leds_drive_gpios_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="drive_gpios" VLNV="xilinx.com:module_ref:drive_gpios:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -9640,7 +9672,11 @@
             <CONNECTION INSTANCE="Fuente_datos_referencias_start_signal_generat_0" PORT="start"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="input_1" SIGIS="undef"/>
+        <PORT DIR="I" NAME="input_1" SIGIS="undef" SIGNAME="and_2_0_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="and_2_0" PORT="c"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" NAME="input_2" SIGIS="undef"/>
         <PORT DIR="I" NAME="input_3" SIGIS="undef"/>
         <PORT DIR="O" NAME="output_0" SIGIS="undef"/>
@@ -9667,7 +9703,11 @@
             <CONNECTION INSTANCE="Fuente_datos_referencias_start_signal_generat_0" PORT="start"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="signal_1" SIGIS="undef"/>
+        <PORT DIR="I" NAME="signal_1" SIGIS="undef" SIGNAME="and_2_0_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="and_2_0" PORT="c"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" NAME="signal_2" SIGIS="undef"/>
         <PORT DIR="I" NAME="signal_3" SIGIS="undef"/>
         <PORT DIR="I" NAME="signal_4" SIGIS="undef"/>
@@ -9699,9 +9739,9 @@
             <CONNECTION INSTANCE="Control_uP_control_reset_n" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="enable_gral" SIGIS="undef" SIGNAME="Control_uP_control_enable_Dout">
+        <PORT DIR="I" NAME="enable_gral" SIGIS="undef" SIGNAME="enable_reg_q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Control_uP_control_enable" PORT="Dout"/>
+            <CONNECTION INSTANCE="enable_reg" PORT="q"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="15" NAME="referencia_externa_seno" RIGHT="0" SIGIS="undef" SIGNAME="Fuente_datos_referencias_delay_axi_streaming_1_data_out">

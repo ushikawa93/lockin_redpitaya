@@ -1,7 +1,7 @@
 //Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-//Date        : Fri Aug 30 12:52:33 2024
+//Date        : Thu Sep  5 14:01:33 2024
 //Host        : DESKTOP-BRUHM76 running 64-bit major release  (build 9200)
 //Command     : generate_target system.bd
 //Design      : system
@@ -932,19 +932,23 @@ module gpios_and_leds_imp_198WUFD
    (exp_n_tri_io,
     exp_p_tri_io,
     input_0,
-    led_o);
+    led_o,
+    signal_1);
   inout [7:0]exp_n_tri_io;
   inout [7:0]exp_p_tri_io;
   input input_0;
   output [7:0]led_o;
+  input signal_1;
 
   wire [7:0]Net;
   wire [7:0]Net2;
   wire [7:0]drive_leds_0_signal_out;
   wire input_0_1;
+  wire level_detector_0_level_detected_1;
 
   assign input_0_1 = input_0;
   assign led_o[7:0] = drive_leds_0_signal_out;
+  assign level_detector_0_level_detected_1 = signal_1;
   system_drive_gpios_0_0 drive_gpios_0
        (.input_0(1'b0),
         .input_1(1'b0),
@@ -953,11 +957,13 @@ module gpios_and_leds_imp_198WUFD
         .signal_export(exp_n_tri_io[7:0]));
   system_drive_gpios_0_1 drive_gpios_1
        (.input_0(input_0_1),
+        .input_1(level_detector_0_level_detected_1),
         .input_2(1'b0),
         .input_3(1'b0),
         .signal_export(exp_p_tri_io[7:0]));
   system_drive_leds_0_0 drive_leds_0
        (.signal_0(input_0_1),
+        .signal_1(level_detector_0_level_detected_1),
         .signal_2(1'b0),
         .signal_3(1'b0),
         .signal_4(1'b0),
@@ -2254,7 +2260,7 @@ module referencias_imp_QXUIR5
   system_start_signal_generat_0_0 start_signal_generat_0
        (.approxM(approxM_1),
         .clk(ADC_adc_clk),
-        .data(xlslice_1_Dout[13:0]),
+        .data(xlslice_1_Dout),
         .data_valid(dds_compiler_0_m_axis_data_tvalid),
         .reset_n(aresetn_1),
         .start(start_signal_generat_0_start));
@@ -2565,7 +2571,7 @@ module s00_couplers_imp_1K2S800
         .s_axi_wvalid(s00_couplers_to_auto_pc_WVALID));
 endmodule
 
-(* CORE_GENERATION_INFO = "system,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=system,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=66,numReposBlks=46,numNonXlnxBlks=4,numHierBlks=20,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=14,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=15,da_board_cnt=4,da_clkrst_cnt=6,da_ps7_cnt=1,synth_mode=Global}" *) (* HW_HANDOFF = "system.hwdef" *) 
+(* CORE_GENERATION_INFO = "system,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=system,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=67,numReposBlks=47,numNonXlnxBlks=4,numHierBlks=20,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=15,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=15,da_board_cnt=4,da_clkrst_cnt=6,da_ps7_cnt=1,synth_mode=Global}" *) (* HW_HANDOFF = "system.hwdef" *) 
 module system
    (DDR_addr,
     DDR_ba,
@@ -2652,6 +2658,7 @@ module system
 
   wire ADC_adc_clk;
   wire ADC_adc_csn_o;
+  wire [0:0]Control_enable_from_ctrl;
   wire [7:0]Net;
   wire [7:0]Net2;
   wire adc_clk_n_i_1;
@@ -2669,6 +2676,7 @@ module system
   wire [1:0]daisy_n_i_1;
   wire [1:0]daisy_p_i_1;
   wire [7:0]drive_leds_0_signal_out;
+  wire enable_reg_q;
   wire gpio_io_i3_1;
   wire [63:0]lock_in_data_out_cuad;
   wire [63:0]lock_in_data_out_fase;
@@ -2703,7 +2711,6 @@ module system
   wire [31:0]selector_data_in_data_out;
   wire selector_data_in_data_out_valid;
   wire [0:0]uP_control_Dout;
-  wire [0:0]uP_control_Dout1;
   wire [31:0]uP_control_gpio2_io_o;
   wire [31:0]uP_control_gpio2_io_o1;
   wire [31:0]uP_control_gpio2_io_o2;
@@ -2763,13 +2770,13 @@ module system
         .data_source(uP_control_gpio2_io_o1),
         .decimate_mode(uP_control_gpio2_io_o3),
         .decimate_value(uP_control_gpio_io_o1),
-        .enable_from_ctrl(uP_control_Dout1),
+        .enable_from_ctrl(Control_enable_from_ctrl),
         .finished({gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1,gpio_io_i3_1}),
         .ref_phase(uP_control_gpio2_io_o2),
         .reset_n_from_ctrl(uP_control_Dout));
   DAC_imp_F94JA7 DAC
        (.aclk(ADC_adc_clk),
-        .aclken(uP_control_Dout1),
+        .aclken(enable_reg_q),
         .aresetn(uP_control_Dout),
         .cfg_data(cfg_data_1),
         .dac_clk_o(axis_red_pitaya_dac_0_dac_clk),
@@ -2778,7 +2785,7 @@ module system
         .dac_sel_o(axis_red_pitaya_dac_0_dac_sel),
         .dac_wrt_o(axis_red_pitaya_dac_0_dac_wrt));
   Fuente_datos_imp_1XV3VM Fuente_datos
-       (.aclken(uP_control_Dout1),
+       (.aclken(enable_reg_q),
         .adc_clk(ADC_adc_clk),
         .adc_clk_n_i(adc_clk_n_i_1),
         .adc_clk_p_i(adc_clk_p_i_1),
@@ -2806,15 +2813,21 @@ module system
         .data_out(axi_str_rxd_tdata_1),
         .data_out_valid(axi_str_rxd_tvalid1_1),
         .decimate_value(uP_control_gpio_io_o1),
-        .enable(uP_control_Dout1),
+        .enable(enable_reg_q),
         .finish(selector_data_in1_finish),
         .reset_n(uP_control_Dout),
         .sel(uP_control_gpio2_io_o3));
+  system_register_0_0 enable_reg
+       (.clk(ADC_adc_clk),
+        .d(Control_enable_from_ctrl),
+        .q(enable_reg_q),
+        .reset_n(uP_control_Dout));
   gpios_and_leds_imp_198WUFD gpios_and_leds
        (.exp_n_tri_io(exp_n_tri_io[7:0]),
         .exp_p_tri_io(exp_p_tri_io[7:0]),
         .input_0(referencias_start),
-        .led_o(drive_leds_0_signal_out));
+        .led_o(drive_leds_0_signal_out),
+        .signal_1(gpio_io_i3_1));
   system_signal_processing_LI_0_0 lock_in
        (.clk(ADC_adc_clk),
         .data_in(selector_data_in_data_out),
@@ -2822,7 +2835,7 @@ module system
         .data_out_cuad(lock_in_data_out_cuad),
         .data_out_fase(lock_in_data_out_fase),
         .datos_promediados(lock_in_datos_promediados),
-        .enable_gral(uP_control_Dout1),
+        .enable_gral(enable_reg_q),
         .parameter_in_0(uP_control_gpio_io_o),
         .parameter_in_1(uP_control_gpio2_io_o),
         .processing_finished(lock_in_processing_finished),

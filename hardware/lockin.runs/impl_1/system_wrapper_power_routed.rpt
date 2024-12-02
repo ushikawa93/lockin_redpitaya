@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date             : Fri Aug 30 13:00:40 2024
+| Date             : Thu Sep  5 14:10:40 2024
 | Host             : DESKTOP-BRUHM76 running 64-bit major release  (build 9200)
 | Command          : report_power -file system_wrapper_power_routed.rpt -pb system_wrapper_power_summary_routed.pb -rpx system_wrapper_power_routed.rpx
 | Design           : system_wrapper
@@ -52,15 +52,15 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.038 |        8 |       --- |             --- |
-| Slice Logic              |     0.003 |    11966 |       --- |             --- |
-|   LUT as Logic           |     0.002 |     3746 |     17600 |           21.28 |
-|   CARRY4                 |    <0.001 |      210 |      4400 |            4.77 |
-|   Register               |    <0.001 |     7316 |     35200 |           20.78 |
+| Clocks                   |     0.039 |        8 |       --- |             --- |
+| Slice Logic              |     0.003 |    11963 |       --- |             --- |
+|   LUT as Logic           |     0.002 |     3747 |     17600 |           21.29 |
+|   CARRY4                 |    <0.001 |      206 |      4400 |            4.68 |
+|   Register               |    <0.001 |     7305 |     35200 |           20.75 |
 |   LUT as Distributed RAM |    <0.001 |       22 |      6000 |            0.37 |
 |   LUT as Shift Register  |    <0.001 |       64 |      6000 |            1.07 |
-|   Others                 |     0.000 |      407 |       --- |             --- |
-| Signals                  |     0.005 |     9239 |       --- |             --- |
+|   Others                 |     0.000 |      410 |       --- |             --- |
+| Signals                  |     0.005 |     9221 |       --- |             --- |
 | Block RAM                |     0.002 |      3.5 |        60 |            5.83 |
 | MMCM                     |     0.107 |        1 |         2 |           50.00 |
 | DSPs                     |     0.000 |        2 |        80 |            2.50 |
@@ -163,7 +163,7 @@ Table of Contents
 |     Control                 |     1.322 |
 |       uP                    |     1.297 |
 |       uP_control            |     0.025 |
-|     DAC                     |     0.110 |
+|     DAC                     |     0.109 |
 |       axis_red_pitaya_dac_0 |     0.001 |
 |       clk_wiz_0             |     0.107 |
 |     Fuente_datos            |     0.002 |

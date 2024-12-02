@@ -1,0 +1,34 @@
+Medidas de error -> f: 99996.104836, N: 1, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 10.000000
+Media[mV]: 508.890704 
+Desviacion estandar[mV]: 0.224201 
+
+Medidas de error -> f: 99996.104836, N: 32, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 320.000000
+Media[mV]: 509.621288 
+Desviacion estandar[mV]: 0.012338 
+
+Medidas de error -> f: 99996.104836, N: 64, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 640.000000
+Media[mV]: 509.629300 
+Desviacion estandar[mV]: 0.011845 
+
+Medidas de error -> f: 99996.104836, N: 128, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 1280.000000
+Media[mV]: 509.622084 
+Desviacion estandar[mV]: 0.006656 
+
+Medidas de error -> f: 99996.104836, N: 512, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 5120.000000
+Media[mV]: 509.636470 
+Desviacion estandar[mV]: 0.007303 
+
+Medidas de error -> f: 99996.104836, N: 1024, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 10240.000000
+Media[mV]: 509.627493 
+Desviacion estandar[mV]: 0.004692 
+
+Medidas de error -> f: 99996.104836, N: 50000, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 500000.000000
+Media[mV]: 509.603568 
+Desviacion estandar[mV]: 0.010775 

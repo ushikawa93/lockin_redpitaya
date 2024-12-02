@@ -78,7 +78,6 @@ wire data_fase_valid;
 wire lockin_finalizado;
 wire lockin_ready;	// El lockin esta listo para calcular
 
-
 lockin_segmentado lock_in(
 
 	// Entradas de control
@@ -90,15 +89,16 @@ lockin_segmentado lock_in(
 	.ptos_x_ciclo(M),
 	.frames_integracion(N_ma),
 	
-	// Entrada avalon streaming
-	.data_valid(data_in_lia_valid),
-	.data(data_in_lia),	
-	
-	.start_signal(start_signal),
-	
+	// Referencia externa
+	.referencia_externa(1),
+	.sync(start_signal),
 	.referencia_externa_sen(ref_sen),
 	.referencia_externa_cos(ref_cos),
 	.referencia_externa_valid(ref_valid),
+	
+	// Entrada avalon streaming
+	.data_valid(data_in_lia_valid),
+	.data(data_in_lia),	
 		
 	// Salidas avalon streaming
 	.data_out_fase(data_fase),
@@ -109,10 +109,11 @@ lockin_segmentado lock_in(
 	
 	// Salidas auxiliares
 	.lockin_ready(lockin_ready),
-	.calculo_finalizado(lockin_finalizado),
-	.datos_promediados(datos_promediados)
+	.n_datos_promediados(datos_promediados),
+	.fifos_llenos(lockin_finalizado)
 	
 );
+
 
 //////////////////////////////////////////////////
 // ================ Salidas  ===============

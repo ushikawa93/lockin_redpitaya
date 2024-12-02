@@ -85,7 +85,7 @@ int main(int argc, char **argv)
 	uint32_t M;
 	uint32_t N_ma;
 	uint32_t decimator;
-	uint32_t decimator_method; // o para decimacion comun 1 para promediacion lineal
+	uint32_t decimator_method; // 0 para decimacion comun 1 para promediacion lineal
 	uint32_t sel;
 	double f_dac_real,f_ref_real;
 

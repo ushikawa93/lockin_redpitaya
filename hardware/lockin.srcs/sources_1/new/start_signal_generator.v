@@ -1,11 +1,13 @@
 `timescale 1ns / 1ps
 
-module start_signal_generator(
+module start_signal_generator#(
+    parameter DATA_WIDTH = 16 
+)(
 
     input clk,
     input reset_n,
     
-    input [13:0] data,
+    input [DATA_WIDTH-1:0] data,
     input data_valid,
     
     input [31:0] approxM, 
@@ -44,7 +46,7 @@ begin
         begin
             out_register <= 0;
             counter <= 0;
-            signo_reg <= data[13];
+            signo_reg <= data[DATA_WIDTH-1];
             signo_reg_reg <= signo_reg;
             state <= ((!signo_reg) && (signo_reg_reg))? habilitar_salida: idle;        
         end

@@ -70,6 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 1
 set_msg_config -id {HDL-1065} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z010clg400-1
@@ -105,15 +106,16 @@ read_verilog -library xil_defaultlib {
   C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/new/mux.v
   C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/new/decimator.v
   C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/new/linear_mean.v
-  C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/new/start_signal_generator.v
   C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/new/delay_axi_streaming.v
+  C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/new/start_signal_generator.v
   C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/imports/user_ip/my_cores/signal_split.v
-  C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/imports/user_ip/my_cores/filtro_ma.v
+  C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/imports/user_ip/my_cores/filtro_ma_con_sync.v
   C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/imports/user_ip/my_cores/lockin_segmentado.v
   C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/imports/user_ip/my_cores/multiplicador.v
   C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/imports/user_ip/my_cores/multiplicate_ref_2.v
   C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/imports/user_ip/my_cores/referencias.v
   C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/imports/user_ip/my_cores/signal_processing_LI.v
+  C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/new/register.v
   C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/imports/system_wrapper.v
 }
 add_files C:/Users/MatiOliva/Documents/00-lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd

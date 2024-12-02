@@ -1,0 +1,20 @@
+Medidas de error -> f: 99996.104836, N: 50000, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 500000.000000
+Media[mV]: 509.576975 
+Desviacion estandar[mV]: 0.006368 
+Medidas de error -> f: 99996.104836, N: 32, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 320.000000
+Media[mV]: 509.575766 
+Desviacion estandar[mV]: 0.017104 
+Medidas de error -> f: 99996.104836, N: 1, n_iteraciones: 100, fuente: 1 
+Constante de tiempo[us]: 10.000000
+Media[mV]: 508.857022 
+Desviacion estandar[mV]: 0.201206 
+Medidas de error -> f: 99996.104836, N: 1, n_iteraciones: 1000, fuente: 1 
+Constante de tiempo[us]: 10.000000
+Media[mV]: 508.848163 
+Desviacion estandar[mV]: 0.183195 
+Medidas de error -> f: 99996.104836, N: 32, n_iteraciones: 1000, fuente: 1 
+Constante de tiempo[us]: 320.000000
+Media[mV]: 509.584446 
+Desviacion estandar[mV]: 0.013563 

@@ -31,6 +31,7 @@ class redP_handler:
         self.set_frec_dac(1000000)
         self.set_decimator_method(DecimatorMethod.DISCARD)
         
+        
 
     def set_IP(self, ip_):
         if self.is_valid_IP(ip_):
@@ -113,7 +114,20 @@ class redP_handler:
         print(f"Comando enviado a la FPGA: {command}")
         subprocess.run(command, shell=True)
         return redP_handler.leer_archivo_barrido_en_f("../datos_adquiridos/barrido_en_f.dat")
+    
+    @staticmethod
+    def convertir2volt_adc(tension):
+        gain_error = 1.131;
+        offset_error = -0.015 ;
+        medido = (tension)/8192;
+        return gain_error*(medido-offset_error);
         
+    @staticmethod
+    def convertir2volt_lockin(tension):
+        medido = (tension)/8192;
+        correccion = 508/478; #Medido empiricamente
+               
+        return (medido*correccion);
 
     @staticmethod
     def leerArchivoLockin(nombreArchivo):

@@ -17,3 +17,4 @@ set_false_path -from [get_clocks adc_clk] -to [get_clocks clk_fpga_0]
 # El problema es por la division para sacar el intervalo pero no es critico (se hace una sola vez)
 
 set_false_path -from [get_pins {system_i/lock_in/inst/lock_in/multiplicador/ref/M_reg[*]_replica_3/C}] -to [get_pins {system_i/lock_in/inst/lock_in/multiplicador/ref/interval_reg[*]/D}]
+set_false_path -from [get_pins {system_i/lock_in/inst/lock_in/multiplicador/ref/M_reg[*]/C}] -to [get_pins {system_i/lock_in/inst/lock_in/multiplicador/ref/interval_reg[*]/D}]

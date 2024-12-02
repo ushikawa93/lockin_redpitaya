@@ -2,21 +2,17 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "system_start_signal_generat_0_0",
-    "cell_name": "Fuente_datos/referencias/start_signal_generat_0",
+    "cell_name": "start_signal_generat_0",
     "component_reference": "xilinx.com:module_ref:start_signal_generator:1.0",
     "ip_revision": "1",
     "gen_directory": "../../../../../../lockin.gen/sources_1/bd/system/ip/system_start_signal_generat_0_0",
     "parameters": {
       "component_parameters": {
-        "idle": [ { "value": "1", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "habilitar_salida": [ { "value": "2", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "esperar": [ { "value": "3", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "DATA_WIDTH": [ { "value": "16", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Component_Name": [ { "value": "system_start_signal_generat_0_0", "resolve_type": "user", "usage": "all" } ]
       },
       "model_parameters": {
-        "idle": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "habilitar_salida": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "esperar": [ { "value": "3", "resolve_type": "generated", "format": "long", "usage": "all" } ]
+        "DATA_WIDTH": [ { "value": "16", "resolve_type": "generated", "format": "long", "usage": "all" } ]
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "zynq" } ],
@@ -48,7 +44,7 @@
       "ports": {
         "clk": [ { "direction": "in" } ],
         "reset_n": [ { "direction": "in" } ],
-        "data": [ { "direction": "in", "size_left": "13", "size_right": "0" } ],
+        "data": [ { "direction": "in", "size_left": "15", "size_right": "0" } ],
         "data_valid": [ { "direction": "in" } ],
         "approxM": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
         "start": [ { "direction": "out" } ]
