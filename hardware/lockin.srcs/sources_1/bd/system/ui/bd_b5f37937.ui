@@ -1,0 +1,39 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.859746",
+   "Default View_TopLeft":"-140,-59",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS
+#  -string -flagsOSRD
+preplace port port-id_aclk -pg 1 -lvl 0 -x 0 -y 50 -defaultsOSRD
+preplace port port-id_dac_clk_o -pg 1 -lvl 4 -x 970 -y 130 -defaultsOSRD
+preplace port port-id_dac_rst_o -pg 1 -lvl 4 -x 970 -y 150 -defaultsOSRD
+preplace port port-id_dac_sel_o -pg 1 -lvl 4 -x 970 -y 170 -defaultsOSRD
+preplace port port-id_dac_wrt_o -pg 1 -lvl 4 -x 970 -y 190 -defaultsOSRD
+preplace port port-id_aclken -pg 1 -lvl 0 -x 0 -y 140 -defaultsOSRD
+preplace port port-id_aresetn -pg 1 -lvl 0 -x 0 -y 160 -defaultsOSRD
+preplace portBus dac_dat_o -pg 1 -lvl 4 -x 970 -y 210 -defaultsOSRD
+preplace portBus cfg_data -pg 1 -lvl 0 -x 0 -y 70 -defaultsOSRD
+preplace inst axis_red_pitaya_dac_0 -pg 1 -lvl 3 -x 800 -y 170 -defaultsOSRD
+preplace inst dds_compiler_0 -pg 1 -lvl 2 -x 460 -y 90 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 2 -x 460 -y 250 -defaultsOSRD
+preplace inst axis_constant_0 -pg 1 -lvl 1 -x 140 -y 60 -defaultsOSRD
+preplace netloc Net1 1 0 1 NJ 70
+preplace netloc aclken_1 1 0 2 NJ 140 260J
+preplace netloc aresetn_1 1 0 2 NJ 160 280J
+preplace netloc axis_red_pitaya_adc_0_adc_clk 1 0 3 20 130 270 180 N
+preplace netloc axis_red_pitaya_dac_0_dac_clk 1 3 1 NJ 130
+preplace netloc axis_red_pitaya_dac_0_dac_dat 1 3 1 NJ 210
+preplace netloc axis_red_pitaya_dac_0_dac_rst 1 3 1 NJ 150
+preplace netloc axis_red_pitaya_dac_0_dac_sel 1 3 1 NJ 170
+preplace netloc axis_red_pitaya_dac_0_dac_wrt 1 3 1 NJ 190
+preplace netloc clk_wiz_0_clk_out1 1 2 1 640 200n
+preplace netloc clk_wiz_0_locked 1 2 1 650 220n
+preplace netloc dds_compiler_0_m_axis_data_tdata 1 2 1 650 90n
+preplace netloc dds_compiler_0_m_axis_data_tvalid 1 2 1 640 110n
+preplace netloc axis_constant_0_M_AXIS 1 1 1 N 60
+levelinfo -pg 1 0 140 460 800 970
+pagesize -pg 1 -db -bbox -sgen -140 -10 1130 320
+"
+}
+

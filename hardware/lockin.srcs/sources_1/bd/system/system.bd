@@ -87,8 +87,8 @@
         },
         "data_in_sim": ""
       },
-      "enable_reg": "",
-      "lock_in": ""
+      "lock_in": "",
+      "enable_reg": ""
     },
     "interface_ports": {
       "Vp_Vn": {
@@ -5055,6 +5055,9 @@
             "xci_path": "ip\\system_mux_0_0\\system_mux_0_0.xci",
             "inst_hier_path": "Fuente_datos/selector_data_in",
             "parameters": {
+              "DATA_IN_WIDTH": {
+                "value": "14"
+              },
               "DATA_OUT_WIDTH": {
                 "value": "32"
               }
@@ -6000,43 +6003,6 @@
           }
         }
       },
-      "enable_reg": {
-        "vlnv": "xilinx.com:module_ref:register:1.0",
-        "xci_name": "system_register_0_0",
-        "xci_path": "ip\\system_register_0_0\\system_register_0_0.xci",
-        "inst_hier_path": "enable_reg",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "register",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "d": {
-            "direction": "I"
-          },
-          "reset_n": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "125000000",
-                "value_src": "const_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "system_axis_red_pitaya_adc_0_0_adc_clk",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "q": {
-            "direction": "O"
-          }
-        }
-      },
       "lock_in": {
         "vlnv": "xilinx.com:module_ref:signal_processing_LI:1.0",
         "xci_name": "system_signal_processing_LI_0_0",
@@ -6131,6 +6097,43 @@
             "right": "0"
           }
         }
+      },
+      "enable_reg": {
+        "vlnv": "xilinx.com:module_ref:register:1.0",
+        "xci_name": "system_register_0_0",
+        "xci_path": "ip\\system_register_0_0\\system_register_0_0.xci",
+        "inst_hier_path": "enable_reg",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "register",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "d": {
+            "direction": "I"
+          },
+          "reset_n": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "125000000",
+                "value_src": "const_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "system_axis_red_pitaya_adc_0_0_adc_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "q": {
+            "direction": "O"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -6154,8 +6157,8 @@
           "DAC/aclk",
           "decimator/clk_in",
           "Control/adc_clk",
-          "enable_reg/clk",
-          "lock_in/clk"
+          "lock_in/clk",
+          "enable_reg/clk"
         ]
       },
       "ADC_adc_csn_o": {
@@ -6363,8 +6366,8 @@
           "DAC/aresetn",
           "decimator/reset_n",
           "Fuente_datos/aresetn",
-          "enable_reg/reset_n",
-          "lock_in/reset_n"
+          "lock_in/reset_n",
+          "enable_reg/reset_n"
         ]
       },
       "uP_control_gpio2_io_o": {

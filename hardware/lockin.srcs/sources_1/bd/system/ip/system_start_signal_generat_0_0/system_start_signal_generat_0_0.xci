@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "system_start_signal_generat_0_0",
-    "cell_name": "start_signal_generat_0",
+    "cell_name": "Fuente_datos/referencias/start_signal_generat_0",
     "component_reference": "xilinx.com:module_ref:start_signal_generator:1.0",
     "ip_revision": "1",
     "gen_directory": "../../../../../../lockin.gen/sources_1/bd/system/ip/system_start_signal_generat_0_0",

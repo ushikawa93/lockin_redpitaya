@@ -1,0 +1,16 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Mon Mar 17 19:41:05 2025
+# Process ID: 2780
+# Current directory: C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent7528 C:\Users\mati9\OneDrive\Documentos\00-RedPitaya\lockin_redpitaya\hardware\lockin.xpr
+# Log file: C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/vivado.log
+# Journal file: C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware\vivado.jou
+# Running On: DESKTOP-4F847D8, OS: Windows, CPU Frequency: 2400 MHz, CPU Physical cores: 2, Host memory: 4204 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.xpr
+update_compile_order -fileset sources_1
+open_bd_design {C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.srcs/sources_1/bd/system/system.bd}

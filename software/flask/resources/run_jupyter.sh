@@ -1,0 +1,1 @@
+jupyter notebook --NotebookApp.allow_origin='*' --NotebookApp.token='' --NotebookApp.password='' --port=9999 --no-browser --ip=0.0.0.0 --allow-root --notebook-dir=/root/flask/red_pitaya_python

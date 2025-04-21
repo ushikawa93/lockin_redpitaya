@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="61" Path="C:/Users/mati9/OneDrive/Documentos/03-RepositoriosTesis/lockin_redpitaya/hardware/lockin.xpr">
+<Project Version="7" Minor="61" Path="C:/Users/mati9/OneDrive/Documentos/00-RedPitaya/lockin_redpitaya/hardware/lockin.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="609e9164915b454c8a5ae3b4ab015053"/>

@@ -1,0 +1,13 @@
+[Unit]
+Description=Servicio para ejecutar lockin_web.py
+After=network.target
+
+[Service]
+ExecStart=/bin/bash -c "/root/flask/resources/run_jupyter.sh & /usr/bin/python3 /root/flask/lockin/lockin_web.py"
+WorkingDirectory=/root/flask/lockin
+User=root 
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

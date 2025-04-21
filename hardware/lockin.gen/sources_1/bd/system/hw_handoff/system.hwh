@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Sep  5 14:01:35 2024" VIVADOVERSION="2022.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Mar 18 20:02:40 2025" VIVADOVERSION="2022.2">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z010" NAME="system" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -2813,8 +2813,8 @@
             <CONNECTION INSTANCE="Fuente_datos_referencias_delay_axi_streaming_0" PORT="reset_n"/>
             <CONNECTION INSTANCE="Fuente_datos_referencias_delay_axi_streaming_1" PORT="reset_n"/>
             <CONNECTION INSTANCE="Fuente_datos_referencias_start_signal_generat_0" PORT="reset_n"/>
-            <CONNECTION INSTANCE="enable_reg" PORT="reset_n"/>
             <CONNECTION INSTANCE="lock_in" PORT="reset_n"/>
+            <CONNECTION INSTANCE="enable_reg" PORT="reset_n"/>
             <CONNECTION INSTANCE="Control_uP_fifo_1" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="Control_uP_axis_clock_converter_0" PORT="s_axis_aresetn"/>
             <CONNECTION INSTANCE="Control_uP_axis_clock_converter_0" PORT="m_axis_aresetn"/>
@@ -8663,8 +8663,8 @@
             <CONNECTION INSTANCE="decimator_decimator_0" PORT="clk"/>
             <CONNECTION INSTANCE="decimator_linear_mean_0" PORT="clk"/>
             <CONNECTION INSTANCE="Control_uP_axis_clock_converter_0" PORT="s_axis_aclk"/>
-            <CONNECTION INSTANCE="enable_reg" PORT="clk"/>
             <CONNECTION INSTANCE="lock_in" PORT="clk"/>
+            <CONNECTION INSTANCE="enable_reg" PORT="clk"/>
             <CONNECTION INSTANCE="Fuente_datos_referencias_dds_compiler_0" PORT="aclk"/>
             <CONNECTION INSTANCE="Fuente_datos_referencias_axis_constant_0" PORT="aclk"/>
             <CONNECTION INSTANCE="Fuente_datos_referencias_delay_axi_streaming_0" PORT="clk"/>
