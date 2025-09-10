@@ -1,11 +1,36 @@
-
-#///// ==================================== barrido_ctes_tiempo.sh ========================================== /////
-#///// ====================================================================================================== /////
-#///// Scipt que utiliza el programa barrido_ctes_tiempo.c para calcular el lockin con la FPGA en distintas N /////
-#///// ====================================================================================================== /////
+# ============================================================================================================
+# Script: barrido_ctes_tiempo.sh
+# ============================================================================================================
+# Descripción:
+#   Este script ejecuta el programa barrido_ctes_tiempo.c en la FPGA (Red Pitaya) para calcular el lock-in
+#   en diferentes valores de N (tiempo de integración). Los resultados se copian luego a la PC HOST.
 #
-# Script para calcular lockin en la FPGA y mostrar resultados
-# Uso -> barrido_ctes_tiempo frec N_inicial N_final iteraciones fuente nombre_archivo_salida ip
+# Uso:
+#   ./barrido_ctes_tiempo.sh frec N_inicial N_final iteraciones fuente nombre_archivo_salida ip
+#
+# Parámetros:
+#   frec                 -> Frecuencia de referencia (Hz).
+#   N_inicial            -> Valor inicial de N (cantidad de ciclos promediados).
+#   N_final              -> Valor final de N.
+#   iteraciones          -> Cantidad de iteraciones para promediar los resultados.
+#   fuente               -> Fuente de señal (definición en el código C).
+#   nombre_archivo_salida-> Nombre del archivo de salida con los datos adquiridos.
+#   ip                   -> Dirección IP de la Red Pitaya.
+#
+# Funcionamiento:
+#   1. Copia el código fuente barrido_ctes_tiempo.c a la Red Pitaya vía scp.
+#   2. Compila el programa directamente en la FPGA usando gcc.
+#   3. Ejecuta el programa con los parámetros indicados.
+#   4. Copia el archivo de resultados a la carpeta ../datos_adquiridos de la PC HOST.
+#
+# Notas:
+#   - Requiere acceso SSH con usuario root en la Red Pitaya.
+#   - Los parámetros tienen valores por defecto para facilitar la ejecución rápida.
+#   - Se recomienda verificar la conectividad antes de ejecutar el script.
+#
+# Autor: Matías Oliva
+# Fecha: 2025
+# ============================================================================================================
 
 frec=${1:-2}
 N_inicial=${2:-1000000}

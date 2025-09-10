@@ -11,3 +11,7 @@
 	-> Para esto basta con agregar ese archivo a /etc/systemd/systemd/sys
 	
 4) Copiar la carpeta flask a /root/
+
+# Usos alternativos:
+
+Si no se quiere montar el web_server la operación puede controlarse mediante programas escritos en c, disponibles en c_program. Para gestionar la operación de estos desde una computadora host pueden emplearse los shell scripts disponibles en shell_scripts. Estos a su vez pueden controlarse desde rutinas en Python disponibles en Python.

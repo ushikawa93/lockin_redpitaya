@@ -1,4 +1,37 @@
 # -*- coding: utf-8 -*-
+
+# ===================================================================================== #
+# ========================== Control y Adquisición desde PC Host ====================== #
+# ===================================================================================== #
+#
+# Script en Python que permite controlar y ejecutar la lógica de lock-in digital 
+# implementada en la Red Pitaya desde una computadora host conectada por red.
+#
+# Funcionalidades principales:
+#   - Configuración remota de parámetros de adquisición:
+#       · Frecuencia de referencia (frec_ref)
+#       · Frecuencia de DAC (frec_dac)
+#       · Factor de decimación y método de descarte
+#       · Número de promediaciones (N)
+#   - Opción de cargar el bitstream en la FPGA (solo necesario la primera vez).
+#   - Ejecución de medidas lock-in para obtener:
+#       · Magnitud R (convertida a voltios)
+#       · Fase φ
+#       · Señales crudas del ADC
+#   - Visualización opcional de las muestras adquiridas desde el ADC.
+#
+# Dependencias:
+#   - red_pitaya_class.py  (clase de control de la Red Pitaya)
+#   - matplotlib
+#
+# Uso:
+#   1. Configurar la IP de la Red Pitaya.
+#   2. Ajustar parámetros de adquisición (frecuencias, N, decimación).
+#   3. Ejecutar el script para medir y graficar resultados.
+#
+# ===================================================================================== #
+
+
 """
 Created on Thu Nov 23 12:47:18 2023
 

@@ -1,9 +1,42 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Aug 30 14:50:06 2024
 
-@author: MatiOliva
-"""
+# ===================================================================================== #
+# =============== Barrido en Frecuencia con Lock-in en Red Pitaya ===================== #
+# ===================================================================================== #
+#
+# Script en Python que realiza un barrido en frecuencia utilizando la clase 
+# `redP_handler` y la Red Pitaya configurada como lock-in digital.
+#
+# Funcionalidad:
+#   - Configuración de la conexión a la Red Pitaya mediante IP.
+#   - Carga opcional del bitstream de la FPGA (solo la primera vez).
+#   - Selección del modo de datos (ADC) y método de decimación (promediado).
+#   - Definición de parámetros de medición:
+#       · N: número de promediaciones
+#       · decimator: factor de decimación
+#       · f_inicial, f_final, f_step: rango y paso de frecuencias
+#   - Ejecución del barrido llamando a `rp.barrido_en_frecuencia`.
+#   - Cálculo automático de la frecuencia de corte:
+#       · Busca el punto donde la fase es aproximadamente -45°
+#       · Permite configurar si se trata de un filtro pasa-bajos (`pasa_bajos=True`)
+#   - Visualización en dos gráficos:
+#       · f vs r (magnitud de la señal lock-in)
+#       · f vs phi (fase en radianes o grados)
+#     Incluye marcación y etiqueta de la frecuencia de corte.
+#
+# Dependencias:
+#   - red_pitaya_class (clase redP_handler, DataMode, DecimatorMethod)
+#   - matplotlib.pyplot
+#   - numpy
+#
+# Uso típico:
+#   1. Ajustar la IP de la Red Pitaya.
+#   2. (Opcional) habilitar `set_bitstream=True` la primera vez para cargar el bitstream.
+#   3. Configurar parámetros N, decimador y rango de frecuencias.
+#   4. Ejecutar el script para obtener curvas de magnitud y fase, junto con la frecuencia de corte.
+#
+# ===================================================================================== #
+
 
 # Barrido en frecuencia del lockin en red pitaya...
 

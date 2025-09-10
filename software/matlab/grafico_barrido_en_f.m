@@ -1,3 +1,34 @@
+% =========================================================================
+% Script: barrido_en_frecuencia_RP_li.m
+% =========================================================================
+% DescripciÃ³n:
+%   Este script genera y analiza barridos en frecuencia obtenidos con la
+%   Red Pitaya (RP-li), comparÃ¡ndolos con mediciones realizadas con un
+%   lock-in SR865 y con la respuesta teÃ³rica de un filtro RC.
+%
+% Funcionalidades principales:
+%   - Lectura de datos medidos en la FPGA desde archivos .dat.
+%   - NormalizaciÃ³n y graficado de magnitud y fase de la respuesta medida.
+%   - (Opcional) Lectura de datos medidos con SR865 para comparaciÃ³n.
+%   - CÃ¡lculo de la respuesta teÃ³rica de un filtro RC (magnitud y fase).
+%   - CÃ¡lculo de la frecuencia de corte teÃ³rica y marcado en los grÃ¡ficos.
+%   - GeneraciÃ³n de grÃ¡ficos en escala logarÃ­tmica (magnitud y fase),
+%     con opciÃ³n de aÃ±adir ventanas de zoom.
+%   - ComparaciÃ³n cuantitativa entre datos RP y SR865 (diferencia media
+%     y mÃ¡xima en magnitud y fase).
+%
+% Notas:
+%   - Varias secciones estÃ¡n comentadas (lectura de SR865, zooms,
+%     publicaciÃ³n de figuras).
+%   - El script usa la funciÃ³n auxiliar abrir_archivo_ignorando_header.m
+%     para leer archivos de datos ignorando encabezados.
+%   - ParÃ¡metros R y C definen el filtro RC simulado.
+%
+% Autor: MatÃ­as Oliva
+% Fecha: 2025
+% =========================================================================
+
+
 %% Graficos de barrido en frecuencia para RP-li
 
 %% Medidas obtenidas en la FPGA:
@@ -19,7 +50,7 @@ phi = data_adc(:,3); % Fase medida
 % Abrir el archivo 1 para lectura
 %fileID = fopen(archivo_sr865, 'r');
 
-% Leer la primera línea (información de encabezado)
+% Leer la primera lï¿½nea (informaciï¿½n de encabezado)
 %fgetl(fileID);
 
 % Leer los datos usando textscan
@@ -33,7 +64,6 @@ phi = data_adc(:,3); % Fase medida
 %phi_SR865 = data1{5};
 
 
-
 %% Datos teoricos -> Transferencia de filtro RC
 
 R = 680; % Resistencia de 10 kOhm
@@ -42,23 +72,23 @@ C = 10e-9; % Capacitancia de 1 nF
 %H = 1 ./ (1 + 1i*2*pi*R*C.*f); % Respuesta en frecuencia del filtro RC pasa bajos
 H = 1i*R*C*2*pi*f ./( 1 + 1i*2*pi*R*C.*f  );
 
-% Cálculo de la magnitud y fase de la respuesta teórica
+% Cï¿½lculo de la magnitud y fase de la respuesta teï¿½rica
 magnitud_teorica = abs(H);
 fase_teorica = angle(H) * (180/pi); % Convertir de radianes a grados
 
 % Calcular la frecuencia de corte (fase = -45 grados)
 fcorte = 1 / (2 * pi * R * C);
 
-%% Gráficos
+%% Grï¿½ficos
 
 figure('Position', [100, 100, 800, 600]);
 markersize = 10; linewidth = 1;
 
-% Primer gráfico: Magnitud
+% Primer grï¿½fico: Magnitud
 subplot(2, 1, 1); 
 semilogx(f, r, '-ko', 'DisplayName', 'Datos medidos (Red Pitaya)','LineWidth', linewidth,'MarkerSize',markersize); hold on;
 %semilogx(f, R_SR865, '-kx', 'DisplayName', 'Datos medidos (SR865)','LineWidth', linewidth,'MarkerSize',markersize); 
-semilogx(f, magnitud_teorica, '-k^', 'DisplayName', 'Teórico RC','LineWidth', linewidth,'MarkerSize',markersize); 
+semilogx(f, magnitud_teorica, '-k^', 'DisplayName', 'Teï¿½rico RC','LineWidth', linewidth,'MarkerSize',markersize); 
 plot([fcorte fcorte], ylim, '--k','DisplayName', 'Frecuencia de corte','LineWidth', linewidth,'MarkerSize',markersize); 
 text(fcorte, min(ylim) + (max(ylim) - min(ylim)) * 0.1, sprintf('%.1f Hz', fcorte), 'Color', 'black', 'FontSize', 10); 
 xlim([0,f(end)]); 
@@ -70,30 +100,30 @@ ylabel('Magnitud (dB)');
 title('Respuesta en frecuencia: Magnitud');
 %legend show;
 
-% Crear el gráfico de zoom para Magnitud
-% axes('Position', [0.25, 0.65, 0.2, 0.15]); % Ajusta la posición y el tamaño del zoom
+% Crear el grï¿½fico de zoom para Magnitud
+% axes('Position', [0.25, 0.65, 0.2, 0.15]); % Ajusta la posiciï¿½n y el tamaï¿½o del zoom
 % box on;
 % semilogx(f, r, '-ko', 'LineWidth', linewidth,'MarkerSize',markersize); hold on;
 % semilogx(f, R_SR865, '-kx', 'LineWidth', linewidth,'MarkerSize',markersize); 
 % semilogx(f, magnitud_teorica, '-k^', 'LineWidth', linewidth,'MarkerSize',markersize); 
 % xlim([fcorte * 0.97, fcorte * 1.02]); % Ajusta la ventana de zoom alrededor de fcorte
-% ylim([0.70 0.72]); % Ajusta los límites de Y según sea necesario
+% ylim([0.70 0.72]); % Ajusta los lï¿½mites de Y segï¿½n sea necesario
 % title("Zoom en amplitud");
 % grid on;
 
-% Segundo gráfico: Fase
+% Segundo grï¿½fico: Fase
 subplot(2, 1, 2); 
 semilogx(f, phi, '-ko', 'DisplayName', 'Datos medidos (Red Pitaya)','LineWidth', linewidth,'MarkerSize',markersize); hold on;
 %semilogx(f, phi_SR865, '-kx', 'DisplayName', 'Datos medidos (SR865)','LineWidth', linewidth,'MarkerSize',markersize); 
-semilogx(f, fase_teorica, '-k^', 'DisplayName', 'Teórico RC','LineWidth', linewidth,'MarkerSize',markersize); 
+semilogx(f, fase_teorica, '-k^', 'DisplayName', 'Teï¿½rico RC','LineWidth', linewidth,'MarkerSize',markersize); 
 plot([fcorte fcorte], ylim, '--k','DisplayName', 'Frecuencia de corte','LineWidth', linewidth,'MarkerSize',markersize); 
 text(fcorte, min(ylim) + (max(ylim) - min(ylim)) * 0.1, sprintf('%.1f Hz', fcorte), 'Color', 'black', 'FontSize', 10); 
 xlim([0,f(end)]); 
 
-% Añadir la leyenda
-lgd = legend('Datos medidos (Red Pitaya)','Datos medidos (SR865)','Teórico RC','Frecuencia de corte');
+% Aï¿½adir la leyenda
+lgd = legend('Datos medidos (Red Pitaya)','Datos medidos (SR865)','Teï¿½rico RC','Frecuencia de corte');
 
-% Ajustar la posición de la leyenda
+% Ajustar la posiciï¿½n de la leyenda
 set(lgd, 'Position', [0.75, 0.4, 0.2, 0.1]); % [x, y, ancho, alto]
 set(lgd, 'Units', 'normalized'); % Usar unidades normalizadas
 
@@ -103,18 +133,18 @@ set(findall(gcf,'-property','FontSize'),'FontSize',14);
 
 grid on;
 xlabel('Frecuencia (Hz)');
-ylabel('Fase (°)');
+ylabel('Fase (ï¿½)');
 title('Respuesta en frecuencia: Fase');
 %legend show;
 
-% Crear el gráfico de zoom para Fase
-% hZoomFase = axes('Position', [0.25, 0.2, 0.2, 0.15]); % Ajusta la posición y el tamaño del zoom
+% Crear el grï¿½fico de zoom para Fase
+% hZoomFase = axes('Position', [0.25, 0.2, 0.2, 0.15]); % Ajusta la posiciï¿½n y el tamaï¿½o del zoom
 % box on;
 % semilogx(f, phi, '-ko', 'LineWidth', linewidth,'MarkerSize',markersize); hold on;
 % semilogx(f, phi_SR865, '-kx', 'LineWidth', linewidth,'MarkerSize',markersize); 
 % semilogx(f, fase_teorica, '-k^', 'LineWidth', linewidth,'MarkerSize',markersize); 
 % xlim([fcorte * 0.97, fcorte * 1.02]); % Ajusta la ventana de zoom alrededor de fcorte
-% ylim([-46 -43]); % Ajusta los límites de Y según sea necesario
+% ylim([-46 -43]); % Ajusta los lï¿½mites de Y segï¿½n sea necesario
 % title("Zoom en fase");
 % 
 % grid on;

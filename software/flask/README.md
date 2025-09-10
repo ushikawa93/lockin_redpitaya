@@ -6,13 +6,16 @@ Este repositorio contiene una aplicación web desarrollada en Python utilizando 
 
 ## Estructura de Archivos
 
-- **app.py**: Aplicación principal de Flask que define las rutas y maneja las solicitudes GET y POST para las diferentes funciones del lock-in y adquisidor.
-- **graficos.py**: Funciones para generar gráficos de resultados (Bode y datos de ADC) y convertirlos a imágenes base64 para mostrar en la interfaz web.
-- **adquisidor_functions.py**: Clase `adquisidor` que permite controlar la adquisición de señales desde la FPGA con promediación coherente.
-- **condiciones_adquisicion.py**: Clases `CondicionesAdquisicion` y enumeración `TriggerMode` que definen los parámetros de adquisición (frecuencia, cantidad de muestras, modo de disparo, etc.).
-- **fpga_bridge.py**: Clase `FPGA` para mapear la memoria de la FPGA y leer/escribir en direcciones específicas, así como para cargar bitstreams.
-- **lockin_functions.py**: Clase `lockin` para configurar y medir el lock-in amplifier en la FPGA, incluyendo configuración de frecuencias, decimador y fuente de datos.
-- **resultado_lockin.py**: Clases `CondicionesMedicion`, `FuenteDatos`, `ModoDecimacion` y `ResultadoLockin` que definen los parámetros de medición y almacenan los resultados de las mediciones.
+- Carpeta lockin: 
+   - **lockin_web.py**: Aplicación principal de Flask que define las rutas y maneja las solicitudes GET y POST para las diferentes funciones del lock-in y adquisidor.
+   - **graficos.py**: Funciones para generar gráficos de resultados (Bode y datos de ADC) y convertirlos a imágenes base64 para mostrar en la interfaz web.
+
+- Carpeta red_pitaya_python:
+   - **adquisidor_functions.py**: Clase `adquisidor` que permite controlar la adquisición de señales desde la FPGA con promediación coherente.
+   - **condiciones_adquisicion.py**: Clases `CondicionesAdquisicion` y enumeración `TriggerMode` que definen los parámetros de adquisición (frecuencia, cantidad de muestras, modo de disparo, etc.).
+   - **fpga_bridge.py**: Clase `FPGA` para mapear la memoria de la FPGA y leer/escribir en direcciones específicas, así como para cargar bitstreams.
+   - **lockin_functions.py**: Clase `lockin` para configurar y medir el lock-in amplifier en la FPGA, incluyendo configuración de frecuencias, decimador y fuente de datos.
+   - **resultado_lockin.py**: Clases `CondicionesMedicion`, `FuenteDatos`, `ModoDecimacion` y `ResultadoLockin` que definen los parámetros de medición y almacenan los resultados de las mediciones.
 
 ---
 

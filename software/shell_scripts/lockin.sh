@@ -1,11 +1,38 @@
-
-#///// ========================== LOCKIN.SH ================================== /////
-#///// ========================================================================= /////
-#///// Scipt que utiliza el programa lockin.c para calcular el lockin con la FPGA /////
-#///// ========================================================================= /////
+# ============================================================================================================
+# Script: lockin.sh
+# ============================================================================================================
+# Descripción:
+#   Este script ejecuta el programa lockin.c en la FPGA (Red Pitaya) para calcular la señal lock-in de la
+#   señal de entrada. Los resultados se copian luego a la PC HOST para su posterior análisis.
 #
-# Script para calcular lockin en la FPGA y mostrar resultados
-# Uso -> lockin N_ma frec_dac frec_ref data_sel decimator decimator_method IP 
+# Uso:
+#   ./lockin.sh N_ma frec_dac frec_ref data_sel decimator decimator_method IP
+#
+# Parámetros:
+#   N_ma               -> Número de ciclos de medición para promediado coherente.
+#   frec_dac           -> Frecuencia de la señal de salida del DAC (Hz).
+#   frec_ref           -> Frecuencia de referencia (Hz).
+#   data_sel            -> Fuente de datos: simulación o ADC (definida en el código C).
+#   decimator           -> Factor de decimación.
+#   decimator_method    -> Método de decimación (descarte o promedio lineal).
+#   IP                  -> Dirección IP de la Red Pitaya.
+#
+# Funcionamiento:
+#   1. Copia el código fuente lockin.c a la Red Pitaya vía scp.
+#   2. Compila el programa directamente en la FPGA usando gcc.
+#   3. Ejecuta el programa con los parámetros indicados.
+#   4. Copia los archivos de resultados "resultados.dat" y "resultados_adc.dat" a la carpeta
+#      ../datos_adquiridos en la PC HOST.
+#
+# Notas:
+#   - Requiere acceso SSH con usuario root en la Red Pitaya.
+#   - Los parámetros tienen valores por defecto para simplificar la ejecución.
+#   - Se recomienda verificar la conectividad antes de ejecutar el script.
+#
+# Autor: Matías Oliva
+# Fecha: 2025
+# ============================================================================================================
+
 
 N_ma=${1:-2}
 frec_dac=${2:-1000000}

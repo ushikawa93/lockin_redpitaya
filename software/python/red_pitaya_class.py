@@ -1,4 +1,47 @@
 # -*- coding: utf-8 -*-
+
+# ===================================================================================== #
+# ======================= Clase de Control para la Red Pitaya ========================= #
+# ===================================================================================== #
+#
+# Implementación en Python de la clase `redP_handler`, que permite controlar y 
+# comunicarse con una Red Pitaya configurada como lock-in digital.
+# Para comunicación con la FPGA usa shell scripts disponibles en ../shell_scripts.
+# Estos utilizan a su vez programas en c disponibles en ../c_program
+#
+# Funcionalidades principales:
+#   - Validación y configuración de la IP de la Red Pitaya.
+#   - Definición de modos de adquisición de datos (ADC o simulación).
+#   - Configuración de parámetros de operación:
+#       · Frecuencia de referencia y de DAC
+#       · Número de promediaciones (N)
+#       · Factor y método de decimación
+#   - Carga remota de bitstreams en la FPGA.
+#   - Ejecución de rutinas de medición lock-in con almacenamiento en archivos.
+#   - Ejecución de barridos:
+#       · En constantes de tiempo
+#       · En frecuencia
+#   - Conversión de resultados a voltajes calibrados (ADC y lock-in).
+#   - Lectura y parseo de archivos de resultados generados en la Red Pitaya.
+#
+# Dependencias:
+#   - subprocess, os
+#   - enum.Enum
+#
+# Estructura:
+#   · Enum `DataMode`: selecciona entre simulación y ADC.
+#   · Enum `DecimatorMethod`: define el método de decimación (descartar o promediar).
+#   · Clase `redP_handler`: interfaz de configuración, ejecución y lectura de resultados.
+#
+# Uso típico:
+#   1. Crear una instancia pasando la IP de la Red Pitaya.
+#   2. Configurar parámetros de adquisición.
+#   3. Llamar a `measure_lockin`, `barrido_ctes_tiempo` o `barrido_en_frecuencia`.
+#   4. Procesar los resultados con las funciones de conversión incluidas.
+#
+# ===================================================================================== #
+
+
 """
 Created on Thu Nov 23 12:43:33 2023
 

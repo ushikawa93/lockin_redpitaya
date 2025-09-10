@@ -1,9 +1,33 @@
-%% Graficos de ruido vs tiempo de integracion en algorimo CALI
-
-% El ruido lo estimo con la desviacion est谩ndar de las mediciones de
-% amplitud
-% El timpo de integracion lo obtengo a partir de N que es cantidad de
-% ciclos promediados coherentemente
+% =========================================================================
+% Script: ruido_vs_tiempo_integracion_CALI.m
+% =========================================================================
+% Descripci贸n:
+%   Este script grafica la relaci贸n entre el ruido y el tiempo de integraci贸n
+%   en el algoritmo CALI, utilizando datos medidos en la FPGA y compar谩ndolos
+%   con la predicci贸n te贸rica.
+%
+% Funcionalidades principales:
+%   - Lectura de datos adquiridos en la FPGA desde archivos .dat.
+%   - C谩lculo del ruido como desviaci贸n est谩ndar normalizada de la amplitud.
+%   - Obtenci贸n del tiempo de integraci贸n a partir de N (cantidad de ciclos
+%     promediados coherentemente).
+%   - C谩lculo del modelo te贸rico del ruido (1/sqrt(M路N/2)).
+%   - (Opcional) C谩lculo de la cota del error de cuantizaci贸n.
+%   - Graficado de ruido medido vs. ruido te贸rico en funci贸n del tiempo de
+%     integraci贸n.
+%   - Inclusi贸n de recuadros de zoom para intervalos de tiempos cortos y
+%     largos.
+%   - Exportaci贸n de la figura en formato gr谩fico con escala de grises.
+%
+% Notas:
+%   - El script depende de la funci贸n auxiliar abrir_archivo_ignorando_header.m.
+%   - Algunas secciones (ej. cota de error de cuantizaci贸n) est谩n comentadas.
+%   - Los par谩metros de frecuencia f y decimaci贸n M deben ajustarse seg煤n el
+%     experimento.
+%
+% Autor: Mat铆as Oliva
+% Fecha: 2025
+% =========================================================================
 
 
 %% Medidas obtenidas en la FPGA:
@@ -41,9 +65,9 @@ semilogx(taos, std_adc_fpga, ':kx', 'LineWidth', 1.5,'MarkerSize',10);
 
 
 grid on;
-legend ( "Te髍ico", "Se馻l medida con ADC" );
-xlabel ( " Tiempo de integraci髇 [s]" );
-ylabel ( " Desviaci髇 est醤dar de amplitudes normalizadas " );
+legend ( "Te锟絩ico", "Se锟絘l medida con ADC" );
+xlabel ( " Tiempo de integraci锟絥 [s]" );
+ylabel ( " Desviaci锟絥 est锟絥dar de amplitudes normalizadas " );
 
 
 % Zoom inset
@@ -53,7 +77,7 @@ semilogx(taos, std_adc_fpga, ':kx', 'LineWidth', 1.5,'MarkerSize',10);
 
 xlim([0.00035 0.00040]);
 ylim([0.03 0.08]);
-title('Zoom (Tiempos de integraci髇 medios)');
+title('Zoom (Tiempos de integraci锟絥 medios)');
 grid on;
 
 
@@ -66,7 +90,7 @@ semilogx(taos, std_adc_fpga, ':kx', 'LineWidth', 1.5,'MarkerSize',10);
 
 xlim([taos(end)-0.0001 taos(end)]);
 ylim([0.01 0.06]);
-title('Zoom (Tiempos de integraci髇 largos)');
+title('Zoom (Tiempos de integraci锟絥 largos)');
 grid on;
 
 % Ocultar valores del eje y en el nuevo gr谩fico (si lo deseas)
