@@ -1,12 +1,32 @@
-#///// ================================== barrido_en_frecuencia.c ============================================= /////
-#///// ======================================================================================================== /////
-#///// Scipt que utiliza el programa barrido_en_frecuencia.c para calcular el lockin con la FPGA en distintas N /////
-#///// ======================================================================================================== /////
+///// ================================== barrido_en_frecuencia.c ============================================== /////
+///// ========================================================================================================= /////
+///// Script que realiza un barrido en frecuencia utilizando el lock-in implementado en la FPGA.                /////
+///// Permite medir amplitud y fase (r, φ) en un rango de frecuencias, variando la referencia y el DAC según     /////
+///// los parámetros de entrada.                                                                                /////
+///// ========================================================================================================= /////
 /*
-    Debe ejecutarse en el micro de la FPGA, con la sintaxis:
-        -> barrido_en_frecuencia N f_inicial f_final f_step fuente nombre_archivo_salida
+    Debe ejecutarse en el micro de la FPGA con la sintaxis:
+    
+        -> barrido_en_frecuencia N f_inicial f_final f_step f_dac fuente archivo_salida
         
+    Parámetros:
+        N               -> Constante de tiempo (ciclos de integración)
+        f_inicial       -> Frecuencia inicial del barrido (Hz)
+        f_final         -> Frecuencia final del barrido (Hz, no inclusiva)
+        f_step          -> Paso de frecuencia (Hz)
+        f_dac           -> Frecuencia fija del DAC (Hz). Si es 0, se barre junto con f_ref.
+        fuente          -> Selección de fuente de datos (0 = SIM, 1 = ADC)
+        archivo_salida  -> Archivo CSV donde se guardan los resultados
+    
+    Salida:
+        - Archivo con columnas f, r, phi
+        - Cabecera con parámetros de configuración
+    
+    Notas:
+        - El programa accede a registros de la FPGA mediante /dev/mem (mapeo de memoria).
+        - Requiere permisos de superusuario para su ejecución.
 */
+
 
 #include <stdio.h>
 #include <stdlib.h>

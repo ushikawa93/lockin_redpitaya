@@ -1,3 +1,53 @@
+"""
+========================================================================
+Módulo de definición de condiciones de adquisición y modos de trigger
+========================================================================
+
+Descripción:
+------------
+Este módulo define las estructuras de datos y enumeraciones necesarias
+para configurar un sistema de adquisición de señales en FPGA. Proporciona:
+
+1. Enumeración 'TriggerMode':
+   - Define los modos de disparo disponibles:
+     * CONTINUO: disparo continuo
+     * NIVEL: disparo por nivel
+     * EXTERNO: disparo externo
+   - Implementa un método __str__ para obtener la descripción legible.
+
+2. Clase 'CondicionesAdquisicion':
+   - Representa los parámetros de configuración para la adquisición de señales.
+   - Calcula automáticamente parámetros derivados como:
+     * K: factor de sobremuestreo lineal
+     * M: número de muestras por ciclo
+     * log2_divisor: divisor para decimación coherente
+   - Incluye getters para acceder a todos los parámetros importantes.
+   - Ajusta la frecuencia real usada en la FPGA según la limitación del DDS compiler.
+   - Permite inicialización con valores por defecto, ajustables por el usuario.
+
+Parámetros por defecto:
+----------------------
+- Frecuencia de muestreo del sistema: 125 MHz
+- N_ca: 100
+- Frecuencia objetivo del DAC: 1 MHz
+- Modo de disparo: NIVEL
+- Nivel de disparo: 0
+- Tamaño de buffer interno: 30000 muestras
+
+Dependencias:
+-------------
+- math
+- enum (Enum)
+
+Notas:
+------
+- La clase asegura que los parámetros cumplen con los límites de la FPGA
+  y ajusta automáticamente el divisor log2 necesario.
+- Ideal para usar junto con el módulo adquisidor_functions.py para configurar
+  y ejecutar adquisiciones coherentes en la FPGA.
+"""
+
+
 from enum import Enum
 import math
 

@@ -1,3 +1,47 @@
+"""
+========================================================================
+Módulo de generación de gráficos para aplicación Lock-in y adquisición
+========================================================================
+
+Descripción:
+------------
+Este módulo proporciona funciones para generar gráficos en formato de imagen
+base64, que pueden ser incrustados directamente en páginas web o notebooks.
+Se utiliza principalmente para visualizar:
+
+1. Diagramas de Bode (magnitud y fase) de un barrido en frecuencia.
+2. Señales adquiridas desde el ADC (gráfico temporal).
+
+Funciones:
+----------
+- grafico_en_f(f, R, phi):
+    Genera un diagrama de Bode con magnitud y fase a partir de listas o
+    arrays de frecuencia (f), amplitud (R) y fase (phi). Devuelve la imagen
+    codificada en base64.
+
+- grafico_adc_as_base64(datos_adc):
+    Genera un gráfico temporal de los datos adquiridos del ADC. Devuelve la
+    imagen codificada en base64.
+
+Dependencias:
+-------------
+- numpy
+- matplotlib (backend 'Agg' para generar imágenes sin GUI)
+- scipy.signal
+- io
+- base64
+
+Notas:
+------
+- Se utiliza el backend 'Agg' de matplotlib para permitir la generación de
+  imágenes sin mostrar ventanas gráficas.
+- Las imágenes generadas son cerradas después de la conversión para liberar
+  memoria.
+- Ideal para integración con aplicaciones web o notebooks donde se necesite
+  renderizar gráficos dinámicamente.
+"""
+
+
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')  # Establecer el backend a 'Agg' (sin interfaz gráfica)

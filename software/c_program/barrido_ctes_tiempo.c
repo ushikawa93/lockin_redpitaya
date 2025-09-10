@@ -1,12 +1,40 @@
-///// ====================== barrido_ctes_tiempo.c ============================================== /////
-///// ============================================================================================ /////
-///// Programa en C para hacer cálculos de lock-in con distintos N y estimar el ruido resultante /////
-///// ============================================================================================ /////
-/*
-    Debe ejecutarse en el micro de la FPGA, con la sintaxis:
-        -> barrido_ctes_tiempo frec N_inicial N_final iteraciones fuente nombre_archivo_salida
-        
-*/
+/***************************************************************************************
+ *  barrido_ctes_tiempo.c
+ *
+ *  Programa en C para ejecutar en el micro de la FPGA. 
+ *  Realiza cálculos de lock-in promediando N ciclos coherentes y estima el ruido 
+ *  mediante varias iteraciones. Los resultados se guardan en un archivo CSV.
+ *
+ *  ------------------------------------------------------------------------------------
+ *  Uso:
+ *      barrido_ctes_tiempo frec N_inicial N_final iteraciones fuente archivo_salida
+ *
+ *  Parámetros:
+ *      frec            -> Frecuencia de referencia (Hz)
+ *      N_inicial       -> Valor inicial de N
+ *      N_final         -> Valor final de N (no inclusivo en el bucle)
+ *      iteraciones     -> Cantidad de repeticiones por cada N
+ *      fuente          -> 0 = datos simulados, 1 = datos del ADC
+ *      archivo_salida  -> Nombre del archivo CSV donde se guardan los resultados
+ *
+ *  ------------------------------------------------------------------------------------
+ *  Descripción:
+ *   - Configura la FPGA vía /dev/mem (registros de control y datos).
+ *   - Barre valores de N entre N_inicial y N_final-1.
+ *   - Para cada N:
+ *        * Repite 'iteraciones' mediciones del lock-in.
+ *        * Calcula amplitud (r) y fase (phi).
+ *        * Estima media y desviación estándar de r.
+ *   - Escribe en archivo CSV: N, mean_r, std_r.
+ *
+ *  ------------------------------------------------------------------------------------
+ *  Notas:
+ *   - Requiere permisos de root para acceso a /dev/mem.
+ *   - Si getFinish() nunca se activa, el programa puede bloquearse indefinidamente.
+ *   - Frecuencia real configurada puede diferir levemente de la solicitada.
+ *
+ ***************************************************************************************/
+
 
 #include <stdio.h>
 #include <stdlib.h>

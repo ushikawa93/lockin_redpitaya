@@ -1,3 +1,60 @@
+"""
+========================================================================
+Módulo de control del Lock-in Amplifier en FPGA
+========================================================================
+
+Descripción:
+------------
+Este módulo define la clase 'lockin', que proporciona métodos estáticos
+para controlar un lock-in amplifier implementado en FPGA. Permite configurar,
+ejecutar y leer mediciones de señales coherentes utilizando promediación y
+decimación desde Python.
+
+Principales funcionalidades:
+----------------------------
+1. Inicialización de la FPGA con el bitstream correspondiente.
+2. Configuración de parámetros de lock-in:
+   - Número de muestras N
+   - Frecuencia de referencia
+   - Frecuencia del DAC
+   - Fuente de datos
+   - Método y valor del decimador
+3. Control de ejecución:
+   - Reset y habilitación de la FPGA
+   - Espera hasta finalizar la adquisición
+4. Lectura de resultados:
+   - Medición de fase y cuadratura
+   - Conversión de valores brutos a voltaje
+   - Lectura de datos del ADC (FIFO)
+5. Función principal 'MedirLockin' que realiza toda la secuencia de medición
+   y devuelve un objeto ResultadoLockin.
+
+Direcciones de memoria utilizadas:
+---------------------------------
+- ENABLE_ADDRESS, RESET_ADDRESS: control de habilitación y reset
+- RESULT_FASE_*_ADDRESS, RESULT_CUAD_*_ADDRESS: resultados de fase y cuadratura
+- FIFO_1_ADDRESS: datos del ADC
+- M_ADDRESS, N_ADDRESS, DECIMATOR_ADDRESS, DECIMATOR_METHOD_ADDRESS
+- SELECT_DATA_ADDRESS, N_DATOS_PROMEDIADOS_ADDRESS
+- PHASE_DAC_ADDRESS, PHASE_REF_ADDRESS
+
+Dependencias:
+-------------
+- fpga_bridge (clase FPGA)
+- resultado_lockin (CondicionesMedicion, FuenteDatos, ModoDecimacion, ResultadoLockin)
+- time, math
+
+Notas:
+------
+- Todos los métodos son estáticos; no requiere instanciación.
+- Ideal para usar junto con módulos de adquisición (adquisidor_functions.py)
+  y configuración de condiciones de adquisición (condiciones_adquisicion.py).
+- La función MedirLockin imprime los resultados y la cantidad de datos promediados.
+- Los valores leídos desde el ADC se normalizan a voltaje considerando errores
+  de ganancia y offset.
+"""
+
+
 from fpga_bridge import FPGA;
 from resultado_lockin import CondicionesMedicion,FuenteDatos,ModoDecimacion,ResultadoLockin;
 import time 

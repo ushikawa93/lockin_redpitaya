@@ -12,7 +12,6 @@
 *.webtalk
 
 # Bitstreams y archivos de implementación
-*.bit
 *.ngc
 *.ngd
 *.ncd

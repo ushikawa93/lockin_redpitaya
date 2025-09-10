@@ -1,5 +1,5 @@
 # lockin_redpitaya
-Detección Lockin usando Red Pitaaya
+Detección Lockin usando Red Pitaya
 
 # Carpeta Hardware
 Hardware de la FPGA. Está armado con un "block diagram" que tiene componentes propios y algunas IP de Xilinx.
@@ -33,6 +33,8 @@ Una salida extra "datos_promedidos" determina cuantas muestras tiene realmente e
 
 # Carpeta Software
 Controla la operación del lockin. Pueden usarse directamente las funciones de Python.
+
 Estas se valen de los shell_scripts, que controla a través de ssh al SoC, y ejecuta funciones escritas en c disponibles en la carpeta c_program.
+
 Para que la cosa ande bien tiene que estar configurado el bitstream lockin_estable.bit en la FPGA (Hay una funcion de python; y un shell_script que lo programa).
 

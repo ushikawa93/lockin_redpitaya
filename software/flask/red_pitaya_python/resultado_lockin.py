@@ -1,3 +1,55 @@
+"""
+========================================================================
+Módulo de Condiciones y Resultados de Medición del Lock-in Amplifier
+========================================================================
+
+Descripción:
+------------
+Este módulo define las clases y enumeraciones necesarias para manejar las
+condiciones de medición y los resultados obtenidos de un lock-in amplifier
+implementado en FPGA.
+
+Enumeraciones:
+--------------
+1. FuenteDatos: define la fuente de los datos del lock-in.
+   - SIM: datos simulados
+   - ADC: datos provenientes del ADC
+
+2. ModoDecimacion: define cómo se maneja la decimación de datos.
+   - DISCARD: descarta muestras
+   - PROM: promedio lineal de las muestras
+
+Clases principales:
+------------------
+1. CondicionesMedicion:
+   - Almacena y gestiona los parámetros de la medición:
+       * frec_ref: frecuencia de referencia
+       * frec_dac: frecuencia de salida del DAC
+       * N: número de muestras
+       * fuente_datos: FuenteDatos (SIM o ADC)
+       * modo_decimacion: ModoDecimacion (DISCARD o PROM)
+       * decimador: valor del decimador
+   - Proporciona getters y una representación en string.
+
+2. ResultadoLockin:
+   - Almacena los resultados de la medición (x, y) y las condiciones
+     asociadas.
+   - Calcula automáticamente la magnitud (r) y la fase (phi) de la señal.
+   - Convierte la magnitud a voltaje considerando calibración empírica.
+   - Proporciona getters y una representación en string.
+
+Dependencias:
+-------------
+- math
+
+Notas:
+------
+- Las clases están diseñadas para integrarse con el módulo 'lockin_functions.py'.
+- La conversión a voltaje en ResultadoLockin se realiza de forma empírica
+  para reflejar mediciones reales.
+- Uso principal: almacenar condiciones, ejecutar mediciones y acceder
+  fácilmente a resultados procesados (r, phi).
+"""
 
 from enum import Enum
 import math

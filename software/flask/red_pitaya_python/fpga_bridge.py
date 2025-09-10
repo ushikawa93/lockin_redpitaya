@@ -1,3 +1,52 @@
+"""
+========================================================================
+Módulo de comunicación y control de FPGA a bajo nivel
+========================================================================
+
+Descripción:
+------------
+Este módulo proporciona la clase FPGA y funciones asociadas para:
+1. Mapear la memoria de la FPGA en el espacio de usuario de Linux.
+2. Leer y escribir en direcciones específicas de memoria (MMIO).
+3. Cargar bitstreams en la FPGA de forma segura, evitando recargas innecesarias.
+4. Controlar dispositivos FPGA desde Python para aplicaciones de adquisición
+   y lock-in.
+
+Clase FPGA:
+-----------
+- __init__(): inicializa el mapeo de memoria de la FPGA.
+- read_from_address(address): lee un valor de 32 bits desde una dirección específica.
+- write_in_address(address, value): escribe un valor de 32 bits en una dirección específica.
+- close(): libera recursos de memoria y archivo.
+- __del__(): asegura el cierre de recursos al destruir el objeto.
+- set_fpga_bitstream(name='fpga.bit'): carga un bitstream en la FPGA y registra la versión.
+
+Funciones auxiliares:
+--------------------
+- setup_memory(): mapea la memoria de la FPGA y devuelve un puntero y descriptor de archivo.
+
+Constantes:
+-----------
+- START_ADDRESS: dirección base de memoria de la FPGA.
+- MEMORY_SIZE: tamaño del espacio mapeado.
+- device_name: ruta al dispositivo /dev/mem.
+- VERSION_FILE: archivo que registra la versión cargada del bitstream.
+
+Notas:
+------
+- El módulo permite operaciones de lectura/escritura alineadas a 4 bytes.
+- Cualquier intento de acceso fuera del rango mapeado o no alineado genera error.
+- La función set_fpga_bitstream evita recargar un bitstream ya activo para
+  optimizar tiempos.
+- Ideal para usarse junto con módulos de adquisición y lock-in que requieren
+  acceso directo a registros de FPGA desde Python.
+
+Dependencias:
+-------------
+- os, mmap, ctypes, time, shutil, pathlib
+"""
+
+
 import os
 import mmap
 import ctypes

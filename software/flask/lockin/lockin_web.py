@@ -1,3 +1,57 @@
+"""
+=======================================================================
+Aplicación web para control y adquisición de datos Lock-in con Flask
+=======================================================================
+
+Descripción:
+------------
+Este script implementa un servidor web utilizando Flask para interactuar
+con un sistema de medición Lock-in basado en Red Pitaya. La aplicación
+permite:
+
+1. Configurar y ejecutar mediciones Lock-in individuales.
+2. Realizar barridos en frecuencia y obtener amplitud y fase.
+3. Adquirir señales de un canal analógico usando un módulo de adquisición.
+4. Visualizar resultados en gráficas generadas en base64 dentro de la web.
+5. Reiniciar notebooks asociados para asegurar un estado limpio antes de cada medición.
+
+Estructura del código:
+---------------------
+- Importaciones: librerías estándar de Python, Flask, módulos de gráficos,
+  funciones de lockin y adquisidor, configuración de rutas.
+- Funciones auxiliares:
+    * reiniciar_notebooks(): restaura notebooks originales para mediciones.
+    * barrido_en_f(): realiza un barrido en frecuencia de R y phi.
+    * obtener_ip_jupyter(): determina la IP local del servidor para conexiones.
+- Aplicación Flask:
+    * '/' endpoint:
+        - GET: inicializa la aplicación, configura FPGA y notebooks.
+        - POST 'Iniciar Medidas': ejecuta una medición Lock-in.
+        - POST 'Iniciar Barrido': ejecuta un barrido en frecuencia.
+        - POST 'Iniciar adquisición': adquiere señales de los canales A y B.
+- Configuración del servidor Flask:
+    * Corre en host 0.0.0.0 y puerto 5000.
+
+Dependencias:
+-------------
+- Flask
+- módulos locales: graficos, lockin_functions, resultado_lockin,
+  adquisidor_functions, condiciones_adquisicion
+- Red Pitaya Python API (agregada al sys.path)
+- Librerías estándar: os, sys, math, time, shutil, socket
+
+Notas:
+------
+- Todas las medidas y adquisiciones requieren que la FPGA esté correctamente
+  inicializada mediante set_fpga().
+- Las gráficas se generan dinámicamente en base64 para ser incrustadas en la web.
+- El script debe ejecutarse desde un entorno donde los notebooks de Red Pitaya
+  estén disponibles en '../red_pitaya_python/'.
+"""
+
+
+
+
 """ ------------------------------------------- """
 """ ---------- IMPORTO ALGUNAS COSAS ---------- """
 """ ------------------------------------------- """   

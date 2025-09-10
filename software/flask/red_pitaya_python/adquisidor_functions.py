@@ -1,3 +1,62 @@
+"""
+========================================================================
+Módulo de control de adquisición de señales para FPGA (Red Pitaya)
+========================================================================
+
+Descripción:
+------------
+Este módulo define la clase 'adquisidor' con métodos estáticos para controlar
+un sistema de adquisición de señales implementado en FPGA. Permite configurar,
+iniciar y leer mediciones coherentes de canales analógicos utilizando
+sobremuestreo y promediación lineal.
+
+Principales funcionalidades:
+----------------------------
+1. Inicialización de la FPGA con bitstream específico.
+2. Configuración de parámetros de adquisición:
+   - Frecuencia del DAC
+   - Número de muestras por ciclo (M)
+   - Sobremuestreo lineal (K)
+   - Promediación coherente (N_ca)
+   - Modo y nivel de disparo (trigger)
+   - Divisor de decimación
+3. Control de la ejecución:
+   - Reset de la FPGA
+   - Habilitación del trigger
+   - Espera hasta finalizar la adquisición
+4. Lectura de datos desde la memoria BRAM de la FPGA, incluyendo:
+   - Conversión de valores brutos a voltaje
+   - Escalado según N_ca y K
+5. Función principal 'adquirir' que realiza toda la secuencia de adquisición
+   y devuelve los datos de los canales A y B.
+
+Direcciones de memoria utilizadas:
+---------------------------------
+- DATA_CH_A_ADDRESS, DATA_CH_B_ADDRESS: memoria de datos de canales A y B
+- CTRL_ADDRESS: control de trigger y reset
+- N_CA_ADDRESS: número de muestras para promediación coherente
+- DAC_ADDRESS, M_ADDRESS, K_OVERSAMPLING_ADDRESS, LOG2_DIVISOR_ADDRESS
+- FINISHED_ADDRESS: indicador de finalización
+- TRIGGER_MODE_ADDRESS, TRIGGER_LEVEL_ADDRESS, LEVEL_TO_DETECT
+
+Dependencias:
+-------------
+- fpga_bridge (clase FPGA para comunicación con la FPGA)
+- condiciones_adquisicion (TriggerMode, CondicionesAdquisicion)
+- numpy
+- time
+- math
+
+Notas:
+------
+- Los métodos son estáticos y no requieren instanciar la clase para su uso.
+- Para usar correctamente, se debe haber cargado previamente el bitstream
+  'adquisidor_experimental.bit' o el que corresponda.
+- La función adquirir() es el método principal para ejecutar mediciones
+  completas desde Python.
+"""
+
+
 from fpga_bridge import FPGA;
 from condiciones_adquisicion import TriggerMode, CondicionesAdquisicion
 import time

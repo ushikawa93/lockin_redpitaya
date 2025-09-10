@@ -1,12 +1,31 @@
-#///// ================================== medir_error.c ============================================= /////
-#///// ======================================================================================================== /////
-#///// Scipt que utiliza el programa medir_error.c para calcular el lockin con la FPGA en distintas N /////
-#///// ======================================================================================================== /////
+///// =============================== medir_error.c ================================================ /////
+///// ============================================================================================== /////
+///// Script en C para ejecutar en el micro de la FPGA. Permite calcular el lock-in para distintos   /////
+///// valores de N y estimar el error (media y desviación estándar) en función de las iteraciones.   /////
+///// ============================================================================================== /////
 /*
-    Debe ejecutarse en el micro de la FPGA, con la sintaxis:
-        -> medir_error N f n_iteraciones fuente nombre_archivo_salida
-        
+    Uso:
+        -> medir_error N frecuencia n_iteraciones fuente nombre_archivo_salida
+
+    Parámetros:
+        N                     -> Constante de tiempo (ciclos de integración)
+        frecuencia            -> Frecuencia de referencia y DAC (Hz)
+        n_iteraciones         -> Número de repeticiones para cada configuración
+        fuente                -> Selección de datos (0 = SIM, 1 = ADC)
+        nombre_archivo_salida -> Archivo donde se guardan los resultados
+
+    Funcionalidad:
+        - Configura la FPGA con los parámetros indicados
+        - Ejecuta el lock-in N veces, guardando amplitud (r) y fase (φ)
+        - Calcula la media y la desviación estándar de r
+        - Escribe los resultados en el archivo de salida
+
+    Notas:
+        - Requiere acceso a /dev/mem → se debe ejecutar con permisos de superusuario
+        - La frecuencia de muestreo se asume en 125 MHz
+        - También se generan archivos con resultados del ADC si corresponde
 */
+
 
 #include <stdio.h>
 #include <stdlib.h>

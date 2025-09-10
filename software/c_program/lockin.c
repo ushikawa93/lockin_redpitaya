@@ -1,15 +1,32 @@
-
-
-///// ========================== LOCKIN.C ============================= /////
-///// ===================================================================== /////
-///// Programa en c para setear los parametros de la FPGA y obtener medidas /////
-///// ===================================================================== /////
+///// ================================== lockin.c ========================================================== /////
+///// ====================================================================================================== /////
+///// Programa en C para configurar los parámetros del lock-in implementado en la FPGA y obtener mediciones. /////
+///// Permite fijar N, M, frecuencias de referencia/DAC, método de decimación y fuente de datos (SIM o ADC). /////
+///// ====================================================================================================== /////
 /*
-	Debe ejecutarse en el micro de la FPGA, con la sintaxis:
-		-> lockin N_ma | M 
-	
-	La frecuencia de muestreo va a quedar 125MHz / K_sobremuestreo
+    Debe ejecutarse en el micro de la FPGA con la sintaxis:
+
+        -> lockin N_ma frec_dac frec_ref fuente decimator decimator_method
+
+    Parámetros:
+        N_ma              -> Constante de tiempo (ciclos de integración)
+        frec_dac          -> Frecuencia del DAC (Hz)
+        frec_ref          -> Frecuencia de referencia (Hz)
+        fuente            -> Selección de datos (0 = SIM, 1 = ADC)
+        decimator         -> Factor de decimación
+        decimator_method  -> 0 = decimación normal, 1 = promediación lineal
+
+    Salida:
+        - Resultados por consola: fase, cuadratura, amplitud (R) y fase (φ)
+        - Archivo "resultados.dat" con: f, M, N, r, phi
+        - Archivo "resultados_adc.dat" con los valores crudos del ADC
+
+    Notas:
+        - El programa accede a registros de la FPGA mediante /dev/mem (mapeo de memoria).
+        - Requiere permisos de superusuario para su ejecución.
+        - La frecuencia de muestreo queda fijada en 125 MHz / K_sobremuestreo.
 */
+
 
 
 #include <stdio.h>
