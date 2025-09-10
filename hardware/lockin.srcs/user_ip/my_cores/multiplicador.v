@@ -1,3 +1,32 @@
+//////////////////////////////////////////////////////////////////////////////////////
+// Módulo: multiplicador
+//////////////////////////////////////////////////////////////////////////////////////
+// Descripción:
+//   Este módulo implementa un multiplicador digital de 32 bits con interfaz 
+//   Avalon streaming. Multiplica las señales de entrada 'data_a' y 'data_b' 
+//   cuando 'data_valid' está activo y produce un resultado de 64 bits.
+//
+// Entradas:
+//   clock             -> Señal de reloj principal.
+//   reset_n           -> Reset activo bajo.
+//   enable            -> Habilita la operación del multiplicador.
+//   data_a            -> Primer operando de 32 bits (signed).
+//   data_b            -> Segundo operando de 32 bits (signed).
+//   data_valid        -> Indica que los datos de entrada son válidos.
+//
+// Salidas:
+//   data_out               -> Resultado de la multiplicación (64 bits signed).
+//   data_valid_multiplicacion -> Señal que indica que la salida es válida.
+//
+// Notas:
+//   - Las entradas se registran para mejorar la sincronización y estabilidad de la operación.
+//   - Compatible con streaming de datos en FPGA.
+//   - Modular y fácil de integrar en sistemas más complejos, como lock-ins segmentados.
+//
+// Autor: Matías Oliva
+// Fecha: 2025
+//////////////////////////////////////////////////////////////////////////////////////
+
 
 module multiplicador(
 

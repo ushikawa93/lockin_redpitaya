@@ -1,3 +1,34 @@
+//////////////////////////////////////////////////////////////////////////////////////
+// Módulo: multiplicate_ref_2
+//////////////////////////////////////////////////////////////////////////////////////
+// Descripción:
+//   Este módulo implementa la multiplicación de una señal de entrada con 
+//   referencias seno y coseno generadas por el módulo 'referencias'. 
+//   Produce las componentes en fase y cuadratura de 64 bits para su uso 
+//   en un lock-in digital.
+//
+// Entradas:
+//   clock                   -> Señal de reloj principal.
+//   reset_n                 -> Reset activo bajo.
+//   enable                  -> Habilita la operación del módulo.
+//   ptos_x_ciclo [15:0]     -> Número de puntos por ciclo de la referencia.
+//   data [31:0]             -> Señal de entrada a multiplicar (signed).
+//   data_valid              -> Indica que la señal de entrada es válida.
+//
+// Salidas:
+//   data_out_seno [63:0]         -> Producto de la señal de entrada con la referencia seno.
+//   data_out_coseno [63:0]       -> Producto de la señal de entrada con la referencia coseno.
+//   data_valid_multiplicacion     -> Señal que indica que ambos productos son válidos.
+//
+// Notas:
+//   - Usa dos instancias del módulo 'multiplicador' para calcular fase y cuadratura.
+//   - Compatible con interfaces Avalon streaming para integración en sistemas FPGA.
+//   - La salida 'data_valid_multiplicacion' se activa solo cuando ambos productos son válidos.
+//
+// Autor: Matías Oliva
+// Fecha: 2025
+//////////////////////////////////////////////////////////////////////////////////////
+
 
 module multiplicate_ref_2(
 

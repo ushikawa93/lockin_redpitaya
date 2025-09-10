@@ -1,3 +1,42 @@
+//////////////////////////////////////////////////////////////////////////////////
+// ============================== BRAM Writer ================================== //
+// ============================================================================ //
+// Módulo: bram_writer
+// Descripción:
+//   Módulo que recibe datos en streaming y los escribe de manera continua en 
+//   una memoria BRAM doble (A y B), funcionando como un buffer circular.
+//   La escritura se alterna automáticamente entre BRAM A y BRAM B,
+//   mientras que la otra BRAM queda disponible para lectura externa.
+//
+// Parámetros:
+//   - DATA_WIDTH  : Ancho de los datos (default 32).
+//   - ADDR_WIDTH  : Ancho de la dirección de BRAM (default 16).
+//   - MEMORY_SIZE : Cantidad total de posiciones de memoria (default 65536).
+//
+// Entradas:
+//   - clk, reset_n : Señales de reloj y reset activo en bajo.
+//   - enable       : Habilita el funcionamiento de escritura.
+//   - user_reset   : Reset manual del usuario.
+//   - data         : Datos de entrada en streaming.
+//   - data_valid   : Indica que los datos de entrada son válidos.
+//
+// Salidas:
+//   - bram_A_* : Interfaz con la BRAM A (clk, rst, addr, wrdata, rddata, we).
+//   - bram_B_* : Interfaz con la BRAM B (clk, rst, addr, wrdata, rddata, we).
+//   - readable_bram : Indica qué BRAM está lista para ser leída
+//                     (0 = BRAM A lista, 1 = BRAM B lista).
+//
+// Funcionamiento:
+//   - Los datos entrantes se registran y se escriben en BRAM A o BRAM B,
+//     según la dirección actual.
+//   - Cuando se completa la mitad de la memoria, la escritura cambia de BRAM.
+//   - La BRAM no utilizada en escritura queda disponible para lectura externa.
+//   - Al llegar al final de la memoria, la dirección vuelve a 0,
+//     implementando un buffer circular.
+//
+// Autor: MatiOliva
+//////////////////////////////////////////////////////////////////////////////////
+
 
 module bram_writer
 #(

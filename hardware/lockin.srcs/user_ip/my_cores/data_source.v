@@ -1,3 +1,46 @@
+//////////////////////////////////////////////////////////////////////////////////////
+// Módulo: data_source
+//////////////////////////////////////////////////////////////////////////////////////
+// Descripción:
+//   Este módulo genera datos de prueba para un sistema Lock-in o simulación de señales,
+//   produciendo una secuencia periódica basada en una tabla de valores precargada y 
+//   sumando ruido generado por un LFSR (Linear Feedback Shift Register) o un 
+//   generador congruencial lineal (GCL). Se pueden configurar la amplitud del ruido, 
+//   el número de puntos por ciclo y el tipo de ruido.
+//
+// Entradas:
+//   clock            -> Señal de reloj principal.
+//   reset_n          -> Reset activo en bajo.
+//   enable           -> Habilita la generación de datos.
+//   simulation_noise -> Cantidad de bits de ruido que se desea superponer.
+//   ptos_x_ciclo     -> Número de puntos por ciclo de la señal.
+//   seleccion_ruido  -> Selecciona el tipo de ruido: 0 = LFSR, 1 = GCL.
+//
+// Salidas:
+//   data_valid       -> Indica cuándo la salida 'data' es válida.
+//   data             -> Datos generados, señal + ruido.
+//   zero_cross       -> Señaliza el paso por cero del ciclo de la señal.
+//   lfsr_cicled      -> Indica la finalización de un ciclo completo del LFSR.
+//
+// Parámetros:
+//   MAX_bits         -> Número de bits del LFSR/GCL utilizado para generar ruido.
+//   atenuacion       -> Cantidad de bits a desplazar de la tabla de datos (reduce amplitud).
+//
+// Funcionalidad:
+//   - Genera un índice que recorre la tabla de datos cargada en ROM.
+//   - Calcula la salida sumando el valor de la tabla con el ruido seleccionado.
+//   - Genera señales auxiliares de validación, paso por cero y ciclo del LFSR.
+//   - Permite cambiar dinámicamente el número de puntos por ciclo sin recargar la tabla.
+//
+// Notas:
+//   - La tabla de datos se carga desde archivos HEX con $readmemh.
+//   - El ruido LFSR tiene un periodo muy largo y puede considerarse aleatorio uniforme.
+//   - Compatible con salida Avalon streaming.
+//
+// Autor: Matías Oliva
+// Fecha: 2025
+//////////////////////////////////////////////////////////////////////////////////////
+
 
 module data_source(
 

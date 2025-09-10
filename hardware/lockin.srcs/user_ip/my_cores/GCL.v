@@ -1,3 +1,43 @@
+//////////////////////////////////////////////////////////////////////////////////////
+// Módulo: GCL (Generador Congruencial Lineal)
+//////////////////////////////////////////////////////////////////////////////////////
+// Descripción:
+//   Este módulo implementa un generador congruencial lineal (Linear Congruential 
+//   Generator, LCG) para producir números pseudoaleatorios de 32 bits a partir de 
+//   una semilla de entrada. La salida se expande a 64 bits para compatibilidad
+//   con otros módulos de procesamiento de datos.
+//
+// Entradas:
+//   i_Clk    -> Señal de reloj principal.
+//   i_Enable -> Habilita la generación de números pseudoaleatorios.
+//   i_seed   -> Semilla inicial de 32 bits para el generador.
+//
+// Salidas:
+//   o_Data       -> Número pseudoaleatorio de 64 bits generado.
+//   o_Data_valid -> Señal que indica que 'o_Data' contiene un valor válido.
+//
+// Parámetros / Variables internas:
+//   m           -> Módulo del generador congruencial (2^32).
+//   a           -> Multiplicador del generador congruencial (69069).
+//   c           -> Incremento del generador congruencial (1).
+//   reg_seed    -> Registro que almacena la semilla actual.
+//   reg_mult    -> Registro que almacena el producto intermedio a*seed.
+//   reg_suma    -> Registro que almacena la suma intermedia (a*seed + c).
+//   data_valid_1,2,3 -> Señales internas para pipeline de validez de datos.
+//
+// Funcionalidad:
+//   - Genera números pseudoaleatorios siguiendo la ecuación: X_{n+1} = (a*X_n + c) mod m
+//   - Usa un pipeline de 3 etapas para calcular la multiplicación, suma y módulo.
+//   - La salida es válida después de tres ciclos de reloj desde la habilitación.
+//
+// Notas:
+//   - Puede integrarse con módulos de generación de ruido o simulación de señales.
+//   - Salida y validez son sincronizadas con el reloj.
+//   - Preparado para entornos de FPGA con reloj único.
+//
+// Autor: Matías Oliva
+// Fecha: 2025
+//////////////////////////////////////////////////////////////////////////////////////
 
 module GCL(
 	input i_Clk,

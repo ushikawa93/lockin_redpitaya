@@ -1,3 +1,41 @@
+//////////////////////////////////////////////////////////////////////////////////////
+// Módulo: lockin_segmentado
+//////////////////////////////////////////////////////////////////////////////////////
+// Descripción:
+//   Este módulo implementa un lock-in digital que procesa señales de 
+//   entrada y calcula las componentes en fase y en cuadratura usando multiplicación 
+//   por referencias seno y coseno seguida de filtros pasabajos (MA).
+//
+// Entradas:
+//   clock             -> Señal de reloj principal.
+//   reset_n           -> Reset activo bajo.
+//   enable            -> Habilita la operación del lock-in.
+//   ptos_x_ciclo      -> Número de puntos por ciclo de la señal de referencia.
+//   frames_integracion-> Número de frames de integración para el promedio.
+//   data_valid        -> Señal que indica que la entrada 'data' es válida.
+//   data              -> Señal de entrada a ser procesada.
+//
+// Salidas:
+//   data_out_fase        -> Componente en fase (promediada).
+//   data_out_fase_valid  -> Validez de la salida en fase.
+//   data_out_cuad        -> Componente en cuadratura (promediada).
+//   data_out_cuad_valid  -> Validez de la salida en cuadratura.
+//   lockin_ready         -> Indica que ambos canales (fase y cuadratura) están listos.
+//   fifos_llenos         -> Indica que los buffers de salida de ambos filtros están llenos.
+//
+// Estructura interna:
+//   - Multiplicador por referencia: Calcula las señales multiplicadas por seno y coseno.
+//   - Filtros pasabajos (filtro_ma) para cada componente: Promedian los resultados de la multiplicación.
+//   - Señales auxiliares para indicar finalización de cálculo y llenado de FIFOs.
+//
+// Notas:
+//   - Diseñado para procesamiento de señales digitales en FPGA.
+//   - Compatible con interfaz Avalon streaming.
+//   - Modular y escalable para distintos números de puntos por ciclo y frames de integración.
+//
+// Autor: Matpuas Oliva
+// Fecha: 2025
+//////////////////////////////////////////////////////////////////////////////////////
 
 module lockin_segmentado(
 

@@ -1,8 +1,48 @@
+//////////////////////////////////////////////////////////////////////////////////
+// ============================= BRAM Test Core ================================ //
+// ============================================================================ //
+// Módulo: bram_test_core
+// Descripción:
+//   Genera patrones de prueba en una BRAM y permite verificar el funcionamiento
+//   de la interfaz de escritura y disparo. Se organiza como una máquina de estados
+//   con las siguientes etapas:
+//
+//   - Estado 0: Inicialización de registros internos.
+//   - Estado 1: Borrado de la BRAM (llenado con ceros).
+//   - Estado 2: Espera de trigger externo para comenzar la prueba.
+//   - Estado 3: Escritura secuencial de datos crecientes en BRAM.
+//   - Estado 4: Finalización de la prueba, activando la señal `finished`.
+//
+// Parámetros:
+//   - AXIS_TDATA_WIDTH : Ancho de datos de la interfaz AXIS (default 32).
+//   - BRAM_DATA_WIDTH  : Ancho de palabra de la BRAM (default 32).
+//   - BRAM_ADDR_WIDTH  : Ancho de dirección de la BRAM (default 13).
+//   - nsamples         : Cantidad de muestras a escribir (default 16).
+//   - step             : Incremento aplicado al valor de prueba en cada muestra.
+//
+// Entradas:
+//   - aclk, aresetn : Señales de reloj y reset.
+//   - trig          : Trigger externo de inicio de adquisición.
+//   - user_reset    : Reset manual del usuario.
+//   - test_value    : Valor base de prueba para escritura en BRAM.
+//
+// Salidas:
+//   - finished      : Señal que indica fin de la operación.
+//   - bram_porta_*  : Interfaz hacia BRAM (clk, rst, addr, wrdata, we).
+//
+// Notas:
+//   - Se detecta flanco ascendente de `trig` para iniciar la secuencia.
+//   - El bug comentado en el código: el primer address puede no escribirse
+//     correctamente y requiere ajuste en la inicialización de direcciones.
+//
+// Autor: MatiOliva
+//////////////////////////////////////////////////////////////////////////////////
+
+
 `timescale 1 ns / 1 ps
 
 
 // Solo falta arreglar que en el primer address no escribe bien...
-
 
 module bram_test_core #
 (

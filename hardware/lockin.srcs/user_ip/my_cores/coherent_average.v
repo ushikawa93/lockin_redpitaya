@@ -1,3 +1,49 @@
+//////////////////////////////////////////////////////////////////////////////////
+// =========================== Coherent Averager =============================== //
+// ============================================================================ //
+// Módulo: coherent_average
+// Descripción:
+//   Implementa un promediador coherente (coherent averaging) en hardware usando
+//   una memoria BRAM de doble puerto. El módulo acumula muestras de entrada en
+//   ventanas de longitud M, repitiendo el proceso N_ca veces para obtener el
+//   promedio acumulado.
+//
+// Parámetros:
+//   - DATA_WIDTH  : Ancho de los datos (default 32).
+//   - ADDR_WIDTH  : Ancho de las direcciones de BRAM (default 16).
+//   - M           : Cantidad de muestras por ciclo de promediación.
+//   - N_ca        : Número de ciclos de promediación coherente.
+//   - MEMORY_SIZE : Cantidad total de posiciones de memoria (default 65536).
+//
+// Entradas:
+//   - clk, reset_n : Señales de reloj y reset activo en bajo.
+//   - enable       : Habilita el funcionamiento del bloque.
+//   - user_reset   : Reset manual del usuario.
+//   - data         : Datos de entrada en streaming.
+//   - data_valid   : Indica que el dato de entrada es válido.
+//
+// Salidas:
+//   - finished     : Señal que indica que se alcanzaron N_ca ciclos de promedio.
+//   - bram_porta_* : Puerto A de la BRAM (escritura).
+//   - bram_portb_* : Puerto B de la BRAM (lectura).
+//
+// Funcionamiento:
+//   - Cada vez que `data_valid` está activo, el módulo lee el dato previo de la
+//     BRAM (puerto B) en la dirección correspondiente, lo suma al nuevo dato y
+//     escribe el resultado acumulado nuevamente en BRAM (puerto A).
+//   - El proceso se organiza en pipeline de 3 etapas: FETCH, ADD, SAVE.
+//   - Al completar M muestras, se incrementa el contador de ciclos promediados.
+//   - Cuando `averaged_cycles` alcanza N_ca, se activa la señal `finished`.
+//   - El reset (global o de usuario) reinicia los acumuladores y punteros.
+//
+// Notas:
+//   - El puerto A de la BRAM se usa exclusivamente para escritura.
+//   - El puerto B de la BRAM se usa exclusivamente para lectura.
+//   - Los datos almacenados en BRAM al finalizar corresponden a la suma de N_ca
+//     ciclos de longitud M, equivalentes al promedio coherente acumulado.
+//
+// Autor: MatiOliva
+//////////////////////////////////////////////////////////////////////////////////
 
 module coherent_average
 #(

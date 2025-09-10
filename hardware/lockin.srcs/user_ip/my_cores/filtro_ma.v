@@ -1,3 +1,45 @@
+//////////////////////////////////////////////////////////////////////////////////////
+// Módulo: filtro_ma
+//////////////////////////////////////////////////////////////////////////////////////
+// Descripción:
+//   Este módulo implementa un filtro de media móvil (Moving Average) para integracion
+//   coherente de datos provenientes de un sistema Lock-in. Acumula un número definido
+//   de muestras (frames_integracion) por ciclo (ptos_x_ciclo) y entrega el valor total
+//   una vez completada la integración.
+//
+// Entradas:
+//   clock              -> Señal de reloj principal.
+//   reset_n            -> Reset activo en bajo.
+//   enable             -> Habilita el cálculo del filtro.
+//   ptos_x_ciclo       -> Número de puntos por ciclo de señal (M).
+//   frames_integracion -> Número de ciclos a integrar (N).
+//   data_valid         -> Señal que indica cuándo 'data' es válida.
+//   data               -> Datos de entrada de 64 bits a integrar.
+//
+// Salidas:
+//   data_out           -> Resultado acumulado de la integración (64 bits).
+//   data_out_valid     -> Indica cuándo 'data_out' contiene un valor válido.
+//   ready_to_calculate  -> Señal auxiliar que indica que el módulo está listo para calcular.
+//   calculo_finalizado -> Señal auxiliar que indica que la integración completa se realizó.
+//
+// Parámetros / Variables internas:
+//   acumulador         -> Registro que acumula la suma de las muestras.
+//   index              -> Contador de muestras integradas.
+//   MxN                -> Producto de puntos por ciclo y número de ciclos de integración.
+//
+// Funcionalidad:
+//   - Acumula 'M * N' muestras válidas de entrada.
+//   - Señaliza cuando el cálculo está listo y cuando ha finalizado.
+//   - Las entradas se registran para mejorar la sincronización y robustez del módulo.
+//
+// Notas:
+//   - Compatible con streaming Avalon.
+//   - Se puede usar como etapa de filtrado en un lock-in digital.
+//   - Preparado para integrarse con módulos de generación de datos y ruido.
+//
+// Autor: Matías Oliva
+// Fecha: 2025
+//////////////////////////////////////////////////////////////////////////////////////
 
 module filtro_ma(
 

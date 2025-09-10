@@ -1,3 +1,32 @@
+//////////////////////////////////////////////////////////////////////////////////
+// ============================ BRAM Multiplexer =============================== //
+// ============================================================================ //
+// Módulo: bram_mux
+// Descripción:
+//   Multiplexa el acceso de un tercer bloque de control (C) hacia dos BRAMs (A y B).
+//   Dependiendo de la señal `readable_bram`, redirige las señales de dirección,
+//   datos y escritura hacia BRAM_A o BRAM_B, y selecciona de cuál se leen los datos.
+//
+// Parámetros:
+//   - DATA_WIDTH: Ancho de palabra en bits (default: 32)
+//   - ADDR_WIDTH: Ancho de dirección en bits (default: 16)
+//
+// Entradas:
+//   - bram_C_* : Señales provenientes del bloque controlador externo.
+//   - readable_bram : Selección de BRAM (0 → A, 1 → B).
+//
+// Salidas:
+//   - bram_A_*, bram_B_* : Señales dirigidas hacia las BRAMs A y B.
+//   - bram_C_rddata : Datos leídos de la BRAM seleccionada.
+//
+// Notas:
+//   - Se utiliza un único reloj y reset compartido desde BRAM_C.
+//   - Solo una BRAM puede ser accedida en cada ciclo.
+//
+// Autor: MatiOliva
+//////////////////////////////////////////////////////////////////////////////////
+
+
 `timescale 1ns / 1ps
 
 module bram_mux#

@@ -1,3 +1,40 @@
+//////////////////////////////////////////////////////////////////////////////////////
+// Módulo: signal_processing_LI
+//////////////////////////////////////////////////////////////////////////////////////
+// Descripción:
+//   Este módulo implementa un procesamiento de señal tipo Lock-In digital (LIA) 
+//   segmentado sobre una señal de entrada de 64 bits. Permite habilitar/deshabilitar
+//   el procesamiento mediante un control global y soporta un bypass opcional.
+//
+// Entradas:
+//   clk                 -> Señal de reloj principal.
+//   reset_n             -> Reset activo bajo.
+//   enable_gral         -> Habilita el procesamiento global.
+//   bypass              -> Si está activo, se puede saltar el procesamiento (comentado en el código).
+//   data_in [63:0]      -> Señal de entrada a procesar.
+//   data_in_valid       -> Indica cuándo la entrada es válida.
+//   parameter_in_0..32  -> Parámetros de configuración para el Lock-In (número de puntos por ciclo, frames, etc.).
+//
+// Salidas:
+//   data_out1 [63:0]       -> Componente de fase (Lock-In) de la señal procesada.
+//   data_out1_valid        -> Validez de data_out1.
+//   data_out2 [63:0]       -> Componente de cuadratura (Lock-In) de la señal procesada.
+//   data_out2_valid        -> Validez de data_out2.
+//   ready_to_calculate      -> Indica que el Lock-In está listo para calcular.
+//   processing_finished     -> Indica que el cálculo finalizó.
+//   parameter_out_0..4     -> Parámetros de salida (actualmente no usados, fijados en 0).
+//
+// Notas:
+//   - Internamente se utiliza el módulo lockin_segmentado, que realiza la multiplicación
+//     por referencias seno y coseno y aplica filtros de media móvil.
+//   - Los parámetros de entrada permiten modificar dinámicamente la configuración del Lock-In.
+//   - Se implementa registro de parámetros para mantener valores en reset.
+//   - Compatible con sistemas de streaming Avalon en FPGA.
+//
+// Autor: Matías Oliva
+// Fecha: 2025
+//////////////////////////////////////////////////////////////////////////////////////
+
 
 module signal_processing_LI(
 	input clk,

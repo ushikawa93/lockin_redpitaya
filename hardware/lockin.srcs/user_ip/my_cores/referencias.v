@@ -1,3 +1,32 @@
+//////////////////////////////////////////////////////////////////////////////////////
+// Módulo: referencias
+//////////////////////////////////////////////////////////////////////////////////////
+// Descripción:
+//   Este módulo genera referencias seno y coseno discretas a partir de
+//   tablas de búsqueda (LU tables) para un número configurable de puntos por ciclo.
+//   Se utiliza como referencia para multiplicación en sistemas tipo lock-in digital.
+//
+// Entradas:
+//   clock               -> Señal de reloj principal.
+//   reset_n             -> Reset activo bajo.
+//   enable              -> Habilita la actualización de la referencia.
+//   pts_x_ciclo [31:0]  -> Número de puntos por ciclo de la señal de referencia.
+//   avanzar_en_tabla    -> Señal de sincronización para avanzar al siguiente valor en la tabla.
+//
+// Salidas:
+//   data_out_seno [31:0]   -> Valor del seno normalizado y atenuado.
+//   data_out_cos [31:0]    -> Valor del coseno normalizado y atenuado.
+//
+// Notas:
+//   - Los valores de seno y coseno se leen desde archivos hexadecimales LU_Tables/x2048_16b.mem
+//     y LU_Tables/y2048_16b.mem respectivamente.
+//   - La salida se ajusta restando el valor medio y aplicando un corrimiento (atenuación).
+//   - La tabla se recorre cíclicamente según 'pts_x_ciclo'.
+//   - Compatible con sistemas de procesamiento en FPGA y módulos Avalon streaming.
+//
+// Autor: Matías Oliva
+// Fecha: 2025
+//////////////////////////////////////////////////////////////////////////////////////
 
 module referencias(
 
