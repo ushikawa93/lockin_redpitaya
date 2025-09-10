@@ -20,7 +20,6 @@
 *.ltx
 *.summary
 *.rpt
-*.html
 
 # Archivos de simulación
 sim_*.dir/

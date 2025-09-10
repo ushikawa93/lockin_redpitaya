@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <title>Resultados del Lock-in</title>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- No estoy pudiendo separar los archivos estaticos css y js -->
+    <!-- Es alguna complicacion con el sistema de directorios de flask -->
+    <style>
+        .body {font-family: Arial, sans-serif;}
+        .tab-container {display: flex;}
+        .tab {padding: 10px;cursor: pointer;border: 1px solid #ccc;border-bottom: none;background-color: #f1f1f1;}
+        .tab:hover {background-color: #ddd;}
+        .tab.active {background-color: white;border-bottom: 1px solid white;}
+        .tab-content {display: none;padding: 20px;border: 1px solid #ccc;}
+        .tab-content.active {display: block;}    
+    </style>   
+</head>
+<body>
+    <section><h1 style="margin-bottom: 20px;">Lock-in en Red Pitaya</h1></section>
+
+    <div class="tab-container">
+        <div class="tab active" onclick="openTab(event, 'lockin')">Lock in</div>
+        <div class="tab" onclick="openTab(event, 'barrido')">Barrido en frecuencia</div>
+        <div class="tab" onclick="openTab(event, 'adquisidor')">Adquisidor con promedio coherente</div>
+        <div class="tab" onclick="openTab(event,'tab4')">Jupyter Lockin</div>
+        <div class="tab" onclick="openTab(event,'tab5')">Jupyter Adquisidor</div>
+    </div>
+
+    <!----------------------------------------------------------------------------------------->
+    <!-------------------------------------- TAB LOCKIN --------------------------------------->
+    <!----------------------------------------------------------------------------------------->
+
+    <div id="lockin" class="tab-content active">
+        <section id="lockin">
+            <aside>            
+                <h1>Resultados del Lock-in</h1>
+                <p style="font-size: 1.2em;"><b>R: </b><span class="resultado">{{datos.get('r',"-")}} mV</span></p>
+                <p style="font-size: 1.2em;"><b>Φ: </b><span class="resultado">{{datos.get('phi',"-")}} °</span></p>
+                
+                <h1>Condiciones de Medición</h1>
+                <ul>
+                    <li><b>Frec. Ref: </b>{{ datos.get('frec_ref', 1000000) }}</li>
+                    <li><b>Frec. DAC: </b>{{ datos.get('frec_dac', 1000000) }}</li>
+                    <li><b>N: </b>{{ datos.get('N',1) }}</li>
+                    <li><b>Fuente de Datos: </b>{{ datos.get('fuente_datos',0) }}</li>
+                    <li><b>Modo Decimación: </b>{{ datos.get('modo_decimacion',0) }}</li>
+                    <li><b>Decimador: </b>{{ datos.get('decimador',1) }}</li>
+                </ul>     
+
+                <form id="formulario-envio" method="POST" action="/lockin/" style="box-sizing: border-box;">
+                    <input type="submit" name="submit_button" value="Iniciar Medidas" style="box-sizing: border-box; margin: auto;">
+                </form>
+            </aside>
+
+            <aside>
+                <h1>Nueva medición</h1>
+                <label for="f_ref">Frec. Ref:
+                    <input type="text" id="f_ref" name="f_ref" value="{{  datos.get('frec_ref', 1000000) }}">
+                </label>
+
+                <label for="f_dac">Frec. DAC:
+                    <input type="text" id="f_dac" name="f_dac" value="{{ datos.get('frec_dac', 1000000) }}">
+                </label>
+
+                <label for="N">Ciclos de integración:
+                    <input type="text" id="N" name="N" value="{{ datos.get('N',1) }}">
+                </label>            
+
+                <label for="fuente">Fuente de los datos:
+                    <select id="fuente" name="fuente">
+                        <option value="1" {% if datos['fuente_datos'] == "Datos ADC" %}selected{% endif %}>ADC</option>
+                        <option value="0" {% if datos['fuente_datos'] == "Simulacion" %}selected{% endif %}>Simulación interna</option>
+                    </select>
+                </label>
+
+                <label for="modo_dec">Modo de decimación:
+                    <select id="modo_dec" name="modo_dec">
+                        <option value="1" {% if datos['modo_decimacion'] == "Promedio lineal" %}selected{% endif %}>Promedio lineal</option>
+                        <option value="0" {% if datos['modo_decimacion'] == "Descarte" %}selected{% endif %}>Descarte</option>
+                    </select>
+                </label>       
+
+                <label for="valor_decimacion">Valor de decimación:
+                    <input type="text" id="valor_decimacion" name="valor_decimacion" value="{{ datos.get('decimador',1) }}">
+                </label>     
+                
+                <label for="graph">Mostrar Señales:
+                    <select id="graph" name="graph">
+                        <option value="1" {% if datos['graficar'] == "True" %}selected{% endif %}> Si</option>
+                        <option value="0" {% if datos['graficar'] == "False" %}selected{% endif %}> No</option>
+                    </select>
+                </label>  
+            </aside>
+        </section>         
+
+        <section id="graficos">        
+            <a style="display: block;"><img id="imagen" class="grafico" src="data:image/png;base64,{{ imagen }}" alt="Gráfico"></a>
+        </section>
+
+        <section>
+            <button style="background-color: darkgreen;" onclick='descargarDatos({{ datos | tojson | safe }})'>Descargar datos </button>
+        </section>
+
+    </div>
+
+
+    <!----------------------------------------------------------------------------------------->
+    <!----------------------- TAB Barrido en frecuencia --------------------------------------->
+    <!----------------------------------------------------------------------------------------->
+
+    <div id="barrido" class="tab-content">
+        <section id="barrido_en_frec">        
+
+            <aside>
+                <label for="f_inicial">Frecuencia inicial [Hz]:
+                    <input type="text" id="f_inicial" name="f_inicial" value="{{ datos.get('f_inicial',1000) }}">
+                </label>
+
+                <label for="f_step">Incrementos [Hz]:
+                    <input type="text" id="f_step" name="f_step" value="{{ datos.get('f_step',1000) }}">
+                </label>
+
+                <label for="f_final">Frecuencia final [Hz]:
+                    <input type="text" id="f_final" name="f_final" value="{{ datos.get('f_final',10000) }}">
+                </label>
+            </aside>
+
+            <aside>
+                <label for="N_barrido">Ciclos de integración:
+                    <input type="text" id="N_barrido" name="N_barrido" value="{{ datos.get('N_barrido',1) }}">
+                </label>   
+
+                <label for="fuente_barrido">Fuente de los datos:
+                    <select id="fuente_barrido" name="fuente_barrido">
+                        <option value="1" {% if datos['fuente_barrido'] == "Datos ADC" %}selected{% endif %}>ADC</option>
+                        <option value="0" {% if datos['fuente_barrido'] == "Simulacion" %}selected{% endif %}>Simulación interna</option>
+                    </select>
+                </label>
+
+                <form id="formulario-envio-barrido" method="POST" action="/lockin/" style="box-sizing: border-box;">
+                    <input type="submit" name="submit_button" value="Iniciar Barrido" style="box-sizing: border-box; margin: auto;">
+                </form>
+            </aside>        
+        </section>
+       
+        <section id="graficos_barrido">        
+            <a style="display: block;"><img id="imagen" class="graficos_barrido" src="data:image/png;base64,{{ imagen_barrido }}" alt="Gráfico"></a>
+        </section>
+
+        <section>
+            <button style="background-color: darkgreen;" onclick='descargarDatos({{ datos | tojson | safe }})'>Descargar datos </button>
+        </section>
+    </div> 
+
+
+    <!----------------------------------------------------------------------------------------->
+    <!---------------------------------- TAB ADQUISIDOR --------------------------------------->
+    <!----------------------------------------------------------------------------------------->
+
+    <div id="adquisidor" class="tab-content">
+        <section id="adquisidor">
+
+            <aside>
+                <label for="N_ca">Ciclos de promediación coherente:
+                    <input type="text" id="N_ca" name="N_ca" value="{{datos.get('N_ca',1)}}">
+                </label>  
+
+                <label for="frec_ca">Frecuencia objetivo:
+                    <input type="text" id="frec_ca" name="frec_ca" value="{{datos.get('frec_ca',1000000)}}">
+                </label>  
+            </aside>
+            <aside>
+                <label for="trig_mode">Modo de disparo:
+                    <select id="trig_mode" name="trig_mode" onchange="toggleTriggerLevel()">
+                        <option value="0" {% if datos['trig_mode'] == 0 %} selected {% endif %}>Disparo continuo</option>
+                        <option value="1" {% if datos['trig_mode'] == 1 %} selected {% endif %}>Disparo por nivel</option>
+                        <option value="2" {% if datos['trig_mode'] == 2 %} selected {% endif %}>Disparo externo</option>
+                    </select>
+                </label>
+
+                <div id="trigger_level_container">
+                    <label for="trig_lvl">Nivel de disparo:
+                        <input type="text" id="trig_lvl" name="trig_lvl" value="{{datos.get('trig_lvl',0)}}">
+                    </label>
+                </div>
+            
+
+            </aside>
+        </section>
+        <section>
+            <form id="formulario-envio-adquisicion" method="POST" action="/lockin/" style="box-sizing: border-box;">
+                <input type="submit" name="submit_button" value="Iniciar adquisición" style="box-sizing: border-box; margin: auto;">
+            </form>
+        </section>
+
+        <section id="graficos_adquisidor">        
+            <a style="display: block;"><img id="imagen" class="graficos_adquisidor" src="data:image/png;base64,{{ imagen_adquisidor_a }}" alt="Gráfico"></a>
+        </section>
+
+        <section>
+            <button style="background-color: darkgreen;" onclick='descargarDatos({{ datos | tojson | safe }})'>Descargar datos </button>
+        </section>
+       
+    </div>
+
+    <!----------------------------------------------------------------------------------------->
+    <!---------------------------------- TAB Jupyter lockin ----------------------------------->
+    <!----------------------------------------------------------------------------------------->
+
+    <div id="tab4" class="tab-content">
+        <section>
+            <iframe src="http://{{ datos['ip'] }}:9999/jupyter/notebooks/lockin_notebook.ipynb" width="100%" height="600px"></iframe>
+        </section>
+    </div>
+
+     <!----------------------------------------------------------------------------------------->
+    <!---------------------------------- TAB Jupyter Adquisidor ----------------------------------->
+    <!----------------------------------------------------------------------------------------->
+
+    <div id="tab5" class="tab-content">
+        <section>
+            <iframe src="http://{{ datos['ip'] }}:9999/jupyter/notebooks/adquisidor_notebook.ipynb" width="100%" height="600px"></iframe>
+        </section>
+    </div>
+
+</body>
+</html>
+
+<script>
+
+    /////// ========================== Función para las pestañas ===================================== /////	        
+    function openTab(evt, tabName) {
+        // Esconde todo el contenido de las pestañas
+        var tabContents = document.getElementsByClassName("tab-content");
+        for (var i = 0; i < tabContents.length; i++) {
+            tabContents[i].classList.remove("active");
+        }
+
+        // Elimina la clase "active" de todas las pestañas
+        var tabs = document.getElementsByClassName("tab");
+        for (var i = 0; i < tabs.length; i++) {
+            tabs[i].classList.remove("active");
+        }
+
+        // Muestra el contenido de la pestaña actual y añade la clase "active"
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");      
+    }
+
+    // Esta es un detalle que solo se muestre la opcion de nivel de disparo si ese es el modo seleccionado
+    function toggleTriggerLevel() {
+        const triggerMode = document.getElementById('trig_mode').value;
+        const triggerLevelContainer = document.getElementById('trigger_level_container');
+
+        // Muestra el nivel de disparo solo si está seleccionado 'Disparo por nivel'
+        triggerLevelContainer.style.display = (triggerMode === "1") ? "block" : "none";
+    }
+
+
+    window.onload = function () {
+        const activeTab = "{{ tab }}"; // El valor que envía Flask
+        openTab(null,activeTab);
+        toggleTriggerLevel();
+    };
+   
+    /////// ========================== Enviar parámetros del lockin ===================================== /////
+    // Esto agarra los parametros del Lockin y los empaqueta para mandarle al backend!
+    document.getElementById('formulario-envio').addEventListener('submit', function() {
+        const valores = ['f_ref', 'f_dac', 'N', 'fuente', 'modo_dec', 'valor_decimacion','graph'];        
+
+        valores.forEach(id => {
+            const valorInput = document.getElementById(id)?.value;
+            if (valorInput !== undefined) {
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = id;
+                hiddenInput.value = valorInput;
+                this.appendChild(hiddenInput);
+            }
+        });
+    });
+
+    /////// ========================== Enviar parámetros del barrido ===================================== /////
+    // Esto agarra los parametros del Barrido en f y los empaqueta para mandarle al backend!
+    document.getElementById('formulario-envio-barrido').addEventListener('submit', function() {
+        const valores = ['f_inicial', 'f_final','f_step', 'N_barrido', 'fuente_barrido'];
+
+        valores.forEach(id => {
+            const valorInput = document.getElementById(id)?.value;
+            if (valorInput !== undefined) {
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = id;
+                hiddenInput.value = valorInput;
+                this.appendChild(hiddenInput);
+            }
+        });
+    });
+
+
+    /////// ========================== Enviar parámetros de la adquisision ===================================== /////
+    // Esto agarra los parametros del adquisidor y los empaqueta para mandarle al backend!
+    document.getElementById('formulario-envio-adquisicion').addEventListener('submit', function() {
+        const valores = ['N_ca', 'frec_ca','trig_mode', 'trig_lvl'];
+
+        valores.forEach(id => {
+            const valorInput = document.getElementById(id)?.value;
+            if (valorInput !== undefined) {
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = id;
+                hiddenInput.value = valorInput;
+                this.appendChild(hiddenInput);
+            }
+        });
+    });
+
+    /////// ========================== Descargar datos ===================================== /////
+    function descargarDatos(datos) {
+        let contenido = procesarDatos(datos, 0); // Procesar datos con nivel de indentación 0
+
+        const blob = new Blob([contenido], { type: 'text/plain' });
+        const enlace = document.createElement('a');
+        enlace.href = URL.createObjectURL(blob);
+        enlace.download = 'datos.txt';
+        enlace.click();
+    }
+
+    function procesarDatos(obj, nivel) {
+        let resultado = "";
+        const indentacion = "  ".repeat(nivel); // Agregar espacios para indentación
+
+        for (const clave in obj) {
+            if (Array.isArray(obj[clave])) {
+                // Si es un array, unir los valores con comas
+                resultado += `${indentacion}${clave}: ${obj[clave].join(", ")}\n`;
+            } else if (typeof obj[clave] === "object" && obj[clave] !== null) {
+                // Si es un diccionario, procesarlo recursivamente
+                resultado += `${indentacion}${clave}:\n${procesarDatos(obj[clave], nivel + 1)}`;
+            } else {
+                // Si es un valor único, escribirlo directamente
+                resultado += `${indentacion}${clave}: ${obj[clave]}\n`;
+            }
+        }
+
+        return resultado;
+    }
+
+</script>
