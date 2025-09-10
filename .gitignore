@@ -1,0 +1,60 @@
+# =========================================
+# Archivos de cache, logs y temporales
+# =========================================
+*.cache
+*.runs
+*.hw
+*.backup
+*.log
+*.jou
+*.str
+*.pb
+*.webtalk
+
+# Bitstreams y archivos de implementación
+*.bit
+*.ngc
+*.ngd
+*.ncd
+*.drc
+*.ltx
+*.summary
+*.rpt
+*.html
+
+# Archivos de simulación
+sim_*.dir/
+sim_*.wdb/
+*.vcd
+*.vpd
+
+# Archivos de editor
+*.swp
+*.swo
+*~
+
+# Archivos temporales generales
+*.tmp/
+
+# =========================================
+# Fuentes, constraints y scripts
+# Nunca ignorar:
+# - Sources propios (.v, .vhdl)
+# - Constraints (.xdc)
+# - Scripts .tcl
+# - IP generados que Vivado necesita
+# =========================================
+!src/**/*.v
+!src/**/*.vhdl
+!src/**/*.xdc
+!*.tcl
+
+# =========================================
+# IP personalizado / Generated Sources
+# No ignorar carpetas necesarias para que Vivado reconozca los IP
+# =========================================
+!lockin.gen/sources_1/ip/**
+!lockin.gen/sources_1/bd/**
+!lockin.gen/sources_1/ip/*/hw/**
+!lockin.gen/sources_1/ip/*/cache/**
+!user_ip/**
