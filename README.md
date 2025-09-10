@@ -7,19 +7,19 @@ Los módulos principales son:
 
 + *Control:* Controla la operación de la FPGA a través  del uP embebido. Puede controlar reset, enable, leer resultados y setear algunos parámetros:
  
--> N_ma: Número de ciclos promedidados en el MA del lockin
+  - N_ma: Número de ciclos promedidados en el MA del lockin
 
--> data_source: Fuente de los datos. (0: simulacion | 1: ADC)
+  - data_source: Fuente de los datos. (0: simulacion | 1: ADC)
 
--> dac_phase: Incremento de fase para el dds del dac
+  - dac_phase: Incremento de fase para el dds del dac
 
--> ref_phase: Incremento de fase para el dds de las referencias
+  - ref_phase: Incremento de fase para el dds de las referencias
 
--> decimate_value: Valor de decimación.
+  - decimate_value: Valor de decimación.
 
--> decimate_mode: Modo de decimacion (0: descarte | 1: promedio lineal)
+  - decimate_mode: Modo de decimacion (0: descarte | 1: promedio lineal)
 
--> M: Puntos por ciclo de señal. En la última versión se usa DDS para generar la sinusoide asique esto solo se usa para estimar el punto de paso por cero de la secuencia.
+  - M: Puntos por ciclo de señal. En la última versión se usa DDS para generar la sinusoide asique esto solo se usa para estimar el punto de paso por cero de la secuencia.
 
 + *Fuente de datos:* Este módulo gestiona las señales para el procesamiento. Puede ser una señal simulada o datos provenientes del ADC. 
 
