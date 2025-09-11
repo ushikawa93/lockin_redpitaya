@@ -1,3 +1,46 @@
+///// ================================================================================= /////  
+///// ====================== Módulo MULTIPLICATE_REF_2 ============================= /////  
+///// ================================================================================= /////  
+//  
+// Este módulo multiplica una señal de entrada por una referencia de fase y cuadratura,  
+// generando dos productos: uno con la componente seno y otro con la componente coseno.  
+// Permite usar una referencia interna o externa.
+//
+// Funcionamiento:  
+//   - Genera referencias internas de seno y coseno mediante el módulo `referencias`.  
+//   - Si `referencia_externa` está activa, utiliza los valores externos proporcionados.  
+//   - Multiplica la señal de entrada `data` por las referencias de fase y cuadratura  
+//     usando dos instancias del módulo `multiplicador`.  
+//   - Genera las salidas `data_out_seno` y `data_out_coseno` con sus respectivas señales  
+//     de validez sincronizadas.
+//
+// Parámetros de configuración:  
+//   ptos_x_ciclo : Número de puntos por ciclo de la señal de referencia.
+//
+// Puertos:  
+//   Entradas:  
+//     clock                     : Reloj principal.  
+//     reset_n                   : Reset asincrónico, activo en bajo.  
+//     enable                    : Habilita el procesamiento de datos.  
+//     referencia_externa        : Indica si se usa referencia externa.  
+//     sync                      : Señal de sincronización externa.  
+//     referencia_externa_sen    : Componente seno de la referencia externa.  
+//     referencia_externa_cos    : Componente coseno de la referencia externa.  
+//     referencia_externa_valid  : Indica cuándo la referencia externa es válida.  
+//     data                      : Datos de entrada de 32 bits, en complemento a dos.  
+//     data_valid                : Indica que `data` es válido.
+//
+//   Salidas:  
+//     data_out_seno             : Producto de la señal de entrada por la referencia de fase.  
+//     data_out_coseno           : Producto de la señal de entrada por la referencia de cuadratura.  
+//     data_valid_multiplicacion : Indica que ambos productos son válidos.
+//
+// Notas:  
+//   - Sincroniza las salidas usando registros internos de validez.  
+//   - Permite integraciones y filtrados posteriores de lock-in segmentado.  
+//   - Todas las señales de entrada y referencia se registran para evitar problemas de timing.  
+//  
+///// ================================================================================= /////  
 
 module multiplicate_ref_2(
 

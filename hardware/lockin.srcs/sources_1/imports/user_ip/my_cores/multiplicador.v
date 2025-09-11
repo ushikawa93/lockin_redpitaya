@@ -1,3 +1,39 @@
+///// ================================================================================= /////  
+///// ========================== Módulo MULTIPLICADOR ============================== /////  
+///// ================================================================================= /////  
+//  
+// Este módulo realiza la multiplicación de dos señales de entrada de 32 bits utilizando  
+// un macro DSP optimizado (`MULT_MACRO`) para instanciación eficiente en FPGA.  
+// La salida es un valor de 64 bits correspondiente al producto de las entradas.
+//
+// Funcionamiento:  
+//   - Registra las entradas `data_a` y `data_b` para mejorar el timing y la sincronización.  
+//   - Ajusta los anchos de los datos a los máximos soportados por el macro DSP:  
+//       - data_a: 25 bits  
+//       - data_b: 18 bits  
+//   - Multiplica las entradas cuando `enable` y `data_valid` están activos.  
+//   - Genera `data_out` y la señal `data_valid_multiplicacion` indicando que el producto es válido.
+//
+// Puertos:  
+//   Entradas:  
+//     clock                  : Reloj principal.  
+//     reset_n                : Reset asincrónico, activo en bajo.  
+//     enable                 : Habilita el procesamiento de datos.  
+//     data_a                 : Primer operando de 32 bits (complemento a dos).  
+//     data_b                 : Segundo operando de 32 bits (complemento a dos).  
+//     data_valid             : Indica cuándo las entradas son válidas.  
+//
+//   Salidas:  
+//     data_out               : Producto de los dos operandos (64 bits).  
+//     data_valid_multiplicacion : Indica que `data_out` es válido.
+//
+// Notas:  
+//   - Utiliza el macro `MULT_MACRO` de Xilinx para asegurar una implementación eficiente  
+//     en DSPs de FPGAs 7 Series.  
+//   - Todas las señales de entrada son registradas para evitar problemas de timing.  
+//   - La latencia del macro está configurada en 0 ciclos para minimizar retrasos.  
+//  
+///// ================================================================================= /////  
 
 module multiplicador(
 

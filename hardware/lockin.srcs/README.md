@@ -1,6 +1,6 @@
 # Archivos Fuente del proyecto de Hardware
 
-En esta carpeta hay IPs (algunos propios y otros prestados) que implementan los distintos bloques de Hardware del diseño. 
+En esta carpeta hay IPs (algunos propios y otros prestados) que implementan los distintos bloques de Hardware del diseño. Cada IP tiene un encabezado que describe brevemente su operación. Para integrar todos estos IPs en el diseño del lockin se utilizó un block diagram, definido en sources_1/bd/system.
 
 ## Estructura de la carpeta:
 

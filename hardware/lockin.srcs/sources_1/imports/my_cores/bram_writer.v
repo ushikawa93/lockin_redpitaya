@@ -1,3 +1,45 @@
+///// ================================================================================= /////  
+///// ========================== Módulo BRAM_WRITER =============================== /////  
+///// ================================================================================= /////  
+//  
+// Este módulo escribe datos en una memoria BRAM a partir de una interfaz de entrada streaming.  
+// Permite controlar la escritura mediante señales de habilitación y reset de usuario.
+//
+// Funcionamiento:  
+//   - Registra las entradas `data` y `data_valid` para sincronización y timing seguro.  
+//   - Mantiene un contador de dirección que avanza cada vez que `data_valid` está activo.  
+//   - Genera las señales de escritura (`bram_porta_we`), dirección (`bram_porta_addr`) y datos (`bram_porta_wrdata`)  
+//     para la BRAM.  
+//   - Señal `finished` indica cuando se ha llegado al final de la memoria definida por `MEMORY_SIZE`.  
+//
+// Parámetros:  
+//   DATA_WIDTH  : Ancho de los datos a escribir (por defecto 32 bits).  
+//   ADDR_WIDTH  : Ancho de las direcciones de la BRAM (por defecto 16 bits).  
+//   MEMORY_SIZE : Tamaño total de la memoria (por defecto 65536 palabras).  
+//
+// Puertos:  
+//   Entradas:  
+//     clk        : Reloj principal.  
+//     reset_n    : Reset asincrónico, activo en bajo.  
+//     enable     : Habilita el módulo para escribir datos.  
+//     user_reset : Reset de usuario para reiniciar la escritura.  
+//     data       : Datos de entrada a escribir en BRAM.  
+//     data_valid : Indica que `data` es válido.  
+//
+//   Salidas:  
+//     finished      : Señal que indica que se alcanzó el final de la memoria.  
+//     bram_porta_clk : Reloj para la BRAM.  
+//     bram_porta_rst : Reset para la BRAM (activo alto).  
+//     bram_porta_addr: Dirección de la BRAM a escribir.  
+//     bram_porta_wrdata: Datos a escribir en la BRAM.  
+//     bram_porta_we  : Señal de habilitación de escritura en la BRAM.  
+//
+// Notas:  
+//   - Las entradas streaming se registran para mejorar timing y estabilidad.  
+//   - La escritura avanza solo cuando `data_valid` está activo y `enable` está habilitado.  
+//   - El módulo es fácilmente parametrizable para distintos tamaños de memoria y anchos de datos.  
+//  
+///// ================================================================================= /////  
 
 module bram_writer
 #(

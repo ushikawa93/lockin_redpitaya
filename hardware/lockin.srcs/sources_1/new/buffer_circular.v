@@ -1,4 +1,58 @@
 `timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////////
+// Módulo: buffer_circular
+//////////////////////////////////////////////////////////////////////////////////////
+// Descripción:
+//   Este módulo implementa un buffer circular basado en BRAM con tres puertos:
+//   - Un puerto de entrada (A) para escritura.
+//   - Dos puertos de salida (B y C) que se alternan como áreas de lectura/escritura.
+//
+//   La memoria se divide en dos mitades (cada una de tamaño MEMORY_SIZE/2).
+//   Mientras una mitad es usada para escritura desde el puerto A, 
+//   la otra mitad queda disponible para lectura desde el puerto correspondiente (B o C).
+//
+// Parámetros:
+//   DATA_WIDTH   -> Ancho de palabra de datos (bits).
+//   ADDR_WIDTH   -> Ancho de direcciones (bits).
+//   MEMORY_SIZE  -> Tamaño total de memoria (por defecto 65536).
+//
+// Puertos:
+//   Entrada BRAM (A):
+//     - bram_porta_clk      : Reloj de escritura.
+//     - bram_porta_rst      : Reset.
+//     - bram_porta_addr     : Dirección de escritura.
+//     - bram_porta_wrdata   : Datos de entrada.
+//     - bram_porta_rddata   : Datos leídos.
+//     - bram_porta_we       : Habilitación de escritura.
+//
+//   Salida BRAM (B):
+//     - bram_portb_clk      : Reloj (clonado de A).
+//     - bram_portb_rst      : Reset (clonado de A).
+//     - bram_portb_addr     : Dirección de acceso.
+//     - bram_portb_wrdata   : Datos escritos (en modo escritura).
+//     - bram_portb_rddata   : Datos leídos desde BRAM.
+//     - bram_portb_we       : Habilitación de escritura.
+//
+//   Salida BRAM (C):
+//     - bram_portc_clk      : Reloj (clonado de A).
+//     - bram_portc_rst      : Reset (clonado de A).
+//     - bram_portc_addr     : Dirección de acceso.
+//     - bram_portc_wrdata   : Datos escritos (en modo escritura).
+//     - bram_portc_rddata   : Datos leídos desde BRAM.
+//     - bram_portc_we       : Habilitación de escritura.
+//
+//   Señal de control:
+//     - redable_buffer      : Indica qué mitad del buffer está disponible para lectura.
+//                             0 → se puede leer puerto B (C en escritura).
+//                             1 → se puede leer puerto C (B en escritura).
+//
+// Notas:
+//   - La escritura siempre se realiza en la mitad opuesta a la que está habilitada para lectura.
+//   - Facilita el procesamiento de bloques de datos en paralelo (ping-pong buffering).
+//
+// Autor: Matías Oliva
+// Fecha: 2025
+//////////////////////////////////////////////////////////////////////////////////////
 
 
 module buffer_circular

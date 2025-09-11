@@ -1,4 +1,36 @@
 `timescale 1ns / 1ps
+///// ================================================================================= /////
+///// =========================== Módulo Delay AXI Streaming ========================== /////
+///// ================================================================================= /////
+//
+// Este módulo implementa un retardo configurable para flujos de datos
+// en interfaces tipo AXI-Streaming.
+//
+// Funcionalidad:
+//   - Recibe datos de entrada de DATA_WIDTH bits junto con una señal de validez.
+//   - Retrasa los datos y la validez un número de ciclos igual a DELAY.
+//   - Incluye la opción de bypass (sin retardo) mediante la señal bypass_n.
+//
+// Parámetros:
+//   DATA_WIDTH : Ancho de los datos en bits (por defecto 16).
+//   DELAY      : Número de ciclos de retardo (por defecto 14).
+//
+// Puertos:
+//   clk            : Reloj del sistema.
+//   reset_n        : Reset activo en bajo.
+//   bypass_n       : Control de bypass, cuando está en 0 desactiva el retardo.
+//   data_in        : Datos de entrada.
+//   data_in_valid  : Señal que indica cuándo data_in es válido.
+//   data_out       : Datos de salida (con o sin retardo).
+//   data_out_valid : Señal de validez de data_out.
+//
+// Notas:
+//   - El retardo se implementa mediante registros en cadena.
+//   - Si bypass_n está en bajo, los datos de salida siguen directamente a data_in.
+//   - Compatible con interfaces AXI-Streaming.
+//
+///// ================================================================================= /////
+
 
 module delay_axi_streaming #(
     parameter DATA_WIDTH = 16, // Parameter to set the bit-width

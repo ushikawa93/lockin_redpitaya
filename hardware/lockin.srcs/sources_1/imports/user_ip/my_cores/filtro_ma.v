@@ -1,3 +1,46 @@
+///// ================================================================================= /////  
+///// ========================== Módulo FILTRO_MA ================================ /////  
+///// ================================================================================= /////  
+//  
+// Este módulo implementa un filtro de media móvil (MA) simple.  
+// Está diseñado para promediar datos de entrada en frames de N puntos por ciclo, útil para  
+// sistemas tipo lock-in digital o procesamiento de señales en streaming.
+//
+// Funcionamiento:  
+//   - Registra las entradas de datos y señales de control para asegurar sincronización.  
+//   - Acumula los datos de entrada durante `frames_integracion` frames, cada uno de  
+//     `ptos_x_ciclo` puntos por ciclo.  
+//   - La acumulación solo ocurre cuando la señal `start_signal` está activa y `enable` está habilitado.  
+//   - Mantiene un contador de frames y genera `calculo_finalizado` al completar la integración.  
+//
+// Parámetros de configuración:  
+//   ptos_x_ciclo        : Número de puntos por ciclo de señal (M).  
+//   frames_integracion  : Número de frames a integrar (N).  
+//
+// Puertos:  
+//   Entradas:  
+//     clock               : Reloj principal.  
+//     reset_n             : Reset asincrónico, activo en bajo.  
+//     enable              : Habilita el procesamiento de datos.  
+//     data_valid          : Indica cuándo los datos de entrada son válidos.  
+//     data                : Datos de entrada de 64 bits.  
+//     start_signal        : Señal de inicio que habilita el cálculo.  
+//
+//   Salidas:  
+//     data_out            : Datos acumulados y promediados.  
+//     data_out_valid      : Indica que `data_out` es válido.  
+//     ready_to_calculate   : Siempre alto; indica que el módulo puede procesar datos.  
+//     calculo_finalizado   : Se activa al completar N frames de integración.  
+//     datos_promediados    : Cuenta los datos efectivamente acumulados.
+//
+// Notas:  
+//   - Ignora los primeros ciclos de `start_signal` mediante el parámetro interno `ignore_cycles`.  
+//   - Todas las señales de entrada son registradas para evitar problemas de timing.  
+//   - Es una versión simplificada sin sincronización adicional; útil para promediado de señales.  
+//  
+///// ================================================================================= /////  
+
+
 module filtro_ma(
 
 	// Entradas de control
@@ -74,8 +117,8 @@ begin
 	
 end
 
-// Este cacho de codigo cuenta cuantas se�ales de start llegan
-// Cuando me lleguen N se�ales de start pongo en alto la se�al de finish
+// Este cacho de codigo cuenta cuantas se�ales de start llegan
+// Cuando me lleguen N se�ales de start pongo en alto la se�al de finish
 // y ahi la cosa deja de calcular...
 reg [31:0] start_count;
 parameter ignore_cycles = 1;

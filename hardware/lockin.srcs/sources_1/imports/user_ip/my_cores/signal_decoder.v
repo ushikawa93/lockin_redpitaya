@@ -1,3 +1,26 @@
+//////////////////////////////////////////////////////////////////////////////////
+// Módulo: signal_decoder
+//
+// Descripción:
+//   Este módulo decodifica los bits más significativos de una señal ADC de entrada
+//   y enciende uno de los 8 LEDs según el valor decodificado.
+//   - La señal de entrada se recibe por un AXIS interface.
+//   - Se puede ajustar un desplazamiento de bits según el rango de voltaje del ADC.
+//
+// Parámetros principales:
+//   ADC_WIDTH       : Cantidad de bits de la señal ADC
+//   AXIS_TDATA_WIDTH: Ancho de los datos AXIS
+//   BIT_OFFSET      : Desplazamiento de bits según rango de voltaje
+//
+// Puertos principales:
+//   S_AXIS_tdata : Datos de entrada del ADC
+//   S_AXIS_tvalid: Indica que los datos de entrada son válidos
+//   clk          : Reloj del sistema
+//   rst          : Reset del módulo
+//   led_out      : Salida a los LEDs según el valor decodificado
+//////////////////////////////////////////////////////////////////////////////////
+
+
 `timescale 1ns / 1ps
 
 module signal_decoder #

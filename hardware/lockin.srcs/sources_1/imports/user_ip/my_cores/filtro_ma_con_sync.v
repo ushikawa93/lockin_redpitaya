@@ -1,3 +1,47 @@
+///// ================================================================================= /////  
+///// ======================= Módulo FILTRO_MA_CON_SYNC ============================== /////  
+///// ================================================================================= /////  
+//  
+// Este módulo implementa un filtro de media móvil (MA) sincronizado con una señal de inicio.  
+// Está diseñado para promediar datos de entrada en frames de N puntos por ciclo, útil para  
+// sistemas tipo lock-in digital o procesamiento de señales en tiempo real.
+//
+// Funcionamiento:  
+//   - Registra las entradas de datos y señales de control para asegurar sincronización.  
+//   - Acumula los datos de entrada durante `frames_integracion` frames, cada uno de  
+//     `ptos_x_ciclo` puntos por ciclo.  
+//   - La acumulación solo ocurre cuando la señal `start_signal` está activa y `enable` está habilitado.  
+//   - Mantiene un contador de frames y genera `calculo_finalizado` al completar la integración.  
+//
+// Parámetros de configuración:  
+//   ptos_x_ciclo        : Número de puntos por ciclo de señal (M).  
+//   frames_integracion  : Número de frames a integrar (N).  
+//
+// Puertos:  
+//   Entradas:  
+//     clock               : Reloj principal.  
+//     reset_n             : Reset asincrónico, activo en bajo.  
+//     enable              : Habilita el procesamiento de datos.  
+//     data_valid          : Indica cuándo los datos de entrada son válidos.  
+//     data                : Datos de entrada de 64 bits.  
+//     start_signal        : Señal de inicio que habilita el cálculo.  
+//
+//   Salidas:  
+//     data_out            : Datos acumulados y promediados.  
+//     data_out_valid      : Indica que `data_out` es válido.  
+//     ready_to_calculate   : Siempre alto; indica que el módulo puede procesar datos.  
+//     calculo_finalizado   : Se activa al completar N frames de integración.  
+//     datos_promediados    : Cuenta los datos efectivamente acumulados.
+//
+// Notas:  
+//   - Ignora los primeros ciclos de `start_signal` mediante el parámetro interno `ignore_cycles`.  
+//   - Todas las señales de entrada son registradas para evitar problemas de timing.  
+//   - Útil para sincronización en algoritmos de lock-in, promediado de señales, o  
+//     procesamiento de streaming en FPGA.  
+//  
+///// ================================================================================= /////  
+
+
 module filtro_ma_con_sync(
 
 	// Entradas de control

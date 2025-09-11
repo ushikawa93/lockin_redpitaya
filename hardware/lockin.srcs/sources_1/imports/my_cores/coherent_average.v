@@ -1,3 +1,50 @@
+///// ================================================================================= /////  
+///// ======================== Módulo COHERENT_AVERAGE ============================ /////  
+///// ================================================================================= /////  
+//  
+// Este módulo realiza un promediado coherente de señales muestreadas, escribiendo y leyendo datos  
+// de una memoria BRAM dual-port. Permite acumular varias adquisiciones y calcular un promedio  
+// lineal o por ciclos, útil para lock-in amplifiers o sistemas de adquisición de alta precisión.
+//
+// Funcionamiento:  
+//   - Detecta flancos de una señal `trigger` para iniciar la adquisición de un nuevo ciclo.  
+//   - Lee datos antiguos desde la BRAM y los suma con los nuevos datos de entrada.  
+//   - Escribe el resultado acumulado en la BRAM (puerto A para escritura, puerto B para lectura).  
+//   - Mantiene un registro de los índices finales de cada ciclo de promediado en una BRAM extra.  
+//   - Controla estados de limpieza de memoria, espera de trigger, cálculo y finalización.  
+//
+// Parámetros:  
+//   DATA_WIDTH       : Ancho de los datos a procesar (por defecto 32 bits).  
+//   ADDR_WIDTH       : Ancho de las direcciones de BRAM (por defecto 16 bits).  
+//   N_CA_WIDTH       : Ancho para contar ciclos de promediado (por defecto 32 bits).  
+//   RAM_SIZE         : Tamaño de la BRAM principal (por defecto 32768).  
+//   M_WIDTH          : Ancho de los contadores internos de ciclo (por defecto 16 bits).  
+//   INDICES_ADDR     : Ancho de la BRAM de índices (por defecto 10 bits).  
+//
+// Puertos:  
+//   Entradas:  
+//     clk              : Reloj principal.  
+//     reset_n          : Reset asincrónico, activo en bajo.  
+//     user_reset       : Reset de usuario para reiniciar la operación.  
+//     trigger          : Señal de inicio de cada ciclo de promediado.  
+//     data             : Datos de entrada a promediar.  
+//     data_valid       : Indica que `data` es válido.  
+//     N_ca_in          : Número de ciclos de promediado total.  
+//     N_prom_lineal_in : Número de muestras por ciclo (para velocidad máxima).  
+//
+//   Salidas:  
+//     finished          : Señal que indica que se completó el promediado.  
+//     bram_porta_*      : Señales de control para BRAM principal puerto A (escritura).  
+//     bram_portb_*      : Señales de control para BRAM principal puerto B (lectura).  
+//     bram_index_*      : Señales de control para BRAM que guarda los índices finales de cada ciclo.
+//
+// Notas:  
+//   - El módulo está diseñado para trabajar con máxima velocidad (`N_prom_lineal = 1`) o con ciclos intermedios.  
+//   - La máquina de estados controla el flujo: clean → wait_for_trigger → calculate → save_last_index → update_last_index_address → finish.  
+//   - Todas las operaciones se sincronizan con `clk` y se registran las entradas para asegurar estabilidad.  
+//   - Permite acumulación coherente de múltiples adquisiciones para mejorar relación señal/ruido.
+//  
+///// ================================================================================= /////  
 
 module coherent_average
 #(
@@ -79,7 +126,7 @@ reg [N_CA_WIDTH-1:0] N_ca_reg;
 reg [N_CA_WIDTH-1:0] N_prom_lineal_reg;
     always @ (posedge clk) N_prom_lineal_reg <= N_prom_lineal_in;
     
-// Deteccion de flanco en la se�al de trigger
+// Deteccion de flanco en la se�al de trigger
 wire flanco_trigger;
 reg trigger_reg,data_valid_reg;
 
@@ -240,7 +287,7 @@ begin
                 wr_enable_3 <= wr_enable_2;
                 index_4 <= index_3;  
                 
-                // Me llega el flanco y dejo de escribir.. deber�a en realidad escribir un par de muestras mas (terminar el pipeline...)
+                // Me llega el flanco y dejo de escribir.. deber�a en realidad escribir un par de muestras mas (terminar el pipeline...)
                 //state <=  (flanco_trigger )? (( averaged_cycles == N_ca_reg )? finish : wait_for_trigger) : calculate ;        
                 state <=  (flanco_trigger )? save_last_index : calculate ;   
           end

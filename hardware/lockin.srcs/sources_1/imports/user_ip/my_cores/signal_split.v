@@ -1,3 +1,25 @@
+//////////////////////////////////////////////////////////////////////////////////
+// Módulo: signal_split
+//
+// Descripción:
+//   Este módulo recibe una señal de entrada y la divide en dos señales de salida.
+//   - Ambas señales de salida conservan la validación de la entrada.
+//   - Se ajusta el ancho de cada salida según los parámetros definidos.
+//
+// Parámetros principales:
+//   ADC_DATA_WIDTH    : Cantidad de bits de la señal ADC de entrada
+//   AXIS_TDATA_WIDTH  : Ancho de los datos AXIS de entrada/salida
+//
+// Puertos principales:
+//   S_AXIS_tdata      : Datos de entrada
+//   S_AXIS_tvalid     : Indica que los datos de entrada son válidos
+//   M_AXIS_PORT1_tdata: Primera señal de salida
+//   M_AXIS_PORT1_tvalid: Validación de la primera salida
+//   M_AXIS_PORT2_tdata: Segunda señal de salida
+//   M_AXIS_PORT2_tvalid: Validación de la segunda salida
+//////////////////////////////////////////////////////////////////////////////////
+
+
 `timescale 1ns / 1ps
 
 module signal_split #

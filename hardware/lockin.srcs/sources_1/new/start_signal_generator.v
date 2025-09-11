@@ -1,5 +1,46 @@
 `timescale 1ns / 1ps
 
+///// ================================================================================= /////
+///// ======================= Módulo START_SIGNAL_GENERATOR =========================== /////
+///// ================================================================================= /////
+//
+// Este módulo genera una señal de inicio (start) a partir de la detección de cruces 
+// por cero en la señal de entrada. Está diseñado para sincronizar procesos que deben 
+// comenzar en un punto específico del ciclo de la señal.
+//
+// Funcionamiento:
+//   - Monitorea el bit de signo de la señal de entrada (data[DATA_WIDTH-1]).
+//   - Detecta transiciones de negativo a positivo (cero ascendente).
+//   - Cuando se detecta la condición, genera un pulso de inicio (start).
+//   - El pulso se habilita durante un ciclo de reloj y luego se bloquea 
+//     durante aproximadamente M/2 muestras, donde M es el período estimado
+//     entregado en approxM.
+//   - Una máquina de estados controla el flujo: 
+//         idle → habilitar_salida → esperar → idle.
+//
+// Parámetros:
+//   DATA_WIDTH : Ancho de la señal de entrada (bits).
+//
+// Puertos:
+//   Entradas:
+//     clk         : Reloj principal.
+//     reset_n     : Reset asincrónico, activo en bajo.
+//     data        : Datos de entrada (DATA_WIDTH bits).
+//     data_valid  : Indica cuando los datos de entrada son válidos.
+//     approxM     : Aproximación del número de puntos por período.
+//
+//   Salidas:
+//     start       : Pulso de inicio generado cuando se detecta la condición.
+//
+// Notas:
+//   - El cálculo de halfM = (approxM/2 + approxM/4) ajusta la ventana de bloqueo 
+//     entre pulsos para mayor robustez en la detección.
+//   - Este módulo es útil para sincronización en algoritmos de lock-in, FFT, 
+//     o cualquier proceso periódico.
+//
+///// ================================================================================= /////
+
+
 module start_signal_generator#(
     parameter DATA_WIDTH = 16 
 )(

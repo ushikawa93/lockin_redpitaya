@@ -1,3 +1,36 @@
+///// ================================================================================= /////  
+///// ========================= Módulo DATA_STREAM ============================== /////  
+///// ================================================================================= /////  
+//  
+// Este módulo genera un flujo de datos secuenciales desde 0 hasta M-1 de manera cíclica.  
+// Se utiliza principalmente como fuente de prueba o como contador de referencia para sistemas  
+// de adquisición y procesamiento de señales.  
+//
+// Funcionamiento:  
+//   - Produce un dato por ciclo de reloj mientras `enable` esté activo.  
+//   - Al llegar al valor máximo `M-1`, el contador vuelve a 0 y continúa el ciclo.  
+//   - La salida `data_out_valid` indica cuándo el dato generado es válido.  
+//
+// Parámetros:  
+//   DATA_WIDTH : Ancho de los datos de salida.  
+//   M_WIDTH    : Ancho del registro que almacena el valor máximo `M`.  
+//   M          : Valor máximo por defecto para el conteo (puede actualizarse vía `M_in`).  
+//
+// Entradas:  
+//   clk       : Señal de reloj principal.  
+//   reset_n   : Reset asincrónico activo en bajo.  
+//   enable    : Habilita la generación de datos.  
+//   M_in      : Valor máximo dinámico del contador.  
+//   user_reset: Reset sincrónico del usuario.  
+//
+// Salidas:  
+//   data_out       : Valor secuencial generado.  
+//   data_out_valid : Señal que indica que `data_out` es válida.  
+//
+// Notas:  
+//   - Permite ajustar dinámicamente el límite superior del conteo mediante `M_in`.  
+//   - Opera de manera cíclica, ideal para testeo de sistemas de adquisición de datos.  
+///// ================================================================================= /////  
 
 module data_stream
 #(

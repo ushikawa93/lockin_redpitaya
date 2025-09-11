@@ -1,3 +1,28 @@
+//////////////////////////////////////////////////////////////////////////////////
+// ============================ data_stream =================================== //
+// ============================================================================ // 
+// Genera un flujo de datos incremental de ancho parametrizable
+//
+// Entradas:
+// - clk : reloj del sistema
+// - reset_n : reset activo en bajo
+// - enable : habilita la generación de datos
+// - start_value : valor inicial de la secuencia
+// - user_reset : reinicio controlado por el usuario
+//
+// Salidas:
+// - data_out : dato de salida
+// - data_out_valid : indica cuando data_out es válido
+//
+// Funcionamiento:
+// - Al activarse 'enable', genera valores incrementales a partir de 'start_value'
+// - Cada ciclo de reloj incrementa el valor en 1
+// - 'data_out_valid' se mantiene en 1 mientras se generan datos
+// - Permite reiniciar la secuencia mediante 'reset_n' o 'user_reset'
+//
+// Autor: MatiOliva
+// Fecha: 2025-09-09
+
 
 module data_stream
 #(

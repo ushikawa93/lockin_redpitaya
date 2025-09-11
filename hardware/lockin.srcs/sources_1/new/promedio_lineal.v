@@ -1,3 +1,26 @@
+//////////////////////////////////////////////////////////////////////////////////
+// Módulo: promedio_lineal
+//
+// Descripción:
+//   Este módulo calcula el promedio lineal de una señal de entrada.
+//   - Recibe datos válidos en cada ciclo de reloj.
+//   - Suma los últimos N valores para calcular el promedio.
+//   - Cuando se alcanza el número de muestras definido, la salida se considera válida.
+//
+// Parámetros principales:
+//   DATA_IN_WIDTH        : Cantidad de bits de la señal de entrada
+//   DATA_OUT_WIDTH       : Cantidad de bits de la señal de salida
+//   N_AVGD_SAMPLES_WIDTH : Tamaño del registro que define cuántas muestras promediar
+//
+// Puertos principales:
+//   clk                  : Reloj del sistema
+//   reset_n              : Reset activo bajo
+//   data                 : Datos de entrada
+//   data_valid           : Indica que los datos de entrada son válidos
+//   data_out             : Promedio calculado
+//   data_out_valid       : Indica que la salida es válida
+//   N_averaged_samples   : Número de muestras a promediar
+//////////////////////////////////////////////////////////////////////////////////
 
 module promedio_lineal
 #(

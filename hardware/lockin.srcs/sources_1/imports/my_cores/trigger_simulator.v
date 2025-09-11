@@ -1,23 +1,42 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 23.06.2023 19:15:26
-// Design Name: 
-// Module Name: trigger_simulator
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
+///// ================================================================================= /////  
+///// ========================== Módulo TRIGGER_SIMULATOR ========================= /////  
+///// ================================================================================= /////  
+//  
+// Este módulo simula distintos modos de trigger sobre una señal de entrada digitalizada.  
+// Puede generar triggers basados en:  
+//   1) Conteo continuo (cada M muestras).  
+//   2) Cruce de nivel (comparando la señal con un nivel de referencia).  
+//   3) Trigger externo (entrada digital externa).  
+//
+// Entradas:  
+//   clk                  : Señal de reloj del sistema.  
+//   reset_n              : Reset activo en bajo.  
+//   user_reset           : Reset externo desde el usuario.  
+//   data_in              : Señal de datos a monitorear.  
+//   data_valid           : Validez de la señal de datos.  
+//   M_in                 : Número de muestras para el trigger continuo.  
+//   K_sobremuestreo_in   : Factor de sobremuestreo para el trigger de nivel.  
+//   log2_div_in          : Factor de división log2 aplicado al trigger de nivel.  
+//   trigger_mode_in      : Modo de trigger (0 = continuo, 1 = nivel, 2 = externo).  
+//   trigger_level_in     : Nivel de referencia para trigger de nivel.  
+//   trig_externo         : Trigger externo digital.  
+//
+// Salidas:  
+//   trig_cont_export     : Indica un trigger continuo generado internamente.  
+//   trig                 : Trigger final según el modo seleccionado.  
+//
+// Funcionamiento:  
+//   - Trigger continuo: Se genera un pulso cada M muestras.  
+//   - Trigger de nivel: Detecta flancos ascendentes sobre `trigger_level_in` y evita rebotes con un contador de hold-off.  
+//   - Trigger externo: Se genera un pulso cuando `trig_externo` cambia a alto, con un hold-off similar.  
+//   - Las entradas se registran para sincronizar las operaciones y evitar glitches.  
+//   - La señal final `trig` selecciona automáticamente el modo configurado.  
+//
+// Aplicaciones:  
+//   - Simulación de triggers en sistemas de adquisición de datos.  
+//   - Pruebas de sincronización y adquisición controlada por eventos.  
+///// ================================================================================= /////  
 
 
 module trigger_simulator
@@ -106,13 +125,13 @@ end
 
 
 // Segunda opcion de trigger
-// aca me fijo cuando la se�al pasa un nivel y ahi la disparo
+// aca me fijo cuando la se�al pasa un nivel y ahi la disparo
 reg trigger_nivel_reg;
 reg signed [31:0] data_in_reg;
 reg [31:0] counter_level;
 
-// Peque�a maquina de estados para evitar que dos trigger se habiliten muy juntos
-// esto podr�a pasar por ruido por ejemplo
+// Peque�a maquina de estados para evitar que dos trigger se habiliten muy juntos
+// esto podr�a pasar por ruido por ejemplo
 // por ahora lo soluciono asi capaz hay otro metodo mejor...
 reg [2:0] state;
 localparam idle=0,trigger_off=1;

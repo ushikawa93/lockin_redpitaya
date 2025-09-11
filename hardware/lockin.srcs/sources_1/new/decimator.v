@@ -1,4 +1,37 @@
 `timescale 1ns / 1ps
+///// ================================================================================= /////
+///// ============================== Módulo Decimator ================================= /////
+///// ================================================================================= /////
+//
+// Este módulo implementa un diezmador simple para flujo de datos.
+//
+// Funcionalidad:
+//   - Recibe muestras de entrada de 32 bits con una señal de validez.
+//   - Entrega cada N-ésima muestra, donde N = decimate_value.
+//   - Lleva un conteo de las muestras entregadas (hasta FIFO_DEPTH).
+//   - Activa 'finish' cuando se alcanzan FIFO_DEPTH muestras de salida.
+//   - Incluye reset y enable para control flexible en la integración.
+//
+// Puertos:
+//   clk              : Reloj del sistema.
+//   reset_n          : Reset activo en bajo.
+//   enable           : Habilitación del módulo.
+//   data_in          : Datos de entrada de 32 bits.
+//   data_in_valid    : Indica cuándo data_in es válido.
+//   decimate_value   : Factor de diezmado.
+//   data_out         : Datos de salida de 32 bits (flujo diezmado).
+//   data_out_valid   : Indica cuándo data_out es válido.
+//   finish           : Activo cuando se alcanzan FIFO_DEPTH muestras de salida.
+//
+// Notas:
+//   - El módulo procesa datos solo cuando data_in_valid está en alto.
+//   - El diezmado funciona entregando una muestra cada decimate_value ciclos.
+//   - La señal finish se activa cuando el contador interno counter_data
+//     llega a FIFO_DEPTH.
+//
+///// ================================================================================= /////
+
+
 
 module decimator(
 

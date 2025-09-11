@@ -1,3 +1,52 @@
+///// ================================================================================= /////  
+///// ===================== Módulo SIGNAL_PROCESSING_LI ========================== /////  
+///// ================================================================================= /////  
+//  
+// Este módulo implementa un sistema de procesamiento de señales tipo lock-in digital (LIA).  
+// Toma una señal de entrada en streaming y la multiplica por referencias de fase y cuadratura,  
+// generando las salidas de fase y cuadratura filtradas.
+//
+// Funcionamiento:  
+//   - Registra parámetros de configuración dinámicamente (`parameter_in_0` y `parameter_in_1`).  
+//   - Convierte referencias externas de 16 bits a señales de 32 bits para el lock-in segmentado.  
+//   - Instancia el módulo `lockin_segmentado` para realizar multiplicación por referencia,  
+//     filtrado de media móvil sincronizado y cálculo de fase y cuadratura.  
+//   - Genera las señales de salida válidas (`data_out_fase`, `data_out_cuad`) y auxiliares  
+//     (`ready_to_calculate`, `processing_finished`, `datos_promediados`).  
+//
+// Parámetros de configuración:  
+//   parameter_in_0 : Número de puntos por ciclo de la referencia (M).  
+//   parameter_in_1 : Número de frames de integración (N) para el filtro MA.  
+//
+// Puertos:  
+//   Entradas:  
+//     clk                        : Reloj principal.  
+//     reset_n                    : Reset asincrónico, activo en bajo.  
+//     enable_gral                : Habilita el procesamiento general.  
+//     referencia_externa_seno    : Componente seno de la referencia externa.  
+//     referencia_externa_cos     : Componente coseno de la referencia externa.  
+//     referencia_externa_valid   : Indica cuándo la referencia externa es válida.  
+//     data_in                    : Señal de entrada a procesar.  
+//     data_in_valid              : Indica cuándo la señal de entrada es válida.  
+//     start_signal               : Señal de sincronización para inicio del lock-in.  
+//     parameter_in_0             : Parámetro dinámico: puntos por ciclo.  
+//     parameter_in_1             : Parámetro dinámico: frames de integración.  
+//
+//   Salidas:  
+//     data_out_fase             : Salida filtrada de fase (64 bits).  
+//     data_out_fase_valid       : Indica que `data_out_fase` es válida.  
+//     data_out_cuad             : Salida filtrada de cuadratura (64 bits).  
+//     data_out_cuad_valid       : Indica que `data_out_cuad` es válida.  
+//     ready_to_calculate        : Señal de disponibilidad del lock-in para cálculo.  
+//     processing_finished       : Señal que indica que el procesamiento ha finalizado.  
+//     datos_promediados         : Cantidad de datos acumulados y promediados.  
+//
+// Notas:  
+//   - Permite integración de lock-in con referencias externas.  
+//   - Todos los parámetros y referencias se registran para mejorar timing y estabilidad.  
+//   - Se pueden usar las salidas auxiliares para control de buffers y sincronización con otros módulos.  
+//  
+///// ================================================================================= /////  
 
 module signal_processing_LI(
 	input clk,

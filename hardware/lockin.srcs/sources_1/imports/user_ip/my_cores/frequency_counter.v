@@ -1,3 +1,31 @@
+//////////////////////////////////////////////////////////////////////////////////
+// Módulo: frequency_counter
+//
+// Descripción:
+//   Este módulo recibe una señal de entrada proveniente de un ADC y cuenta
+//   los ciclos entre transiciones de la señal basadas en umbrales definidos.
+//   La señal de entrada se pasa directamente a la salida junto con su validación.
+//   Cuando se alcanzan N ciclos, se registra el valor del contador y se reinicia.
+//
+// Parámetros principales:
+//   ADC_WIDTH      : Cantidad de bits de la señal ADC
+//   AXIS_TDATA_WIDTH : Ancho de los datos de entrada/salida
+//   COUNT_WIDTH    : Tamaño del contador
+//   HIGH_THRESHOLD : Umbral alto para detectar transición
+//   LOW_THRESHOLD  : Umbral bajo para detectar transición
+//
+// Puertos principales:
+//   S_AXIS_IN_tdata   : Datos de entrada
+//   S_AXIS_IN_tvalid  : Indica que los datos de entrada son válidos
+//   clk               : Reloj del sistema
+//   rst               : Reset del módulo
+//   Ncycles           : Cantidad de ciclos a contar
+//   M_AXIS_OUT_tdata  : Datos de salida
+//   M_AXIS_OUT_tvalid : Indica que los datos de salida son válidos
+//   counter_output    : Valor del contador cuando se completa Ncycles
+//////////////////////////////////////////////////////////////////////////////////
+
+
 `timescale 1ns / 1ps
 
 module frequency_counter #

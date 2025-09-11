@@ -1,3 +1,40 @@
+///// ================================================================================= /////  
+///// ======================== Módulo DATA_SOURCE ================================ /////  
+///// ================================================================================= /////  
+//  
+// Este módulo genera una señal de prueba basada en una tabla de look-up (LU table) de 2048 muestras  
+// y le añade ruido configurable para simulaciones. Permite seleccionar entre dos tipos de ruido:  
+//   1. LFSR (Linear Feedback Shift Register) para generar ruido pseudoaleatorio de 32 bits.  
+//   2. GCL (Generador Congruencial Lineal) para otra fuente de aleatoriedad.  
+//
+// Funcionamiento:  
+//   - Recorre la tabla de LU para producir una señal periódica según el parámetro `ptos_x_ciclo`.  
+//   - Cada muestra puede sumarse con el ruido seleccionado (`seleccion_ruido`).  
+//   - Controla la validez de los datos mediante `data_valid`.  
+//   - Señaliza paso por cero de la señal base con `zero_cross`.  
+//   - Indica cuando el LFSR completa un ciclo con `lfsr_cicled`.  
+//
+// Parámetros:  
+//   simulation_noise : Nivel de ruido aplicado (bits de atenuación).  
+//   ptos_x_ciclo     : Número de puntos por ciclo de la señal de referencia.  
+//   seleccion_ruido  : Selecciona la fuente de ruido: 0 = LFSR, 1 = GCL.  
+//
+// Entradas:  
+//   clock       : Reloj principal.  
+//   reset_n     : Reset asincrónico activo en bajo.  
+//   enable      : Habilita la generación de datos.  
+//
+// Salidas:  
+//   data_valid  : Indica que la salida `data` es válida.  
+//   data        : Señal de salida simulada con ruido.  
+//   zero_cross  : Señal que indica paso por cero de la señal base.  
+//   lfsr_cicled : Indica cuando el LFSR completó un ciclo completo.
+//
+// Notas:  
+//   - Se utilizan registros para sincronizar el acceso a la tabla de memoria y el ruido.  
+//   - El parámetro `atenuacion` permite ajustar la amplitud de la señal base.  
+//   - El módulo puede operar a alta velocidad (65 MHz) con LFSR de 32 bits para largos periodos pseudoaleatorios.  
+///// ================================================================================= /////  
 
 module data_source(
 

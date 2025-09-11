@@ -1,3 +1,38 @@
+///// ================================================================================= /////  
+///// ========================== Módulo REFERENCIAS ============================== /////  
+///// ================================================================================= /////  
+//  
+// Este módulo genera referencias de seno y coseno a partir de tablas de búsqueda (LUT)  
+// predefinidas. Permite ajustar el número de puntos por ciclo y realizar atenuación de la señal.
+//
+// Funcionamiento:  
+//   - Lee tablas de 2048 posiciones para seno (`x2048_16b.mem`) y coseno (`y2048_16b.mem`).  
+//   - Ajusta el intervalo de acceso según `pts_x_ciclo` para generar el número deseado de puntos por ciclo.  
+//   - Avanza el índice de la tabla solo cuando `avanzar_en_tabla` está activo.  
+//   - Salidas ajustadas en 32 bits, centradas alrededor de cero y con atenuación opcional.  
+//
+// Parámetros de configuración:  
+//   pts_x_ciclo : Número de puntos por ciclo de la referencia.  
+//   ref_mean_value : Valor medio de las tablas de referencia (por defecto 32767).  
+//   atenuacion : Desplazamiento a la derecha aplicado a la salida (división por 2^atenuacion).  
+//
+// Puertos:  
+//   Entradas:  
+//     clock             : Reloj principal.  
+//     reset_n           : Reset asincrónico, activo en bajo.  
+//     enable            : Habilita el procesamiento de datos.  
+//     avanzar_en_tabla   : Señal que indica cuándo avanzar el índice de la tabla.  
+//
+//   Salidas:  
+//     data_out_seno      : Salida del seno de referencia ajustada a 32 bits.  
+//     data_out_cos       : Salida del coseno de referencia ajustada a 32 bits.
+//
+// Notas:  
+//   - Permite cambiar dinámicamente el número de puntos por ciclo sin modificar las tablas.  
+//   - Todas las salidas se centran en cero y se pueden atenuar según el parámetro `atenuacion`.  
+//   - Es útil para módulos de lock-in digital que requieren referencias periódicas.  
+//  
+///// ================================================================================= /////  
 
 module referencias(
 

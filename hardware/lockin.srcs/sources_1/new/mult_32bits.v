@@ -1,24 +1,40 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 18.03.2024 18:32:55
-// Design Name: 
-// Module Name: calc_sum_limit
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
+///// ================================================================================= /////
+///// ============================ Módulo Multiplicador 32x16 ========================= /////
+///// ================================================================================= /////
+//
+// Este módulo implementa una multiplicación eficiente entre:
+//   - un operando de 32 bits (data_in_a)
+//   - y un operando de 16 bits (data_in_b)
+//
+// Problema a resolver:
+//   - Multiplicar directamente puede tardar mucho tiempo con operandos grandes.
+//   - Para solucionarlo, se descompone data_in_a en dos mitades de 16 bits (A0 y A1)
+//     y se realiza la operación por partes.
+//
+// Funcionamiento:
+//   - Se divide A en: A = A0 + (A1 << 16).
+//   - Se calculan los productos parciales: 
+//        P0 = A0 * B
+//        P1 = A1 * B
+//   - Se compone el resultado: 
+//        P = P0 + (P1 << 16)
+//   - El resultado final (48 bits) se entrega en data_out.
+//
+// Puertos:
+//   clk       : Reloj del sistema.
+//   enable    : Habilita el cálculo en el flanco positivo.
+//   reset_n   : Reset activo en bajo.
+//   data_in_a : Operando de 32 bits.
+//   data_in_b : Operando de 16 bits.
+//   data_out  : Resultado de 48 bits de la multiplicación.
+//
+// Notas:
+//   - El cálculo es secuencial, se actualiza en cada ciclo habilitado.
+//   - El módulo utiliza registros para mantener los productos parciales.
+//   - Útil cuando se requiere multiplicación 32x16 sin un macro dedicado.
+//
+///// ================================================================================= /////
 
 module mult_32_bits(
 
