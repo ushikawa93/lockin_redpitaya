@@ -1,40 +1,54 @@
 # lockin_redpitaya
-Detección Lockin usando Red Pitaya
+Detección Lock-in usando Red Pitaya con adquisición de señales, procesamiento y generación de triggers.
 
 # Carpeta Hardware
-Hardware de la FPGA. Está armado con un "block diagram" que tiene componentes propios y algunas IP de Xilinx.
-Los módulos principales son:
+Hardware implementado en la FPGA mediante un "block diagram" que combina módulos propios y algunas IPs de Xilinx. Los módulos principales son:
 
-+ *Control:* Controla la operación de la FPGA a través  del uP embebido. Puede controlar reset, enable, leer resultados y setear algunos parámetros:
- 
-  - N_ma: Número de ciclos promedidados en el MA del lockin
++ **Control:** Interfaz con el microprocesador embebido para controlar la FPGA, configurar parámetros y leer resultados. Los parámetros modificables son:
+  - `N_ma`: Número de ciclos promediados en el Moving Average Filter (MAF) del lock-in.
+  - `data_source`: Selección de fuente de datos (0: simulación, 1: ADC).
+  - `dac_phase`: Incremento de fase para el DDS que genera la señal de salida del DAC.
+  - `ref_phase`: Incremento de fase para el DDS de las referencias del lock-in.
+  - `decimate_value`: Valor de decimación para la visualización de señales.
+  - `decimate_mode`: Modo de decimación (0: descarte, 1: promedio lineal).
+  - `M`: Puntos por ciclo de señal, usado principalmente para estimar el paso por cero de la señal DDS.
 
-  - data_source: Fuente de los datos. (0: simulacion | 1: ADC)
++ **Fuente de datos (`data_source` y `data_stream`):** Genera las señales de entrada para el lock-in, que pueden provenir del ADC o ser simuladas. Incluye opciones de:
+  - Señales con ruido generado por LFSR o generador congruencial lineal (GCL) con control de amplitud.
+  - Ajuste dinámico del número de puntos por ciclo (`ptos_x_ciclo` o `M`) y paso por cero.
+  - Salida de señal y señal de cruce por cero (`zero_cross`) para sincronización.
+  
++ **Decimador:** Reduce la cantidad de datos para visualización, manteniendo la señal original completa para el lock-in.
 
-  - dac_phase: Incremento de fase para el dds del dac
++ **Lock-in (`coherent_average`):** Calcula las componentes X e Y mediante un Lockin que utiliza un filtro MAF coherente sobre `N_ma` ciclos.  
+  - Calcular R y φ externamente: `R = sqrt(X^2 + Y^2)`, `phi = atan(Y/X)`.
+  - Incluye memoria para almacenar índices de cada ciclo de promediado, asegurando integridad de la secuencia.
 
-  - ref_phase: Incremento de fase para el dds de las referencias
++ **DAC:** Genera una señal sinusoidal de salida mediante un DDS, configurable por `dac_phase`.
 
-  - decimate_value: Valor de decimación.
++ **Trigger Simulator (`trigger_simulator`):** Permite probar y sincronizar la adquisición mediante tres modos de trigger:
+  - Trigger continuo: genera un pulso cada M muestras.
+  - Trigger de nivel: detecta flancos ascendentes sobre un nivel de referencia, con hold-off para evitar rebotes.
+  - Trigger externo: activado mediante una señal digital externa con hold-off incorporado.
 
-  - decimate_mode: Modo de decimacion (0: descarte | 1: promedio lineal)
++ **Level Detector (`level_detector`):** Detecta cuando las entradas superan un nivel definido, usado para disparar eventos o triggers internos.
 
-  - M: Puntos por ciclo de señal. En la última versión se usa DDS para generar la sinusoide asique esto solo se usa para estimar el punto de paso por cero de la secuencia.
-
-+ *Fuente de datos:* Este módulo gestiona las señales para el procesamiento. Puede ser una señal simulada o datos provenientes del ADC. 
-
-+ *Decimador:* Para reducir el número de datos que entran a las memorias se puede decimar la señal entrante (ya sea la del ADC o la de la simulacion).
-Esto es solo para visualizarla, al lockin entra siempre la señal entera.
-
-+ *Lockin:* Hace Lockin con MAF de Nma ciclos sobre la señal. Saca las componentes X e Y. Despues el uP calcula el R y el phi como R=sqrt(X^2+Y^2) y phi=atan(Y/X).
-Una salida extra "datos_promedidos" determina cuantas muestras tiene realmente el resultado calculado.
-
-+ *DAC:* Contola el DAC generando una señal sinusoidal a través de un dds compiler y el parámetro dac_phase.
++ **GPIO y LEDs (`drive_gpios`, `drive_leds`):** Controla salidas físicas, LEDs y permite visualizar estados de señales internas.
 
 # Carpeta Software
-Controla la operación del lockin. Pueden usarse directamente las funciones de Python.
+Contiene scripts y funciones en Python y c para controlar la FPGA y el lock-in:
 
-Estas se valen de los shell_scripts, que controla a través de ssh al SoC, y ejecuta funciones escritas en c disponibles en la carpeta c_program.
+- Se comunica con la FPGA vía SSH y usa shell scripts que ejecutan programas en C (`c_program`) para operaciones de bajo nivel.
+- Permite configurar todos los parámetros del hardware, iniciar y detener la adquisición, leer resultados y visualizar datos.
+- Requiere que el bitstream `lockin_estable.bit` esté cargado en la FPGA, lo cual puede hacerse mediante las funciones de Python o los shell scripts incluidos.
 
-Para que la cosa ande bien tiene que estar configurado el bitstream lockin_estable.bit en la FPGA (Hay una funcion de python; y un shell_script que lo programa).
+# Flujo de operación
+1. Configuración de parámetros por software (control, DAC, lock-in, decimación, triggers).  
+2. Selección de fuente de datos y generación de señal (simulada o ADC).  
+3. Decimación opcional para visualización.  
+4. Procesamiento Lock-in con MAF de `N_ma` ciclos.  
+5. Cálculo de salida de R y φ, junto con información de índices y número de muestras promediadas.  
+6. Monitoreo de triggers y niveles para sincronización.  
+7. Visualización de resultados en LEDs, GPIO o mediante software.  
 
+Este repositorio combina adquisición de datos, procesamiento digital coherente y generación de triggers, siendo ideal para experimentos de control de señales y pruebas de instrumentación con Red Pitaya.
