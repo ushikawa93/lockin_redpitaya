@@ -15,10 +15,14 @@ En esta carpeta hay IPs (algunos propios y otros prestados) que implementan los 
   - cores: IP externa utilizada por el programa. Acá están por ejemplo los drivers de DAC y ADC.
 
 - sources_1
-  - bd/ system: Carpeta generada por Vivado con todo el IP necesario para el block design. 
-                Acá lo importante es `system.bd`, después la carpeta ip se genera sola por Vivado a partir de este archivo y del código fuente.
-  - imports: 
-    - my_cores: IP propia escrita en Verilog para cumplir distintas funcionalidades
-    - `system_wrapper.v`: Top level file del proyecto (generado por Vivado a partir del BD)
+  - bd/ system: Carpeta generada por Vivado con todo el IP necesario para el block design. Acá lo importante es `system.bd`, después la carpeta ip se genera sola por Vivado a partir de este archivo y del código fuente.
 
+  - imports: 
+    - lu_tables: Tablas de consulta para almacenar señales como senos y cosenos
+    - my_cores: IP propia escrita en Verilog para cumplir distintas funcionalidades
+    - user_ip:
+      - cores: IP externa utilizada por el programa. Acá están por ejemplo los drivers de DAC y ADC.
+      - my_cores: IP propia escrita en Verilog para cumplir distintas funcionalidades
+    - `system_wrapper.v`: Top level file del proyecto (generado por Vivado a partir del BD)
+  
   - new: IP propia escrita en Verilog para cumplir distintas funcionalidades
